@@ -54,10 +54,19 @@ class Baseline
 
     system("git add * ; git commit -m 'Initial migrations complete'")
 
+    # Create the initializer file
+    File.open(File.join(@project_dir,"config","initializers","baseline.rb"),"w") do |f|
+      f.puts "module Baseline"
+      f.puts "  AppName = '#{@project_name}'"
+      f.puts "  DefaultHost = '#{@project_name.downcase}.com'"
+      f.puts '  EmailSender = "#{AppName} <noreply@#{DefaultHost}>"'
+      f.puts "end"
+    end
+
     # Add a default url to individual environment files
     Dir[File.join(@project_dir,"config","environments","*.rb")].each do |fn|
       File.open(fn,"a") do |f|
-        f.print("\nconfig.action_mailer.default_url_options = { :host => '" + (f =~ /production.rb$/ ? @project_name + ".com" : "localhost:3000") + "' }\n")
+        f.print("\n", 'config.action_mailer.default_url_options = { :host => "', (fn =~ /production.rb$/ ? '#{Baseline::DefaultHost}' : 'localhost:3000'), '" }', "\n")
       end
     end
 
@@ -75,5 +84,6 @@ class Baseline
     FileUtils.cp_r("#{@resource_dir}/sync/.",@project_dir)
 
     system("git add * ; git commit -m 'Add features, controllers, etc.'")
+    system("git rm public/index.html; git commit -m 'And here ...we ...go'")
   end
 end
