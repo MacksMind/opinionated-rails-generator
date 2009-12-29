@@ -1,0 +1,23 @@
+<% form_for(@user) do |f| %>
+  <%= f.error_messages %>
+
+  <div>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :password, @user.new_record? ? "Password *" : "Change Password *" %>
+    <%= f.password_field :password %>
+  </div>
+  <div>
+    <%= f.label :password_confirmation, "Password Confirmation *" %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div>
+    <%= f.submit @user.new_record? ? 'Create' : 'Update' %>
+  </div>
+<% end %>

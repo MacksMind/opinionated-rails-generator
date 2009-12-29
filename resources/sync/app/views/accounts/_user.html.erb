@@ -1,0 +1,32 @@
+<% form_for @user, :url => account_path do |f| %>
+  <%= f.error_messages %>
+
+  <div>
+    <%= f.label :email, "Email *" %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div>
+    <%= f.label :name, "Name *" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :time_zone %>
+    <%= f.time_zone_select :time_zone, nil, :include_blank => true %>
+  </div>
+
+  <div>
+    <%= f.label :password, @user.new_record? ? "Password *" : "Change Password *" %>
+    <%= f.password_field :password %>
+  </div>
+
+  <div>
+    <%= f.label :password_confirmation, "Password Confirmation *" %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <div class="buttons">
+    <%= f.submit @user.new_record? ? "Sign Up" : "Update" %>
+  </div>
+<% end %>

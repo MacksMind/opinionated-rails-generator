@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title><%= @page_title || 'Vision : Intention : ActionPing' %></title>
+    <%= stylesheet_link_tag "screen.css", :media => "screen,projection" %>
+    <%= stylesheet_link_tag "print.css", :media => "print" %>
+    <!--[if lt IE 8]>
+    <%= stylesheet_link_tag "ie.css", :media => "screen,projection" %>
+    <![endif]-->
+    <%= stylesheet_link_tag "scaffold.css" %>
+    <%= stylesheet_link_tag "application.css" %>
+  </head>
+  <body>
+    <div class="container">
+      <div id="hd" class="span-24">
+        <% if current_user -%>
+          <div id="user-bar-greeting">Signed In as <%= current_user.email %></div>
+          <div id="user-bar-action"  >(<%= link_to "Sign Out", signout_path, { :title => "Sign Out" }    %>)</div>
+        <% else -%>
+          <div id="user-bar-greeting"><%= link_to 'Not Signed In', signin_path %></div>
+          <div id="user-bar-action"  ><%= link_to "Sign In",  signin_path,  { :title => "Sign In" } %> /
+            <%= link_to "Sign up", new_account_path, { :title => "Create an account" } %></div>
+        <% end -%>
+        <ul id="menu">
+          <li><%= link_to_unless_current "Home", root_path %></li>
+          <% if current_user %>
+            <li><%= link_to_unless_current "My Account", account_path %></li>
+            <% restrict_to "admin" do %>
+              <li><%= link_to_unless_current 'Users', users_path %></li>
+            <% end %>
+          <% else %>
+            <li><%= link_to_unless_current "Sign In", signin_path %></li>
+            <li><%= link_to_unless_current "Sign Up", new_account_path %></li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div id="bd" class="span-24">
+        <div id="flash">
+          <% flash.each do |key, value| -%>
+            <div class="<%= key -%>"><%= html_escape(value) %></div>
+          <% end -%>
+        </div>
+
+        <div class="content">
+          <%= yield %>
+        </div>
+      </div>
+
+      <div id="ft" class="span-24">
+        <p>&copy;2009 Agile Reasoning, LLC<br/>
+        Indianapolis, Indiana</p>
+      </div>
+    </div>
+    <% if ENV["RAILS_ENV"] == "production" %>
+      <!-- This would be a good place for Google Analytics code. -->
+    <% end %>
+  </body>
+</html>
