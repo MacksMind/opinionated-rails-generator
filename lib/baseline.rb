@@ -17,8 +17,6 @@ class Baseline
     @project_name = ARGV[0]
     @project_dir = File.join(@project_base,@project_name.underscore)
 
-    #TODO this is temporary
-    system("rm -rf ~/projects/my_shiny_project")
     raise ArgumentError, "#{@project_dir} already exists." if File.exist?(@project_dir)
   end
 
