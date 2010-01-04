@@ -83,7 +83,7 @@ class Baseline
 
     FileUtils.cp_r("#{@resource_dir}/sync/.",@project_dir)
 
-    system("git add * ; git commit -m 'Add features, controllers, etc.'")
+    system("git add * .autotest ; git commit -m 'Add features, controllers, etc.'")
     system("git rm public/index.html; git commit -m 'And here ...we ...go'")
   end
 end
