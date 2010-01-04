@@ -66,9 +66,10 @@ class Baseline
     end
 
     # Add a default url to individual environment files
-    Dir[File.join(@project_dir,"config","environments","*.rb")].each do |fn|
-      File.open(fn,"a") do |f|
-        f.print("\n", 'config.action_mailer.default_url_options = { :host => "', (fn =~ /production.rb$/ ? '#{Baseline::DefaultHost}' : 'localhost:3000'), '" }', "\n")
+    ["development","test","cucumber","production"].each do |env|
+      File.open(File.join(@project_dir,"config","environments","#{env}.rb"),"a") do |f|
+        f.print("\n", 'require File.join(File.dirname(__FILE__),"..","initializers","baseline.rb")') if env == 'production'
+        f.print("\n", 'config.action_mailer.default_url_options = { :host => "', (env == 'production' ? '#{Baseline::DefaultHost}' : 'localhost:3000'), '" }', "\n")
       end
     end
 
