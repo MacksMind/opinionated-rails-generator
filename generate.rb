@@ -1,5 +1,4 @@
 #!/usr/bin/ruby -w
-require 'lib/baseline'
-
+require File.join(File.dirname(__FILE__),"lib","baseline.rb")
 
 Baseline.new.generate!
