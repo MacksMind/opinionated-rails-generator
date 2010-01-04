@@ -4,6 +4,8 @@ require 'optparse'
 
 class Baseline
 
+  PASSWORD_REGEX = /^(?=.*?[0-9])(?=.*?[A-Z])(?=.*?[a-z])\S+$/
+
   # constructor
   def initialize
     @script_name = File.basename($0) 
@@ -33,12 +35,37 @@ class Baseline
     end
   end
 
+  def generate_password
+    #avoid confusion of 1 vs l, and 0 vs O
+    chars = ("a".."k").to_a + ("m".."z").to_a + ("A".."N").to_a + ("P".."Z").to_a + ("2".."9").to_a
+    until (pwd = Array.new(16).collect{chars[rand(chars.size)]}.join) =~ PASSWORD_REGEX do ; end
+    pwd
+  end
+
   def generate!
-    # Setup a default environment with RSpec and Cucumber
+    # Setup a default environment
     system("rails #{@project_dir}")
     Dir.chdir(@project_dir)
     FileUtils.cp(File.join(@resource_dir, "gitignore"),File.join(@project_dir,".gitignore"))
     system("git init ; git add .gitignore ; git add * ; git commit -m 'Default rails install'")
+
+    # Edit database settings
+    File.open(File.join(@project_dir,"config","database.yml"), "r+") do |f|
+      lines = f.readlines
+      new = lines[0,lines.index("production:\n") + 1]
+      new << "  adapter: mysql\n"
+      new << "  encoding: utf8\n"
+      new << "  database: #{@project_name.underscore}_production\n"
+      new << "  username: #{@project_name.underscore}\n"
+      new << "  password: #{generate_password}\n"
+      new << "  socket: /var/run/mysqld/mysqld.sock\n"
+      f.pos = 0
+      f.print new
+      f.truncate(f.pos)
+    end
+    system("git add config/database.yml ; git commit -m 'Production database settings'")
+
+    # Setup RSpec and Cucumber
     system("./script/generate rspec ; git add * ; git commit -m 'Setup rspec'")
     system("./script/generate cucumber --webrat --rspec ; git add * ; git commit -m 'Setup cucumber with webrat and rspec options'")
     system("git submodule add git://github.com/ezmobius/acl_system2.git vendor/plugins/acl_system2 ; git commit -m 'Add acl_system2 for role based access control'")
