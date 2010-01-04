@@ -1,8 +1,11 @@
 unless ARGV.any? {|a| a =~ /^gems/} # Don't load anything when running the gems:* tasks
 
   vendored_cucumber_bin = Dir["#{RAILS_ROOT}/vendor/{gems,plugins}/cucumber*/bin/cucumber"].first
+  $LOAD_PATH.unshift(File.dirname(vendored_cucumber_bin) + '/../lib') unless vendored_cucumber_bin.nil?
 
   begin
+    require 'cucumber/rake/task'
+
     namespace :cucumber do
       Cucumber::Rake::Task.new({:rcov => 'db:test:prepare'}, 'Run features that should pass with RCov') do |t|
         t.binary = vendored_cucumber_bin # If nil, the gem's binary is used.
@@ -11,5 +14,7 @@ unless ARGV.any? {|a| a =~ /^gems/} # Don't load anything when running the gems:
         t.profile = 'default'
       end
     end
+  rescue LoadError
+    # Do nothing. Let the standard rake file create the task
   end
 end
