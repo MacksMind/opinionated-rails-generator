@@ -77,7 +77,7 @@ class Baseline
       time += 1
       FileUtils.cp(f,File.join(@migrate_dir,"#{time.utc.strftime("%Y%m%d%H%M%S")}_" + File.basename(f)))
     end
-    system("rake db:migrate")
+    system("rake db:migrate ; rake db:test:prepare")
 
     system("git add * ; git commit -m 'Initial migrations complete'")
 

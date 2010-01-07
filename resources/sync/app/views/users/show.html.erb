@@ -8,5 +8,10 @@
   <%=h @user.name %>
 </div>
 
+<div>
+  <b>Roles:</b>
+  <%= h(@user.roles.collect{|r| r.title}.join(",")) %>
+</div>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

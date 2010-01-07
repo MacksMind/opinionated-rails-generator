@@ -5,7 +5,8 @@ describe "/users/show.html.erb" do
   before(:each) do
     assigns[:user] = @user = stub_model(User,
       :email => "value for email",
-      :name => "value for name"
+      :name => "value for name",
+      :roles => []
     )
   end
 

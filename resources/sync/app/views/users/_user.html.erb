@@ -2,11 +2,11 @@
   <%= f.error_messages %>
 
   <div>
-    <%= f.label :email %>
+    <%= f.label :email, "Email *" %>
     <%= f.text_field :email %>
   </div>
   <div>
-    <%= f.label :name %>
+    <%= f.label :name, "Name *" %>
     <%= f.text_field :name %>
   </div>
   <div>
@@ -18,6 +18,16 @@
     <%= f.password_field :password_confirmation %>
   </div>
   <div>
+    <%= f.label :roles %>
+    <div class="choices">
+      <% for role in Role.find(:all) %>
+        <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role), :id => "user_role_#{role.title.underscore}" %>
+        <%= label_tag "user_role_#{role.title.underscore}", role.title.titleize %>
+        <br />
+      <% end %>
+    </div>
+  </div>
+  <div class="buttons">
     <%= f.submit @user.new_record? ? 'Create' : 'Update' %>
   </div>
 <% end %>

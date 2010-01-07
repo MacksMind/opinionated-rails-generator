@@ -3,6 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe UsersController do
 
   def mock_user(stubs={})
+    stubs[:role_ids=] = []
     @mock_user ||= mock_model(User, stubs)
   end
 
@@ -85,13 +86,13 @@ describe UsersController do
 
       it "assigns the requested user as @user" do
         User.stub!(:find).and_return(mock_user(:update_attributes => true))
-        put :update, :id => "1"
+        put :update, :id => "1", :user => {:role_ids => []}
         assigns[:user].should equal(mock_user)
       end
 
       it "redirects to the user" do
         User.stub!(:find).and_return(mock_user(:update_attributes => true))
-        put :update, :id => "1"
+        put :update, :id => "1", :user => {:role_ids => []}
         response.should redirect_to(user_url(mock_user))
       end
     end
@@ -105,13 +106,13 @@ describe UsersController do
 
       it "assigns the user as @user" do
         User.stub!(:find).and_return(mock_user(:update_attributes => false))
-        put :update, :id => "1"
+        put :update, :id => "1", :user => {:these => 'params'}
         assigns[:user].should equal(mock_user)
       end
 
       it "re-renders the 'edit' template" do
         User.stub!(:find).and_return(mock_user(:update_attributes => false))
-        put :update, :id => "1"
+        put :update, :id => "1", :user => {:these => 'params'}
         response.should render_template('edit')
       end
     end

@@ -44,6 +44,7 @@ class UsersController < ApplicationController
   # POST /users.xml
   def create
     @user = User.new(params[:user])
+    @user.role_ids = params[:user][:role_ids]
 
     respond_to do |format|
       if @user.save
@@ -61,6 +62,7 @@ class UsersController < ApplicationController
   # PUT /users/1.xml
   def update
     @user = User.find(params[:id])
+    @user.role_ids = params[:user][:role_ids]
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
