@@ -7,7 +7,8 @@ describe "/users/edit.html.erb" do
     assigns[:user] = @user = stub_model(User,
       :new_record? => false,
       :email => "value for email",
-      :name => "value for name"
+      :name => "value for name",
+      :roles => []
     )
   end
 
