@@ -39,6 +39,18 @@ Feature: Visitor signs up for an account.
       And I should be on the signin page
       And I should see "Instructions to confirm your account have been emailed to you. Please check your email."
 
+  Scenario: Visitor has a link to resend confirmation if lost
+    Given I am on the signin page
+    When I follow "Resend Confirmation"
+    Then I should be on the new account confirmation page
+
+  Scenario: Visitor receives an appropriate message for invalid email
+    Given I am on the new account confirmation page
+    When I fill in "email" with "malory@example.com"
+      And I press "Resend confirmation"
+    Then I should be on the account confirmations page
+      And I should see "No user was found with that email address"
+
   Scenario: missing field
     Given I am on the signin page
     When I follow "Sign Up"
