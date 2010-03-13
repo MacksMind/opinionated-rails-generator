@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'active_support/inflector'
 require 'optparse'
+require 'fileutils'
 
 class Baseline
 
@@ -68,7 +69,7 @@ class Baseline
     # Setup RSpec and Cucumber
     system("./script/generate rspec ; git add * ; git commit -m 'Setup rspec'")
     system("./script/generate cucumber --webrat --rspec ; git add * ; git commit -m 'Setup cucumber with webrat and rspec options'")
-    system("git submodule add git://github.com/ezmobius/acl_system2.git vendor/plugins/acl_system2 ; git commit -m 'Add acl_system2 for role based access control'")
+    system("./script/plugin install git://github.com/ezmobius/acl_system2.git ; git add vendor/plugins/acl_system2 ; git commit -m 'Add acl_system2 for role based access control'")
 
     # Create migrations
     FileUtils.mkdir(@migrate_dir = File.join(@project_dir, "db", "migrate"))
