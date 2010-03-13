@@ -14,7 +14,7 @@ Feature: User edits their account.
     Then I should be on the account page
       And I should see "Account updated!"
       And I should see "alicia@example.com"
-      And my password should be "soooper"
+      And the password for "alicia@example.com" should be "soooper"
 
   Scenario: no password change
     Given I am signed in as "alice@example.com/testing"
@@ -25,7 +25,7 @@ Feature: User edits their account.
     Then I should be on the account page
       And I should see "Account updated!"
       And I should see "alicia@example.com"
-      And my password should be "testing"
+      And the password for "alicia@example.com" should be "testing"
 
   Scenario: empty
     Given I am signed in as "alice@example.com/testing"
@@ -37,7 +37,7 @@ Feature: User edits their account.
       And I press "Update"
     Then I should be on the account page
       And I should see "There were problems"
-      And my password should be "testing"
+      And the password for "alice@example.com" should be "testing"
 
   Scenario: success
     Given I am signed in as "alice@example.com/testing"

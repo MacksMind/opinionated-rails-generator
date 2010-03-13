@@ -14,7 +14,7 @@ Feature: Manage users
     When I fill in "Email" with "new_user@example.com"
       And I fill in "Name" with "Joe Blow"
       And I fill in "Password" with "asecret"
-      And I fill in "Password confirmation" with "asecret"
+      And I fill in "Password Confirmation" with "asecret"
       And I check "user_role_admin"
       And I press "Create"
     Then I should see "new_user@example.com"

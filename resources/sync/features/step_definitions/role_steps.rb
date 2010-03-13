@@ -5,7 +5,7 @@ Given /^the following roles:$/ do |roles|
 end
 
 When /^I delete the (\d+)(?:st|nd|rd|th) role$/ do |pos|
-  visit roles_url
+  visit roles_path
   within("table > tr:nth-child(#{pos.to_i+1})") do
     click_link "Destroy"
   end

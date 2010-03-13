@@ -11,7 +11,7 @@ Feature: User resets their password.
       And I press "Update my password and sign me in"
     Then I should be on the account page
       And I should see "Password successfully updated"
-      And my password should be "twiddle dee"
+      And the password for "alice@example.com" should be "twiddle dee"
 
   Scenario: mismatched password
     Given the user "alice@example.com/forgot"

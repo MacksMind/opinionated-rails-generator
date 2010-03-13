@@ -33,19 +33,13 @@ Given /^I am signed in as "(.*)"$/ do |userspec|
   click_button 'Sign In'
 end
 
-Then /^my password should be "(.*)"$/ do |pass|
-  Authlogic::Session::Base.controller ||= ApplicationController.new
-
-  user = assigns(:current_user)
-  # if the save failed we need the original email
-  email = user.changed? ? user.email_was : user.email
-
+Then /^the password for "(.*)" should be "(.*)"$/ do |email,pass|
   @session = UserSession.new(:email => email, :password => pass)
   @session.valid?.should be_true
 end
 
 When /^I delete the (\d+)(?:st|nd|rd|th) user$/ do |pos|
-  visit users_url
+  visit users_path
   within("table > tr:nth-child(#{pos.to_i+1})") do
     click_link "Destroy"
   end

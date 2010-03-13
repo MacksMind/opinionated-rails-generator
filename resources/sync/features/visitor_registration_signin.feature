@@ -47,7 +47,7 @@ Feature: Visitor signs up for an account.
   Scenario: Visitor receives an appropriate message for invalid email
     Given I am on the new account confirmation page
     When I fill in "email" with "malory@example.com"
-      And I press "Resend confirmation"
+      And I press "Resend Confirmation"
     Then I should be on the account confirmations page
       And I should see "No user was found with that email address"
 
