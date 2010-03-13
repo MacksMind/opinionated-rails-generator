@@ -54,7 +54,7 @@ end
 Then /^I should see the following users:$/ do |expected_users_table|
   expected_users_table.map_column!('Name') {|n| n || ""}
   expected_users_table.map_column!('Roles') {|r| r || ""}
-  expected_users_table.diff!(table_at('table').to_a)
+  expected_users_table.diff!(tableish('table tr', 'td,th'))
 end
 
 Then /^(.*@.*) should receive an email$/ do |email|

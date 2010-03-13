@@ -20,7 +20,7 @@ Feature: Manage roles
       |title 4|
     When I delete the 3rd role
     Then I should see the following roles:
-      |title|
+      |Title|
       |admin|
       |title 1|
       |title 3|
