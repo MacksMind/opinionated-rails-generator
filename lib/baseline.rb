@@ -27,7 +27,7 @@ class Baseline
 
     parser = OptionParser.new do |o|
       o.set_summary_indent('  ')
-      o.banner =    "Usage: #{File.basename($0)} [options] ProjectName"
+      o.banner =    "Usage: ruby #{File.basename($0)} [options] ProjectName"
       o.define_head "Baseline Rails setup"
       o.separator ""
       o.separator "options"
