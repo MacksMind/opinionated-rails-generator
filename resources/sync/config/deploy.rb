@@ -1,6 +1,6 @@
 require File.join(File.dirname(__FILE__),"initializers","baseline.rb")
 
-set :application, Baseline::AppName.downcase
+set :application, ::Baseline::AppName.downcase
 set :repository,  "set your repository location here"
 
 set :scm, :git
@@ -11,7 +11,7 @@ set :user, application
 set :use_sudo, false
 set :deploy_to, "/home/#{application}"
 
-server Baseline::DefaultHost, :app, :web, :db, :primary => true
+server ::Baseline::DefaultHost, :app, :web, :db, :primary => true
 
 namespace :deploy do
   task :start do ; end
