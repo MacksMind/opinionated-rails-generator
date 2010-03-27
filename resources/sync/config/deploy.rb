@@ -11,9 +11,7 @@ set :user, application
 set :use_sudo, false
 set :deploy_to, "/home/#{application}"
 
-role :web, Baseline::DefaultHost
-role :app, Baseline::DefaultHost
-role :db, Baseline::DefaultHost, :primary => true
+server Baseline::DefaultHost, :app, :web, :db, :primary => true
 
 namespace :deploy do
   task :start do ; end
