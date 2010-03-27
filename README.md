@@ -1,7 +1,7 @@
 Baseline
 ========
 
-Tool to generate a Rails application with these feature:
+Tool to generate a Rails application with these features:
 
 * Starts with `rails <project>` for the latest Rails magic
 * Configures the production database for MySQL with a generated password
@@ -11,6 +11,7 @@ Tool to generate a Rails application with these feature:
 * Role base access control with http://github.com/ezmobius/acl_system2
 * Capistrano configured for git-based deploy to a Phusion Passenger based server
 * Self-serve account creation with email based account confirmation and password resets
+* 100% code coverage
 * Stores all this goodness in a git repository with separate commits so you can see what each step did
 
 # Usage

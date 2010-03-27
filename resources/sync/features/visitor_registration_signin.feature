@@ -21,6 +21,11 @@ Feature: Visitor signs up for an account.
     When I go to my account confirmation page
     Then I should be on the homepage
       And I should see "Account Confirmed"
+ 
+  Scenario: Visitor can't see protected pages
+    When I go to the account page
+    Then I should be on the signin page
+      And I should see "You must be signed in to access this page"
 
   Scenario: Account cannot be confirmed twice
     Given the user "alice@example.com/testing"
