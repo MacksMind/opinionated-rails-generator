@@ -115,6 +115,11 @@ class Baseline
       f.truncate(f.pos)
     end
 
+    # Add an option to spec/rcov.opts
+    File.open(File.join(@opts[:project_dir],"spec","rcov.opts"), "a") do |f|
+      f.puts "\n--aggregate coverage.data"
+    end
+
     system("git add * ; git commit -m 'Edit environment files'")
 
     FileUtils.cp_r("#{@opts[:resource_dir]}/sync/.",@opts[:project_dir])
