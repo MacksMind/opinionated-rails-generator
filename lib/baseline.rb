@@ -96,10 +96,12 @@ class Baseline
       f.puts '  #TODO - Remove when Rails 2.3.6 is released'
       f.puts '  EmailReturnPath = "noreply@#{DefaultHost}"'
       f.puts
-      f.puts "  if RAILS_ENV == 'production'"
-      f.puts "    ActionMailer::Base.default_url_options[:host] = DefaultHost"
-      f.puts "  else"
-      f.puts "    ActionMailer::Base.default_url_options[:host] = 'localhost:3000'"
+      f.puts "  if defined?(RAILS_ENV)"
+      f.puts "    if RAILS_ENV == 'production'"
+      f.puts "      ActionMailer::Base.default_url_options[:host] = DefaultHost"
+      f.puts "    else"
+      f.puts "      ActionMailer::Base.default_url_options[:host] = 'localhost:3000'"
+      f.puts "    end"
       f.puts "  end"
       f.puts "end"
     end
