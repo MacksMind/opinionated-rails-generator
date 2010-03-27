@@ -95,15 +95,13 @@ class Baseline
       f.puts '  EmailSender = "#{AppName} <noreply@#{DefaultHost}>"'
       f.puts '  #TODO - Remove when Rails 2.3.6 is released'
       f.puts '  EmailReturnPath = "noreply@#{DefaultHost}"'
+      f.puts
+      f.puts "  if RAILS_ENV == 'production'"
+      f.puts "    ActionMailer::Base.default_url_options[:host] = DefaultHost"
+      f.puts "  else"
+      f.puts "    ActionMailer::Base.default_url_options[:host] = 'localhost:3000'"
+      f.puts "  end"
       f.puts "end"
-    end
-
-    # Add a default url to individual environment files
-    ["development","test","cucumber","production"].each do |env|
-      File.open(File.join(@opts[:project_dir],"config","environments","#{env}.rb"),"a") do |f|
-        f.print("\n", 'require File.join(File.dirname(__FILE__),"..","initializers","baseline.rb")') if env == 'production'
-        f.print("\n", 'config.action_mailer.default_url_options = { :host => "', (env == 'production' ? '#{Baseline::DefaultHost}' : 'localhost:3000'), '" }', "\n")
-      end
     end
 
     # Add stuff to global environment file
