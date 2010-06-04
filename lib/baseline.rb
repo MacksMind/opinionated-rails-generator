@@ -93,8 +93,6 @@ class Baseline
       f.puts "  AppName = '#{@opts[:project_name]}'"
       f.puts "  DefaultHost = '#{@opts[:project_name].downcase}.com'"
       f.puts '  EmailSender = "#{AppName} <noreply@#{DefaultHost}>"'
-      f.puts '  #TODO - Remove when Rails 2.3.6 is released'
-      f.puts '  EmailReturnPath = "noreply@#{DefaultHost}"'
       f.puts
       f.puts "  if defined?(RAILS_ENV)"
       f.puts "    if RAILS_ENV == 'production'"
