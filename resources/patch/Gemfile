@@ -1,8 +1,8 @@
 diff --git a/Gemfile b/Gemfile
-index 1758ad6..5a3b343 100644
+index 1758ad6..42e6e83 100644
 --- a/Gemfile
 +++ b/Gemfile
-@@ -29,3 +29,21 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
+@@ -29,3 +29,16 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
  # group :development, :test do
  #   gem 'webrat'
  # end
@@ -12,15 +12,10 @@ index 1758ad6..5a3b343 100644
 +
 +group :development, :test do
 +  gem "rspec-rails", "~> 2.2.0"
-+end
-+
-+group :test do
 +  gem "factory_girl"
 +  gem "capybara", "~> 0.4.0"
 +  gem "database_cleaner"
 +  gem "cucumber"
-+  gem "spork"
-+  gem "launchy"
-+  gem "factory_girl"
 +  gem "webrat"
++  gem "rcov"
 +end

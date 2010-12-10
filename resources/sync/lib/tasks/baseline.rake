@@ -5,9 +5,5 @@ namespace :baseline do
   end
   
   desc "Combined rcov data for RSpec and Cucumber"
-  task :rcov => ['spec:rcov', 'cucumber:rcov:aggregate']
-end
-
-namespace :spec do
-  task :rcov => ['baseline:rcov:clean']
+  task :rcov => ['spec:rcov:aggregate', 'cucumber:rcov:aggregate']
 end

@@ -52,7 +52,6 @@ class Baseline
     # Setup a default environment
     system("rails new #{@opts[:project_dir]}")
     Dir.chdir(@opts[:project_dir])
-    FileUtils.cp(File.join(@opts[:resource_dir], "gitignore"),File.join(@opts[:project_dir],".gitignore"))
     system("git init && git add . && git commit -m 'Default rails install'")
 
     # Edit database settings
@@ -115,15 +114,12 @@ class Baseline
       f.puts "end"
     end
 
-    # Add an option to spec/rcov.opts
-    File.open(File.join(@opts[:project_dir],"spec","rcov.opts"), "a") do |f|
-      f.puts "\n--aggregate coverage.data"
-    end
-
-    system("git add . && git commit -m 'Edit environment files'")
+    system("git add . && git commit -m 'Create initializer file'")
 
     # Patch files
     system("find #{@opts[:resource_dir]}/patch -type f | xargs cat | patch --forward -p1")
+    
+    system("git add . && git commit -m 'Apply patches'")
 
     FileUtils.cp_r("#{@opts[:resource_dir]}/sync/.",@opts[:project_dir])
 

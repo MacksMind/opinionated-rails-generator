@@ -1,0 +1,14 @@
+diff --git a/.gitignore b/.gitignore
+index af64fae..9bbbc33 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -2,3 +2,9 @@
+ db/*.sqlite3
+ log/*.log
+ tmp/**/*
++coverage/*
++coverage.data
++*~
++*.swp
++*.rej
++rerun.txt
