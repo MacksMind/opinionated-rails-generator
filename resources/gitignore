@@ -5,4 +5,5 @@ log/*.log
 tmp/*
 *~
 *.swp
+*.rej
 rerun.txt

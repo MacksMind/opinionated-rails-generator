@@ -25,7 +25,7 @@
           <li><%= link_to_unless_current "Home", root_path %></li>
           <% if current_user %>
             <li><%= link_to_unless_current "My Account", account_path %></li>
-            <% restrict_to "admin" do %>
+            <%= restrict_to "admin" do %>
               <li><%= link_to_unless_current 'Users', users_path %></li>
             <% end %>
           <% else %>

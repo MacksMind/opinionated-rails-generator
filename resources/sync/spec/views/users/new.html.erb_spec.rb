@@ -4,20 +4,18 @@ describe "/users/new.html.erb" do
   include UsersHelper
 
   before(:each) do
-    assigns[:user] = stub_model(User,
-      :new_record? => true,
+    assign(:user, stub_model(User,
       :email => "value for email",
-      :name => "value for name",
-      :roles => []
-    )
+      :name => "value for name"
+    ).as_new_record{|u| u.stub(:roles => []) })
   end
 
   it "renders new user form" do
     render
 
-    response.should have_tag("form[action=?][method=post]", users_path) do
-      with_tag("input#user_email[name=?]", "user[email]")
-      with_tag("input#user_name[name=?]", "user[name]")
+    rendered.should have_selector("form", :action => users_path, :method => "post") do |form|
+      form.should have_selector("input#user_email", :name => "user[email]")
+      form.should have_selector("input#user_name", :name => "user[name]")
     end
   end
 end

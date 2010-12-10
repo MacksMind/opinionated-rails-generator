@@ -1,3 +1,3 @@
 # Factory girl config
 require 'factory_girl'
-Dir["#{RAILS_ROOT}/spec/factories/*.rb"].each {|f| require f}
+Dir[Rails.root.join('spec', 'factories', '*.rb')].each {|f| require f}

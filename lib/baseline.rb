@@ -50,10 +50,10 @@ class Baseline
 
   def generate!
     # Setup a default environment
-    system("rails #{@opts[:project_dir]}")
+    system("rails new #{@opts[:project_dir]}")
     Dir.chdir(@opts[:project_dir])
     FileUtils.cp(File.join(@opts[:resource_dir], "gitignore"),File.join(@opts[:project_dir],".gitignore"))
-    system("git init ; git add .gitignore ; git add * ; git commit -m 'Default rails install'")
+    system("git init && git add . && git commit -m 'Default rails install'")
 
     # Edit database settings
     File.open(File.join(@opts[:project_dir],"config","database.yml"), "r+") do |f|
@@ -69,12 +69,23 @@ class Baseline
       f.print new
       f.truncate(f.pos)
     end
-    system("git add config/database.yml ; git commit -m 'Production database settings'")
+    system("git add . && git commit -m 'Production database settings'")
 
+    # Configure Gemfile
+    system("cat #{@opts[:resource_dir]}/patch/Gemfile | patch -p1")
+    system("bundle install && git add . && git commit -m 'Configure Gemfile'")
+
+    # Install submodules for growing pains
+    system("git submodule add -b deprecation_warnings git://github.com/macksmind/authlogic.git vendor/plugins/authlogic")
+    system("git submodule add git://github.com/aslakhellesoy/cucumber-rails.git vendor/plugins/cucumber-rails")
+    system("cd vendor/plugins/cucumber-rails && git checkout 885ac8b2026e4bca0d40fe67a291ba729c27c1eb && cd ../../.. && git add .")
+    system("git commit -m 'use submodules while we wait for new gem versions'")
+    
     # Setup RSpec and Cucumber
-    system("./script/generate rspec ; git add * ; git commit -m 'Setup rspec'")
-    system("./script/generate cucumber --#{@opts[:simulator]} --rspec ; git add * ; git commit -m 'Setup cucumber with #{@opts[:simulator]} and rspec options'")
-    system("./script/plugin install git://github.com/ezmobius/acl_system2.git ; git add vendor/plugins/acl_system2 ; git commit -m 'Add acl_system2 for role based access control'")
+    system("./script/rails generate rspec:install && git add . && git commit -m 'Setup rspec'")
+    system("./script/rails generate cucumber:install --#{@opts[:simulator]} --rspec && git checkout Gemfile && git add . && git commit -m 'Setup cucumber with #{@opts[:simulator]} and rspec options'")
+    system("git submodule add git://github.com/rails/dynamic_form.git vendor/plugins/dynamic_form && git add . && git commit -m 'Add dynamic_form to keep error_messages for now'")
+    system("git submodule add git://github.com/ezmobius/acl_system2.git vendor/plugins/acl_system2 && git add . && git commit -m 'Add acl_system2 for role based access control'")
 
     # Create migrations
     FileUtils.mkdir(@opts[:migrate_dir] = File.join(@opts[:project_dir], "db", "migrate"))
@@ -85,7 +96,7 @@ class Baseline
     end
     system("rake db:migrate ; rake db:test:prepare")
 
-    system("git add * ; git commit -m 'Initial migrations complete'")
+    system("git add . && git commit -m 'Initial migrations complete'")
 
     # Create the initializer file
     File.open(File.join(@opts[:project_dir],"config","initializers","baseline.rb"),"w") do |f|
@@ -94,8 +105,8 @@ class Baseline
       f.puts "  DefaultHost = '#{@opts[:project_name].downcase}.com'"
       f.puts '  EmailSender = "#{AppName} <noreply@#{DefaultHost}>"'
       f.puts
-      f.puts "  if defined?(RAILS_ENV)"
-      f.puts "    if RAILS_ENV == 'production'"
+      f.puts "  if defined?(Rails)"
+      f.puts "    if Rails.env.production?"
       f.puts "      ActionMailer::Base.default_url_options[:host] = DefaultHost"
       f.puts "    else"
       f.puts "      ActionMailer::Base.default_url_options[:host] = 'localhost:3000'"
@@ -104,25 +115,19 @@ class Baseline
       f.puts "end"
     end
 
-    # Add stuff to global environment file
-    File.open(File.join(@opts[:project_dir],"config","environment.rb"), "r+") do |f|
-      lines = f.readlines
-      lines.insert(-2, %Q{  config.gem "authlogic"\n})
-      f.pos = 0
-      f.print lines
-      f.truncate(f.pos)
-    end
-
     # Add an option to spec/rcov.opts
     File.open(File.join(@opts[:project_dir],"spec","rcov.opts"), "a") do |f|
       f.puts "\n--aggregate coverage.data"
     end
 
-    system("git add * ; git commit -m 'Edit environment files'")
+    system("git add . && git commit -m 'Edit environment files'")
+
+    # Patch files
+    system("find #{@opts[:resource_dir]}/patch -type f | xargs cat | patch --forward -p1")
 
     FileUtils.cp_r("#{@opts[:resource_dir]}/sync/.",@opts[:project_dir])
 
-    system("git add * .autotest ; git commit -m 'Add features, controllers, etc.'")
-    system("git rm public/index.html; git commit -m 'And here ...we ...go'")
+    system("git add . && git commit -m 'Add features, controllers, etc.'")
+    system("git rm public/index.html && git commit -m 'And here ...we ...go'")
   end
 end

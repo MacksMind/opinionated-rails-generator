@@ -4,17 +4,16 @@ describe "/roles/new.html.erb" do
   include RolesHelper
 
   before(:each) do
-    assigns[:role] = stub_model(Role,
-      :new_record? => true,
+    assign(:role, stub_model(Role,
       :title => "value for title"
-    )
+    ).as_new_record)
   end
 
   it "renders new role form" do
     render
 
-    response.should have_tag("form[action=?][method=post]", roles_path) do
-      with_tag("input#role_title[name=?]", "role[title]")
+    rendered.should have_selector("form", :action => roles_path, :method => "post") do |form|
+      form.should have_selector("input#role_title", :name => "role[title]")
     end
   end
 end

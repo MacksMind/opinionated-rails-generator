@@ -3,13 +3,13 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 describe "/roles/show.html.erb" do
   include RolesHelper
   before(:each) do
-    assigns[:role] = @role = stub_model(Role,
+    assign(:role, stub_model(Role,
       :title => "value for title"
-    )
+    ))
   end
 
-  it "renders attributes in <p>" do
+  it "renders attributes" do
     render
-    response.should have_text(/value\ for\ title/)
+    rendered.should contain("value for title")
   end
 end

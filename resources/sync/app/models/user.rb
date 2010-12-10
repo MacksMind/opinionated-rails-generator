@@ -13,12 +13,12 @@ class User < ActiveRecord::Base
 
   def deliver_password_reset_instructions!
     reset_perishable_token!
-    Notifier.deliver_password_reset_instructions(self)
+    Notifier.password_reset_instructions(self).deliver
   end
 
   def deliver_account_confirmation_instructions!
     reset_perishable_token!
-    Notifier.deliver_account_confirmation_instructions(self)
+    Notifier.account_confirmation_instructions(self).deliver
   end
 
   def confirmed?
