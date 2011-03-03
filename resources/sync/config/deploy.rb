@@ -1,3 +1,4 @@
+require "bundler/capistrano"
 require File.join(File.dirname(__FILE__),"initializers","baseline.rb")
 
 set :application, ::Baseline::AppName.downcase
@@ -10,6 +11,9 @@ set :deploy_via, :remote_cache
 set :user, application
 set :use_sudo, false
 set :deploy_to, "/home/#{application}"
+
+set :bundle_dir,      ""
+set :bundle_flags,    "--quiet"
 
 server ::Baseline::DefaultHost, :app, :web, :db, :primary => true
 

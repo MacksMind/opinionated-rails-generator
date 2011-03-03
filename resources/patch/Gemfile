@@ -1,8 +1,17 @@
 diff --git a/Gemfile b/Gemfile
-index 1758ad6..42e6e83 100644
+index 3a47f2f..2edf5b3 100644
 --- a/Gemfile
 +++ b/Gemfile
-@@ -29,3 +29,16 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
+@@ -5,7 +5,7 @@ gem 'rails', '3.0.5'
+ # Bundle edge Rails instead:
+ # gem 'rails', :git => 'git://github.com/rails/rails.git'
+ 
+-gem 'sqlite3'
++# gem 'sqlite3'
+ 
+ # Use unicorn as the web server
+ # gem 'unicorn'
+@@ -29,3 +29,31 @@ gem 'sqlite3'
  # group :development, :test do
  #   gem 'webrat'
  # end
@@ -10,12 +19,27 @@ index 1758ad6..42e6e83 100644
 +# Currently using plugins for authlogic and cucumber-rails due to migration pain
 +#gem "authlogic"
 +
++group :development do
++  gem 'jquery-rails', '>= 0.2.6'
++end
++
 +group :development, :test do
++  gem 'sqlite3'
 +  gem "rspec-rails", "~> 2.2.0"
++  gem "cucumber"
++end
++
++group :test do
 +  gem "factory_girl"
 +  gem "capybara", "~> 0.4.0"
 +  gem "database_cleaner"
-+  gem "cucumber"
++  gem "launchy"
 +  gem "webrat"
 +  gem "rcov"
++  gem "ruby-debug"
++  gem "shoulda"
++  gem "ZenTest"
++  gem "autotest-fsevent"
 +end
++
++gem "cancan"

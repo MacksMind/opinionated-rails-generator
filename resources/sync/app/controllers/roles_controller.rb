@@ -1,6 +1,6 @@
 class RolesController < ApplicationController
   before_filter :require_user
-  access_control :DEFAULT => 'admin'
+  load_and_authorize_resource
 
   # GET /roles
   # GET /roles.xml
@@ -16,8 +16,6 @@ class RolesController < ApplicationController
   # GET /roles/1
   # GET /roles/1.xml
   def show
-    @role = Role.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @role }
@@ -27,8 +25,6 @@ class RolesController < ApplicationController
   # GET /roles/new
   # GET /roles/new.xml
   def new
-    @role = Role.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @role }
@@ -37,17 +33,14 @@ class RolesController < ApplicationController
 
   # GET /roles/1/edit
   def edit
-    @role = Role.find(params[:id])
   end
 
   # POST /roles
   # POST /roles.xml
   def create
-    @role = Role.new(params[:role])
-
     respond_to do |format|
       if @role.save
-        flash[:notice] = 'Role was successfully created.'
+        flash[:success] = 'Role was successfully created.'
         format.html { redirect_to(@role) }
         format.xml  { render :xml => @role, :status => :created, :location => @role }
       else
@@ -60,11 +53,9 @@ class RolesController < ApplicationController
   # PUT /roles/1
   # PUT /roles/1.xml
   def update
-    @role = Role.find(params[:id])
-
     respond_to do |format|
       if @role.update_attributes(params[:role])
-        flash[:notice] = 'Role was successfully updated.'
+        flash[:success] = 'Role was successfully updated.'
         format.html { redirect_to(@role) }
         format.xml  { head :ok }
       else
@@ -77,7 +68,6 @@ class RolesController < ApplicationController
   # DELETE /roles/1
   # DELETE /roles/1.xml
   def destroy
-    @role = Role.find(params[:id])
     @role.destroy
 
     respond_to do |format|

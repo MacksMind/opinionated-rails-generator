@@ -58,7 +58,7 @@ class Baseline
     File.open(File.join(@opts[:project_dir],"config","database.yml"), "r+") do |f|
       lines = f.readlines
       new = lines[0,lines.index("production:\n") + 1]
-      new << "  adapter: mysql\n"
+      new << "  adapter: mysql2\n"
       new << "  encoding: utf8\n"
       new << "  database: #{@opts[:project_name].underscore}_production\n"
       new << "  username: #{@opts[:project_name].underscore}\n"
@@ -74,6 +74,9 @@ class Baseline
     system("cat #{@opts[:resource_dir]}/patch/Gemfile | patch -p1")
     system("bundle install && git add . && git commit -m 'Configure Gemfile'")
 
+    # Switch to jquery
+    system("rails generate jquery:install --force && git status | awk '$2 == \"deleted:\" {print $3}' | xargs git rm && git add . && git commit -m 'Switch to jQuery'")
+
     # Install submodules for growing pains
     system("git submodule add -b deprecation_warnings git://github.com/macksmind/authlogic.git vendor/plugins/authlogic")
     system("git submodule add git://github.com/aslakhellesoy/cucumber-rails.git vendor/plugins/cucumber-rails")
@@ -83,8 +86,6 @@ class Baseline
     # Setup RSpec and Cucumber
     system("./script/rails generate rspec:install && git add . && git commit -m 'Setup rspec'")
     system("./script/rails generate cucumber:install --#{@opts[:simulator]} --rspec && git checkout Gemfile && git add . && git commit -m 'Setup cucumber with #{@opts[:simulator]} and rspec options'")
-    system("git submodule add git://github.com/rails/dynamic_form.git vendor/plugins/dynamic_form && git add . && git commit -m 'Add dynamic_form to keep error_messages for now'")
-    system("git submodule add git://github.com/ezmobius/acl_system2.git vendor/plugins/acl_system2 && git add . && git commit -m 'Add acl_system2 for role based access control'")
 
     # Create migrations
     FileUtils.mkdir(@opts[:migrate_dir] = File.join(@opts[:project_dir], "db", "migrate"))
@@ -117,7 +118,7 @@ class Baseline
     system("git add . && git commit -m 'Create initializer file'")
 
     # Patch files
-    system("find #{@opts[:resource_dir]}/patch -type f | xargs cat | patch --forward -p1")
+    system("find #{@opts[:resource_dir]}/patch -type f | grep -v Gemfile | xargs cat | patch --forward -p1")
     
     system("git add . && git commit -m 'Apply patches'")
 

@@ -1,8 +1,10 @@
 Factory.define :user do |u|
   u.sequence(:email) {|n| "user#{n}@example.com" }
-  u.name {|user| user.email.match(/(.*)@/)[1].titleize }
+  u.first_name {|user| user.email.match(/(.*)@/)[1].titleize }
+  u.last_name "Jones"
   u.password "testing"
   u.password_confirmation {|u| u.password}
+  u.time_zone "Eastern Time (US & Canada)"
   u.confirmed_at 3.days.ago
 end
 

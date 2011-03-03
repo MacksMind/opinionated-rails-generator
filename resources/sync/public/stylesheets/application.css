@@ -1,52 +1,56 @@
 body {
-  background:#444;
+  background:#000;
 }
 
 /* HEADER */
 
-#hd {
-  background:#bbb;
+div#hd, div#ft {
+  background:#007;
+  color:#eee;
+  font-size:150%;
 }
 
-#user-bar-greeting {
+div#hd a, div#ft a { color:#bbb; }
+
+div#menu {
+  background:#fff;
+}
+
+div.left {
   float:left;
 }
 
-#user-bar-action {
+div.right {
   float:right;
   text-align:right;
 }
 
-/* MENUS */
+/* MENU */
 
-ul#menu
+ul.menu
 {
   clear:both;
   margin:0;
   padding:0;
-  height:30px;
   font-weight:bold;
-  border-bottom:1px solid #000;
-  border-top:1px solid #000;
 }
 
-ul#menu li
+ul.menu li
 {
   display:block;
-  float:left;
-  padding:8px 20px 0 20px;
-  color:#444;
+  padding:4px 20px 4px 20px;
+  color:#000;
 }
 
-ul#menu li a
+ul.menu li a
 {
   text-decoration:none;
-  color:#777;
+  color:#999;
 }
 
-ul#menu li a:hover
+ul.menu li a:hover
 { 
-  color:#fff;
+  color:#333;
 }
 
 /* MAIN */
@@ -55,19 +59,9 @@ ul#menu li a:hover
   background:#fff;
 }
 
-/* FOOTER */
 
-#ft { 
-  background:#777; 
-  height:4em;
-} 
-
-#ft p {
-  padding: 7px 0;
-  text-align: center;
-}
 .content {
-  margin: 1em;
+  /* margin: 1em; */
 }
 
 /* MISC */
@@ -76,94 +70,13 @@ ul#menu li a:hover
   text-align: center;
 }
 
-.clearer {
-  clear: both;
-}
-
-.right {
-  text-align: right;
-}
-
-DL DT, DL DD {
-  float: left;
-  margin-bottom: 0.5em;
-}
-
-DL DT {
-  clear: both;
-  width: 10em;
-}
-
-DL:after {
-  display: block;
-  content: "";
-  clear: both;
-}
-
-UL.actions {
-  margin: 0px;
-}
-
-UL.actions LI {
-  display: inline;
-}
-
-UL.actions LI:before {
-  content: " | ";
-}
-
-UL.actions LI:first-child:before {
-  content: "";
-}
-
-LABEL {
-  display: block;
-  float: left;
-  width: 15em;
+label {
+  display: inline-block;
+  width: 8em;
   text-align: right;
   padding-right: 1em;
 }
 
-/* FORMS */
-
-FORM UL LABEL {
-  float: none;
-  display: inline;
-}
-
-FORM UL {
-  list-style: none;
-}
-
-FORM DIV {
-  margin-bottom: 0.5em;
-  clear: both;
-}
-
-FORM DIV.radio, FORM DIV.choices, FORM DIV.buttons {
-  margin: 1.25em 0em 2em 16em;
-}
-
-FORM DIV.choices {
-  position: relative;
-  top: -1.5em;
-  margin-bottom: -1em;
-}
-
-FORM DIV.choices BR {
-  clear: both;
-}
-
-FORM DIV.radio INPUT, FORM DIV.choices INPUT {
-  float: left;
-}
-
-FORM DIV.radio LABEL, FORM DIV.choices LABEL {
-  display: inline;
-  float: none;
-  margin: 0.5em;
-}
-
-FIELDSET {
-  padding: 0.5em;
+div.actions {
+  margin: 1em 1em 1em 9em;
 }

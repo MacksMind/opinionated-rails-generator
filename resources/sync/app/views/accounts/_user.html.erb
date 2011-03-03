@@ -1,5 +1,15 @@
 <%= form_for @user, :url => account_path do |f| %>
-  <%= f.error_messages %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this account from being saved:</h2>
+
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
   <div>
     <%= f.label :email, "Email *" %>
@@ -7,8 +17,13 @@
   </div>
 
   <div>
-    <%= f.label :name, "Name *" %>
-    <%= f.text_field :name %>
+    <%= f.label :first_name, "First name *" %>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div>
+    <%= f.label :last_name, "Last name *" %>
+    <%= f.text_field :last_name %>
   </div>
 
   <div>
@@ -22,11 +37,16 @@
   </div>
 
   <div>
-    <%= f.label :password_confirmation, "Password Confirmation *" %>
+    <%= f.label :password_confirmation, "Confirmation *" %>
     <%= f.password_field :password_confirmation %>
   </div>
 
-  <div class="buttons">
+  <div class="actions">
     <%= f.submit @user.new_record? ? "Sign Up" : "Update" %>
   </div>
+<% end %>
+
+<% if !@user.new_record? %>
+  <hr/>
+  <%= button_to "Cancel My Account", account_path, :confirm => 'Are you sure?', :method => :delete %>
 <% end %>

@@ -6,7 +6,9 @@ class CreateUsers < ActiveRecord::Migration
       t.string    :password_salt,       :null => false                # optional, but highly recommended
       t.string    :persistence_token,   :null => false                # required
       t.string    :perishable_token,    :null => false                # optional, see Authlogic::Session::Perishability
-      t.string    :name
+      t.string    :first_name
+      t.string    :last_name
+      t.boolean   :active,              :default => true
       t.datetime  :confirmed_at
       t.string    :time_zone
 

@@ -1,11 +1,13 @@
 diff --git a/.gitignore b/.gitignore
-index af64fae..9bbbc33 100644
+index f0fa30c..bbd63c4 100644
 --- a/.gitignore
 +++ b/.gitignore
-@@ -2,3 +2,9 @@
+@@ -1,4 +1,11 @@
+ .bundle
  db/*.sqlite3
++db/*.sqlite3-journal
  log/*.log
- tmp/**/*
+ tmp/
 +coverage/*
 +coverage.data
 +*~

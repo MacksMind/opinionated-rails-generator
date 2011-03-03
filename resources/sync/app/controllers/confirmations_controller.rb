@@ -23,7 +23,7 @@ class ConfirmationsController < ApplicationController
       @user.update_attribute(:confirmed_at,Time.now)
       UserSession.create(@user)
       flash[:success] = "Account Confirmed"
-      redirect_to root_url
+      redirect_to account_path
     elsif @user && @user.confirmed?
       flash[:error] = "That account has already been confirmed!"
       redirect_to new_account_path

@@ -7,10 +7,11 @@ Feature: Visitor signs up for an account.
     Given I am on the signin page
     When I follow "Sign Up"
       And I fill in "Email" with "jq@example.com"
-      And I fill in "Name" with "John"
+      And I fill in "First name" with "John"
+      And I fill in "Last name" with "Smith"
       And I select "(GMT-05:00) Eastern Time (US & Canada)" from "Time zone"
       And I fill in "Password" with "humpty dumpty"
-      And I fill in "Password Confirmation" with "humpty dumpty"
+      And I fill in "Confirmation" with "humpty dumpty"
       And I press "Sign Up"
     Then jq@example.com should receive an email
       And I should be on the signin page
@@ -19,7 +20,7 @@ Feature: Visitor signs up for an account.
   Scenario: Visitor can confirm account
     Given the unconfirmed user "alice@example.com/testing"
     When I go to my account confirmation page
-    Then I should be on the homepage
+    Then I should be on the account page
       And I should see "Account Confirmed"
  
   Scenario: Visitor can't see protected pages
@@ -60,16 +61,15 @@ Feature: Visitor signs up for an account.
     Given I am on the signin page
     When I follow "Sign Up"
       And I fill in "Password" with "humpty dumpty"
-      And I fill in "Password Confirmation" with "humpty dumpty"
+      And I fill in "Confirmation" with "humpty dumpty"
       And I press "Sign Up"
     Then I should be on the account page
-      And I should see "There were problems"
+      And I should see "errors prohibited this account from being saved"
 
   Scenario: signed in user can't use register page
     Given I am signed in as "alice@example.com/testing"
     When I go to the new account page
-    Then I should see "You must be signed out to access this page"
-      And I am on the account page
+    Then I should be on the account page
 
   Scenario: success
     Given the user "alice@example.com/testing"

@@ -20,7 +20,7 @@ Feature: User resets their password.
       And I fill in "user[password_confirmation]" with "twiddle dum"
       And I press "Update my password and sign me in"
     Then I should be on my password reset page
-      And I should see "There were problems"
+    And I should see "error prohibited this password change:"
 
   Scenario: bad token
     Given the user "alice@example.com/forgot"

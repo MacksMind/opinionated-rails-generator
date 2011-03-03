@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
-  before_filter :require_user, :only => [:show, :edit, :update]
+  before_filter :require_user, :except => [:new, :create]
 
   def new
     @user = User.new(params)
@@ -17,20 +17,32 @@ class AccountsController < ApplicationController
   end
 
   def show
-    @user = @current_user
+    @user = current_user
   end
 
   def edit
-    @user = @current_user
+    @user = current_user
   end
 
   def update
-    @user = @current_user # makes our views "cleaner" and more consistent
+    @user = current_user
     if @user.update_attributes(params[:user])
-      flash[:notice] = "Account updated!"
+      flash[:success] = "Account updated!"
       redirect_to account_url
     else
       render :action => :edit
+    end
+  end
+
+  def destroy
+    @user = current_user
+    @user.cancel
+
+    flash[:info] = "Account canceled. We're sorry to see you go."
+
+    respond_to do |format|
+      format.html { redirect_to(:action => :new) }
+      format.xml  { head :ok }
     end
   end
 end

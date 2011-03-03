@@ -5,4 +5,10 @@ describe User do
     user = Factory.build(:user)
     user.save!
   end
+
+  it "should cancel account" do
+    user = Factory(:user)
+    user.cancel
+    user.active.should be(false)
+  end
 end

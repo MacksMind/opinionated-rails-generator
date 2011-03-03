@@ -1,4 +1,6 @@
-require 'autotest/fsevent'
+if RUBY_PLATFORM == 'universal-darwin10.0'
+  require 'autotest/fsevent'
+end
 
 Autotest.add_hook :initialize do |at|
   %w{rerun.txt .git capybara- all.js}.each {|exception| at.add_exception(exception)}

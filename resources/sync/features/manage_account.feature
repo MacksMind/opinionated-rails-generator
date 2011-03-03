@@ -8,8 +8,8 @@ Feature: User edits their account.
       And I am on the account page
     When I follow "Edit"
       And I fill in "Email" with "alicia@example.com"
-      And I fill in "user[password]" with "soooper"
-      And I fill in "user[password_confirmation]" with "soooper"
+      And I fill in "Password" with "soooper"
+      And I fill in "Confirmation" with "soooper"
       And I press "Update"
     Then I should be on the account page
       And I should see "Account updated!"
@@ -33,10 +33,10 @@ Feature: User edits their account.
     When I follow "Edit"
       And I fill in "Email" with "alicia"
       And I fill in "Password" with ""
-      And I fill in "Password Confirmation" with ""
+      And I fill in "Confirmation" with ""
       And I press "Update"
     Then I should be on the account page
-      And I should see "There were problems"
+      And I should see "error prohibited this account from being saved:"
       And the password for "alice@example.com" should be "testing"
 
   Scenario: success
@@ -44,4 +44,12 @@ Feature: User edits their account.
       And I am on the account page
     When I follow "Sign Out"
     Then I should be on the signin page
-      And I should see "Sign Out successful!"
+    And I should see "Sign Out successful!"
+
+  Scenario: user deactivates account
+    Given I am signed in
+    And I am on the account page
+    When I follow "Edit"
+    And I press "Cancel My Account"
+    Then I should be on the new account page
+    And I should see "Account canceled. We're sorry to see you go."
