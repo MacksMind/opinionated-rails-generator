@@ -78,11 +78,10 @@ class Baseline
     system("rails generate jquery:install --force && git status | awk '$2 == \"deleted:\" {print $3}' | xargs git rm && git add . && git commit -m 'Switch to jQuery'")
 
     # Install submodules for growing pains
-    system("git submodule add -b deprecation_warnings git://github.com/macksmind/authlogic.git vendor/plugins/authlogic")
-    system("git submodule add git://github.com/aslakhellesoy/cucumber-rails.git vendor/plugins/cucumber-rails")
-    system("cd vendor/plugins/cucumber-rails && git checkout 885ac8b2026e4bca0d40fe67a291ba729c27c1eb && cd ../../.. && git add .")
-    system("git commit -m 'use submodules while we wait for new gem versions'")
-    
+    system("cd vendor/plugins && git clone --branch deprecation_warnings git://github.com/macksmind/authlogic.git && rm -rf authlogic/.git")
+    system("cd vendor/plugins && git clone git://github.com/aslakhellesoy/cucumber-rails.git && cd cucumber-rails && git checkout 885ac8b2026e4bca0d40fe67a291ba729c27c1eb && rm -rf .git")
+    system("git add . && git commit -m 'use plugins while we wait for new gem versions'")
+
     # Setup RSpec and Cucumber
     system("./script/rails generate rspec:install && git add . && git commit -m 'Setup rspec'")
     system("./script/rails generate cucumber:install --#{@opts[:simulator]} --rspec && git checkout Gemfile && git add . && git commit -m 'Setup cucumber with #{@opts[:simulator]} and rspec options'")
