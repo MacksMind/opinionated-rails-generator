@@ -74,8 +74,8 @@ class Baseline
     system("cat #{@opts[:resource_dir]}/patch/Gemfile | patch -p1")
     system("bundle install && git add . && git commit -m 'Configure Gemfile'")
 
-    # Switch to jquery
-    system("rails generate jquery:install --force && git status | awk '$2 == \"deleted:\" {print $3}' | xargs git rm && git add . && git commit -m 'Switch to jQuery'")
+    # Switch to jQuery
+    system("cd public/javascripts && ls *.js | grep -v application | xargs git rm && wget https://github.com/rails/jquery-ujs/raw/master/src/rails.js --no-check-certificate && git add . && git commit -m 'Switch to jQuery'")
 
     # Install submodules for growing pains
     system("cd vendor/plugins && git clone --branch deprecation_warnings git://github.com/macksmind/authlogic.git && rm -rf authlogic/.git")

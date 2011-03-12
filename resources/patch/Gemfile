@@ -11,17 +11,13 @@ index 3a47f2f..2edf5b3 100644
  
  # Use unicorn as the web server
  # gem 'unicorn'
-@@ -29,3 +29,31 @@ gem 'sqlite3'
+@@ -29,3 +29,27 @@ gem 'sqlite3'
  # group :development, :test do
  #   gem 'webrat'
  # end
 +
 +# Currently using plugins for authlogic and cucumber-rails due to migration pain
 +#gem "authlogic"
-+
-+group :development do
-+  gem 'jquery-rails', '>= 0.2.6'
-+end
 +
 +group :development, :test do
 +  gem 'sqlite3'
