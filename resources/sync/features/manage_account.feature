@@ -49,7 +49,6 @@ Feature: User edits their account.
   Scenario: user deactivates account
     Given I am signed in
     And I am on the account page
-    When I follow "Edit"
-    And I press "Cancel My Account"
+    When I press "Cancel My Account"
     Then I should be on the new account page
     And I should see "Account canceled. We're sorry to see you go."

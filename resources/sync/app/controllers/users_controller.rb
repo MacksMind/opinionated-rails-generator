@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  ssl_required :new, :create, :edit, :update
   before_filter :require_user
   load_and_authorize_resource
 
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
   # GET /users/1.xml
   def show
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render "shared/user" }
       format.xml  { render :xml => @user }
     end
   end

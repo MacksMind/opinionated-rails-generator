@@ -4,16 +4,21 @@ body {
 
 /* HEADER */
 
-div#hd, div#ft {
+div#hd {
   background:#007;
   color:#eee;
   font-size:150%;
 }
 
+div#ft {
+  background:#007;
+  color:#eee;
+}
+
 div#hd a, div#ft a { color:#bbb; }
 
 div#menu {
-  background:#fff;
+   background:#fff;
 }
 
 div.left {
@@ -59,7 +64,6 @@ ul.menu li a:hover
   background:#fff;
 }
 
-
 .content {
   /* margin: 1em; */
 }
@@ -79,4 +83,10 @@ label {
 
 div.actions {
   margin: 1em 1em 1em 9em;
+}
+
+div.required label {
+  padding-right: 0.5em;
+  margin-right: 0.5em;
+  background: url("/images/red_dot.gif") no-repeat 100% 50%;
 }

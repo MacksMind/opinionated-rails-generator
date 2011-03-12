@@ -55,17 +55,18 @@
           <%= yield %>
         </div>
       </div>
+      <% footer_text = "&copy; 2011 Agile Reasoning LLC" %>
       <% if current_user %>
         <div class="span-4">&nbsp;</div>
         <div id="ft" class="span-20 last">
           <div class="centered">
-            Footer text
+            <%= raw footer_text %>
           </div>
         </div>
       <% else %>
         <div id="ft" class="span-24 last">
           <div class="centered">
-            Footer text
+            <%= raw footer_text %>
           </div>
         </div>
       <% end %>

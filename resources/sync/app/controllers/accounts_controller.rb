@@ -1,4 +1,5 @@
 class AccountsController < ApplicationController
+  ssl_required :new, :create, :edit, :update
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :except => [:new, :create]
 
@@ -18,6 +19,7 @@ class AccountsController < ApplicationController
 
   def show
     @user = current_user
+    render "shared/user"
   end
 
   def edit

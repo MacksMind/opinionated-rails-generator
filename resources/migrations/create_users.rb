@@ -11,6 +11,15 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean   :active,              :default => true
       t.datetime  :confirmed_at
       t.string    :time_zone
+      t.string    :phone_number
+      t.string    :company_name
+      t.string    :title
+      t.string    :address_line_1
+      t.string    :address_line_2
+      t.string    :city
+      t.string    :postal_code
+      t.integer   :state_id
+      t.integer   :country_id
 
       t.timestamps
     end

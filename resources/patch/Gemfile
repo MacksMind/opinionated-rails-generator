@@ -11,7 +11,7 @@ index 3a47f2f..2edf5b3 100644
  
  # Use unicorn as the web server
  # gem 'unicorn'
-@@ -29,3 +29,27 @@ gem 'sqlite3'
+@@ -29,3 +29,28 @@ gem 'sqlite3'
  # group :development, :test do
  #   gem 'webrat'
  # end
@@ -39,3 +39,4 @@ index 3a47f2f..2edf5b3 100644
 +end
 +
 +gem "cancan"
++gem "bartt-ssl_requirement", :require => "ssl_requirement"
