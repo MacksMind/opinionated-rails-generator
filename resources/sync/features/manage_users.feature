@@ -54,7 +54,7 @@ Feature: Manage users
     When I delete the 2nd user
     Then I should see the following users:
       |Email|Name|Roles|
-      |insider@example.com|Insider Jones|admin|
-      |email_2@example.com|Bravo Jones||
+      |email_1@example.com|Alpha Jones||
       |email_3@example.com|Charlie Jones||
       |email_4@example.com|Delta Jones||
+      |insider@example.com|Insider Jones|admin|

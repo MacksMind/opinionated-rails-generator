@@ -79,7 +79,6 @@ class Baseline
 
     # Install submodules for growing pains
     system("cd vendor/plugins && git clone --branch deprecation_warnings git://github.com/macksmind/authlogic.git && rm -rf authlogic/.git")
-    system("cd vendor/plugins && git clone git://github.com/aslakhellesoy/cucumber-rails.git && cd cucumber-rails && git checkout 885ac8b2026e4bca0d40fe67a291ba729c27c1eb && rm -rf .git")
     system("git add . && git commit -m 'use plugins while we wait for new gem versions'")
 
     # Setup RSpec and Cucumber

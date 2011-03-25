@@ -26,4 +26,4 @@ Feature: User resets their password.
     Given the user "alice@example.com/forgot"
     When I go to an invalid edit password reset page
     Then I should be on the new account password reset page
-      And I should see "We're sorry, but that link is invalid or expired. You must complete the Password Reset process within 4 hours. Please try again."
+      And I should see /We're sorry, but that link is invalid or expired. You must complete the Password Reset process w.thin 4 hours. Please try again./

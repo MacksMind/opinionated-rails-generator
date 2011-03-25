@@ -46,7 +46,7 @@ Feature: Visitor signs up for an account.
     Given the unconfirmed user "alice@example.com/testing"
     When I go to an invalid account confirmation page
     Then I should be on the new account confirmation page
-    And I should see "We're sorry, but that link is invalid or expired. You must complete the Account Confirmation process within 4 hours. Please try again."
+    And I should see /We're sorry, but that link is invalid or expired. You must complete the Account Confirmation process w.thin 4 hours. Please try again./
     When I fill in "email" with "alice@example.com"
     And I press "Resend Confirmation"
     Then alice@example.com should receive an email
