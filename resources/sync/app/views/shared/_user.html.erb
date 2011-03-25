@@ -37,7 +37,7 @@
   </div>
 
   <div class="required">
-    <%= f.label :password_confirmation, "Confirmation" %>
+    <%= f.label :password_confirmation, "Confirm password" %>
     <%= f.password_field :password_confirmation %>
   </div>
 
@@ -98,7 +98,7 @@
 
   <div class="actions">
     <% if params[:controller] == "accounts" %>
-      <%= f.submit @user.new_record? ? "Sign Up" : "Update" %>
+      <%= f.submit @user.new_record? ? "Sign up" : "Update" %>
       <% if !@user.new_record? %>
         <%= link_to "Cancel", account_path %>
       <% end %>

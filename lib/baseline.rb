@@ -77,10 +77,6 @@ class Baseline
     # Switch to jQuery
     system("cd public/javascripts && ls *.js | grep -v application | xargs git rm && wget https://github.com/rails/jquery-ujs/raw/master/src/rails.js --no-check-certificate && git add . && git commit -m 'Switch to jQuery'")
 
-    # Install submodules for growing pains
-    system("cd vendor/plugins && git clone --branch deprecation_warnings git://github.com/macksmind/authlogic.git && rm -rf authlogic/.git")
-    system("git add . && git commit -m 'use plugins while we wait for new gem versions'")
-
     # Setup RSpec and Cucumber
     system("./script/rails generate rspec:install && git add . && git commit -m 'Setup rspec'")
     system("./script/rails generate cucumber:install --#{@opts[:simulator]} --rspec && git checkout Gemfile && git add . && git commit -m 'Setup cucumber with #{@opts[:simulator]} and rspec options'")

@@ -1,5 +1,9 @@
+Factory.sequence :email do |n|
+  "user#{n}@example.com"
+end
+
 Factory.define :user do |u|
-  u.sequence(:email) {|n| "user#{n}@example.com" }
+  u.email                 { Factory.next :email }
   u.first_name {|user| user.email.match(/(.*)@/)[1].titleize }
   u.last_name "Jones"
   u.password "testing"

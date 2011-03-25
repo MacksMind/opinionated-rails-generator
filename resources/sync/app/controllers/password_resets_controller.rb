@@ -1,7 +1,7 @@
 class PasswordResetsController < ApplicationController
   ssl_required :edit, :update
   before_filter :require_no_user
-  before_filter :load_user_using_perishable_token, :only => [:edit, :update]
+  before_filter :load_user_using_confirmation_token, :only => [:edit, :update]
 
   def new
     render
@@ -12,7 +12,7 @@ class PasswordResetsController < ApplicationController
     if @user
       @user.deliver_password_reset_instructions!
       flash[:notice] = "Instructions to reset your password have been emailed to you. Please check your email."
-      redirect_to signin_url
+      redirect_to sign_in_url
     else
       flash[:notice] = "No user was found with that email address"
       render :action => :new
@@ -24,9 +24,8 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
-    @user.password = params[:user][:password]
-    @user.password_confirmation = params[:user][:password_confirmation]
-    if @user.save
+    if @user.update_password(params[:user][:password], params[:user][:password_confirmation])
+      sign_in(@user)
       flash[:success] = "Password successfully updated"
       redirect_to account_url
     else
@@ -35,10 +34,10 @@ class PasswordResetsController < ApplicationController
   end
 
   private
-  def load_user_using_perishable_token
-    @user = User.find_using_perishable_token(params[:id])
+  def load_user_using_confirmation_token
+    @user = User.find_by_confirmation_token(params[:id])
     unless @user
-      flash[:notice] = "We're sorry, but that link is invalid or expired. You must complete the Password Reset process within #{User.perishable_token_valid_for / 3600} hours. Please try again."
+      flash[:notice] = "We're sorry, but that link is invalid or expired. Please try again."
       redirect_to :action => :new
     end
   end

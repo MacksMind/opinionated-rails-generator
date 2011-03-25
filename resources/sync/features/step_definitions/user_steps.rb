@@ -7,35 +7,16 @@ end
 Given /^I am signed in as an? (.*)$/ do |title|
   Given 'I am signed in as "insider@example.com/asecret"'
   role = Role.find_by_title(title) || Factory(:role, :title => title)
-  @user.roles << role
-end
-
-Given /^I am signed in$/ do
-  Given 'I am signed in as "alice@example.com/password"'
-end
-
-Given /^the user "(.*@.*)\/(.*)"$/ do |email, password|
-  @user_email = email
-  @user_password = password
-  @user = User.find_by_email(email) || Factory(:user, :email => email, :password => password)
+  User.last.roles << role
 end
 
 Given /^the unconfirmed user "(.*)"$/ do |userspec|
-  Given "the user \"#{userspec}\""
-  @user.update_attribute(:confirmed_at,nil)
-end
-
-Given /^I am signed in as "(.*)"$/ do |userspec|
-  Given  "the user \"#{userspec}\""
-  visit(signin_path)
-  fill_in "Email", :with => @user_email
-  fill_in "Password", :with => @user_password
-  click_button 'Sign In'
+  Given "I am signed up as \"#{userspec}\""
+  User.last.update_attribute(:confirmed_at,nil)
 end
 
 Then /^the password for "(.*)" should be "(.*)"$/ do |email,pass|
-  @session = UserSession.new(:email => email, :password => pass)
-  @session.valid?.should be_true
+  User.authenticate(email, pass).class.should be(User)
 end
 
 When /^I delete the (\d+)(?:st|nd|rd|th) user$/ do |pos|

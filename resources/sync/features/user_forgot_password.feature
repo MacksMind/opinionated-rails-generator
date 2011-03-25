@@ -4,20 +4,20 @@ Feature: User forgot their password.
   So I can use the app to send me an email with instructions on how to change it.
 
   Scenario: email exists
-    Given the user "alice@example.com/testing"
-      And I am on the signin page
+    Given I am signed up as "alice@example.com/testing"
+    And I am on the sign in page
     When I follow "Forgot Password"
-      And I fill in "email" with "alice@example.com"
-      And I press "Reset my password"
+    And I fill in "Email address" with "alice@example.com"
+    And I press "Reset password"
     Then alice@example.com should receive an email
-      And I should be on the signin page
-      And I should see "Instructions to reset your password have been emailed to you. Please check your email."
+    And I should be on the sign in page
+    And I should see /You will receive an email w.thin the next few minutes. It contains instructions for changing your password./
 
   Scenario: email does not exist
-    Given the user "alice@example.com/testing"
-      And I am on the signin page
+    Given I am signed up as "alice@example.com/testing"
+    And I am on the sign in page
     When I follow "Forgot Password"
-      And I fill in "email" with "malory@example.com"
-      And I press "Reset my password"
-    Then I should be on the account password resets page
-      And I should see "No user was found with that email address"
+    And I fill in "Email address" with "malory@example.com"
+    And I press "Reset password"
+    Then I should be on the passwords page
+    And I should see "Unknown email."

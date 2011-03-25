@@ -4,14 +4,14 @@ Feature: Visitor signs up for an account.
   So that I sign in.
 
   Scenario: Visitor can register
-    Given I am on the signin page
+    Given I am on the sign in page
     When I follow "Sign Up"
     And I fill in "Email" with "jq@example.com"
     And I fill in "First name" with "John"
     And I fill in "Last name" with "Smith"
     And I select "(GMT-05:00) Eastern Time (US & Canada)" from "Time zone"
     And I fill in "Password" with "humpty dumpty"
-    And I fill in "Confirmation" with "humpty dumpty"
+    And I fill in "Confirm password" with "humpty dumpty"
     And I fill in "Phone number" with "BR549"
     And I fill in "Company name" with "State Lunatic Hospital"
     And I fill in "Address line 1" with "Kirkbride Building"
@@ -20,9 +20,9 @@ Feature: Visitor signs up for an account.
     And I select "Massachusetts" from "State/Province"
     And I fill in "Postal code" with "01923"
     And I select "UNITED STATES" from "Country"
-    And I press "Sign Up"
+    And I press "Sign up"
     Then jq@example.com should receive an email
-    And I should be on the signin page
+    And I should be on the sign in page
     And I should see "Instructions to confirm your account have been emailed to you. Please check your email."
 
   Scenario: Visitor can confirm account
@@ -33,11 +33,11 @@ Feature: Visitor signs up for an account.
 
   Scenario: Visitor can't see protected pages
     When I go to the account page
-    Then I should be on the signin page
+    Then I should be on the sign in page
     And I should see "You must be signed in to access this page"
 
   Scenario: Account cannot be confirmed twice
-    Given the user "alice@example.com/testing"
+    Given I am signed up as "alice@example.com/testing"
     When I go to my account confirmation page
     Then I should be on the new account page
     And I should see "That account has already been confirmed!"
@@ -46,15 +46,15 @@ Feature: Visitor signs up for an account.
     Given the unconfirmed user "alice@example.com/testing"
     When I go to an invalid account confirmation page
     Then I should be on the new account confirmation page
-    And I should see /We're sorry, but that link is invalid or expired. You must complete the Account Confirmation process w.thin 4 hours. Please try again./
+    And I should see "We're sorry, but that link is invalid or expired. Please try again."
     When I fill in "email" with "alice@example.com"
     And I press "Resend Confirmation"
     Then alice@example.com should receive an email
-    And I should be on the signin page
+    And I should be on the sign in page
     And I should see "Instructions to confirm your account have been emailed to you. Please check your email."
 
   Scenario: Visitor has a link to resend confirmation if lost
-    Given I am on the signin page
+    Given I am on the sign in page
     When I follow "Resend Confirmation"
     Then I should be on the new account confirmation page
 
@@ -66,11 +66,11 @@ Feature: Visitor signs up for an account.
     And I should see "No user was found with that email address"
 
   Scenario: missing field
-    Given I am on the signin page
+    Given I am on the sign in page
     When I follow "Sign Up"
     And I fill in "Password" with "humpty dumpty"
-    And I fill in "Confirmation" with "humpty dumpty"
-    And I press "Sign Up"
+    And I fill in "Confirm password" with "humpty dumpty"
+    And I press "Sign up"
     Then I should be on the account page
     And I should see "errors prohibited this account from being saved"
 
@@ -80,19 +80,18 @@ Feature: Visitor signs up for an account.
     Then I should be on the account page
 
   Scenario: success
-    Given the user "alice@example.com/testing"
-    When I go to the signin page
+    Given I have signed up as "alice@example.com/testing"
+    When I go to the sign in page
     And I fill in "Email" with "alice@example.com"
     And I fill in "Password" with "testing"
-    And I press "Sign In"
+    And I press "Sign in"
     Then I should be on the account page
-    And I should see "Sign In successful!"
 
   Scenario: failure
-    Given the user "alice@example.com/testing"
-    When I go to the signin page
+    Given I have signed up as "alice@example.com/testing"
+    When I go to the sign in page
     And I fill in "Email" with "alice@example.com"
     And I fill in "Password" with "bah"
-    And I press "Sign In"
-    Then I should be on the user session page
-    And I should see "Password is not valid"
+    And I press "Sign in"
+    Then I should be on the session page
+    And I should see "Bad email or password"

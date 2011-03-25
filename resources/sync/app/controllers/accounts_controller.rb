@@ -1,7 +1,7 @@
 class AccountsController < ApplicationController
   ssl_required :new, :create, :edit, :update
   before_filter :require_no_user, :only => [:new, :create]
-  before_filter :require_user, :except => [:new, :create]
+  before_filter :authenticate, :except => [:new, :create]
 
   def new
     @user = User.new(params)
@@ -11,7 +11,7 @@ class AccountsController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       flash[:notice] = "Instructions to confirm your account have been emailed to you. Please check your email."
-      redirect_to signin_url
+      redirect_to sign_in_url
     else
       render :action => :new
     end

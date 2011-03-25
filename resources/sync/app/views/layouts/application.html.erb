@@ -26,10 +26,10 @@
         <div class="right">
           <% if current_user -%>
             <%= current_user.email %> /
-            <%= link_to "Sign Out", signout_path, { :title => "Sign Out" } %>
+            <%= link_to "Sign Out", sign_out_path, :method => :delete, :title => "Sign Out" %>
           <% else -%>
-            <%= link_to "Sign Up", new_account_path, { :title => "Create an account" } %> /
-            <%= link_to "Sign In", signin_path,  { :title => "Sign In" } %>
+            <%= link_to "Sign Up", sign_up_path, :title => "Create an account" %> /
+            <%= link_to "Sign In", sign_in_path,  :title => "Sign In" %>
           <% end -%>
         </div>
       </div>
@@ -47,6 +47,7 @@
       <div id="bd" class="span-<%= current_user ? "20" : "24" %> last">
         <div id="flash">
           <% flash.each do |key, value| -%>
+            <% key = :error if key == :failure %>
             <div class="<%= key -%>"><%= html_escape(value) %></div>
           <% end -%>
         </div>

@@ -1,7 +1,7 @@
 class UserSessionsController < ApplicationController
   ssl_required :new, :create
   before_filter :require_no_user, :only => [:new, :create]
-  before_filter :require_user, :only => :destroy
+  before_filter :authenticate, :only => :destroy
 
   def new
     @user_session = UserSession.new
@@ -20,6 +20,6 @@ class UserSessionsController < ApplicationController
   def destroy
     current_user_session.destroy
     flash[:success] = "Sign Out successful!"
-    redirect_to signin_url
+    redirect_to sign_in_url
   end
 end

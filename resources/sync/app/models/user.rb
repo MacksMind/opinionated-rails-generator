@@ -1,11 +1,8 @@
 class User < ActiveRecord::Base
+  include Clearance::User
   has_and_belongs_to_many :roles
   belongs_to :country
   belongs_to :state
-
-  acts_as_authentic do |c|
-    c.perishable_token_valid_for = 240.minutes
-  end
 
   attr_accessible :email,
     :first_name,
@@ -49,12 +46,14 @@ class User < ActiveRecord::Base
   after_create :deliver_account_confirmation_instructions!
 
   def deliver_account_confirmation_instructions!
-    reset_perishable_token!
+    generate_confirmation_token
+    self.save!
     Notifier.account_confirmation_instructions(self).deliver
   end
 
   def deliver_password_reset_instructions!
-    reset_perishable_token!
+    generate_confirmation_token
+    self.save!
     Notifier.password_reset_instructions(self).deliver
   end
 

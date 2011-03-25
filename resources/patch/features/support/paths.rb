@@ -1,5 +1,5 @@
 diff --git a/features/support/paths.rb b/features/support/paths.rb
-index 06b3efb..cdca584 100644
+index 06b3efb..cf08388 100644
 --- a/features/support/paths.rb
 +++ b/features/support/paths.rb
 @@ -9,7 +9,7 @@ module NavigationHelpers
@@ -16,13 +16,13 @@ index 06b3efb..cdca584 100644
      #     user_profile_path(User.find_by_login($1))
  
 +    when /my password reset page/i
-+      account_password_reset_path(@user.perishable_token)
++      account_password_reset_path(User.last.confirmation_token)
 +    when /my edit password reset page/i
-+      edit_account_password_reset_path(@user.perishable_token)
++      edit_account_password_reset_path(User.last.confirmation_token)
 +    when /an invalid edit password reset page/i
 +      edit_account_password_reset_path("blah")
 +    when /my account confirmation page/i
-+      edit_account_confirmation_path(@user.perishable_token)
++      edit_account_confirmation_path(User.last.confirmation_token)
 +    when /an invalid account confirmation page/i
 +      edit_account_confirmation_path("blah")
      else

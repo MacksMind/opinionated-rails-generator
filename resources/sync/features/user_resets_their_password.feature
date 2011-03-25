@@ -4,7 +4,7 @@ Feature: User resets their password.
   So I can sign in even with my faulty memory.
 
   Scenario: happy
-    Given the user "alice@example.com/forgot"
+    Given I am signed up as "alice@example.com/forgot"
     When I go to my edit password reset page
       And I fill in "user[password]" with "twiddle dee"
       And I fill in "user[password_confirmation]" with "twiddle dee"
@@ -14,7 +14,7 @@ Feature: User resets their password.
       And the password for "alice@example.com" should be "twiddle dee"
 
   Scenario: mismatched password
-    Given the user "alice@example.com/forgot"
+    Given I am signed up as "alice@example.com/forgot"
     When I go to my edit password reset page
       And I fill in "user[password]" with "twiddle dee"
       And I fill in "user[password_confirmation]" with "twiddle dum"
@@ -23,7 +23,7 @@ Feature: User resets their password.
     And I should see "error prohibited this password change:"
 
   Scenario: bad token
-    Given the user "alice@example.com/forgot"
+    Given I am signed up as "alice@example.com/forgot"
     When I go to an invalid edit password reset page
     Then I should be on the new account password reset page
-      And I should see /We're sorry, but that link is invalid or expired. You must complete the Password Reset process w.thin 4 hours. Please try again./
+      And I should see /We're sorry, but that link is invalid or expired. Please try again./
