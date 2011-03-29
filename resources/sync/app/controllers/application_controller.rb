@@ -29,4 +29,10 @@ class ApplicationController < ActionController::Base
     return super if Rails.env.production?
     false
   end
+
+  # TODO Check https://github.com/thoughtbot/clearance/issues/133 for resolution
+  def handle_unverified_request
+    sign_out
+    super
+  end
 end
