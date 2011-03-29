@@ -11,7 +11,7 @@ end
 # Database
 
 Given /^no user exists with an email of "(.*)"$/ do |email|
-  assert_nil User.find_by_email(email)
+  User.find_by_email(email).should be_nil
 end
 
 Given /^(?:I am|I have|I) signed up (?:as|with) "(.*)\/(.*)"$/ do |email, password|
@@ -60,14 +60,14 @@ end
 
 Then /^a password reset message should be sent to "(.*)"$/ do |email|
   user = User.find_by_email(email)
-  assert !user.confirmation_token.blank?
-  assert !ActionMailer::Base.deliveries.empty?
+  user.confirmation_token.should_not be_blank
+  ActionMailer::Base.deliveries.should_not be_empty
   result = ActionMailer::Base.deliveries.any? do |email|
     email.to == [user.email] &&
     email.subject =~ /password/i &&
     email.body =~ /#{user.confirmation_token}/
   end
-  assert result
+  result.should_not be_nil
 end
 
 When /^I follow the password reset link sent to "(.*)"$/ do |email|
@@ -98,7 +98,7 @@ When "I sign out" do
 end
 
 When /^I request password reset link to be sent to "(.*)"$/ do |email|
-  When %{I go to the password reset request page}
+  When %{I go to the new password page}
   And %{I fill in "Email address" with "#{email}"}
   And %{I press "Reset password"}
 end

@@ -1,5 +1,5 @@
 diff --git a/Gemfile b/Gemfile
-index 3a47f2f..9a60782 100644
+index 3a47f2f..3bd02fe 100644
 --- a/Gemfile
 +++ b/Gemfile
 @@ -5,7 +5,7 @@ gem 'rails', '3.0.5'
@@ -21,7 +21,7 @@ index 3a47f2f..9a60782 100644
 +
 +group :development, :test do
 +  gem 'sqlite3'
-+  gem "rspec-rails", "~> 2.2.0"
++  gem "rspec-rails"
 +  gem "cucumber"
 +end
 +

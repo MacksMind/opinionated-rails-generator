@@ -81,7 +81,7 @@ label {
   padding-right: 1em;
 }
 
-div.actions {
+div.actions, div.submit_field {
   margin: 1em 1em 1em 9em;
 }
 

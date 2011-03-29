@@ -36,13 +36,13 @@ Feature: User edits their account.
     And I fill in "Confirm password" with ""
     And I press "Update"
     Then I should be on the account page
-    And I should see "error prohibited this account from being saved:"
+    And I should see an error message
     And the password for "alice@example.com" should be "testing"
 
   Scenario: success
     Given I am signed in as "alice@example.com/testing"
     And I am on the account page
-    When I follow "Sign Out"
+    When I follow "Sign out"
     Then I should be on the sign in page
     And I should see "Signed out."
 

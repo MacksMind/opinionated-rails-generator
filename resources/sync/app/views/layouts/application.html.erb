@@ -26,10 +26,10 @@
         <div class="right">
           <% if current_user -%>
             <%= current_user.email %> /
-            <%= link_to "Sign Out", sign_out_path, :method => :delete, :title => "Sign Out" %>
+            <%= link_to "Sign out", sign_out_path, :method => :delete %>
           <% else -%>
-            <%= link_to "Sign Up", sign_up_path, :title => "Create an account" %> /
-            <%= link_to "Sign In", sign_in_path,  :title => "Sign In" %>
+            <%= link_to "Sign up", sign_up_path, :title => "Create an account" %> /
+            <%= link_to "Sign in", sign_in_path %>
           <% end -%>
         </div>
       </div>

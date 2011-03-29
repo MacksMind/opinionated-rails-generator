@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
 
   def require_no_user
     if signed_in?
+      flash.keep
       redirect_to account_url
       return false
     end

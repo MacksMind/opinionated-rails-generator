@@ -5,7 +5,7 @@ Feature: Visitor signs up for an account.
 
   Scenario: Visitor can register
     Given I am on the sign in page
-    When I follow "Sign Up"
+    When I follow "Sign up"
     And I fill in "Email" with "jq@example.com"
     And I fill in "First name" with "John"
     And I fill in "Last name" with "Smith"
@@ -48,31 +48,31 @@ Feature: Visitor signs up for an account.
     Then I should be on the new account confirmation page
     And I should see "We're sorry, but that link is invalid or expired. Please try again."
     When I fill in "email" with "alice@example.com"
-    And I press "Resend Confirmation"
+    And I press "Resend confirmation"
     Then alice@example.com should receive an email
     And I should be on the sign in page
     And I should see "Instructions to confirm your account have been emailed to you. Please check your email."
 
   Scenario: Visitor has a link to resend confirmation if lost
     Given I am on the sign in page
-    When I follow "Resend Confirmation"
+    When I follow "Resend confirmation"
     Then I should be on the new account confirmation page
 
   Scenario: Visitor receives an appropriate message for invalid email
     Given I am on the new account confirmation page
     When I fill in "email" with "malory@example.com"
-    And I press "Resend Confirmation"
+    And I press "Resend confirmation"
     Then I should be on the account confirmations page
     And I should see "No user was found with that email address"
 
   Scenario: missing field
     Given I am on the sign in page
-    When I follow "Sign Up"
+    When I follow "Sign up"
     And I fill in "Password" with "humpty dumpty"
     And I fill in "Confirm password" with "humpty dumpty"
     And I press "Sign up"
     Then I should be on the account page
-    And I should see "errors prohibited this account from being saved"
+    And I should see error messages
 
   Scenario: signed in user can't use register page
     Given I am signed in as "alice@example.com/testing"

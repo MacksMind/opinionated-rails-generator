@@ -6,7 +6,7 @@ Feature: User forgot their password.
   Scenario: email exists
     Given I am signed up as "alice@example.com/testing"
     And I am on the sign in page
-    When I follow "Forgot Password"
+    When I follow "Forgot password"
     And I fill in "Email address" with "alice@example.com"
     And I press "Reset password"
     Then alice@example.com should receive an email
@@ -16,7 +16,7 @@ Feature: User forgot their password.
   Scenario: email does not exist
     Given I am signed up as "alice@example.com/testing"
     And I am on the sign in page
-    When I follow "Forgot Password"
+    When I follow "Forgot password"
     And I fill in "Email address" with "malory@example.com"
     And I press "Reset password"
     Then I should be on the passwords page
