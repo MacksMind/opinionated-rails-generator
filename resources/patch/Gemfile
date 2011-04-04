@@ -35,7 +35,7 @@ index 3a47f2f..3bd02fe 100644
 +  gem "rcov"
 +  gem "ruby-debug"
 +  gem "shoulda"
-+  gem "ZenTest"
++  gem "autotest-rails"
 +  gem "autotest-fsevent"
 +end
 +

@@ -3,5 +3,7 @@ if RUBY_PLATFORM == 'universal-darwin10.0'
 end
 
 Autotest.add_hook :initialize do |at|
-  %w{rerun.txt .git capybara- all.js}.each {|exception| at.add_exception(exception)}
+  at.add_exception(/^\.\/\.git/)
+  at.add_exception(/^\.\/log\//)
+  at.add_exception(/^\.\/db\//)
 end
