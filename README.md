@@ -3,12 +3,12 @@ Baseline
 
 Tool to generate a Rails application with these features:
 
-* Starts with `rails <project>` for the latest Rails magic
+* Starts with `rails new <project>` for the latest Rails magic
 * Configures the production database for MySQL with a generated password
-* RSpec
+* RSpec2
 * Cucumber with Capybara or Webrat (default is Capybara)
-* Authentication with Authlogic
-* Role base access control with http://github.com/ezmobius/acl_system2
+* Authentication with Clearance
+* Role base access control with CanCan
 * Capistrano configured for git-based deploy to a Phusion Passenger based server
 * Self-serve account creation with email based account confirmation and password resets
 * 100% code coverage
