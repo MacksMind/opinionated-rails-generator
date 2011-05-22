@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   ssl_required :new, :create, :edit, :update
-  before_filter :authenticate
+  before_filter :authorize
   load_and_authorize_resource
 
   # GET /users

@@ -13,7 +13,7 @@
 
   <div class="required">
     <%= f.label :email %>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, :type => "email" %>
   </div>
 
   <div class="required">
@@ -34,11 +34,6 @@
   <div class="required">
     <%= f.label :password %>
     <%= f.password_field :password %>
-  </div>
-
-  <div class="required">
-    <%= f.label :password_confirmation, "Confirm password" %>
-    <%= f.password_field :password_confirmation %>
   </div>
 
   <div class="required">

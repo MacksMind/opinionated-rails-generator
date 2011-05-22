@@ -1,7 +1,7 @@
 class AccountsController < ApplicationController
   ssl_required :new, :create, :edit, :update
   before_filter :require_no_user, :only => [:new, :create]
-  before_filter :authenticate, :except => [:new, :create]
+  before_filter :authorize, :except => [:new, :create]
 
   def new
     @user = User.new(params)

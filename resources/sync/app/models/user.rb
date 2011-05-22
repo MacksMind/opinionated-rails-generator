@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
     :first_name,
     :last_name,
     :password,
-    :password_confirmation,
     :time_zone,
     :phone_number,
     :company_name,

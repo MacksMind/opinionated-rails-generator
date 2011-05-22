@@ -7,7 +7,6 @@ Factory.define :user do |u|
   u.first_name {|user| user.email.match(/(.*)@/)[1].titleize }
   u.last_name "Jones"
   u.password "testing"
-  u.password_confirmation {|u| u.password}
   u.time_zone "Eastern Time (US & Canada)"
   u.confirmed_at 3.days.ago
   u.country_code "US"

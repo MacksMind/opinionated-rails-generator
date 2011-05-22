@@ -15,14 +15,15 @@ Feature: Password reset
     Then I should see "instructions for changing your password"
     And a password reset message should be sent to "email@example.com"
 
-  Scenario: User is signed up updated his password and types wrong confirmation
+  Scenario: User tries to reset his password with a blank password
     Given I signed up with "email@example.com/password"
     And I go to the new password page
+    Then I should see an email field
     And I fill in "Email address" with "email@example.com"
     And I press "Reset password"
     When I follow the password reset link sent to "email@example.com"
-    And I update my password with "newpassword/wrongconfirmation"
-    Then I should see an error message
+    And I update my password with ""
+    Then I should see "Password can't be blank."
     And I should be signed out
 
   Scenario: User is signed up and updates his password
@@ -31,7 +32,7 @@ Feature: Password reset
     And I fill in "Email address" with "email@example.com"
     And I press "Reset password"
     When I follow the password reset link sent to "email@example.com"
-    And I update my password with "newpassword/newpassword"
+    And I update my password with "newpassword"
     Then I should be signed in
     When I sign out
     Then I should be signed out
@@ -44,6 +45,6 @@ Feature: Password reset
     And I fill in "Email address" with "email@example.com"
     And I press "Reset password"
     When I follow the password reset link sent to "email@example.com"
-    And I update my password with "newpassword/newpassword"
+    And I update my password with "newpassword"
     Then I should be signed in
 

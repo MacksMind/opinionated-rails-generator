@@ -11,7 +11,6 @@ Feature: Visitor signs up for an account.
     And I fill in "Last name" with "Smith"
     And I select "(GMT-05:00) Eastern Time (US & Canada)" from "Time zone"
     And I fill in "Password" with "humpty dumpty"
-    And I fill in "Confirm password" with "humpty dumpty"
     And I fill in "Phone number" with "BR549"
     And I fill in "Company name" with "State Lunatic Hospital"
     And I fill in "Address line 1" with "Kirkbride Building"
@@ -69,7 +68,6 @@ Feature: Visitor signs up for an account.
     Given I am on the sign in page
     When I follow "Sign up"
     And I fill in "Password" with "humpty dumpty"
-    And I fill in "Confirm password" with "humpty dumpty"
     And I press "Sign up"
     Then I should be on the account page
     And I should see error messages

@@ -9,7 +9,6 @@ Feature: User edits their account.
     When I follow "Edit"
     And I fill in "Email" with "alicia@example.com"
     And I fill in "Password" with "soooper"
-    And I fill in "Confirm password" with "soooper"
     And I press "Update"
     Then I should be on the account page
     And I should see "Account updated!"
@@ -33,7 +32,6 @@ Feature: User edits their account.
     When I follow "Edit"
     And I fill in "Email" with "alicia"
     And I fill in "Password" with ""
-    And I fill in "Confirm password" with ""
     And I press "Update"
     Then I should be on the account page
     And I should see an error message

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def authenticate
+  def authorize
     if signed_in?
       Time.zone = current_user.time_zone
     else
@@ -28,11 +28,5 @@ class ApplicationController < ActionController::Base
   def ssl_required?
     return super if Rails.env.production?
     false
-  end
-
-  # TODO Check https://github.com/thoughtbot/clearance/issues/133 for resolution
-  def handle_unverified_request
-    sign_out
-    super
   end
 end

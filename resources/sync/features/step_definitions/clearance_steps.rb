@@ -8,17 +8,24 @@ Then /^I should see an error message$/ do
   Then %{I should see "error prohibited"}
 end
 
+Then /^I should see an email field$/ do
+  if page.respond_to?(:should)
+    page.should have_css("input[type='email']")
+  else
+    assert page.has_css("input[type='email']")
+  end
+end
+
 # Database
 
 Given /^no user exists with an email of "(.*)"$/ do |email|
-  User.find_by_email(email).should be_nil
+  assert_nil User.find_by_email(email)
 end
 
 Given /^(?:I am|I have|I) signed up (?:as|with) "(.*)\/(.*)"$/ do |email, password|
   Factory(:user,
-          :email                 => email,
-          :password              => password,
-          :password_confirmation => password)
+          :email    => email,
+          :password => password)
 end
 
 Given /^a user "([^"]*)" exists without a salt, remember token, or password$/ do |email|
@@ -60,14 +67,14 @@ end
 
 Then /^a password reset message should be sent to "(.*)"$/ do |email|
   user = User.find_by_email(email)
-  user.confirmation_token.should_not be_blank
-  ActionMailer::Base.deliveries.should_not be_empty
+  assert !user.confirmation_token.blank?
+  assert !ActionMailer::Base.deliveries.empty?
   result = ActionMailer::Base.deliveries.any? do |email|
-    email.to == [user.email] &&
+    email.to      == [user.email] &&
     email.subject =~ /password/i &&
-    email.body =~ /#{user.confirmation_token}/
+    email.body    =~ /#{user.confirmation_token}/
   end
-  result.should_not be_nil
+  assert result
 end
 
 When /^I follow the password reset link sent to "(.*)"$/ do |email|
@@ -103,9 +110,8 @@ When /^I request password reset link to be sent to "(.*)"$/ do |email|
   And %{I press "Reset password"}
 end
 
-When /^I update my password with "(.*)\/(.*)"$/ do |password, confirmation|
+When /^I update my password with "(.*)"$/ do |password|
   And %{I fill in "Choose password" with "#{password}"}
-  And %{I fill in "Confirm password" with "#{confirmation}"}
   And %{I press "Save this password"}
 end
 

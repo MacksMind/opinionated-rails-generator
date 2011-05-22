@@ -1,5 +1,5 @@
 class RolesController < ApplicationController
-  before_filter :authenticate
+  before_filter :authorize
   load_and_authorize_resource
 
   # GET /roles
