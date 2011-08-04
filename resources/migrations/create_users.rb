@@ -1,11 +1,17 @@
 class CreateUsers < ActiveRecord::Migration
   def self.up
     create_table :users do |t|
-      t.string    :email,               :null => false                # optional, you can use login instead, or both
-      t.string    :encrypted_password, :limit => 128
-      t.string    :salt,               :limit => 128
-      t.string    :confirmation_token, :limit => 128
-      t.string    :remember_token,     :limit => 128
+      t.database_authenticatable :null => false
+      t.recoverable
+      t.rememberable
+      t.trackable
+
+      # t.encryptable
+      # t.confirmable
+      # t.lockable :lock_strategy => :failed_attempts, :unlock_strategy => :both
+      # t.token_authenticatable
+
+      t.string    :email,               :null => false
       t.string    :first_name
       t.string    :last_name
       t.boolean   :active,              :default => true
@@ -24,8 +30,11 @@ class CreateUsers < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :users, :email
-    add_index :users, :remember_token
+    add_index :users, :email,                :unique => true
+    add_index :users, :reset_password_token, :unique => true
+    # add_index :users, :confirmation_token,   :unique => true
+    # add_index :users, :unlock_token,         :unique => true
+    # add_index :users, :authentication_token, :unique => true
   end
 
   def self.down

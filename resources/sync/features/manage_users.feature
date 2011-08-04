@@ -10,7 +10,7 @@ Feature: Manage users
       |Manny|
       |Moe|
       |Jack|
-    And I am on the new user page
+    And I am on the new admin user page
     When I fill in "Email" with "new_user@example.com"
     And I fill in "First name" with "Joe"
     And I fill in "Last name" with "Blow"

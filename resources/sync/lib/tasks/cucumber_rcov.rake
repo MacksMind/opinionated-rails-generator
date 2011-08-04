@@ -17,7 +17,7 @@ unless ARGV.any? {|a| a =~ /^gems/} # Don't load anything when running the gems:
           t.binary = vendored_cucumber_bin # If nil, the gem's binary is used.
           t.rcov = true
           t.rcov_opts << "--aggregate coverage.data --exclude features\/,spec\/"
-          t.profile = 'default'
+          t.profile = 'autotest-all'
         end
       end
 

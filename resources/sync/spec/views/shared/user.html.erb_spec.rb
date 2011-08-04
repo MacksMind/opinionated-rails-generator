@@ -1,7 +1,6 @@
-require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
+require 'spec_helper'
 
 describe "/shared/user.html.erb" do
-  include UsersHelper
   before(:each) do
     assign(:user, stub_model(User,
       :email => "value for email",

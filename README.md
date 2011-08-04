@@ -7,7 +7,7 @@ Tool to generate a Rails application with these features:
 * Configures the production database for MySQL with a generated password
 * RSpec2
 * Cucumber with Capybara or Webrat (default is Capybara)
-* Authentication with Clearance
+* Authentication with Devise
 * Role base access control with CanCan
 * Capistrano configured for git-based deploy to a Phusion Passenger based server
 * Self-serve account creation with email based account confirmation and password resets

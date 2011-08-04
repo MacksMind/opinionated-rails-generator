@@ -16,11 +16,11 @@ Given /^the unconfirmed user "(.*)"$/ do |userspec|
 end
 
 Then /^the password for "(.*)" should be "(.*)"$/ do |email,pass|
-  User.authenticate(email, pass).class.should be(User)
+  User.find_by_email(email).valid_password?(pass).should be_true
 end
 
 When /^I delete the (\d+)(?:st|nd|rd|th) user$/ do |pos|
-  visit users_path
+  visit admin_users_path
   within("table > tr:nth-child(#{pos.to_i+1})") do
     click_link "Destroy"
   end

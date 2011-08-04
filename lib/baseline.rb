@@ -81,39 +81,6 @@ class Baseline
     system("./script/rails generate rspec:install && git add . && git commit -m 'Setup rspec'")
     system("./script/rails generate cucumber:install --#{@opts[:simulator]} --rspec && git checkout Gemfile && git add . && git commit -m 'Setup cucumber with #{@opts[:simulator]} and rspec options'")
 
-    # Patch Rakefile
-    new = []
-    new << ""
-    new << "module ::#{@opts[:project_name]}"
-    new << "  class Application"
-    new << "    include Rake::DSL"
-    new << "  end"
-    new << "end"
-    new << ""
-    new << "module ::RakeFileUtils"
-    new << "  extend Rake::FileUtilsExt"
-    new << "end"
-    new = new.map{|line| line + "\n"}
-
-    File.open(File.join(@opts[:project_dir],"Rakefile"), "r+") do |f|
-      lines = f.readlines
-      lines = lines[0..-3] + new + lines[-2..-1]
-      f.pos = 0
-      f.print lines
-    end
-    system("git add . && git commit -m 'Patch Rakefile'")
-
-    # Create migrations
-    FileUtils.mkdir(@opts[:migrate_dir] = File.join(@opts[:project_dir], "db", "migrate"))
-    time = Time.now
-    Dir[File.join(@opts[:resource_dir],'migrations','*.rb')].each do |f|
-      time += 1
-      FileUtils.cp(f,File.join(@opts[:migrate_dir],"#{time.utc.strftime("%Y%m%d%H%M%S")}_" + File.basename(f)))
-    end
-    system("rake db:migrate ; rake db:test:prepare")
-
-    system("git add . && git commit -m 'Initial migrations complete'")
-
     # Create the initializer file
     File.open(File.join(@opts[:project_dir],"config","initializers","baseline.rb"),"w") do |f|
       f.puts "module Baseline"
@@ -141,6 +108,17 @@ class Baseline
     FileUtils.cp_r("#{@opts[:resource_dir]}/sync/.",@opts[:project_dir])
 
     system("git add . && git commit -m 'Add features, controllers, etc.'")
+    
+    # Create migrations
+    FileUtils.mkdir(@opts[:migrate_dir] = File.join(@opts[:project_dir], "db", "migrate"))
+    time = Time.now
+    Dir[File.join(@opts[:resource_dir],'migrations','*.rb')].each do |f|
+      time += 1
+      FileUtils.cp(f,File.join(@opts[:migrate_dir],"#{time.utc.strftime("%Y%m%d%H%M%S")}_" + File.basename(f)))
+    end
+    system("rake db:migrate ; rake db:test:prepare")
+    system("git add . && git commit -m 'Initial migrations complete'")
+
     system("git rm public/index.html && git commit -m 'And here ...we ...go'")
   end
 end

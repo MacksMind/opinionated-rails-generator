@@ -1,4 +1,4 @@
-<%= form_for @user, params[:controller] == "accounts" ? {:url => account_path} : {} do |f| %>
+<%= form_for @user, :url => params[:controller] == "devise/registrations" ? user_registration_path : [:admin,@user] do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this account from being saved:</h2>
@@ -81,7 +81,7 @@
     <%= f.collection_select :country_id, Country.all(:order => :name), :id, :name, :prompt => true %>
   </div>
 
-  <% if params[:controller] == "users" %>
+  <% if params[:controller] == "admin/users" %>
     <div class="choices">
       <% for role in Role.find(:all) %>
         <%= label_tag "user_role_#{role.title.underscore}", role.title.titleize %>
@@ -92,7 +92,7 @@
   <% end %>
 
   <div class="actions">
-    <% if params[:controller] == "accounts" %>
+    <% if params[:controller] == "devise/registrations" %>
       <%= f.submit @user.new_record? ? "Sign up" : "Update" %>
       <% if !@user.new_record? %>
         <%= link_to "Cancel", account_path %>
@@ -100,7 +100,7 @@
     <% else %>
       <%= f.submit %>
       <% if !@user.new_record? %>
-        <%= link_to "Cancel", user_path(@user) %>
+        <%= link_to "Cancel", admin_user_path(@user) %>
       <% end %>
     <% end %>
   </div>

@@ -5,19 +5,19 @@ Feature: User forgot their password.
 
   Scenario: email exists
     Given I am signed up as "alice@example.com/testing"
-    And I am on the sign in page
-    When I follow "Forgot password"
-    And I fill in "Email address" with "alice@example.com"
-    And I press "Reset password"
+    And I am on the new user session page
+    When I follow "Forgot your password?"
+    And I fill in "Email" with "alice@example.com"
+    And I press "Send me reset password instructions"
     Then alice@example.com should receive an email
-    And I should be on the sign in page
-    And I should see /You will receive an email w.thin the next few minutes. It contains instructions for changing your password./
+    And I should be on the new user session page
+    And I should see "You will receive an email with instructions about how to reset your password in a few minutes."
 
   Scenario: email does not exist
     Given I am signed up as "alice@example.com/testing"
-    And I am on the sign in page
-    When I follow "Forgot password"
-    And I fill in "Email address" with "malory@example.com"
-    And I press "Reset password"
-    Then I should be on the passwords page
-    And I should see "Unknown email."
+    And I am on the new user session page
+    When I follow "Forgot your password?"
+    And I fill in "Email" with "malory@example.com"
+    And I press "Send me reset password instructions"
+    Then I should be on the user password page
+    And I should see "Email not found"

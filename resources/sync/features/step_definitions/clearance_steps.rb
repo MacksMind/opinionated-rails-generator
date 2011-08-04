@@ -28,9 +28,9 @@ Given /^(?:I am|I have|I) signed up (?:as|with) "(.*)\/(.*)"$/ do |email, passwo
           :password => password)
 end
 
-Given /^a user "([^"]*)" exists without a salt, remember token, or password$/ do |email|
+Given /^a user "([^"]*)" exists without a password$/ do |email|
   user = Factory(:user, :email => email)
-  sql  = "update users set salt = NULL, encrypted_password = NULL, remember_token = NULL where id = #{user.id}"
+  sql  = "update users set encrypted_password = '' where id = #{user.id}"
   ActiveRecord::Base.connection.update(sql)
 end
 
@@ -67,31 +67,25 @@ end
 
 Then /^a password reset message should be sent to "(.*)"$/ do |email|
   user = User.find_by_email(email)
-  assert !user.confirmation_token.blank?
+  assert !user.reset_password_token.blank?
   assert !ActionMailer::Base.deliveries.empty?
   result = ActionMailer::Base.deliveries.any? do |email|
     email.to      == [user.email] &&
     email.subject =~ /password/i &&
-    email.body    =~ /#{user.confirmation_token}/
+    email.body    =~ /#{user.reset_password_token}/
   end
   assert result
 end
 
 When /^I follow the password reset link sent to "(.*)"$/ do |email|
   user = User.find_by_email(email)
-  visit edit_user_password_path(:user_id => user,
-                                :token   => user.confirmation_token)
-end
-
-When /^I try to change the password of "(.*)" without token$/ do |email|
-  user = User.find_by_email(email)
-  visit edit_user_password_path(:user_id => user)
+  visit edit_user_password_path(:reset_password_token   => user.reset_password_token)
 end
 
 # Actions
 
 When /^I sign in (?:with|as) "(.*)\/(.*)"$/ do |email, password|
-  When %{I go to the sign in page}
+  When %{I go to the new user session page}
   And %{I fill in "Email" with "#{email}"}
   And %{I fill in "Password" with "#{password}"}
   And %{I press "Sign in"}
@@ -105,14 +99,15 @@ When "I sign out" do
 end
 
 When /^I request password reset link to be sent to "(.*)"$/ do |email|
-  When %{I go to the new password page}
-  And %{I fill in "Email address" with "#{email}"}
-  And %{I press "Reset password"}
+  When %{I go to the new user password page}
+  And %{I fill in "Email" with "#{email}"}
+  And %{I press "Send me reset password instructions"}
 end
 
 When /^I update my password with "(.*)"$/ do |password|
-  And %{I fill in "Choose password" with "#{password}"}
-  And %{I press "Save this password"}
+  And %{I fill in "New password" with "#{password}"}
+  And %{I fill in "Confirm new password" with "#{password}"}
+  And %{I press "Change my password"}
 end
 
 When /^I return next time$/ do
