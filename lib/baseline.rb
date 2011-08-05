@@ -119,6 +119,6 @@ class Baseline
     system("rake db:migrate ; rake db:test:prepare")
     system("git add . && git commit -m 'Initial migrations complete'")
 
-    system("git rm public/index.html && git commit -m 'And here ...we ...go'")
+    system("git rm public/index.html app/views/layouts/application.html.erb && git commit -m 'And here ...we ...go'")
   end
 end
