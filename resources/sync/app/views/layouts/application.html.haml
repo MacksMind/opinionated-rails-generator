@@ -11,7 +11,7 @@
     = javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"
     = javascript_include_tag :defaults
     = csrf_meta_tag
-    - if Rails.env.production? && user_signed_in? && current_user.has_role?(:admin)
+    - if Rails.env.production? && !current_user.try(:has_role?, :admin)
       / This would be a good place for Google Analytics code.
   %body
     .container
@@ -40,6 +40,7 @@
                   = menu_link "Admin", "#"
                   %ul
                     %li= menu_link 'Users', admin_users_path
+                    %li= menu_link 'Contents', contents_path
         #flash.span-24
           - flash.each do |key, value|
             - key = :error if key == :failure
