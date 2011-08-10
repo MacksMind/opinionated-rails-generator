@@ -6,9 +6,10 @@
       %ul
         - @user.errors.full_messages.each do |msg|
           %li= msg
-  .required.field
-    = f.label :email
-    = f.text_field :email, :type => "email"
+  - if @user.new_record? || params[:controller] == 'admin/users'
+    .required.field
+      = f.label :email
+      = f.text_field :email, :type => "email"
   .required.field
     = f.label :first_name
     = f.text_field :first_name
@@ -18,7 +19,7 @@
   .field
     = f.label :time_zone
     = f.time_zone_select :time_zone, nil, :include_blank => true
-  - if @user.new_record?
+  - if @user.new_record? || params[:controller] == 'admin/users'
     .required.field
       = f.label :password
       = f.password_field :password
@@ -53,7 +54,7 @@
     = f.label :country_id
     = f.collection_select :country_id, Country.all(:order => :name), :id, :name, :prompt => true
   - if params[:controller] == "admin/users"
-    .choices
+    .choices.field
       - for role in Role.find(:all)
         = label_tag "user_role_#{role.title.underscore}", role.title.titleize
         = check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role), :id => "user_role_#{role.title.underscore}"
@@ -63,5 +64,4 @@
       = f.submit @user.new_record? ? "Sign up" : "Update"
     - else
       = f.submit
-      - if !@user.new_record?
-        = link_to "Cancel", admin_user_path(@user)
+    = link_to "Cancel", :back

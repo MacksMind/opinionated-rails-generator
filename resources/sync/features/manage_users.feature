@@ -40,6 +40,13 @@ Feature: Manage users
     When I follow "Edit"
     And I fill in "First name" with "Jane"
     And I fill in "Last name" with "Doe"
+    And I fill in "Password" with "new secret"
+    And I fill in "Password confirmation" with "new secret"
+    And I press "Update"
+    Then I should see "Jane Doe"
+    When I follow "Edit"
+    And I fill in "First name" with "Jane"
+    And I fill in "Last name" with "Doe"
     And I press "Update"
     Then I should see "Jane Doe"
 

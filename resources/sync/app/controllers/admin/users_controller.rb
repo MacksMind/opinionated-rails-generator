@@ -59,6 +59,7 @@ class Admin::UsersController < ApplicationController
   def update
     @user.role_ids = params[:user][:role_ids]
     params[:user].delete(:password) if params[:user][:password].blank?
+    params[:user].delete(:password_confirmation) if params[:user][:password_confirmation].blank?
 
     respond_to do |format|
       if @user.update_attributes(params[:user])

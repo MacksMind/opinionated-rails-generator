@@ -15,7 +15,6 @@ describe "/admin//users/edit.html.erb" do
     render
 
     rendered.should have_selector("form", :action => admin_user_path(@user), :method => "post") do |form|
-      form.should have_selector("input#user_email", :name => "user[email]")
       form.should have_selector("input#user_first_name", :name => "user[first_name]")
       form.should have_selector("input#user_last_name", :name => "user[last_name]")
     end

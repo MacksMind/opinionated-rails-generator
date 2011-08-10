@@ -1,2 +1,4 @@
-%h1 Editing account
+%h2 Edit my account
 = render 'shared/user', :url => account_path
+.actions
+  = link_to "Change email or password", edit_user_registration_path
