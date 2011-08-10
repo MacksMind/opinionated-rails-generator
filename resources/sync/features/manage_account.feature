@@ -16,6 +16,16 @@ Feature: User edits their account.
     And I should see "alicia@example.com"
     And the password for "alicia@example.com" should be "soooper"
 
+  Scenario: update non login info
+    Given I am signed in as "alice@example.com/testing"
+    When I go to the edit account page
+    And I fill in "Company" with "Central Supply"
+    And I press "Update"
+    Then I should be on the home page
+    And I should see "You updated your account successfully."
+    When I go to the edit account page
+    Then the "Company" field should contain "Central Supply"
+
   Scenario: no password change
     Given I am signed in as "alice@example.com/testing"
     When I go to the edit user registration page

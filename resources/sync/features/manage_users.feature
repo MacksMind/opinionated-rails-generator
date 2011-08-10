@@ -15,6 +15,7 @@ Feature: Manage users
     And I fill in "First name" with "Joe"
     And I fill in "Last name" with "Blow"
     And I fill in "Password" with "asecret"
+    And I fill in "Password confirmation" with "asecret"
     And I fill in "Phone number" with "BR549"
     And I fill in "Company name" with "State Lunatic Hospital"
     And I fill in "Title" with "Inmate"

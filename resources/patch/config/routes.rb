@@ -1,9 +1,11 @@
 diff --git a/config/routes.rb b/config/routes.rb
-index 0adb94d..6408ed3 100644
+index 0adb94d..00d9e56 100644
 --- a/config/routes.rb
 +++ b/config/routes.rb
-@@ -1,4 +1,15 @@
+@@ -1,4 +1,17 @@
  Shiny::Application.routes.draw do
++
++  resource :account, :only => [:edit, :update]
 +
 +  devise_for :users
 +

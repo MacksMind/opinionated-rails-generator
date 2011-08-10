@@ -1,76 +1,63 @@
-= form_for @user, :url => params[:controller] == "devise/registrations" ? user_registration_path : [:admin,@user] do |f|
+= form_for @user, :url => url do |f|
   - if @user.errors.any?
     #error_explanation
       = pluralize(@user.errors.count, "error")
       prohibited this account from being saved:
-
       %ul
         - @user.errors.full_messages.each do |msg|
-          %li = msg
-
+          %li= msg
   .required
     = f.label :email
     = f.text_field :email, :type => "email"
-
   .required
     = f.label :first_name
     = f.text_field :first_name
-
   .required
     = f.label :last_name
     = f.text_field :last_name
-
   .field
     = f.label :time_zone
     = f.time_zone_select :time_zone, nil, :include_blank => true
-
-  .required
-    = f.label :password
-    = f.password_field :password
-
+  - if @user.new_record?
+    .required
+      = f.label :password
+      = f.password_field :password
+    .required
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation
   .required
     = f.label :phone_number
     = f.text_field :phone_number
-
   .required
     = f.label :company_name
     = f.text_field :company_name
-
   .field
     = f.label :title
     = f.text_field :title
-
   .required
     = f.label :address_line_1
     = f.text_field :address_line_1
-
   .field
     = f.label :address_line_2
     = f.text_field :address_line_2
-
   .required
     = f.label :city
     = f.text_field :city
-
   .field
     = f.label :state_id, "State/Province"
     = f.collection_select :state_id, State.all(:order => :name), :id, :name, :include_blank => true
-
   .required
     = f.label :postal_code
     = f.text_field :postal_code
-
   .required
     = f.label :country_id
     = f.collection_select :country_id, Country.all(:order => :name), :id, :name, :prompt => true
-
   - if params[:controller] == "admin/users"
     .choices
       - for role in Role.find(:all)
         = label_tag "user_role_#{role.title.underscore}", role.title.titleize
         = check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role), :id => "user_role_#{role.title.underscore}"
         %br
-
   .actions
     - if params[:controller] == "devise/registrations"
       = f.submit @user.new_record? ? "Sign up" : "Update"
