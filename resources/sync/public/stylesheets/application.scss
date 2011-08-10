@@ -1,0 +1,71 @@
+/* MAJOR SECTIONS */
+
+body {
+  background:#000;
+}
+
+#hd {
+  background:#007;
+  color:#eee;
+  font-size:150%;
+  a { color:#bbb; }
+}
+
+#menu {
+  background:#fff;
+}
+
+#bd {
+  background:#fff;
+}
+
+#ft {
+  background:#007;
+  color:#eee;
+  a { color:#bbb; }
+}
+
+/* MENU */
+
+ul.menu
+{
+  clear:both;
+  margin:0;
+  padding:0;
+  font-weight:bold;
+  li {
+    display:block;
+    padding:4px 20px 4px 20px;
+    color:#000;
+    a {
+      text-decoration:none;
+      color:#999;
+      &:hover { color:#333; }
+    }
+  }
+}
+
+/* FORMS */
+
+div.field label {
+  display: inline-block;
+  width: 12em;
+  text-align: right;
+  padding-right: 1em;
+}
+
+div.required label {
+  padding-right: 0.5em;
+  margin-right: 0.5em;
+  background: url("/images/red_dot.gif") no-repeat 100% 50%;
+}
+
+div.actions {
+  margin: 1em 1em 1em 13em;
+}
+
+/* MISC */
+
+.center {
+  text-align: center;
+}
