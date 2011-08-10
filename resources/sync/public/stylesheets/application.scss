@@ -1,3 +1,9 @@
+@mixin rounded($v, $h, $radius: 10px) {
+  border-#{$v + '-' + $h}-radius: $radius;
+  -moz-border-radius-#{$v + $h}: $radius;
+  -webkit-border-#{$v + '-' + $h}-radius: $radius;
+}
+
 /* MAJOR SECTIONS */
 
 body {
@@ -5,43 +11,86 @@ body {
 }
 
 #hd {
-  background:#007;
-  color:#eee;
+  margin-top: 20px;
+  background:#fff;
+  color:#000;
   font-size:150%;
   a { color:#bbb; }
 }
 
-#menu {
-  background:#fff;
-}
-
 #bd {
   background:#fff;
+  @include rounded(bottom,left);
+  @include rounded(bottom,right);
 }
 
 #ft {
-  background:#007;
+  background:transparent;
   color:#eee;
   a { color:#bbb; }
 }
 
 /* MENU */
 
-ul.menu
-{
-  clear:both;
-  margin:0;
-  padding:0;
-  font-weight:bold;
-  li {
-    display:block;
-    padding:4px 20px 4px 20px;
-    color:#000;
-    a {
-      text-decoration:none;
-      color:#999;
-      &:hover { color:#333; }
+div.menu {
+  background: #000000;
+  float: left;
+  margin: 0 1%;
+  width: 98%;
+  font-size: 120%;
+  ul {
+    list-style: none;
+    margin: 0;
+    ul {
+      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+      display: none;
+      left: 0;
+      position: absolute;
+      top: 38px;
+      width: 180px;
+      z-index: 99999;
+      padding: 0;
+      li {
+        min-width: 180px;
+        background: #333333;
+      }
+      ul {
+        left: 100%;
+        top: 0;
+      }
+      a {
+        height: auto;
+        line-height: 1em;
+        padding: 10px;
+        width: 160px;
+      }
     }
+  }
+  li {
+    float: left;
+    position: relative;
+    &:hover {
+      background: #333333;
+    }
+    &:hover > ul {
+      display: block;
+    }
+  }
+  a {
+    color: #AAAAAA;
+    display: block;
+    line-height: 38px;
+    padding: 0 10px;
+    text-decoration: none;
+    &:hover {
+      color: #FFFFFF
+    }
+  }
+  span {
+    color: #FFFFFF;
+    display: block;
+    line-height: 38px;
+    padding: 0 10px;
   }
 }
 
@@ -62,6 +111,35 @@ div.required label {
 
 div.actions {
   margin: 1em 1em 1em 13em;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: inline;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+  }
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
 }
 
 /* MISC */

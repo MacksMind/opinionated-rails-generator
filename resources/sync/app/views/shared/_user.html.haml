@@ -6,50 +6,50 @@
       %ul
         - @user.errors.full_messages.each do |msg|
           %li= msg
-  .required
+  .required.field
     = f.label :email
     = f.text_field :email, :type => "email"
-  .required
+  .required.field
     = f.label :first_name
     = f.text_field :first_name
-  .required
+  .required.field
     = f.label :last_name
     = f.text_field :last_name
   .field
     = f.label :time_zone
     = f.time_zone_select :time_zone, nil, :include_blank => true
   - if @user.new_record?
-    .required
+    .required.field
       = f.label :password
       = f.password_field :password
-    .required
+    .required.field
       = f.label :password_confirmation
       = f.password_field :password_confirmation
-  .required
+  .required.field
     = f.label :phone_number
     = f.text_field :phone_number
-  .required
+  .required.field
     = f.label :company_name
     = f.text_field :company_name
   .field
     = f.label :title
     = f.text_field :title
-  .required
+  .required.field
     = f.label :address_line_1
     = f.text_field :address_line_1
   .field
     = f.label :address_line_2
     = f.text_field :address_line_2
-  .required
+  .required.field
     = f.label :city
     = f.text_field :city
   .field
     = f.label :state_id, "State/Province"
     = f.collection_select :state_id, State.all(:order => :name), :id, :name, :include_blank => true
-  .required
+  .required.field
     = f.label :postal_code
     = f.text_field :postal_code
-  .required
+  .required.field
     = f.label :country_id
     = f.collection_select :country_id, Country.all(:order => :name), :id, :name, :prompt => true
   - if params[:controller] == "admin/users"

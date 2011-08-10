@@ -3,39 +3,78 @@ body {
   background: #000; }
 
 #hd {
-  background: #007;
-  color: #eee;
+  margin-top: 20px;
+  background: #fff;
+  color: #000;
   font-size: 150%; }
   #hd a {
     color: #bbb; }
 
-#menu {
-  background: #fff; }
-
 #bd {
-  background: #fff; }
+  background: #fff;
+  border-bottom-left-radius: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  -moz-border-radius-bottomright: 10px;
+  -webkit-border-bottom-right-radius: 10px; }
 
 #ft {
-  background: #007;
+  background: transparent;
   color: #eee; }
   #ft a {
     color: #bbb; }
 
 /* MENU */
-ul.menu {
-  clear: both;
-  margin: 0;
-  padding: 0;
-  font-weight: bold; }
-  ul.menu li {
+div.menu {
+  background: #000000;
+  float: left;
+  margin: 0 1%;
+  width: 98%;
+  font-size: 120%; }
+  div.menu ul {
+    list-style: none;
+    margin: 0; }
+    div.menu ul ul {
+      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+      display: none;
+      left: 0;
+      position: absolute;
+      top: 38px;
+      width: 180px;
+      z-index: 99999;
+      padding: 0; }
+      div.menu ul ul li {
+        min-width: 180px;
+        background: #333333; }
+      div.menu ul ul ul {
+        left: 100%;
+        top: 0; }
+      div.menu ul ul a {
+        height: auto;
+        line-height: 1em;
+        padding: 10px;
+        width: 160px; }
+  div.menu li {
+    float: left;
+    position: relative; }
+    div.menu li:hover {
+      background: #333333; }
+    div.menu li:hover > ul {
+      display: block; }
+  div.menu a {
+    color: #AAAAAA;
     display: block;
-    padding: 4px 20px 4px 20px;
-    color: #000; }
-    ul.menu li a {
-      text-decoration: none;
-      color: #999; }
-      ul.menu li a:hover {
-        color: #333; }
+    line-height: 38px;
+    padding: 0 10px;
+    text-decoration: none; }
+    div.menu a:hover {
+      color: #FFFFFF; }
+  div.menu span {
+    color: #FFFFFF;
+    display: block;
+    line-height: 38px;
+    padding: 0 10px; }
 
 /* FORMS */
 div.field label {
@@ -51,6 +90,31 @@ div.required label {
 
 div.actions {
   margin: 1em 1em 1em 13em; }
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: inline; }
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0; }
+  #error_explanation h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff; }
+  #error_explanation ul li {
+    font-size: 12px;
+    list-style: square; }
 
 /* MISC */
 .center {
