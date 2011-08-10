@@ -43,7 +43,7 @@ end
 
 Then /^I should be signed out$/ do
   Given %{I am on the homepage}
-  Then %{I should see "Sign in"}
+  Then %{I should see "Remember me"}
 end
 
 When /^session is cleared$/ do

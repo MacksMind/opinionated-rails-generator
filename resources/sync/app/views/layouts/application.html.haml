@@ -18,15 +18,22 @@
       #hd.span-24
         .left
           = @page_title || ::Baseline::AppName
-        .right
+        #signin.right
           - if user_signed_in?
             = current_user.email
             \/
-            \#{link_to "Sign out", destroy_user_session_path, :method => :delete}
-          - else
-            = link_to "Sign up", new_user_registration_path, :title => "Create an account"
-            \/
-            \#{link_to "Sign in", new_user_session_path}
+            = link_to "Sign out", destroy_user_session_path, :method => :delete
+          - elsif params[:controller] !~ /devise/
+            = form_for(:user, :url => user_session_path) do |f|
+              = hidden_field_tag :return_to, request.path
+              = f.email_field :email, :size => 18, :value => "Email Address", :onfocus => "if(this.value==this.defaultValue) this.value=''", :onblur => "if(this.value=='') this.value=this.defaultValue"
+              %input#visible_password{:onfocus => "$(this).hide(); $('#user_password').show().focus()", :size => "18", :type => "text", :value => "Password"}/
+              = f.password_field :password, :size => 18, :title => "Please enter your Password", :onblur => "if(this.value=='') { $(this).hide(); $('#visible_password').show(); }", :style => "display:none;"
+              = f.check_box :remember_me
+              = f.label :remember_me
+              = f.submit "Sign in", :class => "button"
+              \- or -
+              = link_to "Sign up", new_user_registration_path
       #bd.span-24
         .menu
           %ul

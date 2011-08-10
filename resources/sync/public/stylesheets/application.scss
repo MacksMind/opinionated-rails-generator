@@ -15,7 +15,7 @@ body {
   background:#fff;
   color:#000;
   font-size:150%;
-  a { color:#bbb; }
+  a { color:#999; }
 }
 
 #bd {
@@ -27,7 +27,18 @@ body {
 #ft {
   background:transparent;
   color:#eee;
-  a { color:#bbb; }
+  a { color:#999; }
+}
+
+/* SIGNIN */
+
+div#signin {
+  font-size:13px;
+  line-height:32px;
+  label {
+    font-weight:normal;
+    font-size:85%;
+  }
 }
 
 /* MENU */
