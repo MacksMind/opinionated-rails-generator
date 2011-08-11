@@ -94,3 +94,16 @@ Feature: Visitor signs up for an account.
     And I press "Sign in"
     Then I should be on the new user session page
     And I should see "Invalid email or password"
+
+  Scenario: Header sign in
+    Given I have signed up as "alice@example.com/testing"
+    And the following contents:
+      |name|html|
+      |Home|Welcome to Shiny|
+      |Contact|Call us at BR-549|
+    When I am on the home page
+    And I follow "Contact"
+    And I fill in "user_email" with "alice@example.com"
+    And I fill in "user_password" with "testing"
+    And I press "Sign in"
+    Then I should see "BR-549"
