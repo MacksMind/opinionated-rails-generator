@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   include ::SslRequirement
   protect_from_forgery
   before_filter :set_time_zone
+  check_authorization :unless => :devise_controller?
 
   private
 
