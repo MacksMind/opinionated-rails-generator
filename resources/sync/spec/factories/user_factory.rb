@@ -10,7 +10,7 @@ Factory.define :user do |f|
   f.time_zone "Eastern Time (US & Canada)"
   f.confirmed_at 3.days.ago
   f.country_code "US"
-  f.company_name "Princeton‑Plainsboro Teaching Hospital (PPTH)"
+  f.company_name "Princeton-Plainsboro Teaching Hospital (PPTH)"
   f.address_line_1 { "#{rand(900) + 100} #{%w(Maple Oak Hickory Apple Ash Beech Cedar Cypress).sample} #{%w(St Ave Rd Dr).sample}" }
   f.city { %w(Goshen Auburn Bluffton Butler Clinton Columbus Decatur Elkhart Gary Indianapolis Greensburg).sample }
   f.postal_code { "#{rand(89999) + 10000}" }

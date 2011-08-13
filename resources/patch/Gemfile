@@ -11,7 +11,7 @@ index 52969ce..acc0cc5 100644
  
  # Use unicorn as the web server
  # gem 'unicorn'
-@@ -29,3 +29,31 @@ gem 'sqlite3'
+@@ -29,3 +29,30 @@ gem 'sqlite3'
  # group :development, :test do
  #   gem 'webrat'
  # end
@@ -32,8 +32,7 @@ index 52969ce..acc0cc5 100644
 +  gem "database_cleaner"
 +  gem "launchy"
 +  gem "webrat"
-+  gem "rcov"
-+  gem "ruby-debug"
++  gem "ruby-debug19", :require => 'ruby-debug'
 +  gem "shoulda"
 +  gem "autotest-rails"
 +  gem "autotest-fsevent"

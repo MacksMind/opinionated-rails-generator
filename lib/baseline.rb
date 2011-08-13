@@ -65,7 +65,7 @@ class Baseline
       new << "  password: #{generate_password}\n"
       new << "  socket: /var/run/mysqld/mysqld.sock\n"
       f.pos = 0
-      f.print new
+      new.each {|l| f.print l}
       f.truncate(f.pos)
     end
     system("git add . && git commit -m 'Production database settings'")
