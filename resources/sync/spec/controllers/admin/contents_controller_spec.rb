@@ -18,7 +18,7 @@ require 'spec_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-describe ContentsController do
+describe Admin::ContentsController do
 
   before(:each) do
     sign_in Factory(:admin_user)
@@ -42,7 +42,7 @@ describe ContentsController do
   describe "GET show" do
     it "assigns the requested content as @content" do
       content = Content.create! valid_attributes
-      get :show, :id => content.name
+      get :show, :id => content.slug
       assigns(:content).should eq(content)
     end
   end
@@ -57,7 +57,7 @@ describe ContentsController do
   describe "GET edit" do
     it "assigns the requested content as @content" do
       content = Content.create! valid_attributes
-      get :edit, :id => content.name
+      get :edit, :id => content.slug
       assigns(:content).should eq(content)
     end
   end
@@ -78,7 +78,7 @@ describe ContentsController do
 
       it "redirects to the created content" do
         post :create, :content => valid_attributes
-        response.should redirect_to(Content.last)
+        response.should redirect_to([:admin,Content.last])
       end
     end
 
@@ -108,19 +108,19 @@ describe ContentsController do
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
         Content.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => content.name, :content => {'these' => 'params'}
+        put :update, :id => content.slug, :content => {'these' => 'params'}
       end
 
       it "assigns the requested content as @content" do
         content = Content.create! valid_attributes
-        put :update, :id => content.name, :content => valid_attributes
+        put :update, :id => content.slug, :content => valid_attributes
         assigns(:content).should eq(content)
       end
 
       it "redirects to the content" do
         content = Content.create! valid_attributes
-        put :update, :id => content.name, :content => valid_attributes
-        response.should redirect_to(content)
+        put :update, :id => content.slug, :content => valid_attributes
+        response.should redirect_to([:admin,content])
       end
     end
 
@@ -129,7 +129,7 @@ describe ContentsController do
         content = Content.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Content.any_instance.stub(:save).and_return(false)
-        put :update, :id => content.name, :content => {}
+        put :update, :id => content.slug, :content => {}
         assigns(:content).should eq(content)
       end
 
@@ -137,7 +137,7 @@ describe ContentsController do
         content = Content.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Content.any_instance.stub(:save).and_return(false)
-        put :update, :id => content.name, :content => {}
+        put :update, :id => content.slug, :content => {}
         response.should render_template("edit")
       end
     end
@@ -147,14 +147,14 @@ describe ContentsController do
     it "destroys the requested content" do
       content = Content.create! valid_attributes
       expect {
-        delete :destroy, :id => content.name
+        delete :destroy, :id => content.slug
       }.to change(Content, :count).by(-1)
     end
 
     it "redirects to the contents list" do
       content = Content.create! valid_attributes
-      delete :destroy, :id => content.name
-      response.should redirect_to(contents_url)
+      delete :destroy, :id => content.slug
+      response.should redirect_to(admin_contents_url)
     end
   end
 

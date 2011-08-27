@@ -1,9 +1,10 @@
 require 'spec_helper'
 
-describe "contents/show.html.erb" do
+describe "admin/contents/show.html.erb" do
   before(:each) do
     @content = assign(:content, stub_model(Content,
       :name => "Name",
+      :slug => "name",
       :title => "Title",
       :html => "MyText"
     ))
@@ -11,11 +12,8 @@ describe "contents/show.html.erb" do
 
   it "renders attributes in <p>" do
     render
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
     rendered.should match(/Name/)
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
     rendered.should match(/Title/)
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
     rendered.should match(/MyText/)
   end
 end

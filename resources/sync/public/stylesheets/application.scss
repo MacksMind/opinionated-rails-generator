@@ -107,11 +107,16 @@ div.menu {
 
 /* FORMS */
 
-div.field label {
-  display: inline-block;
-  width: 12em;
-  text-align: right;
-  padding-right: 1em;
+.field {
+  * {
+    vertical-align: middle;
+  }
+  label {
+    display: inline-block;
+    width: 12em;
+    text-align: right;
+    padding-right: 1em;
+  }
 }
 
 div.required label {
@@ -125,7 +130,7 @@ div.actions {
 }
 
 .field_with_errors {
-  padding: 2px;
+  padding: 4px 0;
   background-color: red;
   display: inline;
 }

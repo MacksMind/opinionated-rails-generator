@@ -85,7 +85,9 @@ div.menu {
     padding: 0 10px; }
 
 /* FORMS */
-div.field label {
+.field * {
+  vertical-align: middle; }
+.field label {
   display: inline-block;
   width: 12em;
   text-align: right;
@@ -100,7 +102,7 @@ div.actions {
   margin: 1em 1em 1em 13em; }
 
 .field_with_errors {
-  padding: 2px;
+  padding: 4px 0;
   background-color: red;
   display: inline; }
 

@@ -6,12 +6,12 @@ Given /^the following contents:$/ do |contents|
 end
 
 When /^I delete the (\d+)(?:st|nd|rd|th) content$/ do |pos|
-  visit contents_path
-  within("table tr:nth-child(#{pos.to_i+1})") do
+  visit admin_contents_path
+  within("div#contents div.content:nth-child(#{pos.to_i})") do
     click_link "Destroy"
   end
 end
 
 Then /^I should see the following contents:$/ do |expected_contents_table|
-  expected_contents_table.diff!(tableish('table tr', 'td,th'))
+  expected_contents_table.diff!(tableish('div#contents div.content', 'div'))
 end

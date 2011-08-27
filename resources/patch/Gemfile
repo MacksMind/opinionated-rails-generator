@@ -1,8 +1,8 @@
 diff --git a/Gemfile b/Gemfile
-index 52969ce..acc0cc5 100644
+index 861f72a..477c979 100644
 --- a/Gemfile
 +++ b/Gemfile
-@@ -5,7 +5,7 @@ gem 'rails', '3.0.9'
+@@ -5,7 +5,7 @@ gem 'rails', '3.0.10'
  # Bundle edge Rails instead:
  # gem 'rails', :git => 'git://github.com/rails/rails.git'
  
@@ -11,7 +11,7 @@ index 52969ce..acc0cc5 100644
  
  # Use unicorn as the web server
  # gem 'unicorn'
-@@ -29,3 +29,30 @@ gem 'sqlite3'
+@@ -29,3 +29,31 @@ gem 'sqlite3'
  # group :development, :test do
  #   gem 'webrat'
  # end
@@ -42,3 +42,4 @@ index 52969ce..acc0cc5 100644
 +gem "cancan"
 +gem "haml"
 +gem "bartt-ssl_requirement", :require => "ssl_requirement"
++gem 'acts_as_list'

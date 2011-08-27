@@ -1,0 +1,12 @@
+%p
+  %b Name:
+  = @content.name
+%p
+  %b Title:
+  = @content.title
+%p
+  %b Html:
+  = simple_format @content.html
+= link_to 'Edit', edit_admin_content_path(@content)
+|
+= link_to 'Back', admin_contents_path

@@ -1,8 +1,8 @@
 diff --git a/db/seeds.rb b/db/seeds.rb
-index 664d8c7..efabf09 100644
+index 664d8c7..2d333eb 100644
 --- a/db/seeds.rb
 +++ b/db/seeds.rb
-@@ -5,3 +5,26 @@
+@@ -5,3 +5,32 @@
  #
  #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
  #   Mayor.create(:name => 'Daley', :city => cities.first)
@@ -28,4 +28,10 @@ index 664d8c7..efabf09 100644
 +  :name => 'Home',
 +  :title => Baseline::AppName,
 +  :html => "<h2>Welcome to #{Baseline::AppName}</h2>"
++)
++
++Content.create!(
++  :name => 'My Account',
++  :title => 'n/a',
++  :html => "=redirect_to edit_account_path"
 +)
