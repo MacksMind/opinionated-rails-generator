@@ -1,5 +1,5 @@
 diff --git a/config/routes.rb b/config/routes.rb
-index 0adb94d..857b7d0 100644
+index 0adb94d..122a8b6 100644
 --- a/config/routes.rb
 +++ b/config/routes.rb
 @@ -2,6 +2,22 @@ Shiny::Application.routes.draw do
@@ -19,7 +19,7 @@ index 0adb94d..857b7d0 100644
 +    end
 +  end
 +
-+  resources :contents, :only => :show
++  get ':id' => 'contents#show', :as => "content"
 +  root :to => 'contents#show'
 +
    # Sample of regular route:

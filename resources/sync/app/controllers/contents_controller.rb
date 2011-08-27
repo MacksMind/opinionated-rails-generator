@@ -7,7 +7,7 @@ class ContentsController < ApplicationController
     else
       @content = Content.order(:position).limit(1).first
     end
-    raise ActiveRecord::RecordNotFound if !@content
+    raise ActionController::RoutingError.new("No route matches \"#{request.path}\"") if !@content
     @page_title = @content.title
     case @content.html[0]
     when '='
