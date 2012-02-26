@@ -2,7 +2,7 @@ diff --git a/.gitignore b/.gitignore
 index eb3489a..05d0bff 100644
 --- a/.gitignore
 +++ b/.gitignore
-@@ -9,7 +9,17 @@
+@@ -9,7 +9,16 @@
  
  # Ignore the default SQLite database.
  /db/*.sqlite3
@@ -14,7 +14,6 @@ index eb3489a..05d0bff 100644
 +
 +# Other
 +/coverage
-+/coverage.data
 +*~
 +*.swp
 +*.rej

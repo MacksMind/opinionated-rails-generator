@@ -1,8 +1,13 @@
 diff --git a/spec/spec_helper.rb b/spec/spec_helper.rb
-index 9b8b02c..84faa1d 100644
+index e66d980..ea2a5ee 100644
 --- a/spec/spec_helper.rb
 +++ b/spec/spec_helper.rb
-@@ -19,6 +19,7 @@ RSpec.configure do |config|
+@@ -1,3 +1,4 @@
++require 'simplecov'
+ # This file is copied to spec/ when you run 'rails generate rspec:install'
+ ENV["RAILS_ENV"] ||= 'test'
+ require File.expand_path("../../config/environment", __FILE__)
+@@ -19,6 +20,7 @@ RSpec.configure do |config|
  
    # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
    config.fixture_path = "#{::Rails.root}/spec/fixtures"
