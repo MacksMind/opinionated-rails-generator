@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "accounts/edit.html.erb" do
+describe "accounts/edit" do
   before(:each) do
     @user = assign(:user, stub_model(User,
       :company_name => "MyString"

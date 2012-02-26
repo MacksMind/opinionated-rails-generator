@@ -7,6 +7,11 @@ class Baseline
 
   PASSWORD_REGEX = /^(?=.*?[0-9])(?=.*?[A-Z])(?=.*?[a-z])\S+$/
 
+  def system(cmd, *args)
+    puts "==> #{cmd}"
+    super
+  end
+
   # constructor
   def initialize
     raise ArgumentError, "ProjectName is required" if ARGV.size < 1
@@ -74,12 +79,12 @@ class Baseline
     system("cat #{@opts[:resource_dir]}/patch/Gemfile | patch -p1")
     system("bundle install && git add . && git commit -m 'Configure Gemfile'")
 
-    # Switch to jQuery
-    system("cd public/javascripts && ls *.js | grep -v application | xargs git rm && wget https://github.com/rails/jquery-ujs/raw/master/src/rails.js --no-check-certificate && git add . && git commit -m 'Switch to jQuery'")
+    # Install Devise
+    system("./script/rails generate devise:install && git add . && git commit -m 'Install devise'")
 
-    # Setup RSpec and Cucumber
-    system("./script/rails generate rspec:install && git add . && git commit -m 'Setup rspec'")
-    system("./script/rails generate cucumber:install --#{@opts[:simulator]} --rspec && git checkout Gemfile && git add . && git commit -m 'Setup cucumber with #{@opts[:simulator]} and rspec options'")
+    # Install RSpec and Cucumber
+    system("./script/rails generate rspec:install && git add . && git commit -m 'Install rspec'")
+    system("./script/rails generate cucumber:install --#{@opts[:simulator]} --rspec && git checkout Gemfile && git add . && git commit -m 'Install cucumber with #{@opts[:simulator]} and rspec options'")
 
     # Create the initializer file
     File.open(File.join(@opts[:project_dir],"config","initializers","baseline.rb"),"w") do |f|
@@ -116,9 +121,18 @@ class Baseline
       time += 1
       FileUtils.cp(f,File.join(@opts[:migrate_dir],"#{time.utc.strftime("%Y%m%d%H%M%S")}_" + File.basename(f)))
     end
-    system("rake db:migrate ; rake db:test:prepare")
+    system("rake db:migrate")
     system("git add . && git commit -m 'Initial migrations complete'")
 
+    # Configure Devise for User
+    system("./script/rails generate devise User && rake db:migrate && git add . && git commit -m 'Configure devise for User'")
+
+    # Remove static index and erb layout
     system("git rm public/index.html app/views/layouts/application.html.erb && git commit -m 'And here ...we ...go'")
+
+    # Prep for use
+    system("rake db:fixtures:load")
+    system("rake db:seed")
+    system("rake db:test:prepare")
   end
 end

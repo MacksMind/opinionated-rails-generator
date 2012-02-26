@@ -1,19 +1,11 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-
   has_and_belongs_to_many :roles
   belongs_to :country
   belongs_to :state
 
-  attr_accessible :email,
+  attr_accessible \
     :first_name,
     :last_name,
-    :password,
-    :password_confirmation,
-    :remember_me,
     :time_zone,
     :phone_number,
     :company_name,
@@ -27,7 +19,8 @@ class User < ActiveRecord::Base
     :country_id,
     :country_code
 
-  validates_presence_of :first_name,
+  validates_presence_of \
+    :first_name,
     :last_name,
     :phone_number,
     :company_name,

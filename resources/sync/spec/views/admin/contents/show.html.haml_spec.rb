@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "admin/contents/show.html.erb" do
+describe "admin/contents/show" do
   before(:each) do
     @content = assign(:content, stub_model(Content,
       :name => "Name",

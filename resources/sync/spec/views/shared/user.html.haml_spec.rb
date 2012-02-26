@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "/shared/user.html.erb" do
+describe "/shared/user" do
   before(:each) do
     assign(:user, stub_model(User,
       :email => "value for email",

@@ -1,17 +1,22 @@
 diff --git a/.gitignore b/.gitignore
-index f0fa30c..1ad7960 100644
+index eb3489a..05d0bff 100644
 --- a/.gitignore
 +++ b/.gitignore
-@@ -1,4 +1,12 @@
- .bundle
- db/*.sqlite3
-+db/*.sqlite3-journal
- log/*.log
- tmp/
-+coverage/*
-+coverage.data
+@@ -9,7 +9,17 @@
+ 
+ # Ignore the default SQLite database.
+ /db/*.sqlite3
++/db/*.sqlite3-journal
+ 
+ # Ignore all logfiles and tempfiles.
+ /log/*.log
+ /tmp
++
++# Other
++/coverage
++/coverage.data
 +*~
 +*.swp
 +*.rej
-+rerun.txt
-+.sass-cache
++/rerun.txt
++/.sass-cache

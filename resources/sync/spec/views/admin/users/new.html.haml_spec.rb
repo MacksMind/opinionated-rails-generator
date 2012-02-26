@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "/admin/users/new.html.erb" do
+describe "/admin/users/new" do
   include Admin::UsersHelper
 
   before(:each) do

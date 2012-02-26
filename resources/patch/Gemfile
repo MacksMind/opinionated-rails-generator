@@ -1,45 +1,42 @@
 diff --git a/Gemfile b/Gemfile
-index 861f72a..477c979 100644
+index 293cb17..274a9ae 100644
 --- a/Gemfile
 +++ b/Gemfile
-@@ -5,7 +5,7 @@ gem 'rails', '3.0.10'
+@@ -5,7 +5,7 @@ gem 'rails', '3.2.1'
  # Bundle edge Rails instead:
  # gem 'rails', :git => 'git://github.com/rails/rails.git'
  
 -gem 'sqlite3'
 +# gem 'sqlite3'
  
- # Use unicorn as the web server
- # gem 'unicorn'
-@@ -29,3 +29,31 @@ gem 'sqlite3'
- # group :development, :test do
- #   gem 'webrat'
- # end
-+
-+# Currently using plugins for authlogic and cucumber-rails due to migration pain
-+#gem "authlogic"
+ 
+ # Gems used only for assets and not required
+@@ -36,3 +36,28 @@ gem 'jquery-rails'
+ 
+ # To use debugger
+ # gem 'ruby-debug19', :require => 'ruby-debug'
 +
 +group :development, :test do
 +  gem 'sqlite3'
-+  gem "rspec-rails"
-+  gem "cucumber"
++  gem 'rspec-rails'
++  gem 'cucumber'
 +end
 +
 +group :test do
-+  gem "factory_girl"
-+  gem "cucumber-rails"
-+  gem "capybara"
-+  gem "database_cleaner"
-+  gem "launchy"
-+  gem "webrat"
-+  gem "ruby-debug19", :require => 'ruby-debug'
-+  gem "shoulda"
-+  gem "autotest-rails"
-+  gem "autotest-fsevent"
++  gem 'factory_girl'
++  gem 'cucumber-rails'
++  gem 'capybara'
++  gem 'database_cleaner'
++  gem 'launchy'
++  gem 'webrat'
++  gem 'ruby-debug19', :require => 'ruby-debug'
++  gem 'shoulda'
++  gem 'autotest-rails'
++  gem 'autotest-fsevent'
 +end
 +
-+gem "devise"
-+gem "cancan"
-+gem "haml"
-+gem "bartt-ssl_requirement", :require => "ssl_requirement"
++gem 'devise'
++gem 'cancan'
++gem 'haml'
++gem 'bartt-ssl_requirement', :require => 'ssl_requirement'
 +gem 'acts_as_list'
