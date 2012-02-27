@@ -2,15 +2,19 @@ require 'spec_helper'
 
 describe "Contents" do
   before(:each) do
-    user = Factory(:admin_user)
-    post user_session_path, :user => { :email => user.email, :password => user.password }
+    Content.find_by_name('Home') || Factory(:content, :name => 'Home')
+    @user = Factory(:admin_user)
+    signin_user @user
   end
 
-  describe "GET /admin/contents" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get admin_contents_path
-      response.status.should be(200)
-    end
+  it "creates new content" do
+    visit new_admin_content_path
+    fill_in "Name", :with => "name 1"
+    fill_in "Title", :with => "title 1"
+    fill_in "Html", :with => "html 1"
+    click_button "Create"
+    page.should have_content "name 1"
+    page.should have_content "title 1"
+    page.should have_content "html 1"
   end
 end

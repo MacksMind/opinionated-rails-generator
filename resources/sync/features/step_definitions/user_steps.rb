@@ -5,18 +5,9 @@ Given /^the following users:$/ do |users|
 end
 
 Given /^I am signed in as an? (.*)$/ do |title|
-  Given 'I am signed in as "insider@example.com/asecret"'
+  step 'I am signed in as "insider@example.com/asecret"'
   role = Role.find_by_title(title) || Factory(:role, :title => title)
   User.last.roles << role
-end
-
-Given /^the unconfirmed user "(.*)"$/ do |userspec|
-  Given "I am signed up as \"#{userspec}\""
-  User.last.update_attribute(:confirmed_at,nil)
-end
-
-Then /^the password for "(.*)" should be "(.*)"$/ do |email,pass|
-  User.find_by_email(email).valid_password?(pass).should be_true
 end
 
 When /^I delete the (\d+)(?:st|nd|rd|th) user$/ do |pos|
@@ -27,12 +18,8 @@ When /^I delete the (\d+)(?:st|nd|rd|th) user$/ do |pos|
 end
 
 Then /^I should see the following users:$/ do |expected_users_table|
+  actual_table = find('table').all('tr').map { |row| row.all('th,td')[0..2].map { |cell| cell.text.strip } }
   expected_users_table.map_column!('Name') {|n| n || ""}
   expected_users_table.map_column!('Roles') {|r| r || ""}
-  expected_users_table.diff!(tableish('table tr', 'td,th'))
-end
-
-Then /^(.*@.*) should receive an email$/ do |email|
-  ActionMailer::Base.deliveries.should_not be_empty
-  ActionMailer::Base.deliveries.last.to.should include(email)
+  expected_users_table.diff!(actual_table)
 end

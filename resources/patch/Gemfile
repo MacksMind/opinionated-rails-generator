@@ -11,7 +11,7 @@ index 293cb17..274a9ae 100644
  
  
  # Gems used only for assets and not required
-@@ -36,3 +36,29 @@ gem 'jquery-rails'
+@@ -36,3 +36,28 @@ gem 'jquery-rails'
  
  # To use debugger
  # gem 'ruby-debug19', :require => 'ruby-debug'
@@ -28,7 +28,6 @@ index 293cb17..274a9ae 100644
 +  gem 'capybara'
 +  gem 'database_cleaner'
 +  gem 'launchy'
-+  gem 'webrat'
 +  gem 'ruby-debug19', :require => 'ruby-debug'
 +  gem 'shoulda'
 +  gem 'autotest-rails'

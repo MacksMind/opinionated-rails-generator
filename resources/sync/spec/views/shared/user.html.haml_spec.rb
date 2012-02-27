@@ -11,7 +11,7 @@ describe "/shared/user" do
 
   it "renders attributes in <p>" do
     render
-    rendered.should contain(/value\ for\ email/)
-    rendered.should contain(/value\ for\ name/)
+    rendered.should have_content("value for email")
+    rendered.should have_content("value for name")
   end
 end

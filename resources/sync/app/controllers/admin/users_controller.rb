@@ -1,6 +1,7 @@
 class Admin::UsersController < ApplicationController
   ssl_required :new, :create, :edit, :update
   before_filter :authenticate_user!
+  before_filter :sanitize_params, :only => [:create, :update]
   load_and_authorize_resource
 
   # GET /users
@@ -39,8 +40,7 @@ class Admin::UsersController < ApplicationController
   # POST /users
   # POST /users.xml
   def create
-    @user.role_ids = params[:user][:role_ids]
-    params[:user].delete(:password) if params[:user][:password].blank?
+    @user.role_ids = @role_ids
 
     respond_to do |format|
       if @user.save
@@ -57,7 +57,7 @@ class Admin::UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.xml
   def update
-    @user.role_ids = params[:user][:role_ids]
+    @user.role_ids = @role_ids
     params[:user].delete(:password) if params[:user][:password].blank?
     params[:user].delete(:password_confirmation) if params[:user][:password_confirmation].blank?
 
@@ -82,5 +82,11 @@ class Admin::UsersController < ApplicationController
       format.html { redirect_to(admin_users_url) }
       format.xml  { head :ok }
     end
+  end
+
+  protected
+  
+  def sanitize_params
+    @role_ids = params[:user].delete(:role_ids)
   end
 end

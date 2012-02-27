@@ -18,7 +18,7 @@ describe "/admin/users/index" do
 
   it "renders a list of users" do
     render
-    rendered.should have_selector "tr>td", :content => "value for name".to_s, :count => 2
-    rendered.should have_selector "tr>td", :content => "value for email".to_s, :count => 2
+    rendered.should have_selector "tr>td", :text => "value for name", :count => 2
+    rendered.should have_selector "tr>td", :text => "value for email", :count => 2
   end
 end

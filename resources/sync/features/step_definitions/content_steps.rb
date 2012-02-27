@@ -13,5 +13,6 @@ When /^I delete the (\d+)(?:st|nd|rd|th) content$/ do |pos|
 end
 
 Then /^I should see the following contents:$/ do |expected_contents_table|
-  expected_contents_table.diff!(tableish('div#contents div.content', 'div'))
+  actual_table = find('div#contents').all('div.content').map { |row| row.all('div')[0..2].map { |cell| cell.text.strip } }
+  expected_contents_table.diff!(actual_table)
 end

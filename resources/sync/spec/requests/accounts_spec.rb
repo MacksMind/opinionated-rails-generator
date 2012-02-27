@@ -1,16 +1,21 @@
 require 'spec_helper'
 
 describe "Accounts" do
-  before(:each) do
-    user = Factory(:user)
-    post user_session_path, :user => { :email => user.email, :password => user.password }
-  end
+  describe "when signed in" do
+    before(:each) do
+      Content.find_by_name('Home') || Factory(:content, :name => 'Home')
+      @user = Factory(:user)
+      signin_user @user
+    end
 
-  describe "GET /account/edit" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get edit_account_path
-      response.status.should be(200)
+    it "can update miscellaneous info" do
+      visit edit_account_path
+      fill_in "Company", :with => "Central Supply"
+      click_button "Update"
+      current_path.should == '/'
+      page.should have_content "You updated your account successfully."
+      visit edit_account_path
+      find_field("Company").value.should == "Central Supply"
     end
   end
 end

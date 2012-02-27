@@ -3,17 +3,6 @@ Feature: Manage contents
   [stakeholder]
   wants [behaviour]
   
-  Scenario: Register new content
-    Given I am signed in as an admin
-    And I am on the new admin content page
-    When I fill in "Name" with "name 1"
-    And I fill in "Title" with "title 1"
-    And I fill in "Html" with "html 1"
-    And I press "Create"
-    Then I should see "name 1"
-    And I should see "title 1"
-    And I should see "html 1"
-
   Scenario: Delete content
     Given I am signed in as an admin
     And the following contents:
