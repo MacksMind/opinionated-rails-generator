@@ -11,10 +11,15 @@ index 293cb17..274a9ae 100644
  
  
  # Gems used only for assets and not required
-@@ -36,3 +36,27 @@ gem 'jquery-rails'
+@@ -36,3 +36,32 @@ gem 'jquery-rails'
  
  # To use debugger
  # gem 'ruby-debug19', :require => 'ruby-debug'
++
++group :development do
++  gem 'newrelic_rpm'
++  gem 'ruby-prof'
++end
 +
 +group :development, :test do
 +  gem 'sqlite3'

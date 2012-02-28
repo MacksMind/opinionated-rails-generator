@@ -79,6 +79,9 @@ class Baseline
     system("cat #{@opts[:resource_dir]}/patch/Gemfile | patch -p1")
     system("bundle install && git add . && git commit -m 'Configure Gemfile'")
 
+    # Configure New Relic
+    system("cp `bundle show newrelic_rpm`/newrelic.yml config && git add . && git commit -m 'Configure New Relic'")
+
     # Install Devise
     system("./script/rails generate devise:install && git add . && git commit -m 'Install devise'")
 
