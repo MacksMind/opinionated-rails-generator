@@ -4,12 +4,6 @@ Given /^the following users:$/ do |users|
   end
 end
 
-Given /^I am signed in as an? (.*)$/ do |title|
-  step 'I am signed in as "insider@example.com/asecret"'
-  role = Role.find_by_title(title) || Factory(:role, :title => title)
-  User.last.roles << role
-end
-
 When /^I delete the (\d+)(?:st|nd|rd|th) user$/ do |pos|
   visit admin_users_path
   within("table > tr:nth-child(#{pos.to_i+1})") do

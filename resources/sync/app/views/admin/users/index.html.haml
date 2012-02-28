@@ -6,9 +6,9 @@
     %th Roles
   - @users.each do |user|
     %tr
-      %td= h user.email
-      %td= h user.name
-      %td= h(user.roles.collect{|r| r.title}.join(","))
+      %td= user.email
+      %td= user.name
+      %td= user.roles.join(",")
       %td= link_to 'Show', [:admin,user]
       %td= link_to 'Edit', edit_admin_user_path(user)
       %td= link_to 'Destroy', [:admin,user], :confirm => 'Are you sure?', :method => :delete

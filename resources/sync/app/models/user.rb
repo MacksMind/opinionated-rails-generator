@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  has_and_belongs_to_many :roles
   belongs_to :country
   belongs_to :state
 
@@ -41,9 +40,23 @@ class User < ActiveRecord::Base
     end
   end
 
-  def has_role?(role)
-    self.roles.map{|r| r.title}.include?(role.to_s)
+  ROLES = %w{admin}
+
+  def roles=(roles)
+    self.roles_mask = ((roles || []) & ROLES).map { |r| 2**ROLES.index(r) }.sum
   end
+
+  def roles
+    ROLES.reject do |r|
+      ((roles_mask || 0) & 2**ROLES.index(r)).zero?
+    end
+  end
+
+  def has_role?(role)
+    self.roles.include?(role.to_s)
+  end
+
+  scope :with_role, lambda { |role| {:conditions => "roles_mask & #{2**ROLES.index(role.to_s)} > 0"} }
 
   def name
     "#{first_name} #{last_name}"

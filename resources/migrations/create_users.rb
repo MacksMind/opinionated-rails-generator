@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string    :first_name
       t.string    :last_name
       t.boolean   :active,              :default => true
-      t.datetime  :confirmed_at
+      t.integer   :roles_mask
       t.string    :time_zone
       t.string    :phone_number
       t.string    :company_name

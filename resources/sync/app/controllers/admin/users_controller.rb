@@ -40,7 +40,7 @@ class Admin::UsersController < ApplicationController
   # POST /users
   # POST /users.xml
   def create
-    @user.role_ids = @role_ids
+    @user.roles = @roles
 
     respond_to do |format|
       if @user.save
@@ -57,7 +57,7 @@ class Admin::UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.xml
   def update
-    @user.role_ids = @role_ids
+    @user.roles = @roles
     params[:user].delete(:password) if params[:user][:password].blank?
     params[:user].delete(:password_confirmation) if params[:user][:password_confirmation].blank?
 
@@ -87,6 +87,6 @@ class Admin::UsersController < ApplicationController
   protected
   
   def sanitize_params
-    @role_ids = params[:user].delete(:role_ids)
+    @roles = params[:user].delete(:roles)
   end
 end
