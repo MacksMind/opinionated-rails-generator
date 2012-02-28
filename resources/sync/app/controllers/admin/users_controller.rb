@@ -84,6 +84,11 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  def masquerade
+    sign_in @user
+    redirect_to root_url
+  end
+
   protected
   
   def sanitize_params

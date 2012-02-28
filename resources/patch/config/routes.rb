@@ -1,15 +1,19 @@
 diff --git a/config/routes.rb b/config/routes.rb
-index 0adb94d..122a8b6 100644
+index 8fc9c3d..d0c180c 100644
 --- a/config/routes.rb
 +++ b/config/routes.rb
-@@ -2,6 +2,20 @@ Shiny::Application.routes.draw do
+@@ -2,6 +2,24 @@ Shiny::Application.routes.draw do
    # The priority is based upon order of creation:
    # first created -> highest priority.
  
 +  resource :account, :only => [:edit, :update]
 +
 +  namespace :admin do
-+    resources :users
++    resources :users do
++      member do
++        post :masquerade
++      end
++    end
 +    resources :contents do
 +      collection do
 +        post :sort

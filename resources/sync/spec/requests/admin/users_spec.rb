@@ -48,4 +48,13 @@ describe "Admin/Users" do
     click_button "Update"
     page.should have_content "Jane Doe"
   end
+
+  it "allows masquerade" do
+    user = Factory(:user)
+    visit admin_users_path
+    click_link "Masq"
+    current_path.should == root_path
+    page.should have_content user.email
+  end
+
 end
