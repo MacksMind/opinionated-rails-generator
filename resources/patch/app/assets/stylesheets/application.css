@@ -1,11 +1,12 @@
 diff --git a/app/assets/stylesheets/application.css b/app/assets/stylesheets/application.css
-index 3b5cc66..1ca8d51 100644
+index 3b5cc66..2cfb73b 100644
 --- a/app/assets/stylesheets/application.css
 +++ b/app/assets/stylesheets/application.css
-@@ -9,5 +9,5 @@
+@@ -9,5 +9,6 @@
   * compiled file, but it's generally better to create a new file per style scope.
   *
   *= require_self
 - *= require_tree .
++ *= require 'normalize'
 + *= require 'baseline'
  */

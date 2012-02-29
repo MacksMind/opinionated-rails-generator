@@ -126,16 +126,6 @@ describe "Users" do
       current_path.should == root_path
     end
 
-    it "signs in from header" do
-      Factory(:content, :name => 'Contact', :html => "Call us at BR-549")
-      visit root_path
-      click_link "Contact"
-      fill_in "user_email", :with => @user.email
-      fill_in "user_password", :with => @user.password
-      click_button "Sign in"
-      page.should have_content "BR-549"
-    end
-
     it "sends a forgot password email" do
       visit new_user_session_path
       click_link "Forgot your password?"

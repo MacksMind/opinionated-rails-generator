@@ -1,3 +1,77 @@
+/*
+	Frameless			<http://framelessgrid.com/>
+	by Joni Korpi 		<http://jonikorpi.com/>
+	licensed under CC0	<http://creativecommons.org/publicdomain/zero/1.0/>
+*/
+
+
+//
+// Configuration
+//
+
+$font-size: 16px; 		// Your base font-size in pixels
+$em: $font-size / 1em;	// Shorthand for outputting ems
+
+$column: 48px;	// The column-width of your grid in pixels
+$gutter: 24px;	// The gutter-width of your grid in pixels
+
+
+//
+// Column-widths in variables, in ems
+//
+
+ $cols1: ( 1 * ($column + $gutter) - $gutter) / $em;
+ $cols2: ( 2 * ($column + $gutter) - $gutter) / $em;
+ $cols3: ( 3 * ($column + $gutter) - $gutter) / $em;
+ $cols4: ( 4 * ($column + $gutter) - $gutter) / $em;
+ $cols5: ( 5 * ($column + $gutter) - $gutter) / $em;
+ $cols6: ( 6 * ($column + $gutter) - $gutter) / $em;
+ $cols7: ( 7 * ($column + $gutter) - $gutter) / $em;
+ $cols8: ( 8 * ($column + $gutter) - $gutter) / $em;
+ $cols9: ( 9 * ($column + $gutter) - $gutter) / $em;
+$cols10: (10 * ($column + $gutter) - $gutter) / $em;
+$cols11: (11 * ($column + $gutter) - $gutter) / $em;
+$cols12: (12 * ($column + $gutter) - $gutter) / $em;
+$cols13: (13 * ($column + $gutter) - $gutter) / $em;
+$cols14: (14 * ($column + $gutter) - $gutter) / $em;
+$cols15: (15 * ($column + $gutter) - $gutter) / $em;
+$cols16: (16 * ($column + $gutter) - $gutter) / $em;
+
+
+//
+// Column-widths in a function, in ems
+//
+
+@mixin width ($cols:1) {
+	width: ($cols * ($column + $gutter) - $gutter) / $em;
+}
+
+
+/*
+	Margin, padding, and border resets
+	except for form elements
+*/
+
+body, div,
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, th, td,
+article, aside, figure, footer, header, hgroup, menu, nav, section {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+/*
+	Style overrides for IE6-8
+	http://jonikorpi.com/leaving-old-IE-behind/
+*/
+
+.ie {
+	
+}
+
+
 @mixin rounded($v, $h, $radius: 10px) {
   border-#{$v + '-' + $h}-radius: $radius;
   -moz-border-radius-#{$v + $h}: $radius;
@@ -7,48 +81,24 @@
 /* MAJOR SECTIONS */
 
 body {
-  background:#000;
+	font-size: $font-size / $em;
+  font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
-#hd {
-  margin-top: 20px;
-  background:#fff;
-  color:#000;
-  font-size:150%;
-  a { color:#999; }
+.container {
+  margin: 0 auto;
 }
 
-#bd {
-  background:#fff;
-  @include rounded(bottom,left);
-  @include rounded(bottom,right);
+#masthead {
+  margin-top: 8px / $em;
 }
 
-#ft {
-  background:transparent;
-  color:#eee;
-  a { color:#999; }
-}
+$menu-height: 2em;
 
-/* SIGNIN */
-
-div#signin {
-  font-size:13px;
-  line-height:32px;
-  label {
-    font-weight:normal;
-    font-size:85%;
-  }
-}
-
-/* MENU */
-
-div.menu {
+#menu {
+  clear: both;
   background: #000000;
-  float: left;
-  margin: 0 1%;
-  width: 98%;
-  font-size: 120%;
+  height: $menu-height;
   ul {
     list-style: none;
     margin: 0;
@@ -57,12 +107,12 @@ div.menu {
       display: none;
       left: 0;
       position: absolute;
-      top: 38px;
-      width: 180px;
+      top: $menu-height;
+      width: 5*$menu-height;
       z-index: 99999;
       padding: 0;
       li {
-        min-width: 180px;
+        min-width: 5*$menu-height;
         background: #333333;
       }
       ul {
@@ -72,8 +122,8 @@ div.menu {
       a {
         height: auto;
         line-height: 1em;
-        padding: 10px;
-        width: 160px;
+        padding: 0.25*$menu-height;
+        width: 4.5*$menu-height;
       }
     }
   }
@@ -90,8 +140,8 @@ div.menu {
   a {
     color: #AAAAAA;
     display: block;
-    line-height: 38px;
-    padding: 0 10px;
+    line-height: $menu-height;
+    padding: 0 0.25*$menu-height;
     text-decoration: none;
     &:hover {
       color: #FFFFFF
@@ -100,22 +150,39 @@ div.menu {
   span {
     color: #FFFFFF;
     display: block;
-    line-height: 38px;
-    padding: 0 10px;
+    line-height: $menu-height;
+    padding: 0 0.25*$menu-height;
   }
+}
+
+#main {
+  clear: both;
+}
+
+footer {
+  margin-top: 1em;
+  color:#111;
+  a { color:#999; }
 }
 
 /* FORMS */
 
 .field {
-  * {
-    vertical-align: middle;
-  }
   label {
     display: inline-block;
     width: 12em;
     text-align: right;
     padding-right: 1em;
+  }
+  select {
+    max-width: 100%;
+  }
+  input, textarea {
+    border: 1px solid #BBB;
+    margin: 0.3em 0;
+  }
+  input {
+    height: 1em;
   }
 }
 
@@ -130,36 +197,115 @@ div.actions {
 }
 
 .field_with_errors {
-  padding: 4px 0;
+  padding: 2px/$em 0;
   background-color: red;
-  display: inline;
+  display: inline-block;
 }
 
 #error_explanation {
-  width: 450px;
+  width: 94%;
   border: 2px solid red;
   padding: 7px;
   padding-bottom: 0;
-  margin-bottom: 20px;
+  margin-bottom: 1em;
   background-color: #f0f0f0;
-  h2 {
-    text-align: left;
-    font-weight: bold;
-    padding: 5px 5px 5px 15px;
-    font-size: 12px;
-    margin: -7px;
-    margin-bottom: 0px;
-    background-color: #c00;
-    color: #fff;
-  }
-  ul li {
-    font-size: 12px;
-    list-style: square;
+  ul {
+    padding-left: 1em;
+    li {
+      font-size: 75%;
+      list-style: square;
+    }
   }
 }
 
 /* MISC */
 
+.left {float:left !important;}
+p .left {margin:1.5em 1.5em 1.5em 0;padding:0;}
+.right {float:right !important;}
+p .right {margin:1.5em 0 1.5em 1.5em;padding:0;}
 .center {
   text-align: center;
+}
+
+.error, .alert, .notice, .success, .info {padding:0.8em;margin-bottom:1em;border:2px solid #ddd;}
+.error, .alert {background:#fbe3e4;color:#8a1f11;border-color:#fbc2c4;}
+.notice {background:#fff6bf;color:#514721;border-color:#ffd324;}
+.success {background:#e6efc2;color:#264409;border-color:#c6d880;}
+.info {background:#d5edf8;color:#205791;border-color:#92cae4;}
+.error a, .alert a {color:#8a1f11;}
+.notice a {color:#514721;}
+.success a {color:#264409;}
+.info a {color:#205791;}
+
+/*
+  Layouts by pixel width
+*/
+
+@media screen and (max-width: 479px) {
+	body { font-size: ($font-size - 2)/$em; }
+  .container {
+    width: $cols5;
+  }
+  #menu {
+    height: $menu-height*2;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 767px) {
+	body { font-size: ($font-size - 1)/$em; }
+  .container {
+    width: $cols7;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .field {
+    * {
+      display: block;
+    }
+    label {
+      text-align: left;
+      margin-top: 0.5em;
+      display: block;
+    }
+    input, textarea {
+      margin: 0;
+    }
+  }
+  div.required label {
+    padding-left: 8px/$em;
+    padding-right: 0;
+    margin-right: 0;
+    background: url("/assets/red_dot.gif") no-repeat 0% 50%;
+  }
+  div.actions {
+    margin: 1em 1em 1em 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: $cols10;
+  }
+}
+
+@media screen and (min-width: 1009px) {
+  .container {
+    width: $cols14;
+  }
+}
+
+@media screen and (min-width: 1265px) {
+	body { font-size: ($font-size + 1)/$em; }
+  .container {
+    @include width(16);
+  }
+}
+
+@media screen and (min-width: 1585px) {
+	body { font-size: ($font-size + 2)/$em; }
+  .container {
+    @include width(19);
+  }
 }

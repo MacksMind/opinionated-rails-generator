@@ -2,55 +2,44 @@
 %html{:lang => "en"}
   %head
     %meta{:charset => "utf-8"}
+    %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
     %title= @page_title || ::Baseline::AppName
-    = stylesheet_link_tag "screen", :media => "screen,projection"
-    = stylesheet_link_tag "print", :media => "print"
-    /[if lt IE 8]
-      = stylesheet_link_tag "ie", :media => "screen,projection"
     = stylesheet_link_tag "application", :media => "all"
+    /[if lt IE 9]
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     = javascript_include_tag "application"
     = csrf_meta_tag
     = yield :javascript
-    - if Rails.env.production? && !current_user.try(:has_role?, :admin)
-      / This would be a good place for Google Analytics code.
   %body
     .container
-      #hd.span-24
-        .left
-          = @page_title || ::Baseline::AppName
-        #signin.right
+      %header#masthead
+        %h1= @page_title || ::Baseline::AppName
+        %p
           - if user_signed_in?
             = current_user.email
             \/
             = link_to "Sign out", destroy_user_session_path, :method => :delete
-          - elsif params[:controller] !~ /devise/
-            = form_for(:user, :url => user_session_path) do |f|
-              = hidden_field_tag :return_to, request.path
-              = f.email_field :email, :size => 18, :value => "Email Address", :onfocus => "if(this.value==this.defaultValue) this.value=''", :onblur => "if(this.value=='') this.value=this.defaultValue"
-              %input#visible_password{:onfocus => "$(this).hide(); $('#user_password').show().focus()", :size => "18", :type => "text", :value => "Password"}/
-              = f.password_field :password, :size => 18, :title => "Please enter your Password", :onblur => "if(this.value=='') { $(this).hide(); $('#visible_password').show(); }", :style => "display:none;"
-              = f.check_box :remember_me
-              = f.label :remember_me
-              = f.submit "Sign in", :class => "button"
-              \- or -
-              = link_to "Sign up", new_user_registration_path
-      #bd.span-24
-        .menu
-          %ul
-            - Content.order(:position).each do |content|
-              %li= menu_link content.name, content_path(content)
-            - if user_signed_in? && current_user.has_role?(:admin)
-              %li
-                = menu_link "Admin", "#"
-                %ul
-                  %li= menu_link 'Users', admin_users_path
-                  %li= menu_link 'Contents', admin_contents_path
-        #flash.span-24
-          - flash.each do |key, value|
-            - key = :error if key == :failure
-            %div{:class => key}= html_escape(value)
-        #main.span-24
-          = yield
-      #ft.span-24
+          - else
+            = link_to "Sign in", new_user_session_path
+            \/
+            = link_to "Sign up", new_user_registration_path
+      %nav#menu
+        %ul
+          - Content.order(:position).each do |content|
+            %li= menu_link content.name, content_path(content)
+          - if user_signed_in? && current_user.has_role?(:admin)
+            %li
+              = menu_link "Admin", "#"
+              %ul
+                %li= menu_link 'Users', admin_users_path
+                %li= menu_link 'Contents', admin_contents_path
+      #flash
+        - flash.each do |key, value|
+          - key = :error if key == :failure
+          %div{:class => key}= html_escape(value)
+      %section#main
+        = yield
+      %footer
         .center
           &copy; 2012 Agile Reasoning LLC
