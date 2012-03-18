@@ -59,22 +59,6 @@ class Baseline
     Dir.chdir(@opts[:project_dir])
     system("git init && git add . && git commit -m 'Default rails install'")
 
-    # Edit database settings
-    File.open(File.join(@opts[:project_dir],"config","database.yml"), "r+") do |f|
-      lines = f.readlines
-      new = lines[0,lines.index("production:\n") + 1]
-      new << "  adapter: mysql2\n"
-      new << "  encoding: utf8\n"
-      new << "  database: #{@opts[:project_name].underscore}_production\n"
-      new << "  username: #{@opts[:project_name].underscore}\n"
-      new << "  password: #{generate_password}\n"
-      new << "  socket: /var/run/mysqld/mysqld.sock\n"
-      f.pos = 0
-      new.each {|l| f.print l}
-      f.truncate(f.pos)
-    end
-    system("git add . && git commit -m 'Production database settings'")
-
     # Configure Gemfile
     system("cat #{@opts[:resource_dir]}/patch/Gemfile | patch -p1")
     system("bundle install && git add . && git commit -m 'Configure Gemfile'")
