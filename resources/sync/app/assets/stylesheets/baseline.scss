@@ -1,51 +1,4 @@
-/*
-	Frameless			<http://framelessgrid.com/>
-	by Joni Korpi 		<http://jonikorpi.com/>
-	licensed under CC0	<http://creativecommons.org/publicdomain/zero/1.0/>
-*/
-
-
-//
-// Configuration
-//
-
-$font-size: 16px; 		// Your base font-size in pixels
-$em: $font-size / 1em;	// Shorthand for outputting ems
-
-$column: 48px;	// The column-width of your grid in pixels
-$gutter: 24px;	// The gutter-width of your grid in pixels
-
-
-//
-// Column-widths in variables, in ems
-//
-
- $cols1: ( 1 * ($column + $gutter) - $gutter) / $em;
- $cols2: ( 2 * ($column + $gutter) - $gutter) / $em;
- $cols3: ( 3 * ($column + $gutter) - $gutter) / $em;
- $cols4: ( 4 * ($column + $gutter) - $gutter) / $em;
- $cols5: ( 5 * ($column + $gutter) - $gutter) / $em;
- $cols6: ( 6 * ($column + $gutter) - $gutter) / $em;
- $cols7: ( 7 * ($column + $gutter) - $gutter) / $em;
- $cols8: ( 8 * ($column + $gutter) - $gutter) / $em;
- $cols9: ( 9 * ($column + $gutter) - $gutter) / $em;
-$cols10: (10 * ($column + $gutter) - $gutter) / $em;
-$cols11: (11 * ($column + $gutter) - $gutter) / $em;
-$cols12: (12 * ($column + $gutter) - $gutter) / $em;
-$cols13: (13 * ($column + $gutter) - $gutter) / $em;
-$cols14: (14 * ($column + $gutter) - $gutter) / $em;
-$cols15: (15 * ($column + $gutter) - $gutter) / $em;
-$cols16: (16 * ($column + $gutter) - $gutter) / $em;
-
-
-//
-// Column-widths in a function, in ems
-//
-
-@mixin width ($cols:1) {
-	width: ($cols * ($column + $gutter) - $gutter) / $em;
-}
-
+@import "config";
 
 /*
 	Margin, padding, and border resets
@@ -182,8 +135,9 @@ footer {
     margin: 0.3em 0;
   }
   input {
-    height: 1em;
+    height: 1.2em;
   }
+  margin-bottom: 0.2em
 }
 
 div.required label {
@@ -209,6 +163,16 @@ div.actions {
   padding-bottom: 0;
   margin-bottom: 1em;
   background-color: #f0f0f0;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+  }
   ul {
     padding-left: 1em;
     li {
@@ -238,74 +202,17 @@ p .right {margin:1.5em 0 1.5em 1.5em;padding:0;}
 .success a {color:#264409;}
 .info a {color:#205791;}
 
-/*
-  Layouts by pixel width
-*/
-
-@media screen and (max-width: 479px) {
-	body { font-size: ($font-size - 2)/$em; }
-  .container {
-    width: $cols5;
-  }
-  #menu {
-    height: $menu-height*2;
-  }
+/* slightly enhanced, universal clearfix hack */
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
 }
-
-@media screen and (min-width: 480px) and (max-width: 767px) {
-	body { font-size: ($font-size - 1)/$em; }
-  .container {
-    width: $cols7;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .field {
-    * {
-      display: block;
-    }
-    label {
-      text-align: left;
-      margin-top: 0.5em;
-      display: block;
-    }
-    input, textarea {
-      margin: 0;
-    }
-  }
-  div.required label {
-    padding-left: 8px/$em;
-    padding-right: 0;
-    margin-right: 0;
-    background: url("/assets/red_dot.gif") no-repeat 0% 50%;
-  }
-  div.actions {
-    margin: 1em 1em 1em 0;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .container {
-    width: $cols10;
-  }
-}
-
-@media screen and (min-width: 1009px) {
-  .container {
-    width: $cols14;
-  }
-}
-
-@media screen and (min-width: 1265px) {
-	body { font-size: ($font-size + 1)/$em; }
-  .container {
-    @include width(16);
-  }
-}
-
-@media screen and (min-width: 1585px) {
-	body { font-size: ($font-size + 2)/$em; }
-  .container {
-    @include width(19);
-  }
-}
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */

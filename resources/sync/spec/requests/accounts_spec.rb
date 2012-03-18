@@ -3,7 +3,6 @@ require 'spec_helper'
 describe "Accounts" do
   describe "when signed in" do
     before(:each) do
-      Content.find_by_name('Home') || Factory(:content, :name => 'Home')
       @user = Factory(:user)
       signin_user @user
     end

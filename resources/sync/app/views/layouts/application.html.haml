@@ -7,10 +7,12 @@
     %title= @page_title || ::Baseline::AppName
     = stylesheet_link_tag "application", :media => "all"
     /[if lt IE 9]
-      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      = javascript_include_tag "//html5shim.googlecode.com/svn/trunk/html5.js"
     = javascript_include_tag "application"
     = csrf_meta_tag
     = yield :javascript
+    - if Rails.env.production? && !(user_signed_in? && current_user.has_role?(:admin))
+      = render 'analytics'
   %body
     .container
       %header#masthead
@@ -21,19 +23,19 @@
             \/
             = link_to "Sign out", destroy_user_session_path, :method => :delete
           - else
-            = link_to "Sign in", new_user_session_path
-            \/
             = link_to "Sign up", new_user_registration_path
+            or 
+            = link_to "Sign in", new_user_session_path
       %nav#menu
         %ul
-          - Content.order(:position).each do |content|
-            %li= menu_link content.name, content_path(content)
-          - if user_signed_in? && current_user.has_role?(:admin)
-            %li
-              = menu_link "Admin", "#"
-              %ul
-                %li= menu_link 'Users', admin_users_path
-                %li= menu_link 'Contents', admin_contents_path
+          %li= menu_link "Home", root_path
+          - if user_signed_in?
+            %li= menu_link "Profile", edit_account_path
+            - if current_user.has_role?(:admin)
+              %li
+                = menu_link "Admin", "#"
+                %ul
+                  %li= menu_link 'Users', admin_users_path
       #flash
         - flash.each do |key, value|
           - key = :error if key == :failure
@@ -42,4 +44,4 @@
         = yield
       %footer
         .center
-          &copy; 2012 Agile Reasoning LLC
+          #{::Baseline::AppName} is a service of Agile Reasoning &copy; 2012

@@ -1,8 +1,8 @@
 diff --git a/db/seeds.rb b/db/seeds.rb
-index 4edb1e8..d4e0795 100644
+index 4edb1e8..ac4129d 100644
 --- a/db/seeds.rb
 +++ b/db/seeds.rb
-@@ -5,3 +5,33 @@
+@@ -5,3 +5,21 @@
  #
  #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
  #   Mayor.create(name: 'Emanuel', city: cities.first)
@@ -24,15 +24,3 @@ index 4edb1e8..d4e0795 100644
 +
 +user.roles = User::ROLES
 +user.save!
-+
-+Content.create!(
-+  :name => 'Home',
-+  :title => Baseline::AppName,
-+  :html => "<h2>Welcome to #{Baseline::AppName}</h2>"
-+)
-+
-+Content.create!(
-+  :name => 'My Account',
-+  :title => 'n/a',
-+  :html => "=redirect_to edit_account_path"
-+)

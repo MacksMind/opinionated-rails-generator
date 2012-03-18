@@ -1,8 +1,8 @@
 diff --git a/Gemfile b/Gemfile
-index 293cb17..274a9ae 100644
+index 7764763..65fa067 100644
 --- a/Gemfile
 +++ b/Gemfile
-@@ -5,7 +5,7 @@ gem 'rails', '3.2.1'
+@@ -5,7 +5,7 @@ gem 'rails', '3.2.2'
  # Bundle edge Rails instead:
  # gem 'rails', :git => 'git://github.com/rails/rails.git'
  
@@ -19,6 +19,7 @@ index 293cb17..274a9ae 100644
 +group :development do
 +  gem 'newrelic_rpm'
 +  gem 'ruby-prof'
++  gem 'haml-rails'
 +end
 +
 +group :development, :test do
@@ -29,18 +30,17 @@ index 293cb17..274a9ae 100644
 +
 +group :test do
 +  gem 'factory_girl'
-+  gem 'cucumber-rails'
++  gem 'cucumber-rails', :require => false
 +  gem 'capybara'
 +  gem 'database_cleaner'
 +  gem 'launchy'
 +  gem 'ruby-debug19', :require => 'ruby-debug'
-+  gem 'shoulda'
 +  gem 'autotest-rails'
 +  gem 'simplecov', :require => false
 +end
 +
++gem 'thin'
 +gem 'devise'
 +gem 'cancan'
 +gem 'haml'
-+gem 'bartt-ssl_requirement', :require => 'ssl_requirement'
-+gem 'acts_as_list'
++gem 'will_paginate'

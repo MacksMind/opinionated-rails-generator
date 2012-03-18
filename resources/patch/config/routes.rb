@@ -1,8 +1,11 @@
 diff --git a/config/routes.rb b/config/routes.rb
-index 8fc9c3d..d0c180c 100644
+index 8fc9c3d..a1e39b3 100644
 --- a/config/routes.rb
 +++ b/config/routes.rb
-@@ -2,6 +2,24 @@ Shiny::Application.routes.draw do
+@@ -1,7 +1,22 @@
+ Shiny::Application.routes.draw do
++  devise_for :users
++
    # The priority is based upon order of creation:
    # first created -> highest priority.
  
@@ -14,15 +17,10 @@ index 8fc9c3d..d0c180c 100644
 +        post :masquerade
 +      end
 +    end
-+    resources :contents do
-+      collection do
-+        post :sort
-+      end
-+    end
 +  end
 +
-+  get ':id' => 'contents#show', :as => "content"
-+  root :to => 'contents#show'
++  get ':action' => 'contents', :as => :contents
++  root :to => 'contents#index'
 +
    # Sample of regular route:
    #   match 'products/:id' => 'catalog#view'

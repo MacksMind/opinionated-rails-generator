@@ -1,0 +1,74 @@
+@import "config";
+
+/*
+  Layouts by pixel width
+*/
+
+@media screen and (max-width: 479px) {
+	body { font-size: ($font-size - 2)/$em; }
+  .container {
+    width: $cols5;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 767px) {
+	body { font-size: ($font-size - 1)/$em; }
+  .container {
+    width: $cols7;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .field {
+    * {
+      display: block;
+    }
+    label {
+      text-align: left;
+      margin-top: 0.5em;
+      display: block;
+    }
+    input, textarea {
+      margin: 0;
+    }
+    textarea {
+      width: 98%;
+      height: 5em;
+    }
+  }
+  div.required label {
+    padding-left: 8px/$em;
+    padding-right: 0;
+    margin-right: 0;
+    background: url("/assets/red_dot.gif") no-repeat 0% 50%;
+  }
+  div.actions {
+    margin: 1em 1em 1em 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: $cols10;
+  }
+}
+
+@media screen and (min-width: 1009px) {
+  .container {
+    width: $cols14;
+  }
+}
+
+@media screen and (min-width: 1265px) {
+	body { font-size: ($font-size + 1)/$em; }
+  .container {
+    @include width(16);
+  }
+}
+
+@media screen and (min-width: 1585px) {
+	body { font-size: ($font-size + 2)/$em; }
+  .container {
+    @include width(19);
+  }
+}

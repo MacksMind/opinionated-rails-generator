@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe "Admin/Users" do
   before(:each) do
-    Content.find_by_name('Home') || Factory(:content, :name => 'Home')
     @user = Factory(:admin_user, :password => "testing")
     signin_user @user
   end

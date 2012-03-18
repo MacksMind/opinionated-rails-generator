@@ -61,7 +61,7 @@ class Baseline
 
     # Configure Gemfile
     system("cat #{@opts[:resource_dir]}/patch/Gemfile | patch -p1")
-    system("bundle install && git add . && git commit -m 'Configure Gemfile'")
+    system("bundle install --without production && git add . && git commit -m 'Configure Gemfile'")
 
     # Configure New Relic
     system("cp `bundle show newrelic_rpm`/newrelic.yml config && git add . && git commit -m 'Configure New Relic'")
@@ -77,12 +77,14 @@ class Baseline
     File.open(File.join(@opts[:project_dir],"config","initializers","baseline.rb"),"w") do |f|
       f.puts "module Baseline"
       f.puts "  AppName = '#{@opts[:project_name]}'"
-      f.puts "  DefaultHost = '#{@opts[:project_name].downcase}.com'"
-      f.puts '  EmailSender = "#{AppName} <noreply@#{DefaultHost}>"'
+      f.puts "  PrimaryDomain = '#{@opts[:project_name].downcase}.com'"
+      f.puts '  DefaultHost = "www.#{PrimaryDomain}"'
+      f.puts '  EmailSender = "#{AppName} <noreply@#{PrimaryDomain}>"'
       f.puts
       f.puts "  if defined?(Rails)"
       f.puts "    if Rails.env.production?"
       f.puts "      ActionMailer::Base.default_url_options[:host] = DefaultHost"
+      f.puts "      ActionMailer::Base.default_url_options[:protocol] = 'https'"
       f.puts "    else"
       f.puts "      ActionMailer::Base.default_url_options[:host] = 'localhost:3000'"
       f.puts "    end"

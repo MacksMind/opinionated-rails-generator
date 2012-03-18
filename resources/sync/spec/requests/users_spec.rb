@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe "Users" do
   before(:each) do
-    Content.find_by_name('Home') || Factory(:content, :name => 'Home')
     @user = Factory(:user, :password => "testing")
     ActionMailer::Base.deliveries = []
   end
