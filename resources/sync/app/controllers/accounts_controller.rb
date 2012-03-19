@@ -10,7 +10,7 @@ class AccountsController < ApplicationController
     @user = current_user
     if @user.update_attributes(params[:user])
       flash[:success] = "You updated your account successfully."
-      redirect_to root_url
+      redirect_to user_root_path
     else
       render :action => :edit
     end

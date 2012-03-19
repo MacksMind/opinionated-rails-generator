@@ -54,7 +54,7 @@ describe AccountsController do
 
       it "redirects to root" do
         put :update, :user => valid_attributes
-        response.should redirect_to(root_path)
+        response.should redirect_to(contents_path(:action => 'home'))
       end
     end
 

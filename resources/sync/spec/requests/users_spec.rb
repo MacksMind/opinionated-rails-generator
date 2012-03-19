@@ -18,7 +18,7 @@ describe "Users" do
       fill_in "Password confirmation", :with => "soooper"
       fill_in "Current password", :with => "testing"
       click_button "Update"
-      current_path.should == root_path
+      current_path.should == contents_path(:action => 'home')
       page.should have_content "You updated your account successfully."
       page.should have_content "alicia@example.com"
       @user.reload.valid_password?("soooper").should be_true
@@ -41,7 +41,7 @@ describe "Users" do
       fill_in "Password confirmation", :with => ""
       fill_in "Current password", :with => "testing"
       click_button "Update"
-      current_path.should == root_path
+      current_path.should == contents_path(:action => 'home')
       page.should have_content "You updated your account successfully."
       @user.reload.valid_password?("testing").should be_true
     end
@@ -61,7 +61,7 @@ describe "Users" do
 
     it "can't visit signup page" do
       visit new_user_registration_path
-      current_path.should == root_path
+      current_path.should == contents_path(:action => 'home')
     end
   end
 
@@ -83,7 +83,7 @@ describe "Users" do
       fill_in "Postal code", :with => "01923"
       select "UNITED STATES", :from => "Country"
       click_button "Sign up"
-      current_path.should == root_path
+      current_path.should == contents_path(:action => 'home')
       page.should have_content "Welcome! You have signed up successfully."
     end
 
@@ -122,7 +122,7 @@ describe "Users" do
       fill_in "Email", :with => @user.email
       fill_in "Password", :with => @user.password
       click_button "Sign in"
-      current_path.should == root_path
+      current_path.should == contents_path(:action => 'home')
     end
 
     it "sends a forgot password email" do

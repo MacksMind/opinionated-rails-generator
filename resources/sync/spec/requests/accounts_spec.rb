@@ -11,7 +11,7 @@ describe "Accounts" do
       visit edit_account_path
       fill_in "Company", :with => "Central Supply"
       click_button "Update"
-      current_path.should == '/'
+      current_path.should == contents_path(:action => 'home')
       page.should have_content "You updated your account successfully."
       visit edit_account_path
       find_field("Company").value.should == "Central Supply"

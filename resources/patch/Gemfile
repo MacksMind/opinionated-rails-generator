@@ -1,5 +1,5 @@
 diff --git a/Gemfile b/Gemfile
-index 7764763..65fa067 100644
+index 7764763..d3abfb3 100644
 --- a/Gemfile
 +++ b/Gemfile
 @@ -5,7 +5,7 @@ gem 'rails', '3.2.2'
@@ -11,7 +11,7 @@ index 7764763..65fa067 100644
  
  
  # Gems used only for assets and not required
-@@ -36,3 +36,32 @@ gem 'jquery-rails'
+@@ -36,3 +36,36 @@ gem 'jquery-rails'
  
  # To use debugger
  # gem 'ruby-debug19', :require => 'ruby-debug'
@@ -37,6 +37,10 @@ index 7764763..65fa067 100644
 +  gem 'ruby-debug19', :require => 'ruby-debug'
 +  gem 'autotest-rails'
 +  gem 'simplecov', :require => false
++end
++
++group :production do
++  gem 'pg'
 +end
 +
 +gem 'thin'

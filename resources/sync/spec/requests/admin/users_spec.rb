@@ -52,7 +52,7 @@ describe "Admin/Users" do
     user = Factory(:user)
     visit admin_users_path
     click_link "Masq"
-    current_path.should == root_path
+    current_path.should == contents_path(:action => 'home')
     page.should have_content user.email
   end
 
