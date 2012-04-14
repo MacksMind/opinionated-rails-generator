@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Accounts" do
   describe "when signed in" do
     before(:each) do
-      @user = Factory(:user)
+      @user = FactoryGirl.create(:user)
       signin_user @user
     end
 

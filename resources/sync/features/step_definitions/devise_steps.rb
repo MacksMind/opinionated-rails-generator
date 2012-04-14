@@ -1,7 +1,7 @@
 # Database
 
 Given /^(?:I am|I have|I) signed up (?:as|with) "(.*)\/(.*)"$/ do |email, password|
-  @user = Factory(:user, :email => email, :password => password)
+  @user = FactoryGirl.create(:user, :email => email, :password => password)
 end
 
 # Session

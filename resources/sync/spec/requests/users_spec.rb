@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Users" do
   before(:each) do
-    @user = Factory(:user, :password => "testing")
+    @user = FactoryGirl.create(:user, :password => "testing")
     ActionMailer::Base.deliveries = []
   end
 

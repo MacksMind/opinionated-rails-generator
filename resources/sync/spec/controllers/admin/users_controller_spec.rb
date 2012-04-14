@@ -50,7 +50,7 @@ describe Admin::UsersController do
   end
 
   before(:all) do
-    @admin_user = Factory(:admin_user)
+    @admin_user = FactoryGirl.create(:admin_user)
   end
 
   after(:all) do

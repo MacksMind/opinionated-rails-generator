@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Admin/Users" do
   before(:each) do
-    @user = Factory(:admin_user, :password => "testing")
+    @user = FactoryGirl.create(:admin_user, :password => "testing")
     signin_user @user
   end
 
@@ -49,7 +49,7 @@ describe "Admin/Users" do
   end
 
   it "allows masquerade" do
-    user = Factory(:user)
+    user = FactoryGirl.create(:user)
     visit admin_users_path
     click_link "Masq"
     current_path.should == contents_path(:action => 'home')
