@@ -1,5 +1,5 @@
 diff --git a/app/assets/stylesheets/application.css b/app/assets/stylesheets/application.css
-index 3b5cc66..0104e10 100644
+index 3192ec8..9478ebe 100644
 --- a/app/assets/stylesheets/application.css
 +++ b/app/assets/stylesheets/application.css
 @@ -9,5 +9,8 @@
@@ -11,4 +11,4 @@ index 3b5cc66..0104e10 100644
 + *= require 'baseline'
 + *= require 'contents'
 + *= require 'mobile'
- */
+  */

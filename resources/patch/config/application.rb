@@ -1,8 +1,8 @@
 diff --git a/config/application.rb b/config/application.rb
-index e654db3..82ee6b7 100644
+index e3d3417..41b4b1a 100644
 --- a/config/application.rb
 +++ b/config/application.rb
-@@ -53,6 +53,9 @@ module Shiny
+@@ -56,6 +56,9 @@ module Shiny
      # Enable the asset pipeline
      config.assets.enabled = true
  

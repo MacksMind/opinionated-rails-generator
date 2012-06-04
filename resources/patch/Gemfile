@@ -1,8 +1,8 @@
 diff --git a/Gemfile b/Gemfile
-index ab4e34b..241db82 100644
+index 45ffe90..f1c3692 100644
 --- a/Gemfile
 +++ b/Gemfile
-@@ -5,7 +5,7 @@ gem 'rails', '3.2.3'
+@@ -5,7 +5,7 @@ gem 'rails', '3.2.5'
  # Bundle edge Rails instead:
  # gem 'rails', :git => 'git://github.com/rails/rails.git'
  
@@ -14,7 +14,7 @@ index ab4e34b..241db82 100644
 @@ -36,3 +36,36 @@ gem 'jquery-rails'
  
  # To use debugger
- # gem 'ruby-debug19', :require => 'ruby-debug'
+ # gem 'debugger'
 +
 +group :development do
 +  gem 'newrelic_rpm'
