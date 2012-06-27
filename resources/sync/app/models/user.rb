@@ -63,7 +63,8 @@ class User < ActiveRecord::Base
   end
 
   def cancel
-    self.update_attribute(:active, false)
+    self.active = false
+    self.save!
   end
 
   def country_code
