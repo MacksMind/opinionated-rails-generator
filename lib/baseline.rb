@@ -99,6 +99,10 @@ class Baseline
     
     system("git add . && git commit -m 'Apply patches'")
 
+    # Install Twitter Bootstrap
+    system("./script/rails generate bootstrap:install && git add . && git commit -m 'Install Twitter Bootstrap'")
+
+    # Sync resources
     FileUtils.cp_r("#{@opts[:resource_dir]}/sync/.",@opts[:project_dir])
 
     system("git add . && git commit -m 'Add features, controllers, etc.'")

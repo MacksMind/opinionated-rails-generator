@@ -1,8 +1,8 @@
 diff --git a/Gemfile b/Gemfile
-index 45ffe90..f1c3692 100644
+index 5367a9a..95d0069 100644
 --- a/Gemfile
 +++ b/Gemfile
-@@ -5,7 +5,7 @@ gem 'rails', '3.2.5'
+@@ -5,7 +5,7 @@ gem 'rails', '3.2.8'
  # Bundle edge Rails instead:
  # gem 'rails', :git => 'git://github.com/rails/rails.git'
  
@@ -11,7 +11,7 @@ index 45ffe90..f1c3692 100644
  
  
  # Gems used only for assets and not required
-@@ -36,3 +36,36 @@ gem 'jquery-rails'
+@@ -36,3 +36,38 @@ gem 'jquery-rails'
  
  # To use debugger
  # gem 'debugger'
@@ -48,3 +48,5 @@ index 45ffe90..f1c3692 100644
 +gem 'cancan'
 +gem 'haml'
 +gem 'will_paginate'
++gem 'twitter-bootstrap-rails'
++gem 'meta-tags', :require => 'meta_tags'

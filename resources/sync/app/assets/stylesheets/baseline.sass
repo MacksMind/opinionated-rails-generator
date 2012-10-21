@@ -1,0 +1,95 @@
+/* GENERAL */
+
+footer
+  margin-top: 1em
+
+.center
+  text-align: center
+
+/* FORMS */
+
+.field
+  label
+    display: inline-block
+    width: 12em
+    text-align: right
+    padding-right: 1em
+
+  select
+    max-width: 100%
+
+  input, textarea
+    border: 1px solid #BBB
+    margin: 0.3em 0
+
+  input
+    height: 1.2em
+
+  margin-bottom: 0.2em
+
+div.required label
+  padding-right: 0.5em
+  margin-right: 0.5em
+  background: url("/assets/red_dot.gif") no-repeat 100% 50%
+
+div.actions
+  margin: 1em 1em 1em 13em
+
+.field_with_errors
+  padding: 2px 0
+  background-color: red
+  display: inline-block
+
+#error_explanation
+  width: 94%
+  border: 2px solid red
+  padding: 7px
+  padding-bottom: 0
+  margin-bottom: 1em
+  background-color: #f0f0f0
+  h2
+    text-align: left
+    font-weight: bold
+    padding: 5px 5px 5px 15px
+    font-size: 12px
+    margin: -7px
+    margin-bottom: 0px
+    background-color: #c00
+    color: #fff
+
+  ul
+    padding-left: 1em
+    li
+      font-size: 75%
+      list-style: square
+
+/* FLASH */
+
+.error, .alert, .notice, .success, .info
+  padding: 0.8em
+  margin-bottom: 1em
+  border: 2px solid #ddd
+.error, .alert
+  background: #fbe3e4
+  color: #8a1f11
+  border-color: #fbc2c4
+.notice
+  background: #fff6bf
+  color: #514721
+  border-color: #ffd324
+.success
+  background: #e6efc2
+  color: #264409
+  border-color: #c6d880
+.info
+  background: #d5edf8
+  color: #205791
+  border-color: #92cae4
+.error a, .alert a
+  color: #8a1f11
+.notice a
+  color: #514721
+.success a
+  color: #264409
+.info a
+  color: #205791
