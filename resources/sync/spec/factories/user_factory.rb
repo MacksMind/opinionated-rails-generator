@@ -9,7 +9,7 @@ FactoryGirl.define do
     last_name "Jones"
     password "testing"
     time_zone "Eastern Time (US & Canada)"
-    country_code "US"
+    country_code {"US"}
     company_name "Princeton-Plainsboro Teaching Hospital (PPTH)"
     address_line_1 { "#{rand(900) + 100} #{%w(Maple Oak Hickory Apple Ash Beech Cedar Cypress).sample} #{%w(St Ave Rd Dr).sample}" }
     city { %w(Goshen Auburn Bluffton Butler Clinton Columbus Decatur Elkhart Gary Indianapolis Greensburg).sample }
