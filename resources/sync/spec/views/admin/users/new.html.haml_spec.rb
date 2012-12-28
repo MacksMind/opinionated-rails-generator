@@ -13,10 +13,10 @@ describe "/admin/users/new" do
   it "renders new user form" do
     render
 
-    rendered.should have_selector("form", :action => admin_users_path, :method => "post") do |form|
-      form.should have_selector("input#user_email", :name => "user[email]")
-      form.should have_selector("input#user_first_name", :name => "user[first_name]")
-      form.should have_selector("input#user_last_name", :name => "user[last_name]")
+    assert_select "form", :action => admin_users_path, :method => "post" do
+      assert_select "input#user_email", :name => "user[email]"
+      assert_select "input#user_first_name", :name => "user[first_name]"
+      assert_select "input#user_last_name", :name => "user[last_name]"
     end
   end
 end

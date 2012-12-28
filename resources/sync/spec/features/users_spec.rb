@@ -14,7 +14,7 @@ describe "Users" do
     it "can update email and password" do
       visit edit_user_registration_path
       fill_in "Email", :with => "alicia@example.com"
-      fill_in "Password", :with => "soooper"
+      fill_in "user_password", :with => "soooper"
       fill_in "Password confirmation", :with => "soooper"
       fill_in "Current password", :with => "testing"
       click_button "Update"
@@ -27,7 +27,7 @@ describe "Users" do
     it "can update, :with =>out current password" do
       visit edit_user_registration_path
       fill_in "Email", :with => "alicia@example.com"
-      fill_in "Password", :with => "soooper"
+      fill_in "user_password", :with => "soooper"
       fill_in "Password confirmation", :with => "soooper"
       click_button "Update"
       page.should have_content "Current password can't be blank"
@@ -37,7 +37,7 @@ describe "Users" do
 
     it "can't set password to blank" do
       visit edit_user_registration_path
-      fill_in "Password", :with => ""
+      fill_in "user_password", :with => ""
       fill_in "Password confirmation", :with => ""
       fill_in "Current password", :with => "testing"
       click_button "Update"
@@ -72,7 +72,7 @@ describe "Users" do
       fill_in "First name", :with => "John"
       fill_in "Last name", :with => "Smith"
       select "(GMT-05:00) Eastern Time (US & Canada)", :from => "Time zone"
-      fill_in "Password", :with => "humpty dumpty"
+      fill_in "user_password", :with => "humpty dumpty"
       fill_in "Password confirmation", :with => "humpty dumpty"
       fill_in "Phone number", :with => "BR549"
       fill_in "Company name", :with => "State Lunatic Hospital"
@@ -89,7 +89,7 @@ describe "Users" do
 
     it "can't register with missing information" do
       visit new_user_registration_path
-      fill_in "Password", :with => "humpty dumpty"
+      fill_in "user_password", :with => "humpty dumpty"
       click_button "Sign up"
       current_path.should == user_registration_path
       page.should have_content("errors prohibited")

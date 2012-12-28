@@ -14,9 +14,9 @@ describe "/admin/users/edit" do
   it "renders the edit user form" do
     render
 
-    rendered.should have_selector("form", :action => admin_user_path(@user), :method => "post") do |form|
-      form.should have_selector("input#user_first_name", :name => "user[first_name]")
-      form.should have_selector("input#user_last_name", :name => "user[last_name]")
+    assert_select "form", :action => admin_user_path(@user), :method => "post" do
+      assert_select "input#user_first_name", :name => "user[first_name]"
+      assert_select "input#user_last_name", :name => "user[last_name]"
     end
   end
 end
