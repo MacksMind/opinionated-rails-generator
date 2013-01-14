@@ -7,7 +7,7 @@ FactoryGirl.define do
     email
     first_name {|user| user.email.present? ? user.email.match(/(.*)@/)[1].titleize : %w{Manny Moe Jack}.sample}
     last_name "Jones"
-    password "testing"
+    password "testing1"
     time_zone "Eastern Time (US & Canada)"
     country_code {"US"}
     company_name "Princeton-Plainsboro Teaching Hospital (PPTH)"

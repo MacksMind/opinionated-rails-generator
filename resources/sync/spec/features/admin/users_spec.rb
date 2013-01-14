@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Admin/Users" do
   before(:each) do
-    @user = FactoryGirl.create(:admin_user, :password => "testing")
+    @user = FactoryGirl.create(:admin_user, :password => "testing1")
     signin_user @user
   end
 
@@ -11,8 +11,8 @@ describe "Admin/Users" do
     fill_in "Email", :with => "new_user@example.com"
     fill_in "First name", :with => "Joe"
     fill_in "Last name", :with => "Blow"
-    fill_in "user_password", :with => "asecret"
-    fill_in "Password confirmation", :with => "asecret"
+    fill_in "user_password", :with => "asecret1"
+    fill_in "Password confirmation", :with => "asecret1"
     fill_in "Phone number", :with => "BR549"
     fill_in "Company name", :with => "State Lunatic Hospital"
     fill_in "Title", :with => "Inmate"

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Users" do
   before(:each) do
-    @user = FactoryGirl.create(:user, :password => "testing")
+    @user = FactoryGirl.create(:user, :password => "testing1")
     ActionMailer::Base.deliveries = []
   end
 
@@ -14,36 +14,36 @@ describe "Users" do
     it "can update email and password" do
       visit edit_user_registration_path
       fill_in "Email", :with => "alicia@example.com"
-      fill_in "user_password", :with => "soooper"
-      fill_in "Password confirmation", :with => "soooper"
-      fill_in "Current password", :with => "testing"
+      fill_in "user_password", :with => "sooooper"
+      fill_in "Password confirmation", :with => "sooooper"
+      fill_in "Current password", :with => "testing1"
       click_button "Update"
       current_path.should == contents_path(:action => 'home')
       page.should have_content "You updated your account successfully."
       page.should have_content "alicia@example.com"
-      @user.reload.valid_password?("soooper").should be_true
+      @user.reload.valid_password?("sooooper").should be_true
     end
 
     it "can update, :with =>out current password" do
       visit edit_user_registration_path
       fill_in "Email", :with => "alicia@example.com"
-      fill_in "user_password", :with => "soooper"
-      fill_in "Password confirmation", :with => "soooper"
+      fill_in "user_password", :with => "sooooper"
+      fill_in "Password confirmation", :with => "sooooper"
       click_button "Update"
       page.should have_content "Current password can't be blank"
       find_field("user[email]").value.should == "alicia@example.com"
-      @user.reload.valid_password?("testing").should be_true
+      @user.reload.valid_password?("testing1").should be_true
     end
 
     it "can't set password to blank" do
       visit edit_user_registration_path
       fill_in "user_password", :with => ""
       fill_in "Password confirmation", :with => ""
-      fill_in "Current password", :with => "testing"
+      fill_in "Current password", :with => "testing1"
       click_button "Update"
       current_path.should == contents_path(:action => 'home')
       page.should have_content "You updated your account successfully."
-      @user.reload.valid_password?("testing").should be_true
+      @user.reload.valid_password?("testing1").should be_true
     end
 
     it "can sign out" do

@@ -26,7 +26,7 @@ describe Admin::UsersController do
   def valid_attributes
     {
       :email => "foo@example.com",
-      :password => "foobar",
+      :password => "foobar12",
       :first_name => "Jimmy",
       :last_name => "Stewart",
       :company_name => "ACME",

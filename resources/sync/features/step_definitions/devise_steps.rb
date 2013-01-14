@@ -12,7 +12,7 @@ Given /^(?:I am|I have|I) signed in (?:with|as) "(.*)\/(.*)"$/ do |email, passwo
 end
 
 Given /^I am signed in as an? (.*)$/ do |title|
-  step 'I am signed in as "insider@example.com/asecret"'
+  step 'I am signed in as "insider@example.com/asecret1"'
   @user.roles += [title]
   @user.save
 end
