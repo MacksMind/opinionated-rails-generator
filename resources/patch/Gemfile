@@ -1,8 +1,8 @@
 diff --git a/Gemfile b/Gemfile
-index 5367a9a..95d0069 100644
+index 851a3c5..d4cac2e 100644
 --- a/Gemfile
 +++ b/Gemfile
-@@ -5,7 +5,7 @@ gem 'rails', '3.2.8'
+@@ -5,7 +5,7 @@ gem 'rails', '3.2.12'
  # Bundle edge Rails instead:
  # gem 'rails', :git => 'git://github.com/rails/rails.git'
  
@@ -11,7 +11,17 @@ index 5367a9a..95d0069 100644
  
  
  # Gems used only for assets and not required
-@@ -36,3 +36,38 @@ gem 'jquery-rails'
+@@ -15,7 +15,8 @@ group :assets do
+   gem 'coffee-rails', '~> 3.2.1'
+ 
+   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+-  # gem 'therubyracer', :platforms => :ruby
++  gem 'therubyracer', :platforms => :ruby
++  gem 'less-rails'
+ 
+   gem 'uglifier', '>= 1.0.3'
+ end
+@@ -36,3 +37,39 @@ gem 'jquery-rails'
  
  # To use debugger
  # gem 'debugger'
@@ -26,6 +36,8 @@ index 5367a9a..95d0069 100644
 +  gem 'sqlite3'
 +  gem 'rspec-rails'
 +  gem 'cucumber'
++  gem 'rb-readline'
++  gem 'debugger'
 +end
 +
 +group :test do
@@ -34,7 +46,6 @@ index 5367a9a..95d0069 100644
 +  gem 'capybara'
 +  gem 'database_cleaner'
 +  gem 'launchy'
-+  gem 'ruby-debug19'
 +  gem 'autotest-rails'
 +  gem 'simplecov', :require => false
 +end
