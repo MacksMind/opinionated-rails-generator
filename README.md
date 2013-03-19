@@ -1,3 +1,13 @@
+This README is out of date, but to get an idea here's how I test it when upstream gems change:
+
+```
+cd ~/projects
+rm -rf shiny.old
+touch shiny && mv shiny shiny.old
+ruby baseline/generate.rb Shiny && cd shiny && AUTOFEATURE=true bundle exec autotest
+```
+
+
 Baseline
 ========
 
