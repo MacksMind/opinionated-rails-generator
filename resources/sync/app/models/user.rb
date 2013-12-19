@@ -2,22 +2,6 @@ class User < ActiveRecord::Base
   belongs_to :country
   belongs_to :state
 
-  attr_accessible \
-    :first_name,
-    :last_name,
-    :time_zone,
-    :phone_number,
-    :company_name,
-    :title,
-    :address_line_1,
-    :address_line_2,
-    :city,
-    :state_id,
-    :state_code,
-    :postal_code,
-    :country_id,
-    :country_code
-
   validates_presence_of \
     :first_name,
     :last_name,

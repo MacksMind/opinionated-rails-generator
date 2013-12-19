@@ -1,13 +1,8 @@
 diff --git a/.gitignore b/.gitignore
-index eb3489a..05d0bff 100644
+index 6a502e9..226d9f1 100644
 --- a/.gitignore
 +++ b/.gitignore
-@@ -9,7 +9,16 @@
- 
- # Ignore the default SQLite database.
- /db/*.sqlite3
-+/db/*.sqlite3-journal
- 
+@@ -14,3 +14,11 @@
  # Ignore all logfiles and tempfiles.
  /log/*.log
  /tmp

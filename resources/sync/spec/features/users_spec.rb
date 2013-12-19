@@ -133,15 +133,16 @@ describe "Users" do
       current_path.should == new_user_session_path
       page.should have_content "You will receive an email with instructions about how to reset your password in a few minutes."
       ActionMailer::Base.deliveries.last.to.should include(@user.email)
+      token = ActionMailer::Base.deliveries.last.body.raw_source.match(/reset_password_token=([^"]+)/)[1]
 
       #follow email line
-      visit edit_user_password_path(:reset_password_token   => @user.reload.reset_password_token)
+      visit edit_user_password_path(:reset_password_token   => token)
       fill_in "New password", :with => ""
       fill_in "Confirm new password", :with => ""
       click_button "Change my password"
       page.should have_content "Password can't be blank"
 
-      visit edit_user_password_path(:reset_password_token   => @user.reload.reset_password_token)
+      visit edit_user_password_path(:reset_password_token   => token)
       fill_in "New password", :with => "funkynew"
       fill_in "Confirm new password", :with => "funkynew"
       click_button "Change my password"

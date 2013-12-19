@@ -67,11 +67,11 @@ class Baseline
     system("cp `bundle show newrelic_rpm`/newrelic.yml config && git add . && git commit -m 'Configure New Relic'")
 
     # Install Devise
-    system("./script/rails generate devise:install && git add . && git commit -m 'Install devise'")
+    system("bundle exec rails generate devise:install && git add . && git commit -m 'Install devise'")
 
     # Install RSpec and Cucumber
-    system("./script/rails generate rspec:install && git add . && git commit -m 'Install rspec'")
-    system("./script/rails generate cucumber:install --#{@opts[:simulator]} --rspec && git checkout Gemfile && git add . && git commit -m 'Install cucumber with #{@opts[:simulator]} and rspec options'")
+    system("bundle exec rails generate rspec:install && git add . && git commit -m 'Install rspec'")
+    system("bundle exec rails generate cucumber:install --#{@opts[:simulator]} --rspec && git checkout Gemfile && git add . && git commit -m 'Install cucumber with #{@opts[:simulator]} and rspec options'")
 
     # Create the initializer file
     File.open(File.join(@opts[:project_dir],"config","initializers","baseline.rb"),"w") do |f|
@@ -100,7 +100,7 @@ class Baseline
     system("git add . && git commit -m 'Apply patches'")
 
     # Install Twitter Bootstrap
-    system("./script/rails generate bootstrap:install && git add . && git commit -m 'Install Twitter Bootstrap'")
+    system("bundle exec rails generate bootstrap:install && git add . && git commit -m 'Install Twitter Bootstrap'")
 
     # Sync resources
     FileUtils.cp_r("#{@opts[:resource_dir]}/sync/.",@opts[:project_dir])
@@ -118,10 +118,10 @@ class Baseline
     system("git add . && git commit -m 'Initial migrations complete'")
 
     # Configure Devise for User
-    system("./script/rails generate devise User && rake db:migrate && git add . && git commit -m 'Configure devise for User'")
+    system("bundle exec rails generate devise User && rake db:migrate && git add . && git commit -m 'Configure devise for User'")
 
     # Remove static index and erb layout
-    system("git rm public/index.html app/views/layouts/application.html.erb && git commit -m 'And here ...we ...go'")
+    system("git rm app/views/layouts/application.html.erb && git commit -m 'And here ...we ...go'")
 
     # Prep for use
     system("rake db:fixtures:load")

@@ -43,8 +43,8 @@ describe AccountsController do
         # specifies that the User created by the factory
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        User.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :user => {'these' => 'params'}
+        User.any_instance.should_receive(:update_attributes).with({'first_name' => 'params'})
+        put :update, :user => {'first_name' => 'params'}
       end
 
       it "assigns the current user as @user" do
@@ -62,14 +62,14 @@ describe AccountsController do
       it "assigns the current as @user" do
         # Trigger the behavior that occurs when invalid params are submitted
         User.any_instance.stub(:save).and_return(false)
-        put :update, :user => {}
+        put :update, :user => {'invalid' => 'invalid'}
         assigns(:user).should eq(@user)
       end
 
       it "re-renders the 'edit' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         User.any_instance.stub(:save).and_return(false)
-        put :update, :user => {}
+        put :update, :user => {'invalid' => 'invalid'}
         response.should render_template("edit")
       end
     end

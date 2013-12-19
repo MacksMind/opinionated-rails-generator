@@ -2,29 +2,29 @@ diff --git a/Gemfile b/Gemfile
 index 851a3c5..d4cac2e 100644
 --- a/Gemfile
 +++ b/Gemfile
-@@ -5,7 +5,7 @@ gem 'rails', '3.2.12'
- # Bundle edge Rails instead:
- # gem 'rails', :git => 'git://github.com/rails/rails.git'
+@@ -4,7 +4,7 @@
+ gem 'rails', '4.0.2'
  
+ # Use sqlite3 as the database for Active Record
 -gem 'sqlite3'
 +# gem 'sqlite3'
  
+ # Use SCSS for stylesheets
+ gem 'sass-rails', '~> 4.0.0'
+@@ -16,7 +16,8 @@
+ gem 'coffee-rails', '~> 4.0.0'
  
- # Gems used only for assets and not required
-@@ -15,7 +15,8 @@ group :assets do
-   gem 'coffee-rails', '~> 3.2.1'
+ # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+-# gem 'therubyracer', platforms: :ruby
++gem 'therubyracer', platforms: :ruby
++gem 'less-rails'
  
-   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
--  # gem 'therubyracer', :platforms => :ruby
-+  gem 'therubyracer', :platforms => :ruby
-+  gem 'less-rails'
+ # Use jquery as the JavaScript library
+ gem 'jquery-rails'
+@@ -43,3 +44,39 @@
  
-   gem 'uglifier', '>= 1.0.3'
- end
-@@ -36,3 +37,39 @@ gem 'jquery-rails'
- 
- # To use debugger
- # gem 'debugger'
+ # Use debugger
+ # gem 'debugger', group: [:development, :test]
 +
 +group :development do
 +  gem 'newrelic_rpm'

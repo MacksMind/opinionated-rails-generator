@@ -1,3 +1,5 @@
+require 'rails/source_annotation_extractor'
+
 class SourceAnnotationExtractor
   def find_with_custom_directories
     find_without_custom_directories(%w(app config lib script test spec features))

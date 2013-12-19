@@ -3,7 +3,7 @@ namespace :db do
     
     desc 'Set FIXTURES_PATH environment variable'
     task :set_fixtures_path => :environment do
-      ENV['FIXTURES_PATH'] ||= File.join('spec', 'fixtures')
+      ActiveRecord::Tasks::DatabaseTasks.fixtures_path = File.join('spec', 'fixtures')
     end
 
     task :load => :set_fixtures_path

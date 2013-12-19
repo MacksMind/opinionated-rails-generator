@@ -41,11 +41,6 @@ describe "Admin/Users" do
     fill_in "Password confirmation", :with => "new secret"
     click_button "Update"
     page.should have_content "Jane Doe"
-    click_link "Edit"
-    fill_in "First name", :with => "Jane"
-    fill_in "Last name", :with => "Doe"
-    click_button "Update"
-    page.should have_content "Jane Doe"
   end
 
   it "allows masquerade" do

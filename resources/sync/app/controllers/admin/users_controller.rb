@@ -1,6 +1,7 @@
 class Admin::UsersController < ApplicationController
   before_filter :authenticate_user!
   before_filter :sanitize_params, :only => [:create, :update]
+  before_filter :load_user, only: :create
   load_and_authorize_resource
 
   # GET /users
@@ -55,11 +56,11 @@ class Admin::UsersController < ApplicationController
   # PUT /users/1.xml
   def update
     @user.roles = @roles
-    params[:user].delete(:password) if params[:user][:password].blank?
-    params[:user].delete(:password_confirmation) if params[:user][:password_confirmation].blank?
+    user_params.delete(:password) if user_params[:password].blank?
+    user_params.delete(:password_confirmation) if user_params[:password_confirmation].blank?
 
     respond_to do |format|
-      if @user.update_attributes(params[:user])
+      if @user.update_attributes(user_params)
         flash[:success] = 'User was successfully updated.'
         format.html { redirect_to([:admin,@user]) }
         format.xml  { head :ok }
@@ -86,9 +87,34 @@ class Admin::UsersController < ApplicationController
     redirect_to root_url
   end
 
-  protected
-  
+  private
+
+  def load_user
+    @user = User.new(user_params)
+  end
+
+  def user_params
+    params.require(:user).permit(:email,
+                                 :password,
+                                 :password_confirmation,
+                                 :first_name,
+                                 :last_name,
+                                 :time_zone,
+                                 :phone_number,
+                                 :company_name,
+                                 :title,
+                                 :address_line_1,
+                                 :address_line_2,
+                                 :city,
+                                 :state_id,
+                                 :state_code,
+                                 :postal_code,
+                                 :country_id,
+                                 :country_code,
+                                 :roles => [])
+  end
+
   def sanitize_params
-    @roles = params[:user].delete(:roles)
+    @roles = user_params.delete(:roles)
   end
 end
