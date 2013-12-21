@@ -1,5 +1,5 @@
 diff --git a/db/seeds.rb b/db/seeds.rb
-index 4edb1e8..06c8fb9 100644
+index 4edb1e8..7184ffa 100644
 --- a/db/seeds.rb
 +++ b/db/seeds.rb
 @@ -5,3 +5,21 @@
@@ -15,10 +15,10 @@ index 4edb1e8..06c8fb9 100644
 +  :time_zone => 'Eastern Time (US & Canada)',
 +  :company_name => 'Agile Reasoning LLC',
 +  :phone_number => '888-AGILE-2.0',
-+  :address_line_1 => '1003 E 106th St',
-+  :city => 'Indianapolis',
++  :address_line_1 => '600 E Carmel Dr Ste 262',
++  :city => 'Carmel',
 +  :state_code => 'IN',
-+  :postal_code => '46280',
++  :postal_code => '46032',
 +  :country_code => 'US'
 +)
 +
