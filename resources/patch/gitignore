@@ -1,8 +1,8 @@
 diff --git a/.gitignore b/.gitignore
-index 6a502e9..226d9f1 100644
+index 6a502e9..5d64d0b 100644
 --- a/.gitignore
 +++ b/.gitignore
-@@ -14,3 +14,11 @@
+@@ -14,3 +14,12 @@
  # Ignore all logfiles and tempfiles.
  /log/*.log
  /tmp
@@ -14,3 +14,4 @@ index 6a502e9..226d9f1 100644
 +*.rej
 +/rerun.txt
 +/.sass-cache
++/.env

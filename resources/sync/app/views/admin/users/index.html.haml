@@ -1,9 +1,13 @@
 %h2 Listing users
-%table
+%table.table
   %tr
     %th Email
     %th Name
     %th Roles
+    %th
+    %th
+    %th
+    %th
   - @users.each do |user|
     %tr
       %td= user.email

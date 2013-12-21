@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   validates_presence_of \
     :first_name,
     :last_name,
+    :time_zone,
     :phone_number,
     :company_name,
     :address_line_1,

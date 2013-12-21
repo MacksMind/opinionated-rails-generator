@@ -1,67 +1,68 @@
-= form_for @user, :url => url do |f|
-  - if @user.errors.any?
-    #error_explanation
-      = pluralize(@user.errors.count, "error")
-      prohibited this account from being saved:
-      %ul
-        - @user.errors.full_messages.each do |msg|
-          %li= msg
-  - if @user.new_record? || params[:controller] == 'admin/users'
+- cache @user do
+  = form_for @user, :url => url do |f|
+    - if @user.errors.any?
+      #error_explanation
+        = pluralize(@user.errors.count, "error")
+        prohibited this account from being saved:
+        %ul
+          - @user.errors.full_messages.each do |msg|
+            %li= msg
+    - if @user.new_record? || params[:controller] == 'admin/users'
+      .required.field
+        = f.label :email
+        = f.text_field :email, :type => "email"
     .required.field
-      = f.label :email
-      = f.text_field :email, :type => "email"
-  .required.field
-    = f.label :first_name
-    = f.text_field :first_name
-  .required.field
-    = f.label :last_name
-    = f.text_field :last_name
-  .field
-    = f.label :time_zone
-    = f.time_zone_select :time_zone, nil, :include_blank => true
-  - if @user.new_record? || params[:controller] == 'admin/users'
+      = f.label :first_name
+      = f.text_field :first_name
     .required.field
-      = f.label :password
-      = f.password_field :password
+      = f.label :last_name
+      = f.text_field :last_name
     .required.field
-      = f.label :password_confirmation
-      = f.password_field :password_confirmation
-  .required.field
-    = f.label :phone_number
-    = f.text_field :phone_number
-  .required.field
-    = f.label :company_name
-    = f.text_field :company_name
-  .field
-    = f.label :title
-    = f.text_field :title
-  .required.field
-    = f.label :address_line_1
-    = f.text_field :address_line_1
-  .field
-    = f.label :address_line_2
-    = f.text_field :address_line_2
-  .required.field
-    = f.label :city
-    = f.text_field :city
-  .field
-    = f.label :state_id, "State/Province"
-    = f.collection_select :state_id, State.order(:name), :id, :name, :include_blank => true
-  .required.field
-    = f.label :postal_code
-    = f.text_field :postal_code
-  .required.field
-    = f.label :country_id
-    = f.collection_select :country_id, Country.order(:name), :id, :name, :prompt => true
-  - if params[:controller] == "admin/users"
-    .choices.field
-      - for role in User::ROLES
-        = label_tag "user_role_#{role.underscore}", role.titleize
-        = check_box_tag "user[roles][]", role, @user.has_role?(role), :id => "user_role_#{role}"
-        %br
-  .actions
-    - if params[:controller] == "devise/registrations"
-      = f.submit @user.new_record? ? "Sign up" : "Update"
-    - else
-      = f.submit
-    = link_to "Cancel", :back
+      = f.label :time_zone
+      = f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones, default: "Eastern Time (US & Canada)"
+    - if @user.new_record? || params[:controller] == 'admin/users'
+      .required.field
+        = f.label :password
+        = f.password_field :password
+      .required.field
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation
+    .required.field
+      = f.label :phone_number
+      = f.text_field :phone_number
+    .required.field
+      = f.label :company_name
+      = f.text_field :company_name
+    .field
+      = f.label :title
+      = f.text_field :title
+    .required.field
+      = f.label :address_line_1
+      = f.text_field :address_line_1
+    .field
+      = f.label :address_line_2
+      = f.text_field :address_line_2
+    .required.field
+      = f.label :city
+      = f.text_field :city
+    .field
+      = f.label :state_id, "State/Province"
+      = f.collection_select :state_id, State.order(:name), :id, :name, :include_blank => true
+    .required.field
+      = f.label :postal_code
+      = f.text_field :postal_code
+    .required.field
+      = f.label :country_id
+      = f.collection_select :country_id, Country.order(:name), :id, :name, :prompt => true
+    - if params[:controller] == "admin/users"
+      .choices.field
+        - for role in User::ROLES
+          = label_tag "user_role_#{role.underscore}", role.titleize
+          = check_box_tag "user[roles][]", role, @user.has_role?(role), :id => "user_role_#{role}"
+          %br
+    .actions
+      - if params[:controller] == "devise/registrations"
+        = f.submit @user.new_record? ? "Sign up" : "Update"
+      - else
+        = f.submit
+      = link_to "Cancel", :back

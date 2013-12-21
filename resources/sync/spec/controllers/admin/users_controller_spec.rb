@@ -33,6 +33,7 @@ describe Admin::UsersController do
       :password => "foobar12",
       :first_name => "Jimmy",
       :last_name => "Stewart",
+      :time_zone => "Eastern Time (US & Canada)",
       :company_name => "ACME",
       :phone_number => "123-456-7890",
       :address_line_1 => "123 E Main St",
