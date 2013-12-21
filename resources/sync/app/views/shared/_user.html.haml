@@ -1,5 +1,5 @@
-- cache @user do
-  = form_for @user, :url => url do |f|
+= form_for @user, :url => url do |f|
+  - cache_unless @user.changed?, @user do
     - if @user.errors.any?
       #error_explanation
         = pluralize(@user.errors.count, "error")
