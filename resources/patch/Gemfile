@@ -1,5 +1,5 @@
 diff --git a/Gemfile b/Gemfile
-index 292c232..bcd9bfd 100644
+index 292c232..e4d3dce 100644
 --- a/Gemfile
 +++ b/Gemfile
 @@ -1,10 +1,13 @@
@@ -28,7 +28,7 @@ index 292c232..bcd9bfd 100644
  
  # Use jquery as the JavaScript library
  gem 'jquery-rails'
-@@ -36,10 +41,46 @@ end
+@@ -36,10 +41,44 @@ end
  # gem 'bcrypt-ruby', '~> 3.1.2'
  
  # Use unicorn as the app server
@@ -39,7 +39,8 @@ index 292c232..bcd9bfd 100644
  # gem 'capistrano', group: :development
  
  # Use debugger
- # gem 'debugger', group: [:development, :test]
+-# gem 'debugger', group: [:development, :test]
++gem 'debugger', group: [:development, :test]
 +
 +group :development do
 +  gem 'newrelic_rpm'
@@ -50,8 +51,6 @@ index 292c232..bcd9bfd 100644
 +group :development, :test do
 +  gem 'rspec-rails'
 +  gem 'cucumber'
-+  gem 'rb-readline'
-+  gem 'debugger'
 +end
 +
 +group :test do
