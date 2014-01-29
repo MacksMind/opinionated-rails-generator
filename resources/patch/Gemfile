@@ -66,4 +66,4 @@ index 292c232..1148513 100644
 +gem 'meta-tags', :require => 'meta_tags'
 +
 +# Heroku
-+# ruby '2.0.0'
++# ruby '2.1.0'
