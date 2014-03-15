@@ -131,7 +131,7 @@ describe "Users" do
       fill_in "Email", :with => @user.email
       click_button "Send me reset password instructions"
       current_path.should == new_user_session_path
-      page.should have_content "You will receive an email with instructions about how to reset your password in a few minutes."
+      page.should have_content "You will receive an email with instructions on how to reset your password in a few minutes."
       ActionMailer::Base.deliveries.last.to.should include(@user.email)
       token = ActionMailer::Base.deliveries.last.body.raw_source.match(/reset_password_token=([^"]+)/)[1]
 
