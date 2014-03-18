@@ -99,9 +99,6 @@ class Baseline
     
     system("git add . && git commit -m 'Apply patches'")
 
-    # Install Twitter Bootstrap
-    system("bundle exec rails generate bootstrap:install && git add . && git commit -m 'Install Twitter Bootstrap'")
-
     # Sync resources
     FileUtils.cp_r("#{@opts[:resource_dir]}/sync/.",@opts[:project_dir])
 
@@ -119,9 +116,6 @@ class Baseline
 
     # Configure Devise for User
     system("bundle exec rails generate devise User && rake db:migrate && git add . && git commit -m 'Configure devise for User'")
-
-    # Remove static index and erb layout
-    system("git rm app/views/layouts/application.html.erb && git commit -m 'And here ...we ...go'")
 
     # Prep for use
     system("rake db:fixtures:load")

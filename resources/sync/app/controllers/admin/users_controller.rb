@@ -56,8 +56,8 @@ class Admin::UsersController < ApplicationController
   # PUT /users/1.xml
   def update
     @user.roles = @roles
-    user_params.delete(:password) if user_params[:password].blank?
-    user_params.delete(:password_confirmation) if user_params[:password_confirmation].blank?
+    params[:user].delete(:password) if user_params[:password].blank?
+    params[:user].delete(:password_confirmation) if user_params[:password_confirmation].blank?
 
     respond_to do |format|
       if @user.update_attributes(user_params)
@@ -84,7 +84,7 @@ class Admin::UsersController < ApplicationController
 
   def masquerade
     sign_in @user
-    redirect_to root_url
+    redirect_to signed_in_root_path
   end
 
   private
@@ -115,6 +115,6 @@ class Admin::UsersController < ApplicationController
   end
 
   def sanitize_params
-    @roles = user_params.delete(:roles)
+    @roles = params[:user].delete(:roles)
   end
 end

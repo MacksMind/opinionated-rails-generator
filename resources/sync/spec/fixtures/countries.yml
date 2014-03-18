@@ -178,7 +178,7 @@ countries_41:
   code: CV
   id: 41
 countries_2: 
-  name: "\xC3\x85LAND ISLANDS"
+  name: "ÅLAND ISLANDS"
   code: AX
   id: 2
 countries_212: 
@@ -670,7 +670,7 @@ countries_154:
   code: NA
   id: 154
 countries_181: 
-  name: "R\xC3\x89UNION"
+  name: "RÉUNION"
   code: RE
   id: 181
 countries_38: 
@@ -778,7 +778,7 @@ countries_159:
   code: NZ
   id: 159
 countries_185: 
-  name: "SAINT BARTH\xC3\x89LEMY"
+  name: "SAINT BARTHÉLEMY"
   code: BL
   id: 185
 countries_69: 
@@ -986,7 +986,7 @@ countries_29:
   code: BA
   id: 29
 countries_55: 
-  name: "C\xC3\x94TE D'IVOIRE"
+  name: "CÔTE D'IVOIRE"
   code: CI
   id: 55
 countries_81: 

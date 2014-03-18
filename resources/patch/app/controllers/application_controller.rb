@@ -1,8 +1,8 @@
 diff --git a/app/controllers/application_controller.rb b/app/controllers/application_controller.rb
-index d83690e..beed3f3 100644
+index d83690e..e8d928e 100644
 --- a/app/controllers/application_controller.rb
 +++ b/app/controllers/application_controller.rb
-@@ -2,4 +2,40 @@ class ApplicationController < ActionController::Base
+@@ -2,4 +2,36 @@ class ApplicationController < ActionController::Base
    # Prevent CSRF attacks by raising an exception.
    # For APIs, you may want to use :null_session instead.
    protect_from_forgery with: :exception
@@ -13,13 +13,9 @@ index d83690e..beed3f3 100644
 +
 +  protected
 +
-+  def stored_location_for(resource_or_scope)
-+    params[:return_to] || super
-+  end
-+
-+  helper_method :user_root_path
-+  def user_root_path
-+    contents_path :action => 'home'
++  helper_method :signed_in_root_path
++  def signed_in_root_path(resource=User)
++    contents_path(action: 'home')
 +  end
 +
 +  def set_time_zone

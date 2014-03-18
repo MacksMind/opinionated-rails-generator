@@ -1,5 +1,5 @@
-= form_for @user, :url => url do |f|
-  - cache_unless @user.changed?, @user do
+= form_for @user, :url => url, html: {role: :form, class: 'form-horizontal'} do |f|
+  - cache_unless @user.changed?, [params[:controller], @user] do
     - if @user.errors.any?
       #error_explanation
         = pluralize(@user.errors.count, "error")
@@ -8,61 +8,97 @@
           - @user.errors.full_messages.each do |msg|
             %li= msg
     - if @user.new_record? || params[:controller] == 'admin/users'
-      .required.field
-        = f.label :email
-        = f.text_field :email, :type => "email"
-    .required.field
-      = f.label :first_name
-      = f.text_field :first_name
-    .required.field
-      = f.label :last_name
-      = f.text_field :last_name
-    .required.field
-      = f.label :time_zone
-      = f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones, default: "Eastern Time (US & Canada)"
+      .form-group
+        .col-sm-3
+          = f.label :email, class: 'control-label'
+        .col-sm-9
+          = f.text_field :email, type: :email, class: 'form-control'
+    .form-group
+      .col-sm-3
+        = f.label :first_name, class: 'control-label'
+      .col-sm-9
+        = f.text_field :first_name, class: 'form-control'
+    .form-group
+      .col-sm-3
+        = f.label :last_name, class: 'control-label'
+      .col-sm-9
+        = f.text_field :last_name, class: 'form-control', 'data-required' => true
+    .form-group
+      .col-sm-3
+        = f.label :time_zone, class: 'control-label'
+      .col-sm-9
+        = f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones, {default: "Eastern Time (US & Canada)"}, class: 'form-control'
     - if @user.new_record? || params[:controller] == 'admin/users'
-      .required.field
-        = f.label :password
-        = f.password_field :password
-      .required.field
-        = f.label :password_confirmation
-        = f.password_field :password_confirmation
-    .required.field
-      = f.label :phone_number
-      = f.text_field :phone_number
-    .required.field
-      = f.label :company_name
-      = f.text_field :company_name
-    .field
-      = f.label :title
-      = f.text_field :title
-    .required.field
-      = f.label :address_line_1
-      = f.text_field :address_line_1
-    .field
-      = f.label :address_line_2
-      = f.text_field :address_line_2
-    .required.field
-      = f.label :city
-      = f.text_field :city
-    .field
-      = f.label :state_id, "State/Province"
-      = f.collection_select :state_id, State.order(:name), :id, :name, :include_blank => true
-    .required.field
-      = f.label :postal_code
-      = f.text_field :postal_code
-    .required.field
-      = f.label :country_id
-      = f.collection_select :country_id, Country.order(:name), :id, :name, :prompt => true
-    - if params[:controller] == "admin/users"
-      .choices.field
-        - for role in User::ROLES
-          = label_tag "user_role_#{role.underscore}", role.titleize
-          = check_box_tag "user[roles][]", role, @user.has_role?(role), :id => "user_role_#{role}"
-          %br
-    .actions
+      .form-group
+        .col-sm-3
+          = f.label :password, class: 'control-label'
+        .col-sm-9
+          = f.password_field :password, class: 'form-control'
+      .form-group
+        .col-sm-3
+          = f.label :password_confirmation, class: 'control-label'
+        .col-sm-9
+          = f.password_field :password_confirmation, class: 'form-control'
+    .form-group
+      .col-sm-3
+        = f.label :phone_number, class: 'control-label'
+      .col-sm-9
+        = f.text_field :phone_number, class: 'form-control'
+    .form-group
+      .col-sm-3
+        = f.label :company_name, class: 'control-label'
+      .col-sm-9
+        = f.text_field :company_name, class: 'form-control'
+    .form-group
+      .col-sm-3
+        = f.label :title, class: 'control-label'
+        %span.optional (optional)
+      .col-sm-9
+        = f.text_field :title, class: 'form-control'
+    .form-group
+      .col-sm-3
+        = f.label :address_line_1, class: 'control-label'
+      .col-sm-9
+        = f.text_field :address_line_1, class: 'form-control'
+    .form-group
+      .col-sm-3
+        = f.label :address_line_2, class: 'control-label'
+        %span.optional (optional)
+      .col-sm-9
+        = f.text_field :address_line_2, class: 'form-control'
+    .form-group
+      .col-sm-3
+        = f.label :city, class: 'control-label'
+      .col-sm-9
+        = f.text_field :city, class: 'form-control'
+    .form-group
+      .col-sm-3
+        = f.label :state_id, "State/Province", class: 'control-label'
+      .col-sm-9
+        = f.collection_select :state_id, State.order(:name), :id, :name, {:include_blank => true}, class: 'form-control'
+    .form-group
+      .col-sm-3
+        = f.label :postal_code, class: 'control-label'
+      .col-sm-9
+        = f.text_field :postal_code, class: 'form-control'
+    .form-group
+      .col-sm-3
+        = f.label :country_id, class: 'control-label'
+      .col-sm-9
+        = f.collection_select :country_id, Country.order(:name), :id, :name, {selected: @user.country_id || Country.where(code: 'US').pluck(:id).first}, class: 'form-control'
+    - if params[:controller] == 'admin/users'
+      .form-group
+        .col-sm-3
+          %label.control-label Roles
+        .col-sm-9
+          - for role in User::ROLES
+            %label{class: 'checkbox-inline'}
+              = check_box_tag "user[roles][]", role, @user.has_role?(role), :id => "user_role_#{role}"
+              = role.titleize
+  .form-group
+    .col-sm-12
       - if params[:controller] == "devise/registrations"
-        = f.submit @user.new_record? ? "Sign up" : "Update"
+        = f.button @user.new_record? ? "Sign up" : "Update", class: 'btn btn-default'
       - else
-        = f.submit
+        = f.button class: 'btn btn-default'
       = link_to "Cancel", :back
