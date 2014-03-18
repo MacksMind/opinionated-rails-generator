@@ -26,7 +26,7 @@ describe AccountsController do
 
   # This is a partial list of attributes since we're only dealing with updates
   def valid_attributes
-    {:first_name => "Joe", :last_name => "Smith"}
+    {first_name: "Joe", last_name: "Smith"}
   end
 
   describe "GET edit" do
@@ -44,17 +44,17 @@ describe AccountsController do
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
         User.any_instance.should_receive(:update_attributes).with({'first_name' => 'params'})
-        put :update, :user => {'first_name' => 'params'}
+        put :update, user: {first_name: 'params'}
       end
 
       it "assigns the current user as @user" do
-        put :update, :user => valid_attributes
+        put :update, user: valid_attributes
         assigns(:user).should eq(@user)
       end
 
       it "redirects to root" do
-        put :update, :user => valid_attributes
-        response.should redirect_to(contents_path(:action => 'home'))
+        put :update, user: valid_attributes
+        response.should redirect_to(contents_path(action: 'home'))
       end
     end
 
@@ -62,14 +62,14 @@ describe AccountsController do
       it "assigns the current as @user" do
         # Trigger the behavior that occurs when invalid params are submitted
         User.any_instance.stub(:save).and_return(false)
-        put :update, :user => {'invalid' => 'invalid'}
+        put :update, user: {invalid: 'invalid'}
         assigns(:user).should eq(@user)
       end
 
       it "re-renders the 'edit' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         User.any_instance.stub(:save).and_return(false)
-        put :update, :user => {'invalid' => 'invalid'}
+        put :update, user: {invalid: 'invalid'}
         response.should render_template("edit")
       end
     end

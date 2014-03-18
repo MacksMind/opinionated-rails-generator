@@ -18,7 +18,7 @@ FactoryGirl.define do
     phone_number {'123-456-7890'}
   end
 
-  factory :admin_user, :parent => :user do
+  factory :admin_user, parent: :user do
     roles ["admin"]
   end
 end

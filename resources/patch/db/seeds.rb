@@ -8,18 +8,18 @@ index 4edb1e8..7184ffa 100644
  #   Mayor.create(name: 'Emanuel', city: cities.first)
 +
 +user = User.new(
-+  :email => 'mack@agilereasoning.com',
-+  :password => 'foobarbaz',
-+  :first_name => 'Mack',
-+  :last_name => 'Earnhardt',
-+  :time_zone => 'Eastern Time (US & Canada)',
-+  :company_name => 'Agile Reasoning LLC',
-+  :phone_number => '888-AGILE-2.0',
-+  :address_line_1 => '600 E Carmel Dr Ste 262',
-+  :city => 'Carmel',
-+  :state_code => 'IN',
-+  :postal_code => '46032',
-+  :country_code => 'US'
++  email: 'mack@agilereasoning.com',
++  password: 'foobarbaz',
++  first_name: 'Mack',
++  last_name: 'Earnhardt',
++  time_zone: 'Eastern Time (US & Canada)',
++  company_name: 'Agile Reasoning LLC',
++  phone_number: '888-AGILE-2.0',
++  address_line_1: '600 E Carmel Dr Ste 262',
++  city: 'Carmel',
++  state_code: 'IN',
++  postal_code: '46032',
++  country_code: 'US'
 +)
 +
 +user.roles = User::ROLES

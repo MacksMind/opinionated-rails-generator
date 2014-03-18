@@ -12,7 +12,7 @@ class AccountsController < ApplicationController
       flash[:success] = "You updated your account successfully."
       redirect_to signed_in_root_path
     else
-      render :action => :edit
+      render action: :edit
     end
   end
 

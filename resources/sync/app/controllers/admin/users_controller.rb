@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :sanitize_params, :only => [:create, :update]
+  before_filter :sanitize_params, only: [:create, :update]
   before_filter :load_user, only: :create
   load_and_authorize_resource
 
@@ -9,7 +9,7 @@ class Admin::UsersController < ApplicationController
   def index
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @users }
+      format.xml  { render xml: @users }
     end
   end
 
@@ -18,7 +18,7 @@ class Admin::UsersController < ApplicationController
   def show
     respond_to do |format|
       format.html { render "shared/user" }
-      format.xml  { render :xml => @user }
+      format.xml  { render xml: @user }
     end
   end
 
@@ -27,7 +27,7 @@ class Admin::UsersController < ApplicationController
   def new
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @user }
+      format.xml  { render xml: @user }
     end
   end
 
@@ -44,10 +44,10 @@ class Admin::UsersController < ApplicationController
       if @user.save
         flash[:success] = 'User was successfully created.'
         format.html { redirect_to([:admin,@user]) }
-        format.xml  { render :xml => @user, :status => :created, :location => @user }
+        format.xml  { render xml: @user, status: :created, location: @user }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+        format.html { render action: "new" }
+        format.xml  { render xml: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -65,8 +65,8 @@ class Admin::UsersController < ApplicationController
         format.html { redirect_to([:admin,@user]) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+        format.html { render action: "edit" }
+        format.xml  { render xml: @user.errors, status: :unprocessable_entity }
       end
     end
   end

@@ -8,7 +8,7 @@ index d83690e..e8d928e 100644
    protect_from_forgery with: :exception
 +
 +  before_filter :set_time_zone
-+  check_authorization :unless => :devise_controller?
++  check_authorization unless: :devise_controller?
 +  before_filter :configure_permitted_parameters, if: :devise_controller?
 +
 +  protected

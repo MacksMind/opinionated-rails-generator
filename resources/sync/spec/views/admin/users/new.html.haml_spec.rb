@@ -5,18 +5,18 @@ describe "/admin/users/new" do
 
   before(:each) do
     assign(:user, stub_model(User,
-      :email => "value for email",
-      :name => "value for name"
-    ).as_new_record{|u| u.stub(:roles => []) })
+      email: "value for email",
+      name: "value for name"
+    ).as_new_record{|u| u.stub(roles: []) })
   end
 
   it "renders new user form" do
     render
 
-    assert_select "form", :action => admin_users_path, :method => "post" do
-      assert_select "input#user_email", :name => "user[email]"
-      assert_select "input#user_first_name", :name => "user[first_name]"
-      assert_select "input#user_last_name", :name => "user[last_name]"
+    assert_select "form", action: admin_users_path, method: "post" do
+      assert_select "input#user_email", name: "user[email]"
+      assert_select "input#user_first_name", name: "user[first_name]"
+      assert_select "input#user_last_name", name: "user[last_name]"
     end
   end
 end

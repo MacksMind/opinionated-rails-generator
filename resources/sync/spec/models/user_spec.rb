@@ -16,14 +16,14 @@ describe User do
     user = FactoryGirl.create(:user)
     user.country_code.should eq "US"
     user.country.name.should eq "UNITED STATES"
-    user.update_attributes(:country_code => "ZA")
+    user.update_attributes(country_code: "ZA")
     user.country_code.should eq "ZA"
     user.country.name.should eq "SOUTH AFRICA"
   end
 
   it "should set state code and read name" do
     user = FactoryGirl.create(:user)
-    user.update_attributes(:state_code => "CA")
+    user.update_attributes(state_code: "CA")
     user.state_code.should eq "CA"
     user.state.name.should eq "California"
   end

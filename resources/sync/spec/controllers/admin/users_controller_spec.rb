@@ -29,18 +29,18 @@ describe Admin::UsersController do
   # update the return value of this method accordingly.
   def valid_attributes
     {
-      :email => "foo@example.com",
-      :password => "foobar12",
-      :first_name => "Jimmy",
-      :last_name => "Stewart",
-      :time_zone => "Eastern Time (US & Canada)",
-      :company_name => "ACME",
-      :phone_number => "123-456-7890",
-      :address_line_1 => "123 E Main St",
-      :city => "Anytown",
-      :state_code => "NY",
-      :postal_code => "12345",
-      :country_code => "US",
+      email: "foo@example.com",
+      password: "foobar12",
+      first_name: "Jimmy",
+      last_name: "Stewart",
+      time_zone: "Eastern Time (US & Canada)",
+      company_name: "ACME",
+      phone_number: "123-456-7890",
+      address_line_1: "123 E Main St",
+      city: "Anytown",
+      state_code: "NY",
+      postal_code: "12345",
+      country_code: "US",
     }
   end
 
@@ -55,7 +55,7 @@ describe Admin::UsersController do
   describe "GET show" do
     it "assigns the requested user as @user" do
       user = User.create! valid_attributes
-      get :show, {:id => user.to_param}
+      get :show, {id: user.to_param}
       assigns(:user).should eq(user)
     end
   end
@@ -70,7 +70,7 @@ describe Admin::UsersController do
   describe "GET edit" do
     it "assigns the requested user as @user" do
       user = User.create! valid_attributes
-      get :edit, {:id => user.to_param}
+      get :edit, {id: user.to_param}
       assigns(:user).should eq(user)
     end
   end
@@ -79,18 +79,18 @@ describe Admin::UsersController do
     describe "with valid params" do
       it "creates a new User" do
         expect {
-          post :create, {:user => valid_attributes}
+          post :create, {user: valid_attributes}
         }.to change(User, :count).by(1)
       end
 
       it "assigns a newly created user as @user" do
-        post :create, {:user => valid_attributes}
+        post :create, {user: valid_attributes}
         assigns(:user).should be_a(User)
         assigns(:user).should be_persisted
       end
 
       it "redirects to the created user" do
-        post :create, {:user => valid_attributes}
+        post :create, {user: valid_attributes}
         response.should redirect_to([:admin, User.last])
       end
     end
@@ -99,14 +99,14 @@ describe Admin::UsersController do
       it "assigns a newly created but unsaved user as @user" do
         # Trigger the behavior that occurs when invalid params are submitted
         User.any_instance.stub(:save).and_return(false)
-        post :create, {:user => {'invalid' => 'invalid'}}
+        post :create, {user: {invalid: 'invalid'}}
         assigns(:user).should be_a_new(User)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         User.any_instance.stub(:save).and_return(false)
-        post :create, {:user => {'invalid' => 'invalid'}}
+        post :create, {user: {invalid: 'invalid'}}
         response.should render_template("new")
       end
     end
@@ -121,18 +121,18 @@ describe Admin::UsersController do
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
         User.any_instance.should_receive(:update_attributes).with({'phone_number' => '12345'})
-        put :update, {:id => user.to_param, :user => {'phone_number' => '12345'}}
+        put :update, {id: user.to_param, user: {phone_number: '12345'}}
       end
 
       it "assigns the requested user as @user" do
         user = User.create! valid_attributes
-        put :update, {:id => user.to_param, :user => valid_attributes}
+        put :update, {id: user.to_param, user: valid_attributes}
         assigns(:user).should eq(user)
       end
 
       it "redirects to the user" do
         user = User.create! valid_attributes
-        put :update, {:id => user.to_param, :user => valid_attributes}
+        put :update, {id: user.to_param, user: valid_attributes}
         response.should redirect_to([:admin, user])
       end
     end
@@ -142,7 +142,7 @@ describe Admin::UsersController do
         user = User.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         User.any_instance.stub(:save).and_return(false)
-        put :update, {:id => user.to_param, :user => {'invalid' => 'invalid'}}
+        put :update, {id: user.to_param, user: {invalid: 'invalid'}}
         assigns(:user).should eq(user)
       end
 
@@ -150,7 +150,7 @@ describe Admin::UsersController do
         user = User.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         User.any_instance.stub(:save).and_return(false)
-        put :update, {:id => user.to_param, :user => {'invalid' => 'invalid'}}
+        put :update, {id: user.to_param, user: {invalid: 'invalid'}}
         response.should render_template("edit")
       end
     end
@@ -160,13 +160,13 @@ describe Admin::UsersController do
     it "destroys the requested user" do
       user = User.create! valid_attributes
       expect {
-        delete :destroy, {:id => user.to_param}
+        delete :destroy, {id: user.to_param}
       }.to change(User, :count).by(-1)
     end
 
     it "redirects to the users list" do
       user = User.create! valid_attributes
-      delete :destroy, {:id => user.to_param}
+      delete :destroy, {id: user.to_param}
       response.should redirect_to(admin_users_url)
     end
   end

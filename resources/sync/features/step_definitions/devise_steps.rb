@@ -1,7 +1,7 @@
 # Database
 
 Given /^(?:I am|I have|I) signed up (?:as|with) "(.*)\/(.*)"$/ do |email, password|
-  @user = FactoryGirl.create(:user, :email => email, :password => password)
+  @user = FactoryGirl.create(:user, email: email, password: password)
 end
 
 # Session
@@ -21,7 +21,7 @@ end
 
 When /^I sign in (?:with|as) "(.*)\/(.*)"$/ do |email, password|
   visit "/users/sign_in"
-  fill_in "Email", :with => email
-  fill_in "Password", :with => password
+  fill_in "Email", with: email
+  fill_in "Password", with: password
   click_button "Sign in"
 end
