@@ -74,6 +74,8 @@ class Baseline
     system("bundle exec rails generate cucumber:install --#{@opts[:simulator]} --rspec && git checkout Gemfile && git add . && git commit -m 'Install cucumber with #{@opts[:simulator]} and rspec options'")
 
     # Patch files
+    layout = 'app/views/layouts/application.html.erb'
+    system("sed -e 4d #{layout} > #{layout}.new && mv #{layout}.new #{layout}")
     system("find #{@opts[:resource_dir]}/patch -type f | grep -v Gemfile | xargs cat | patch --forward -p1")
     
     system("git add . && git commit -m 'Apply patches'")
