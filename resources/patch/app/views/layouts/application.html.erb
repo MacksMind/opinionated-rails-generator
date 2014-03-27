@@ -1,5 +1,5 @@
 diff --git a/app/views/layouts/application.html.erb b/app/views/layouts/application.html.erb
-index 151241f..4704895 100644
+index 151241f..ceb784a 100644
 --- a/app/views/layouts/application.html.erb
 +++ b/app/views/layouts/application.html.erb
 @@ -1,14 +1,79 @@
@@ -11,7 +11,7 @@ index 151241f..4704895 100644
 +  <meta charset="utf-8">
 +  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 +  <meta name="viewport" content="width=device-width, initial-scale=1">
-+  <%= display_meta_tags site: ::Baseline::AppName, reverse: true %>
++  <%= display_meta_tags site: Rails.application.config.app_name, reverse: true %>
    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
 +  <%= javascript_include_tag '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' %>
 +  <%= javascript_include_tag '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js' %>
@@ -34,7 +34,7 @@ index 151241f..4704895 100644
 +          <span class="icon-bar"></span>
 +          <span class="icon-bar"></span>
 +        </button>
-+        <%= link_to ::Baseline::AppName, user_signed_in? ? signed_in_root_path : root_path, class: 'navbar-brand' %>
++        <%= link_to Rails.application.config.app_name, user_signed_in? ? signed_in_root_path : root_path, class: 'navbar-brand' %>
 +      </div>
 +      <div class="collapse navbar-collapse" id="navbar-collapse-1">
 +        <% if user_signed_in? %>
@@ -82,7 +82,7 @@ index 151241f..4704895 100644
 +  </div>
 +  <div id="footer">
 +    <div class="container">
-+      <p class="text-center"><%= ::Baseline::AppName %> is a service of Agile Reasoning &copy; 2014</p>
++      <p class="text-center"><%= Rails.application.config.app_name %> is a service of Agile Reasoning &copy; 2014</p>
 +    </div>
 +  </div>
  </body>

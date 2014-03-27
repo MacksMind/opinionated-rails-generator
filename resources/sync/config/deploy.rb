@@ -1,7 +1,6 @@
 require "bundler/capistrano"
-require File.join(File.dirname(__FILE__),"initializers","baseline.rb")
 
-set :application, ::Baseline::AppName.downcase
+set :application, Rails.application.config.app_name.underscore
 set :repository,  "set your repository location here"
 
 set :scm, :git
@@ -15,7 +14,7 @@ set :deploy_to, "/home/#{application}"
 set :bundle_dir,      ""
 set :bundle_flags,    "--quiet"
 
-server ::Baseline::DefaultHost, :app, :web, :db, primary: true
+server Rails.application.confing.canonical_hostname, :app, :web, :db, primary: true
 
 namespace :deploy do
   task :start do ; end

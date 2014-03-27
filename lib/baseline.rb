@@ -73,27 +73,6 @@ class Baseline
     system("bundle exec rails generate rspec:install && git add . && git commit -m 'Install rspec'")
     system("bundle exec rails generate cucumber:install --#{@opts[:simulator]} --rspec && git checkout Gemfile && git add . && git commit -m 'Install cucumber with #{@opts[:simulator]} and rspec options'")
 
-    # Create the initializer file
-    File.open(File.join(@opts[:project_dir],"config","initializers","baseline.rb"),"w") do |f|
-      f.puts "module Baseline"
-      f.puts "  AppName = '#{@opts[:project_name]}'"
-      f.puts "  PrimaryDomain = '#{@opts[:project_name].downcase}.com'"
-      f.puts '  DefaultHost = "www.#{PrimaryDomain}"'
-      f.puts '  EmailSender = "#{AppName} <noreply@#{PrimaryDomain}>"'
-      f.puts
-      f.puts "  if defined?(Rails)"
-      f.puts "    if Rails.env.production?"
-      f.puts "      ActionMailer::Base.default_url_options[:host] = DefaultHost"
-      f.puts "      ActionMailer::Base.default_url_options[:protocol] = 'https'"
-      f.puts "    else"
-      f.puts "      ActionMailer::Base.default_url_options[:host] = 'localhost:3000'"
-      f.puts "    end"
-      f.puts "  end"
-      f.puts "end"
-    end
-
-    system("git add . && git commit -m 'Create initializer file'")
-
     # Patch files
     system("find #{@opts[:resource_dir]}/patch -type f | grep -v Gemfile | xargs cat | patch --forward -p1")
     
