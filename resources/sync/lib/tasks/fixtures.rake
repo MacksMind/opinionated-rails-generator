@@ -1,14 +1,14 @@
 namespace :db do
   namespace :fixtures do
-    
+
     desc 'Set FIXTURES_PATH environment variable'
     task set_fixtures_path: :environment do
       ActiveRecord::Tasks::DatabaseTasks.fixtures_path = File.join('spec', 'fixtures')
     end
 
     task load: :set_fixtures_path
- 
-    desc 'Create YAML test fixtures from data in an existing database.  
+
+    desc 'Create YAML test fixtures from data in an existing database.
     Defaults to development database.  Set RAILS_ENV to override.'
     task dump: :set_fixtures_path do
       sql  = "SELECT * FROM %s"
@@ -16,7 +16,7 @@ namespace :db do
       ActiveRecord::Base.establish_connection(Rails.env)
       tables = ENV['TABLES'] && ENV['TABLES'].split(',')
       tables ||= (ActiveRecord::Base.connection.tables - skip_tables)
- 
+
       tables.each do |table_name|
         i = "000"
         File.open("#{RAILS_ROOT}/spec/fixtures/#{table_name}.yml", 'w') do |file|
