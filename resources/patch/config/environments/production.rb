@@ -1,8 +1,8 @@
 diff --git a/config/environments/production.rb b/config/environments/production.rb
-index 5784f5d..400d238 100644
+index 47d3553..c13fc68 100644
 --- a/config/environments/production.rb
 +++ b/config/environments/production.rb
-@@ -40,7 +40,7 @@ Shiny::Application.configure do
+@@ -40,7 +40,7 @@ Rails.application.configure do
    # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
  
    # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
@@ -11,10 +11,10 @@ index 5784f5d..400d238 100644
  
    # Set to :debug to see everything in the log.
    config.log_level = :info
-@@ -77,4 +77,9 @@ Shiny::Application.configure do
+@@ -80,4 +80,9 @@ Rails.application.configure do
  
-   # Use default logging formatter so that PID and timestamp are not suppressed.
-   config.log_formatter = ::Logger::Formatter.new
+   # Do not dump schema after migrations.
+   config.active_record.dump_schema_after_migration = false
 +
 +  config.static_cache_control = "public, max-age=172800"
 +  config.middleware.use Rack::Deflater

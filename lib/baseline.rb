@@ -15,9 +15,9 @@ class Baseline
   # constructor
   def initialize
     raise ArgumentError, "ProjectName is required" if ARGV.size < 1
-    
+
     @opts = self.options(ARGV)
-    
+
     raise ArgumentError, "#{@opts[:project_dir]} already exists." if File.exist?(@opts[:project_dir])
   end
 
@@ -40,7 +40,7 @@ class Baseline
       o.on("--webrat", "Use webrat instead of capybara") { options[:simulator] = "webrat" }
       o.on("-h", "--help", "Show this message.") { puts o; exit }
     end
-    
+
     parser.parse!(args)
     options[:project_dir] = File.join(project_base,options[:project_name].underscore)
     options
@@ -61,6 +61,7 @@ class Baseline
 
     # Configure Gemfile
     system("cat #{@opts[:resource_dir]}/patch/Gemfile | patch -p1")
+
     system("bundle install --without production && git add . && git commit -m 'Configure Gemfile'")
 
     # Configure New Relic
@@ -77,14 +78,14 @@ class Baseline
     layout = 'app/views/layouts/application.html.erb'
     system("sed -e 4d #{layout} > #{layout}.new && mv #{layout}.new #{layout}")
     system("find #{@opts[:resource_dir]}/patch -type f | grep -v Gemfile | xargs cat | patch --forward -p1")
-    
+
     system("git add . && git commit -m 'Apply patches'")
 
     # Sync resources
     FileUtils.cp_r("#{@opts[:resource_dir]}/sync/.",@opts[:project_dir])
 
     system("git add . && git commit -m 'Add features, controllers, etc.'")
-    
+
     # Create migrations
     FileUtils.mkdir(@opts[:migrate_dir] = File.join(@opts[:project_dir], "db", "migrate"))
     time = Time.now
@@ -99,8 +100,6 @@ class Baseline
     system("bundle exec rails generate devise User && rake db:migrate && git add . && git commit -m 'Configure devise for User'")
 
     # Prep for use
-    system("rake db:fixtures:load")
-    system("rake db:seed")
-    system("rake db:test:prepare")
+    system("bundle exec rake db:fixtures:load db:seed")
   end
 end
