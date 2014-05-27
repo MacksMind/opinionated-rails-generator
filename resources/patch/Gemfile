@@ -1,31 +1,20 @@
 diff --git a/Gemfile b/Gemfile
-index e4a54ba..f22ff6b 100644
+index 21fc07e..7992f8f 100644
 --- a/Gemfile
 +++ b/Gemfile
-@@ -5,8 +5,9 @@ gem 'rails', '4.0.4'
- 
- # Use sqlite3 as the database for Active Record
--gem 'sqlite3'
-+gem 'sqlite3', group: [:development, :test]
- 
- # Use SCSS for stylesheets
- gem 'sass-rails', '~> 4.0.2'
-+gem 'bootstrap-sass'
- 
- # Use Uglifier as compressor for JavaScript assets
-@@ -37,5 +38,5 @@ end
+@@ -30,7 +30,7 @@ gem 'spring',        group: :development
+ # gem 'bcrypt', '~> 3.1.7'
  
  # Use unicorn as the app server
 -# gem 'unicorn'
 +gem 'unicorn'
  
  # Use Capistrano for deployment
-@@ -43,3 +44,39 @@ end
- 
+ # gem 'capistrano-rails', group: :development
+@@ -38,3 +38,40 @@ gem 'spring',        group: :development
  # Use debugger
--# gem 'debugger', group: [:development, :test]
-+gem 'debugger', group: [:development, :test]
-+
+ # gem 'debugger', group: [:development, :test]
+ 
 +group :development do
 +  gem 'newrelic_rpm'
 +  gem 'ruby-prof'
@@ -53,6 +42,7 @@ index e4a54ba..f22ff6b 100644
 +  # gem 'rails_12factor'
 +end
 +
++gem 'bootstrap-sass'
 +gem 'devise'
 +gem 'cancan'
 +gem 'haml'
@@ -60,4 +50,5 @@ index e4a54ba..f22ff6b 100644
 +gem 'meta-tags', require: 'meta_tags'
 +
 +# Heroku
-+# ruby '2.1.0'
++# ruby '2.1.2'
++

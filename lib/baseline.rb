@@ -60,6 +60,7 @@ class Baseline
     system("git init && git add . && git commit -m 'Default rails install'")
 
     # Configure Gemfile
+    system("sed -e 's/^gem 'sqlite3'$/gem 'sqlite3', group: [:development, :test]/' Gemfile > Gemfile.new && mv Gemfile.new Gemfile")
     system("cat #{@opts[:resource_dir]}/patch/Gemfile | patch -p1")
     system("bundle install --without production && git add . && git commit -m 'Configure Gemfile'")
 
