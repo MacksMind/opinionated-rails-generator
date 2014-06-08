@@ -1,0 +1,8 @@
+diff --git a/.rspec b/.rspec
+index 0d786ba..83e16f8 100644
+--- a/.rspec
++++ b/.rspec
+@@ -1,3 +1,2 @@
+ --color
+---warnings
+ --require spec_helper

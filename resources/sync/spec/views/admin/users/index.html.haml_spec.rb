@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "/admin/users/index" do
   include Admin::UsersHelper
@@ -8,17 +8,17 @@ describe "/admin/users/index" do
       stub_model(User,
         email: "value for email",
         name: "value for name"
-      ){|u| u.stub(roles: []) },
+      ){|u| u.roles = [] },
       stub_model(User,
         email: "value for email",
         name: "value for name"
-      ){|u| u.stub(roles: []) }
+      ){|u| u.roles = [] }
     ])
   end
 
   it "renders a list of users" do
     render
-    rendered.should have_selector "tr>td", text: "value for name", count: 2
-    rendered.should have_selector "tr>td", text: "value for email", count: 2
+    expect(rendered).to have_selector "tr>td", text: "value for name", count: 2
+    expect(rendered).to have_selector "tr>td", text: "value for email", count: 2
   end
 end

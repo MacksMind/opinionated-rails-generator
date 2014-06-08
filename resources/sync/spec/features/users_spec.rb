@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "Users" do
   before(:each) do
@@ -18,10 +18,10 @@ describe "Users" do
       fill_in "Password confirmation", with: "sooooper"
       fill_in "Current password", with: "testing1"
       click_button "Update"
-      current_path.should == contents_path(action: 'home')
-      page.should have_content "You updated your account successfully."
-      page.should have_content "alicia@example.com"
-      @user.reload.valid_password?("sooooper").should be_true
+      expect(current_path).to eq(contents_path(action: 'home'))
+      expect(page).to have_content "You updated your account successfully."
+      expect(page).to have_content "alicia@example.com"
+      expect(@user.reload.valid_password?("sooooper")).to be true
     end
 
     it "can update, with:out current password" do
@@ -30,9 +30,9 @@ describe "Users" do
       fill_in "user_password", with: "sooooper"
       fill_in "Password confirmation", with: "sooooper"
       click_button "Update"
-      page.should have_content "Current password can't be blank"
-      find_field("user[email]").value.should == "alicia@example.com"
-      @user.reload.valid_password?("testing1").should be_true
+      expect(page).to have_content "Current password can't be blank"
+      expect(find_field("user[email]").value).to eq("alicia@example.com")
+      expect(@user.reload.valid_password?("testing1")).to be true
     end
 
     it "can't set password to blank" do
@@ -41,27 +41,27 @@ describe "Users" do
       fill_in "Password confirmation", with: ""
       fill_in "Current password", with: "testing1"
       click_button "Update"
-      current_path.should == contents_path(action: 'home')
-      page.should have_content "You updated your account successfully."
-      @user.reload.valid_password?("testing1").should be_true
+      expect(current_path).to eq(contents_path(action: 'home'))
+      expect(page).to have_content "You updated your account successfully."
+      expect(@user.reload.valid_password?("testing1")).to be true
     end
 
     it "can sign out" do
       click_link "Sign out"
-      current_path.should == root_path
-      page.should have_content "Signed out successfully."
+      expect(current_path).to eq(root_path)
+      expect(page).to have_content "Signed out successfully."
     end
 
     it "can cancel account" do
       visit edit_user_registration_path
       click_link "Cancel my account"
-      current_path.should == root_path
-      page.should have_content "Bye! Your account was successfully cancelled. We hope to see you again soon."
+      expect(current_path).to eq(root_path)
+      expect(page).to have_content "Bye! Your account was successfully cancelled. We hope to see you again soon."
     end
 
     it "can't visit signup page" do
       visit new_user_registration_path
-      current_path.should == contents_path(action: 'home')
+      expect(current_path).to eq(contents_path(action: 'home'))
     end
   end
 
@@ -83,22 +83,22 @@ describe "Users" do
       fill_in "Postal code", with: "01923"
       select "UNITED STATES", from: "Country"
       click_button "Sign up"
-      current_path.should == contents_path(action: 'home')
-      page.should have_content "Welcome! You have signed up successfully."
+      expect(current_path).to eq(contents_path(action: 'home'))
+      expect(page).to have_content "Welcome! You have signed up successfully."
     end
 
     it "can't register with missing information" do
       visit new_user_registration_path
       fill_in "user_password", with: "humpty dumpty"
       click_button "Sign up"
-      current_path.should == user_registration_path
-      page.should have_content("errors prohibited")
+      expect(current_path).to eq(user_registration_path)
+      expect(page).to have_content("errors prohibited")
     end
 
     it "can't see protected pages" do
       visit edit_user_registration_path
-      current_path.should == new_user_session_path
-      page.should have_content "You need to sign in or sign up before continuing."
+      expect(current_path).to eq(new_user_session_path)
+      expect(page).to have_content "You need to sign in or sign up before continuing."
     end
 
     it "can't signin with invalid info" do
@@ -106,15 +106,15 @@ describe "Users" do
       fill_in "Email", with: @user.email
       fill_in "Password", with: "qwpefoij"
       click_button "Sign in"
-      current_path.should == new_user_session_path
-      page.should have_content "Invalid email or password"
+      expect(current_path).to eq(new_user_session_path)
+      expect(page).to have_content "Invalid email or password"
 
       visit new_user_session_path
       fill_in "Email", with: "wefoijwoeij"
       fill_in "Password", with: @user.password
       click_button "Sign in"
-      current_path.should == new_user_session_path
-      page.should have_content "Invalid email or password"
+      expect(current_path).to eq(new_user_session_path)
+      expect(page).to have_content "Invalid email or password"
     end
 
     it "signs in from signin page" do
@@ -122,7 +122,7 @@ describe "Users" do
       fill_in "Email", with: @user.email
       fill_in "Password", with: @user.password
       click_button "Sign in"
-      current_path.should == contents_path(action: 'home')
+      expect(current_path).to eq(contents_path(action: 'home'))
     end
 
     it "sends a forgot password email" do
@@ -130,9 +130,9 @@ describe "Users" do
       click_link "Forgot your password?"
       fill_in "Email", with: @user.email
       click_button "Send me reset password instructions"
-      current_path.should == new_user_session_path
-      page.should have_content "You will receive an email with instructions on how to reset your password in a few minutes."
-      ActionMailer::Base.deliveries.last.to.should include(@user.email)
+      expect(current_path).to eq(new_user_session_path)
+      expect(page).to have_content "You will receive an email with instructions on how to reset your password in a few minutes."
+      expect(ActionMailer::Base.deliveries.last.to).to include(@user.email)
       token = ActionMailer::Base.deliveries.last.body.raw_source.match(/reset_password_token=([^"]+)/)[1]
 
       #follow email line
@@ -140,13 +140,13 @@ describe "Users" do
       fill_in "New password", with: ""
       fill_in "Confirm new password", with: ""
       click_button "Change my password"
-      page.should have_content "Password can't be blank"
+      expect(page).to have_content "Password can't be blank"
 
       visit edit_user_password_path(reset_password_token: token)
       fill_in "New password", with: "funkynew"
       fill_in "Confirm new password", with: "funkynew"
       click_button "Change my password"
-      @user.reload.valid_password?("funkynew").should be_true
+      expect(@user.reload.valid_password?("funkynew")).to be true
     end
 
     it "doesn't send a forgot password email" do
@@ -154,9 +154,9 @@ describe "Users" do
       click_link "Forgot your password?"
       fill_in "Email", with: "weofij"
       click_button "Send me reset password instructions"
-      current_path.should == user_password_path
-      page.should have_content "Email not found"
-      ActionMailer::Base.deliveries.should be_empty
+      expect(current_path).to eq(user_password_path)
+      expect(page).to have_content "Email not found"
+      expect(ActionMailer::Base.deliveries).to be_empty
     end
   end
 end

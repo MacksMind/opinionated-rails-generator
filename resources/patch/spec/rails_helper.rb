@@ -1,17 +1,14 @@
-diff --git a/spec/spec_helper.rb b/spec/spec_helper.rb
-index 943bc19..1446baf 100644
---- a/spec/spec_helper.rb
-+++ b/spec/spec_helper.rb
-@@ -1,5 +1,6 @@
+diff --git a/spec/rails_helper.rb b/spec/rails_helper.rb
+index b98cb0f..29a09cb 100644
+--- a/spec/rails_helper.rb
++++ b/spec/rails_helper.rb
+@@ -1,3 +1,4 @@
 +require 'simplecov'
  # This file is copied to spec/ when you run 'rails generate rspec:install'
--ENV["RAILS_ENV"] ||= 'test'
-+ENV["RAILS_ENV"] = 'test'
- require File.expand_path("../../config/environment", __FILE__)
- require 'rspec/rails'
- require 'rspec/autorun'
-@@ -23,6 +24,7 @@ RSpec.configure do |config|
- 
+ ENV["RAILS_ENV"] ||= 'test'
+ require 'spec_helper'
+@@ -20,6 +21,7 @@ ActiveRecord::Migration.maintain_test_schema!
+ RSpec.configure do |config|
    # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
    config.fixture_path = "#{::Rails.root}/spec/fixtures"
 +  config.global_fixtures = :all

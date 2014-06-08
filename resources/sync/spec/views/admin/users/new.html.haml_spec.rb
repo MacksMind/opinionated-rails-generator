@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "/admin/users/new" do
   include Admin::UsersHelper

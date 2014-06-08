@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "/admin/users/edit" do
   include Admin::UsersHelper
@@ -8,7 +8,7 @@ describe "/admin/users/edit" do
       new_record?: false,
       email: "value for email",
       name: "value for name"
-    ){|u| u.stub(roles: []) })
+    ){|u| u.roles = [] })
   end
 
   it "renders the edit user form" do

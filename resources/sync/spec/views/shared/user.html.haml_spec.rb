@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "/shared/user" do
   before(:each) do
@@ -6,12 +6,12 @@ describe "/shared/user" do
       email: "value for email",
       name: "value for name",
       country: stub_model(Country, name: "state of mind")
-    ){|u| u.stub(roles: []) })
+    ){|u| u.roles = [] })
   end
 
   it "renders attributes in <p>" do
     render
-    rendered.should have_content("value for email")
-    rendered.should have_content("value for name")
+    expect(rendered).to have_content("value for email")
+    expect(rendered).to have_content("value for name")
   end
 end

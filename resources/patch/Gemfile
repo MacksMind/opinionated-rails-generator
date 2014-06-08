@@ -1,17 +1,8 @@
 diff --git a/Gemfile b/Gemfile
-index 21fc07e..7992f8f 100644
+index 21fc07e..b4e63eb 100644
 --- a/Gemfile
 +++ b/Gemfile
-@@ -30,7 +30,7 @@ gem 'spring',        group: :development
- # gem 'bcrypt', '~> 3.1.7'
- 
- # Use unicorn as the app server
--# gem 'unicorn'
-+gem 'unicorn'
- 
- # Use Capistrano for deployment
- # gem 'capistrano-rails', group: :development
-@@ -38,3 +38,40 @@ gem 'spring',        group: :development
+@@ -38,3 +38,43 @@ gem 'spring',        group: :development
  # Use debugger
  # gem 'debugger', group: [:development, :test]
  
@@ -19,25 +10,28 @@ index 21fc07e..7992f8f 100644
 +  gem 'newrelic_rpm'
 +  gem 'ruby-prof'
 +  gem 'haml-rails'
++  gem 'thin'
 +end
 +
 +group :development, :test do
 +  gem 'rspec-rails'
-+  gem 'cucumber'
++  gem 'rspec-autotest'
++  gem 'autotest-rails'
 +end
 +
 +group :test do
++  gem 'rspec-activemodel-mocks'
 +  gem 'factory_girl'
 +  gem 'cucumber-rails', require: false
 +  gem 'capybara'
 +  gem 'database_cleaner'
 +  gem 'launchy'
-+  gem 'autotest-rails'
 +  gem 'simplecov', require: false
 +end
 +
 +group :production do
 +  gem 'pg'
++  gem 'unicorn'
 +  # Heroku
 +  # gem 'rails_12factor'
 +end

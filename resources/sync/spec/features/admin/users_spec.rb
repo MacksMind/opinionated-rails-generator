@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "Admin/Users" do
   before(:each) do
@@ -24,31 +24,31 @@ describe "Admin/Users" do
     select "UNITED STATES", from: "Country"
     check "Admin"
     click_button "Create"
-    page.should have_content "new_user@example.com"
-    page.should have_content "Joe Blow"
-    page.should have_content "BR549"
-    page.should have_content "State Lunatic Hospital"
-    page.should have_content "Inmate"
-    page.should have_content "Kirkbride Building"
-    page.should have_content "450 Maple St"
-    page.should have_content "Danvers MA 01923"
-    page.should have_content "UNITED STATES"
-    page.should have_content "admin"
+    expect(page).to have_content "new_user@example.com"
+    expect(page).to have_content "Joe Blow"
+    expect(page).to have_content "BR549"
+    expect(page).to have_content "State Lunatic Hospital"
+    expect(page).to have_content "Inmate"
+    expect(page).to have_content "Kirkbride Building"
+    expect(page).to have_content "450 Maple St"
+    expect(page).to have_content "Danvers MA 01923"
+    expect(page).to have_content "UNITED STATES"
+    expect(page).to have_content "admin"
     click_link "Edit"
     fill_in "First name", with: "Jane"
     fill_in "Last name", with: "Doe"
     fill_in "user_password", with: "new secret"
     fill_in "Password confirmation", with: "new secret"
     click_button "Update"
-    page.should have_content "Jane Doe"
+    expect(page).to have_content "Jane Doe"
   end
 
   it "allows masquerade" do
     user = FactoryGirl.create(:user)
     visit admin_users_path
     click_link "Masq"
-    current_path.should == contents_path(action: 'home')
-    page.should have_content user.email
+    expect(current_path).to eq(contents_path(action: 'home'))
+    expect(page).to have_content user.email
   end
 
 end

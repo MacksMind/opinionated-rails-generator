@@ -102,6 +102,5 @@ class Baseline
     # Prep for use
     system("rake db:fixtures:load")
     system("rake db:seed")
-    system("rake db:test:prepare")
   end
 end
