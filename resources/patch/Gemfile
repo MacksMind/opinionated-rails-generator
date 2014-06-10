@@ -21,7 +21,7 @@ index 21fc07e..b4e63eb 100644
 +
 +group :test do
 +  gem 'rspec-activemodel-mocks'
-+  gem 'factory_girl'
++  gem 'factory_girl_rails'
 +  gem 'cucumber-rails', require: false
 +  gem 'capybara'
 +  gem 'database_cleaner'
