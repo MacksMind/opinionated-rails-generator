@@ -19,7 +19,7 @@ describe "Users" do
       fill_in "Current password", with: "testing1"
       click_button "Update"
       expect(current_path).to eq(contents_path(action: 'home'))
-      expect(page).to have_content "You updated your account successfully."
+      expect(page).to have_content "Your account has been updated successfully."
       expect(page).to have_content "alicia@example.com"
       expect(@user.reload.valid_password?("sooooper")).to be true
     end
@@ -42,7 +42,7 @@ describe "Users" do
       fill_in "Current password", with: "testing1"
       click_button "Update"
       expect(current_path).to eq(contents_path(action: 'home'))
-      expect(page).to have_content "You updated your account successfully."
+      expect(page).to have_content "Your account has been updated successfully."
       expect(@user.reload.valid_password?("testing1")).to be true
     end
 
@@ -56,7 +56,7 @@ describe "Users" do
       visit edit_user_registration_path
       click_link "Cancel my account"
       expect(current_path).to eq(root_path)
-      expect(page).to have_content "Bye! Your account was successfully cancelled. We hope to see you again soon."
+      expect(page).to have_content "Bye! Your account has been successfully cancelled. We hope to see you again soon."
     end
 
     it "can't visit signup page" do
@@ -114,7 +114,7 @@ describe "Users" do
       fill_in "Password", with: @user.password
       click_button "Sign in"
       expect(current_path).to eq(new_user_session_path)
-      expect(page).to have_content "Invalid email or password"
+      expect(page).to have_content "Invalid email address or password"
     end
 
     it "signs in from signin page" do

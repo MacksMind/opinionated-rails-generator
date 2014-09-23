@@ -1,8 +1,8 @@
 diff --git a/config/environments/production.rb b/config/environments/production.rb
-index 47d3553..7e3d008 100644
+index b93a877..fb304c9 100644
 --- a/config/environments/production.rb
 +++ b/config/environments/production.rb
-@@ -40,7 +40,7 @@ Rails.application.configure do
+@@ -39,7 +39,7 @@ Rails.application.configure do
    # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
  
    # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
@@ -11,7 +11,7 @@ index 47d3553..7e3d008 100644
  
    # Set to :debug to see everything in the log.
    config.log_level = :info
-@@ -79,5 +79,10 @@ Rails.application.configure do
+@@ -74,5 +74,10 @@ Rails.application.configure do
    config.log_formatter = ::Logger::Formatter.new
  
    # Do not dump schema after migrations.

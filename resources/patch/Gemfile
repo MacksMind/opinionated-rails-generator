@@ -44,5 +44,5 @@ index 21fc07e..b4e63eb 100644
 +gem 'meta-tags', require: 'meta_tags'
 +
 +# Heroku
-+# ruby '2.1.2'
++# ruby '2.1.3'
 +
