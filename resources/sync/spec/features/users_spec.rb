@@ -114,7 +114,7 @@ describe "Users" do
       fill_in "Password", with: @user.password
       click_button "Sign in"
       expect(current_path).to eq(new_user_session_path)
-      expect(page).to have_content "Invalid email address or password"
+      expect(page).to have_content "Invalid email or password"
     end
 
     it "signs in from signin page" do
