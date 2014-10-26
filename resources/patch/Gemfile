@@ -1,10 +1,10 @@
 diff --git a/Gemfile b/Gemfile
-index 21fc07e..b4e63eb 100644
+index 38a613e..b6d06ce 100644
 --- a/Gemfile
 +++ b/Gemfile
-@@ -38,3 +38,43 @@ gem 'spring',        group: :development
- # Use debugger
- # gem 'debugger', group: [:development, :test]
+@@ -43,3 +43,42 @@ group :development, :test do
+   gem 'spring'
+ end
  
 +group :development do
 +  gem 'newrelic_rpm'
@@ -15,8 +15,6 @@ index 21fc07e..b4e63eb 100644
 +
 +group :development, :test do
 +  gem 'rspec-rails'
-+  gem 'rspec-autotest'
-+  gem 'autotest-rails'
 +end
 +
 +group :test do
@@ -37,6 +35,7 @@ index 21fc07e..b4e63eb 100644
 +end
 +
 +gem 'bootstrap-sass'
++gem 'autoprefixer-rails'
 +gem 'devise'
 +gem 'cancan'
 +gem 'haml'

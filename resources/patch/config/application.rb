@@ -1,11 +1,11 @@
 diff --git a/config/application.rb b/config/application.rb
-index 6361fad..6853e60 100644
+index 390f74d..39bbc17 100644
 --- a/config/application.rb
 +++ b/config/application.rb
-@@ -19,5 +19,14 @@ module Shiny
-     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-     # config.i18n.default_locale = :de
+@@ -22,5 +22,14 @@ module Shiny
+ 
+     # Do not swallow errors in after_commit/after_rollback callbacks.
+     config.active_record.raise_in_transactional_callbacks = true
 +
 +    config.i18n.enforce_available_locales = true
 +

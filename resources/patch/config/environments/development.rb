@@ -1,5 +1,5 @@
 diff --git a/config/environments/development.rb b/config/environments/development.rb
-index ddf0e90..a092019 100644
+index b55e214..86458f9 100644
 --- a/config/environments/development.rb
 +++ b/config/environments/development.rb
 @@ -11,7 +11,7 @@ Rails.application.configure do
@@ -18,9 +18,9 @@ index ddf0e90..a092019 100644
 -  config.assets.debug = true
 +  config.assets.debug = false
  
-   # Adds additional error checking when serving assets at runtime.
-   # Checks for improperly declared sprockets dependencies.
-@@ -34,4 +34,6 @@ Rails.application.configure do
+   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
+   # yet still be able to expire them through the digest params.
+@@ -38,4 +38,6 @@ Rails.application.configure do
  
    # Raises error for missing translations
    # config.action_view.raise_on_missing_translations = true
