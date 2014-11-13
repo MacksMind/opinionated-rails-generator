@@ -11,7 +11,7 @@ describe "Accounts" do
       visit edit_account_path
       fill_in "Company", with: "Central Supply"
       click_button "Update"
-      expect(current_path).to eq(contents_path(action: 'home'))
+      expect(current_path).to eq(dashboard_path(action: 'home'))
       expect(page).to have_content "You updated your account successfully."
       visit edit_account_path
       expect(find_field("Company").value).to eq("Central Supply")

@@ -1,4 +1,4 @@
-class ContentPolicy < Struct.new(:user, :content)
+class DashboardPolicy < Struct.new(:user, :dashboard)
   class Scope
     def initialize(user, scope)
       @user = user

@@ -1,5 +1,5 @@
 diff --git a/app/controllers/application_controller.rb b/app/controllers/application_controller.rb
-index d83690e..e486a60 100644
+index d83690e..c7742d9 100644
 --- a/app/controllers/application_controller.rb
 +++ b/app/controllers/application_controller.rb
 @@ -1,5 +1,41 @@
@@ -20,7 +20,7 @@ index d83690e..e486a60 100644
 +
 +  helper_method :signed_in_root_path
 +  def signed_in_root_path(resource=User)
-+    contents_path(action: 'home')
++    dashboard_path(action: 'home')
 +  end
 +
 +  def set_time_zone
