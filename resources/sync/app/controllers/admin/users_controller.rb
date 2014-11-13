@@ -1,85 +1,44 @@
 class Admin::UsersController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :sanitize_params, only: [:create, :update]
-  before_filter :load_user, only: :create
-  load_and_authorize_resource
+  before_action :authenticate_user!
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :masquerade]
 
-  # GET /users
-  # GET /users.xml
+  respond_to :html
+
   def index
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render xml: @users }
-    end
+    @users = policy_scope(User)
+    respond_with(@users)
   end
 
-  # GET /users/1
-  # GET /users/1.xml
   def show
-    respond_to do |format|
-      format.html { render "shared/user" }
-      format.xml  { render xml: @user }
-    end
+    respond_with(@user, template: 'shared/user')
   end
 
-  # GET /users/new
-  # GET /users/new.xml
   def new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render xml: @user }
-    end
+    @user = User.new
+    authorize @user
+    respond_with(@user)
   end
 
-  # GET /users/1/edit
   def edit
   end
 
-  # POST /users
-  # POST /users.xml
   def create
-    @user.roles = @roles
-
-    respond_to do |format|
-      if @user.save
-        flash[:success] = 'User was successfully created.'
-        format.html { redirect_to([:admin,@user]) }
-        format.xml  { render xml: @user, status: :created, location: @user }
-      else
-        format.html { render action: "new" }
-        format.xml  { render xml: @user.errors, status: :unprocessable_entity }
-      end
-    end
+    @user = User.new(user_params)
+    authorize @user
+    @user.save
+    respond_with(:admin, @user)
   end
 
-  # PUT /users/1
-  # PUT /users/1.xml
   def update
-    @user.roles = @roles
     params[:user].delete(:password) if user_params[:password].blank?
     params[:user].delete(:password_confirmation) if user_params[:password_confirmation].blank?
-
-    respond_to do |format|
-      if @user.update_attributes(user_params)
-        flash[:success] = 'User was successfully updated.'
-        format.html { redirect_to([:admin,@user]) }
-        format.xml  { head :ok }
-      else
-        format.html { render action: "edit" }
-        format.xml  { render xml: @user.errors, status: :unprocessable_entity }
-      end
-    end
+    @user.update(user_params)
+    respond_with(@user, location: [:admin, @user])
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.xml
   def destroy
     @user.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(admin_users_url) }
-      format.xml  { head :ok }
-    end
+    respond_with(@user, location: [:admin, @user])
   end
 
   def masquerade
@@ -89,8 +48,9 @@ class Admin::UsersController < ApplicationController
 
   private
 
-  def load_user
-    @user = User.new(user_params)
+  def set_user
+    @user = User.find(params[:id])
+    authorize @user
   end
 
   def user_params
@@ -112,9 +72,5 @@ class Admin::UsersController < ApplicationController
                                  :country_id,
                                  :country_code,
                                  :roles => [])
-  end
-
-  def sanitize_params
-    @roles = params[:user].delete(:roles)
   end
 end

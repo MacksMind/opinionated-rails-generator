@@ -1,13 +1,14 @@
 class AccountsController < ApplicationController
   before_filter :authenticate_user!
-  skip_authorization_check
 
   def edit
     @user = current_user
+    authorize @user
   end
 
   def update
     @user = current_user
+    authorize @user
     if @user.update_attributes(user_params)
       flash[:success] = "You updated your account successfully."
       redirect_to signed_in_root_path

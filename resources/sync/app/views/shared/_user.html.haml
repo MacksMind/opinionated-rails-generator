@@ -91,6 +91,7 @@
         .col-sm-3
           %label.control-label Roles
         .col-sm-9
+          = hidden_field_tag 'user[roles][]'
           - for role in User::ROLES
             %label{class: 'checkbox-inline'}
               = check_box_tag "user[roles][]", role, @user.has_role?(role), id: "user_role_#{role}"

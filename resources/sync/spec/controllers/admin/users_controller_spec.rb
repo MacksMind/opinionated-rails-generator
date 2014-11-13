@@ -18,7 +18,7 @@ require 'rails_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-describe Admin::UsersController do
+RSpec.describe Admin::UsersController, type: :controller do
 
   before(:each) do
     sign_in(@admin_user = FactoryGirl.create(:admin_user))
@@ -26,8 +26,8 @@ describe Admin::UsersController do
 
   # This should return the minimal set of attributes required to create a valid
   # User. As you add validations to User, be sure to
-  # update the return value of this method accordingly.
-  def valid_attributes
+  # adjust the attributes here as well.
+  let(:valid_attributes) {
     {
       email: "foo@example.com",
       password: "foobar12",
@@ -42,7 +42,16 @@ describe Admin::UsersController do
       postal_code: "12345",
       country_code: "US",
     }
-  end
+  }
+
+  let(:invalid_attributes) {
+    { email: 'foo' }
+  }
+
+  # This should return the minimal set of values that should be in the session
+  # in order to pass any filters (e.g. authentication) defined in
+  # FuxesController. Be sure to keep this updated too.
+  let(:valid_session) { {} }
 
   describe "GET index" do
     it "assigns all users as @users" do
@@ -97,16 +106,12 @@ describe Admin::UsersController do
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved user as @user" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        allow_any_instance_of(User).to receive(:save).and_return(false)
-        post :create, {user: {invalid: 'invalid'}}
+        post :create, {user: invalid_attributes}
         expect(assigns(:user)).to be_a_new(User)
       end
 
       it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        allow_any_instance_of(User).to receive(:save).and_return(false)
-        post :create, {user: {invalid: 'invalid'}}
+        post :create, {user: invalid_attributes}
         expect(response).to render_template("new")
       end
     end
@@ -114,14 +119,15 @@ describe Admin::UsersController do
 
   describe "PUT update" do
     describe "with valid params" do
+      let(:new_attributes) {
+        {phone_number: '12345'}
+      }
+
       it "updates the requested user" do
         user = User.create! valid_attributes
-        # Assuming there are no other users in the database, this
-        # specifies that the User created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        expect_any_instance_of(User).to receive(:update_attributes).with({'phone_number' => '12345'})
-        put :update, {id: user.to_param, user: {phone_number: '12345'}}
+        put :update, {id: user.to_param, user: new_attributes}
+        user.reload
+        expect(user.phone_number).to eq('12345')
       end
 
       it "assigns the requested user as @user" do
@@ -140,17 +146,13 @@ describe Admin::UsersController do
     describe "with invalid params" do
       it "assigns the user as @user" do
         user = User.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        allow_any_instance_of(User).to receive(:save).and_return(false)
-        put :update, {id: user.to_param, user: {invalid: 'invalid'}}
+        put :update, {id: user.to_param, user: invalid_attributes}
         expect(assigns(:user)).to eq(user)
       end
 
       it "re-renders the 'edit' template" do
         user = User.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        allow_any_instance_of(User).to receive(:save).and_return(false)
-        put :update, {id: user.to_param, user: {invalid: 'invalid'}}
+        put :update, {id: user.to_param, user: invalid_attributes}
         expect(response).to render_template("edit")
       end
     end

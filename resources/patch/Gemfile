@@ -1,5 +1,5 @@
 diff --git a/Gemfile b/Gemfile
-index 38a613e..b6d06ce 100644
+index 8fa6d84..1eb8a9e 100644
 --- a/Gemfile
 +++ b/Gemfile
 @@ -43,3 +43,42 @@ group :development, :test do
@@ -37,7 +37,7 @@ index 38a613e..b6d06ce 100644
 +gem 'bootstrap-sass'
 +gem 'autoprefixer-rails'
 +gem 'devise'
-+gem 'cancan'
++gem 'pundit'
 +gem 'haml'
 +gem 'will_paginate'
 +gem 'meta-tags', require: 'meta_tags'

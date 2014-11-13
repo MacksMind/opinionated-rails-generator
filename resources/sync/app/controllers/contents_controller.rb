@@ -1,3 +1,11 @@
 class ContentsController < ApplicationController
-  skip_authorization_check
+  before_action :authorize_content, except: :index
+
+  def index
+    policy_scope(:content)
+  end
+
+  def authorize_content
+    authorize :content, :show?
+  end
 end

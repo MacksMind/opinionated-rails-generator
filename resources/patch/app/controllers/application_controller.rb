@@ -1,14 +1,19 @@
 diff --git a/app/controllers/application_controller.rb b/app/controllers/application_controller.rb
-index d83690e..e8d928e 100644
+index d83690e..e486a60 100644
 --- a/app/controllers/application_controller.rb
 +++ b/app/controllers/application_controller.rb
-@@ -2,4 +2,36 @@ class ApplicationController < ActionController::Base
+@@ -1,5 +1,41 @@
+ class ApplicationController < ActionController::Base
++  include Pundit
    # Prevent CSRF attacks by raising an exception.
    # For APIs, you may want to use :null_session instead.
    protect_from_forgery with: :exception
 +
 +  before_filter :set_time_zone
-+  check_authorization unless: :devise_controller?
++
++  after_action :verify_authorized, except: :index, unless: :devise_controller?
++  after_action :verify_policy_scoped, only: :index, unless: :devise_controller?
++
 +  before_filter :configure_permitted_parameters, if: :devise_controller?
 +
 +  protected
