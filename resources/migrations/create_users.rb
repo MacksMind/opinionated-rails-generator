@@ -16,7 +16,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer   :state_id
       t.integer   :country_id
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 

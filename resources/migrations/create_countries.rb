@@ -4,7 +4,7 @@ class CreateCountries < ActiveRecord::Migration
       t.string :code, limit: 2
       t.string :name
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 
