@@ -1,8 +1,8 @@
 diff --git a/Gemfile b/Gemfile
-index b43fd2f..6903fef 100644
+index 72a914c..3cf84e7 100644
 --- a/Gemfile
 +++ b/Gemfile
-@@ -43,3 +43,42 @@ group :development, :test do
+@@ -43,3 +43,46 @@ group :development, :test do
    gem 'spring'
  end
  
@@ -14,7 +14,11 @@ index b43fd2f..6903fef 100644
 +end
 +
 +group :development, :test do
-+  gem 'rspec-rails'
++  gem 'rspec-core', git: 'https://github.com/rspec/rspec-core', ref: '67f933c444d4b3b17bc9bed85de280ef4bc40983'
++  gem 'rspec-expectations', git: 'https://github.com/rspec/rspec-expectations', ref: '1e7240e08c004fffa596208f666d1f195893c4a1'
++  gem 'rspec-mocks', git: 'https://github.com/rspec/rspec-mocks', ref: '44d81d62d1e478781b6b35b1b3c0336310382edf'
++  gem 'rspec-support', git: 'https://github.com/rspec/rspec-support', ref: '9026c7e44e915d906d3e41a098b917ee1771c87f'
++  gem 'rspec-rails', git: 'https://github.com/rspec/rspec-rails', ref: '64434ff462033c4cbc5c280268743b06f7cb2e05'
 +end
 +
 +group :test do
