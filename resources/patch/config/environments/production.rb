@@ -15,8 +15,7 @@ index 5c1b32e..1f796ea 100644
    config.log_formatter = ::Logger::Formatter.new
  
    # Do not dump schema after migrations.
--  config.active_record.dump_schema_after_migration = false
-+  config.active_record.dump_schema_after_migration = true
+   config.active_record.dump_schema_after_migration = false
 +
 +  config.static_cache_control = "public, max-age=172800"
 +  config.middleware.use Rack::Deflater

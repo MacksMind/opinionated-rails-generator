@@ -2,7 +2,7 @@ diff --git a/Gemfile b/Gemfile
 index 8fa6d84..1eb8a9e 100644
 --- a/Gemfile
 +++ b/Gemfile
-@@ -43,3 +43,42 @@ group :development, :test do
+@@ -43,3 +43,43 @@ group :development, :test do
    gem 'spring'
  end
  
@@ -11,6 +11,7 @@ index 8fa6d84..1eb8a9e 100644
 +  gem 'ruby-prof'
 +  gem 'haml-rails'
 +  gem 'thin'
++  gem 'pry'
 +end
 +
 +group :development, :test do
