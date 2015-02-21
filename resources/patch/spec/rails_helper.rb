@@ -1,18 +1,18 @@
 diff --git a/spec/rails_helper.rb b/spec/rails_helper.rb
-index e6c0b68..3a491c4 100644
+index c278035..54bf4c8 100644
 --- a/spec/rails_helper.rb
 +++ b/spec/rails_helper.rb
 @@ -1,3 +1,4 @@
 +require 'simplecov'
  # This file is copied to spec/ when you run 'rails generate rspec:install'
- ENV["RAILS_ENV"] ||= 'test'
+ ENV['RAILS_ENV'] ||= 'test'
  require 'spec_helper'
 @@ -18,7 +19,7 @@ require 'rspec/rails'
  # directory. Alternatively, in the individual `*_spec.rb` files, manually
  # require only the support files necessary.
  #
--# Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
-+Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+-# Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
++Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
  
  # Checks for pending migrations before tests are run.
  # If you are not using ActiveRecord, you can remove this line.
