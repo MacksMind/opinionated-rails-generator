@@ -44,4 +44,4 @@ index b43fd2f..6903fef 100644
 +gem 'puma'
 +
 +# Heroku
-+# ruby '2.2.1'
++# ruby '2.2.2'
