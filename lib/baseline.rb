@@ -62,7 +62,7 @@ class Baseline
     # Configure Gemfile
     system('sed -e "s/^gem \'sqlite3\'$/gem \'sqlite3\', group: [:development, :test]/" Gemfile > Gemfile.new && mv Gemfile.new Gemfile')
     system("cat #{@opts[:resource_dir]}/patch/Gemfile | patch -p1")
-    system("bundle install --without production && git add . && git commit -m 'Configure Gemfile'")
+    system("bundle install --without production && bundle update && git add . && git commit -m 'Configure Gemfile'")
 
     # Configure New Relic
     system("cp `bundle show newrelic_rpm`/newrelic.yml config && git add . && git commit -m 'Configure New Relic'")
