@@ -1,5 +1,5 @@
 diff --git a/spec/rails_helper.rb b/spec/rails_helper.rb
-index 88ff2d0..ac09b50 100644
+index 6f1ab14..dcbfef9 100644
 --- a/spec/rails_helper.rb
 +++ b/spec/rails_helper.rb
 @@ -1,3 +1,4 @@
@@ -14,7 +14,7 @@ index 88ff2d0..ac09b50 100644
 -# Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 +Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
  
- # Checks for pending migrations before tests are run.
+ # Checks for pending migration and applies them before tests are run.
  # If you are not using ActiveRecord, you can remove this line.
 @@ -29,6 +30,7 @@ ActiveRecord::Migration.maintain_test_schema!
  RSpec.configure do |config|
