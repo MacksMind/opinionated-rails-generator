@@ -1,8 +1,8 @@
 diff --git a/config/environments/test.rb b/config/environments/test.rb
-index 32756eb..ec2c274 100644
+index 1f90453..faae34b 100644
 --- a/config/environments/test.rb
 +++ b/config/environments/test.rb
-@@ -39,4 +39,6 @@ Rails.application.configure do
+@@ -41,4 +41,6 @@ Rails.application.configure do
  
    # Raises error for missing translations
    # config.action_view.raise_on_missing_translations = true

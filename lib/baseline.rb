@@ -65,7 +65,7 @@ class Baseline
     system("bundle install --without production && bundle update && git add . && git commit -m 'Configure Gemfile'")
 
     # Configure New Relic
-    system("cp `bundle show newrelic_rpm`/newrelic.yml config && git add . && git commit -m 'Configure New Relic'")
+    # system("cp `bundle show newrelic_rpm`/newrelic.yml config && git add . && git commit -m 'Configure New Relic'")
 
     # Install Devise
     system("bin/rails generate devise:install && git add . && git commit -m 'Install devise'")
@@ -93,13 +93,13 @@ class Baseline
       time += 1
       FileUtils.cp(f,File.join(@opts[:migrate_dir],"#{time.utc.strftime("%Y%m%d%H%M%S")}_" + File.basename(f)))
     end
-    system("bin/rake db:migrate")
+    system("bin/rails db:migrate")
     system("git add . && git commit -m 'Initial migrations complete'")
 
     # Configure Devise for User
-    system("bin/rails generate devise User && bin/rake db:migrate && git add . && git commit -m 'Configure devise for User'")
+    system("bin/rails generate devise User && bin/rails db:migrate && git add . && git commit -m 'Configure devise for User'")
 
     # Prep for use
-    system('bin/rake db:fixtures:load db:seed')
+    system('bin/rails db:fixtures:load db:seed')
   end
 end

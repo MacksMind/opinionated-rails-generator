@@ -1,11 +1,11 @@
 diff --git a/.gitignore b/.gitignore
-index 050c9d9..2356527 100644
+index bab620d..21ce840 100644
 --- a/.gitignore
 +++ b/.gitignore
-@@ -15,3 +15,12 @@
- /log/*
- !/log/.keep
- /tmp
+@@ -19,3 +19,12 @@
+ 
+ # Ignore Byebug command history file.
+ .byebug_history
 +
 +# Other
 +/coverage
