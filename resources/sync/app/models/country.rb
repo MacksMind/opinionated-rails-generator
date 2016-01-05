@@ -1,4 +1,4 @@
-class Country < ActiveRecord::Base
+class Country < ApplicationRecord
   validates_uniqueness_of :code, :name, case_sensitive: false
   validates_presence_of :code, :name
 
