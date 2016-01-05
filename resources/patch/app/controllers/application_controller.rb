@@ -1,8 +1,8 @@
 diff --git a/app/controllers/application_controller.rb b/app/controllers/application_controller.rb
-index d83690e..c7742d9 100644
+index d83690e..36db0f9 100644
 --- a/app/controllers/application_controller.rb
 +++ b/app/controllers/application_controller.rb
-@@ -1,5 +1,41 @@
+@@ -1,5 +1,42 @@
  class ApplicationController < ActionController::Base
 +  include Pundit
    # Prevent CSRF attacks by raising an exception.
@@ -29,18 +29,19 @@ index d83690e..c7742d9 100644
 +
 +  # Strong parameters for devise
 +  def configure_permitted_parameters
-+    devise_parameter_sanitizer.for(:sign_up) \
-+      << :first_name \
-+      << :last_name \
-+      << :time_zone \
-+      << :phone_number \
-+      << :company_name \
-+      << :title \
-+      << :address_line_1 \
-+      << :address_line_2 \
-+      << :city \
-+      << :state_id \
-+      << :postal_code \
-+      << :country_id
++    devise_parameter_sanitizer.permit(:sign_up, keys: [
++      :first_name,
++      :last_name,
++      :time_zone,
++      :phone_number,
++      :company_name,
++      :title,
++      :address_line_1,
++      :address_line_2,
++      :city,
++      :state_id,
++      :postal_code,
++      :country_id,
++    ])
 +  end
  end

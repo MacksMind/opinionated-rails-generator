@@ -1,8 +1,8 @@
 diff --git a/Gemfile b/Gemfile
-index e3db489..7738c6d 100644
+index e3db489..2e7469d 100644
 --- a/Gemfile
 +++ b/Gemfile
-@@ -41,3 +41,43 @@ end
+@@ -41,3 +41,47 @@ end
  
  # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
  gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
@@ -15,7 +15,11 @@ index e3db489..7738c6d 100644
 +end
 +
 +group :development, :test do
-+  gem 'rspec-rails'
++  gem 'rspec-rails', github: 'rspec/rspec-rails'
++  gem 'rspec-expectations', github: 'rspec/rspec-expectations'
++  gem 'rspec-mocks', github: 'rspec/rspec-mocks'
++  gem 'rspec-support', github: 'rspec/rspec-support'
++  gem 'rspec-core', github: 'rspec/rspec-core'
 +end
 +
 +group :test do
