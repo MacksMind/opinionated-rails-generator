@@ -68,11 +68,11 @@ class Baseline
     system("cp `bundle show newrelic_rpm`/newrelic.yml config && git add . && git commit -m 'Configure New Relic'")
 
     # Install Devise
-    system("bin/rails generate devise:install && git add . && git commit -m 'Install devise'")
+    system("bundle exec rails generate devise:install && git add . && git commit -m 'Install devise'")
 
     # Install RSpec and Cucumber
-    system("bin/rails generate rspec:install && git add . && git commit -m 'Install rspec'")
-    system("bin/rails generate cucumber:install --#{@opts[:simulator]} --rspec && git checkout Gemfile && git add . && git commit -m 'Install cucumber with #{@opts[:simulator]} and rspec options'")
+    system("bundle exec rails generate rspec:install && git add . && git commit -m 'Install rspec'")
+    system("bundle exec rails generate cucumber:install --#{@opts[:simulator]} --rspec && git checkout Gemfile && git add . && git commit -m 'Install cucumber with #{@opts[:simulator]} and rspec options'")
 
     # Patch files
     layout = 'app/views/layouts/application.html.erb'
@@ -93,13 +93,13 @@ class Baseline
       time += 1
       FileUtils.cp(f,File.join(@opts[:migrate_dir],"#{time.utc.strftime("%Y%m%d%H%M%S")}_" + File.basename(f)))
     end
-    system("bin/rake db:migrate")
+    system("bundle exec rake db:migrate")
     system("git add . && git commit -m 'Initial migrations complete'")
 
     # Configure Devise for User
-    system("bin/rails generate devise User && bin/rake db:migrate && git add . && git commit -m 'Configure devise for User'")
+    system("bundle exec rails generate devise User && bundle exec rake db:migrate && git add . && git commit -m 'Configure devise for User'")
 
     # Prep for use
-    system('bin/rake db:fixtures:load db:seed')
+    system('bundle exec rake db:fixtures:load db:seed')
   end
 end
