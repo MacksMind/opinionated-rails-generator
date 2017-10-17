@@ -1,11 +1,11 @@
 diff --git a/db/seeds.rb b/db/seeds.rb
-index 4edb1e8..7184ffa 100644
+index 1beea2a..48aac8e 100644
 --- a/db/seeds.rb
 +++ b/db/seeds.rb
 @@ -5,3 +5,21 @@
  #
- #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
- #   Mayor.create(name: 'Emanuel', city: cities.first)
+ #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+ #   Character.create(name: 'Luke', movie: movies.first)
 +
 +user = User.new(
 +  email: 'mack@agilereasoning.com',

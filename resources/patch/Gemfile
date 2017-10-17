@@ -1,11 +1,12 @@
 diff --git a/Gemfile b/Gemfile
-index 37bc11c..53668a6 100644
+index 13ab512..73ba6e6 100644
 --- a/Gemfile
 +++ b/Gemfile
-@@ -45,3 +45,42 @@ group :development do
-   gem 'spring'
- end
+@@ -52,3 +52,43 @@ end
  
+ # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
++
 +group :development do
 +  gem 'newrelic_rpm'
 +  gem 'ruby-prof'
@@ -21,10 +22,10 @@ index 37bc11c..53668a6 100644
 +  gem 'rspec-activemodel-mocks'
 +  gem 'factory_girl_rails'
 +  gem 'cucumber-rails', require: false
-+  gem 'capybara'
 +  gem 'database_cleaner'
 +  gem 'launchy'
 +  gem 'simplecov', require: false
++  gem 'rails-controller-testing'
 +end
 +
 +group :production do
@@ -41,7 +42,7 @@ index 37bc11c..53668a6 100644
 +gem 'will_paginate'
 +gem 'meta-tags', require: 'meta_tags'
 +gem 'rack-timeout'
-+gem 'puma'
++gem 'jquery-rails'
 +
 +# Heroku
-+# ruby '2.3.3'
++# ruby '2.4.2'

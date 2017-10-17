@@ -47,7 +47,7 @@ describe "Admin/Users" do
     user = FactoryGirl.create(:user)
     visit admin_users_path
     click_link "Masq"
-    expect(current_path).to eq(dashboard_path(action: 'home'))
+    expect(current_path).to eq(dashboard_home_path)
     expect(page).to have_content user.email
   end
 

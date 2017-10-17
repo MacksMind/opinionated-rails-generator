@@ -1,12 +1,12 @@
 diff --git a/spec/rails_helper.rb b/spec/rails_helper.rb
-index 6f1ab14..dcbfef9 100644
+index 46ba8e0..497220c 100644
 --- a/spec/rails_helper.rb
 +++ b/spec/rails_helper.rb
 @@ -1,3 +1,4 @@
 +require 'simplecov'
  # This file is copied to spec/ when you run 'rails generate rspec:install'
+ require 'spec_helper'
  ENV['RAILS_ENV'] ||= 'test'
- require File.expand_path('../../config/environment', __FILE__)
 @@ -20,7 +21,7 @@ require 'rspec/rails'
  # directory. Alternatively, in the individual `*_spec.rb` files, manually
  # require only the support files necessary.

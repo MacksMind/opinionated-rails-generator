@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'active_support/inflector'
+require 'rails'
 require 'optparse'
 require 'fileutils'
 
@@ -10,6 +10,10 @@ class Baseline
   def system(cmd, *args)
     puts "==> #{cmd}"
     super
+  end
+
+  def rails_version_minor
+    Rails.version.sub(/\.[^.]$/,'')
   end
 
   # constructor
@@ -57,15 +61,12 @@ class Baseline
     # Setup a default environment
     system("rails new #{@opts[:project_dir]}")
     Dir.chdir(@opts[:project_dir])
-    system("git init && git add . && git commit -m 'Default rails install'")
+    system("git add . && git commit -m 'Default rails install'")
 
     # Configure Gemfile
     system('sed -e "s/^gem \'sqlite3\'$/gem \'sqlite3\', group: [:development, :test]/" Gemfile > Gemfile.new && mv Gemfile.new Gemfile')
     system("cat #{@opts[:resource_dir]}/patch/Gemfile | patch -p1")
     system("bundle install --without production && bundle update && git add . && git commit -m 'Configure Gemfile'")
-
-    # Configure New Relic
-    system("cp `bundle show newrelic_rpm`/newrelic.yml config && git add . && git commit -m 'Configure New Relic'")
 
     # Install Devise
     system("bundle exec rails generate devise:install && git add . && git commit -m 'Install devise'")
@@ -91,7 +92,7 @@ class Baseline
     time = Time.now
     Dir[File.join(@opts[:resource_dir],'migrations','*.rb')].each do |f|
       time += 1
-      FileUtils.cp(f,File.join(@opts[:migrate_dir],"#{time.utc.strftime("%Y%m%d%H%M%S")}_" + File.basename(f)))
+      system("sed -e '1s/$/[#{rails_version_minor}]/' #{f} > #{File.join(@opts[:migrate_dir],"#{time.utc.strftime("%Y%m%d%H%M%S")}_" + File.basename(f))}")
     end
     system("bundle exec rake db:migrate")
     system("git add . && git commit -m 'Initial migrations complete'")

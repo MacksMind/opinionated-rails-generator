@@ -1,9 +1,9 @@
 diff --git a/config/environments/production.rb b/config/environments/production.rb
-index 5c1b32e..1f796ea 100644
+index 2bcc21a..12b9b33 100644
 --- a/config/environments/production.rb
 +++ b/config/environments/production.rb
-@@ -42,7 +42,7 @@ Rails.application.configure do
-   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
+@@ -45,7 +45,7 @@ Rails.application.configure do
+   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
  
    # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
 -  # config.force_ssl = true
@@ -11,8 +11,7 @@ index 5c1b32e..1f796ea 100644
  
    # Use the lowest log level to ensure availability of diagnostic information
    # when problems arise.
-@@ -75,5 +75,10 @@ Rails.application.configure do
-   config.log_formatter = ::Logger::Formatter.new
+@@ -88,4 +88,9 @@ Rails.application.configure do
  
    # Do not dump schema after migrations.
    config.active_record.dump_schema_after_migration = false

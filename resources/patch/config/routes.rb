@@ -1,11 +1,11 @@
 diff --git a/config/routes.rb b/config/routes.rb
-index 3f66539..745fc18 100644
+index 787824f..f959372 100644
 --- a/config/routes.rb
 +++ b/config/routes.rb
-@@ -2,6 +2,19 @@ Rails.application.routes.draw do
-   # The priority is based upon order of creation: first created -> highest priority.
-   # See how all your routes lay out with "rake routes".
- 
+@@ -1,3 +1,19 @@
+ Rails.application.routes.draw do
+   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
++
 +  resource :account, only: [:edit, :update]
 +
 +  namespace :admin do
@@ -16,9 +16,9 @@ index 3f66539..745fc18 100644
 +   end
 +  end
 +
-+  get ':action' => 'dashboard', as: :dashboard
-+  root to: 'dashboard#index'
++  %w{home}.each do |page|
++    get page => "dashboard##{page}", as: "dashboard_#{page}"
++  end
 +
-   # You can have the root of your site routed with "root"
-   # root 'welcome#index'
- 
++  root to: 'dashboard#index'
+ end

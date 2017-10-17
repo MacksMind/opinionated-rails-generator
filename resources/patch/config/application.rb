@@ -1,13 +1,11 @@
 diff --git a/config/application.rb b/config/application.rb
-index 390f74d..39bbc17 100644
+index 796b144..6971129 100644
 --- a/config/application.rb
 +++ b/config/application.rb
-@@ -22,5 +22,12 @@ module Shiny
- 
-     # Do not swallow errors in after_commit/after_rollback callbacks.
-     config.active_record.raise_in_transactional_callbacks = true
-+
-+    config.action_view.field_error_proc = Proc.new { |html_tag, instance| "<div class=\"field_with_errors has-error\">#{html_tag}</div>".html_safe }
+@@ -14,5 +14,10 @@ module Shiny
+     # Settings in config/environments/* take precedence over those specified here.
+     # Application configuration should go into files in config/initializers
+     # -- all .rb files in that directory are automatically loaded.
 +
 +    config.app_name = Module.nesting.last.name
 +    config.domain_name = "#{config.app_name.downcase}.com"

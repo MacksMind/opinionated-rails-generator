@@ -1,17 +1,18 @@
 diff --git a/.gitignore b/.gitignore
-index 050c9d9..2356527 100644
+index dcc5b36..b43dbdd 100644
 --- a/.gitignore
 +++ b/.gitignore
-@@ -15,3 +15,12 @@
- /log/*
- !/log/.keep
- /tmp
+@@ -21,3 +21,13 @@
+ /yarn-error.log
+ 
+ .byebug_history
 +
 +# Other
 +/coverage
 +*~
 +*.swp
 +*.rej
++*.orig
 +/rerun.txt
 +/.sass-cache
 +/.env
