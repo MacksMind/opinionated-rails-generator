@@ -2,11 +2,11 @@
   - cache_unless @user.changed?, [params[:controller], @user] do
     - if @user.errors.any?
       #error_explanation
-        = pluralize(@user.errors.count, "error")
-        prohibited this account from being saved:
-        %ul
+        => pluralize(@user.errors.count, "error")
+        | prohibited this account from being saved:
+        ul
           - @user.errors.full_messages.each do |msg|
-            %li= msg
+            li= msg
     - if @user.new_record? || params[:controller] == 'admin/users'
       .form-group
         .col-sm-3
@@ -52,7 +52,7 @@
     .form-group
       .col-sm-3
         = f.label :title, class: 'control-label'
-        %span.optional (optional)
+        span.optional (optional)
       .col-sm-9
         = f.text_field :title, class: 'form-control'
     .form-group
@@ -63,7 +63,7 @@
     .form-group
       .col-sm-3
         = f.label :address_line_2, class: 'control-label'
-        %span.optional (optional)
+        span.optional (optional)
       .col-sm-9
         = f.text_field :address_line_2, class: 'form-control'
     .form-group
@@ -89,11 +89,11 @@
     - if params[:controller] == 'admin/users'
       .form-group
         .col-sm-3
-          %label.control-label Roles
+          label.control-label Roles
         .col-sm-9
           = hidden_field_tag 'user[roles][]'
           - for role in User::ROLES
-            %label{class: 'checkbox-inline'}
+            label.checkbox-inline
               = check_box_tag "user[roles][]", role, @user.has_role?(role), id: "user_role_#{role}"
               = role.titleize
   .form-group

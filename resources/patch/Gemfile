@@ -10,7 +10,7 @@ index 13ab512..73ba6e6 100644
 +group :development do
 +  gem 'newrelic_rpm'
 +  gem 'ruby-prof'
-+  gem 'haml-rails'
++  gem 'slim-rails'
 +  gem 'pry'
 +end
 +
@@ -38,7 +38,7 @@ index 13ab512..73ba6e6 100644
 +gem 'autoprefixer-rails'
 +gem 'devise'
 +gem 'pundit'
-+gem 'haml'
++gem 'slim'
 +gem 'will_paginate'
 +gem 'meta-tags', require: 'meta_tags'
 +gem 'rack-timeout'
