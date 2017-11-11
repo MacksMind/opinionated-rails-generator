@@ -3,7 +3,7 @@ require 'rails_helper'
 describe "Accounts" do
   describe "when signed in" do
     before(:each) do
-      @user = FactoryGirl.create(:user)
+      @user = FactoryBot.create(:user)
       signin_user @user
     end
 

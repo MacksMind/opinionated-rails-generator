@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "Admin/Users" do
   before(:each) do
-    @user = FactoryGirl.create(:admin_user, password: "testing1")
+    @user = FactoryBot.create(:admin_user, password: "testing1")
     signin_user @user
   end
 
@@ -44,7 +44,7 @@ describe "Admin/Users" do
   end
 
   it "allows masquerade" do
-    user = FactoryGirl.create(:user)
+    user = FactoryBot.create(:user)
     visit admin_users_path
     click_link "Masq"
     expect(current_path).to eq(dashboard_home_path)

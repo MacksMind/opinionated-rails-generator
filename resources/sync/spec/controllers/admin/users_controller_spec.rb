@@ -21,7 +21,7 @@ require 'rails_helper'
 RSpec.describe Admin::UsersController, type: :controller do
 
   before(:each) do
-    sign_in(@admin_user = FactoryGirl.create(:admin_user))
+    sign_in(@admin_user = FactoryBot.create(:admin_user))
   end
 
   # This should return the minimal set of attributes required to create a valid

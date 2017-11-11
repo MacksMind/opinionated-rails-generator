@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "Users" do
   before(:each) do
-    @user = FactoryGirl.create(:user, password: "testing1")
+    @user = FactoryBot.create(:user, password: "testing1")
     ActionMailer::Base.deliveries = []
   end
 

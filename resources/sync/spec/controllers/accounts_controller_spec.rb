@@ -21,7 +21,7 @@ require 'rails_helper'
 describe AccountsController do
 
   before(:each) do
-    sign_in(@user = FactoryGirl.create(:user))
+    sign_in(@user = FactoryBot.create(:user))
   end
 
   # This is a partial list of attributes since we're only dealing with updates
