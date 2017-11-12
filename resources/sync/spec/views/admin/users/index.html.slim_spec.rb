@@ -8,11 +8,11 @@ describe "/admin/users/index" do
       stub_model(User,
         email: "value for email",
         name: "value for name"
-      ){|u| u.roles = [] },
+      ) { |u| u.roles = [] },
       stub_model(User,
         email: "value for email",
         name: "value for name"
-      ){|u| u.roles = [] }
+      ) { |u| u.roles = [] }
     ])
   end
 

@@ -1,5 +1,5 @@
 diff --git a/config/environments/development.rb b/config/environments/development.rb
-index 5187e22..87e779f 100644
+index 5187e22..a98a88d 100644
 --- a/config/environments/development.rb
 +++ b/config/environments/development.rb
 @@ -40,7 +40,7 @@ Rails.application.configure do
@@ -16,5 +16,5 @@ index 5187e22..87e779f 100644
    # routes, locales, etc. This feature depends on the listen gem.
    config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 +
-+  config.action_mailer.default_url_options = {host: 'localhost:3000'}
++  config.action_mailer.default_url_options = { host: 'localhost:3000' }
  end

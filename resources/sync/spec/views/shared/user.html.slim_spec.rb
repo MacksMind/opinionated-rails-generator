@@ -6,7 +6,7 @@ describe "/shared/user" do
       email: "value for email",
       name: "value for name",
       country: stub_model(Country, name: "state of mind")
-    ){|u| u.roles = [] })
+    ) { |u| u.roles = [] })
   end
 
   it "renders attributes in <p>" do

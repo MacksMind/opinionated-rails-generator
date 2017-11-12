@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
     self.roles.include?(role.to_s)
   end
 
-  scope :with_role, lambda { |role| {conditions: "roles_mask & #{2**ROLES.index(role.to_s)} > 0"} }
+  scope :with_role, lambda { |role| { conditions: "roles_mask & #{2**ROLES.index(role.to_s)} > 0" } }
 
   def name
     "#{first_name} #{last_name}"

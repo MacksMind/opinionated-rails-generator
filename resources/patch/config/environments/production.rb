@@ -1,5 +1,5 @@
 diff --git a/config/environments/production.rb b/config/environments/production.rb
-index 2bcc21a..12b9b33 100644
+index 2bcc21a..da135c9 100644
 --- a/config/environments/production.rb
 +++ b/config/environments/production.rb
 @@ -45,7 +45,7 @@ Rails.application.configure do
@@ -19,5 +19,5 @@ index 2bcc21a..12b9b33 100644
 +  config.static_cache_control = "public, max-age=172800"
 +  config.middleware.use Rack::Deflater
 +
-+  config.action_mailer.default_url_options = {host: config.canonical_hostname, protocol: 'https'}
++  config.action_mailer.default_url_options = { host: config.canonical_hostname, protocol: 'https' }
  end

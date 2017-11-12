@@ -8,7 +8,7 @@ describe "/admin/users/edit" do
       new_record?: false,
       email: "value for email",
       name: "value for name"
-    ){|u| u.roles = [] })
+    ) { |u| u.roles = [] })
   end
 
   it "renders the edit user form" do

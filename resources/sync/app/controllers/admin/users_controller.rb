@@ -48,29 +48,29 @@ class Admin::UsersController < ApplicationController
 
   private
 
-  def set_user
-    @user = User.find(params[:id])
-    authorize @user
-  end
+    def set_user
+      @user = User.find(params[:id])
+      authorize @user
+    end
 
-  def user_params
-    params.require(:user).permit(:email,
-                                 :password,
-                                 :password_confirmation,
-                                 :first_name,
-                                 :last_name,
-                                 :time_zone,
-                                 :phone_number,
-                                 :company_name,
-                                 :title,
-                                 :address_line_1,
-                                 :address_line_2,
-                                 :city,
-                                 :state_id,
-                                 :state_code,
-                                 :postal_code,
-                                 :country_id,
-                                 :country_code,
-                                 :roles => [])
-  end
+    def user_params
+      params.require(:user).permit(:email,
+                                   :password,
+                                   :password_confirmation,
+                                   :first_name,
+                                   :last_name,
+                                   :time_zone,
+                                   :phone_number,
+                                   :company_name,
+                                   :title,
+                                   :address_line_1,
+                                   :address_line_2,
+                                   :city,
+                                   :state_id,
+                                   :state_code,
+                                   :postal_code,
+                                   :country_id,
+                                   :country_code,
+                                   roles: [])
+    end
 end

@@ -19,18 +19,18 @@ class AccountsController < ApplicationController
 
   private
 
-  def user_params
-    params.require(:user).permit(:first_name,
-                                 :last_name,
-                                 :time_zone,
-                                 :phone_number,
-                                 :company_name,
-                                 :title,
-                                 :address_line_1,
-                                 :address_line_2,
-                                 :city,
-                                 :state_id,
-                                 :postal_code,
-                                 :country_id)
-  end
+    def user_params
+      params.require(:user).permit(:first_name,
+                                   :last_name,
+                                   :time_zone,
+                                   :phone_number,
+                                   :company_name,
+                                   :title,
+                                   :address_line_1,
+                                   :address_line_2,
+                                   :city,
+                                   :state_id,
+                                   :postal_code,
+                                   :country_id)
+    end
 end

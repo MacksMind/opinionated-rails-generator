@@ -1,5 +1,5 @@
 diff --git a/config/routes.rb b/config/routes.rb
-index 787824f..f959372 100644
+index 787824f..ecf5d3b 100644
 --- a/config/routes.rb
 +++ b/config/routes.rb
 @@ -1,3 +1,19 @@
@@ -9,11 +9,11 @@ index 787824f..f959372 100644
 +  resource :account, only: [:edit, :update]
 +
 +  namespace :admin do
-+   resources :users do
-+     member do
-+       post :masquerade
-+     end
-+   end
++    resources :users do
++      member do
++        post :masquerade
++      end
++    end
 +  end
 +
 +  %w{home}.each do |page|

@@ -11,7 +11,7 @@ namespace :db do
     desc 'Create YAML test fixtures from data in an existing database.
     Defaults to development database.  Set RAILS_ENV to override.'
     task dump: :set_fixtures_path do
-      sql  = "SELECT * FROM %s"
+      sql = "SELECT * FROM %s"
       skip_tables = ["schema_migrations"]
       ActiveRecord::Base.establish_connection(Rails.env)
       tables = ENV['TABLES'] && ENV['TABLES'].split(',')

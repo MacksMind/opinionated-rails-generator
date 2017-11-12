@@ -3,6 +3,6 @@ class Country < ActiveRecord::Base
   validates_presence_of :code, :name
 
   def state_codes
-    State.where(country_code: self.code).collect{|s| s.code}
+    State.where(country_code: self.code).collect { |s| s.code }
   end
 end
