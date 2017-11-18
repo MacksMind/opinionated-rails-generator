@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Country < ActiveRecord::Base
   validates_uniqueness_of :code, :name, case_sensitive: false
   validates_presence_of :code, :name

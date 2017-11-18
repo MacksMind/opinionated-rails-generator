@@ -102,5 +102,8 @@ class Baseline
 
     # Prep for use
     system('bundle exec rake db:fixtures:load db:seed')
+
+    # Run Rubocop
+    system('rubocop --auto-gen-config')
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   sequence :email do |n|
     "user#{n}@example.com"
@@ -15,7 +17,7 @@ FactoryBot.define do
     city { %w(Goshen Auburn Bluffton Butler Clinton Columbus Decatur Elkhart Gary Indianapolis Greensburg).sample }
     postal_code { "#{rand(89999) + 10000}" }
     state_code { |i| i.country.state_codes.sample }
-    phone_number '123-456-7890'
+    phone_number "123-456-7890"
   end
 
   factory :admin_user, parent: :user do

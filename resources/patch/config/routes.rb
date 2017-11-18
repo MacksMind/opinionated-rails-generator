@@ -20,5 +20,5 @@ index 787824f..ecf5d3b 100644
 +    get page => "dashboard##{page}", as: "dashboard_#{page}"
 +  end
 +
-+  root to: 'dashboard#index'
++  root to: "dashboard#index"
  end

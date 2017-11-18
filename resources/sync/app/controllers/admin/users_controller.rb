@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Admin::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, only: [:show, :edit, :update, :destroy, :masquerade]
@@ -10,7 +12,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
-    respond_with(@user, template: 'shared/user')
+    respond_with(@user, template: "shared/user")
   end
 
   def new

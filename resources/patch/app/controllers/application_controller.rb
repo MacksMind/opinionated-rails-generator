@@ -17,7 +17,7 @@ index 1c07694..3b01db1 100644
 +  protected
 +
 +    helper_method :signed_in_root_path
-+    def signed_in_root_path(resource=User)
++    def signed_in_root_path(resource = User)
 +      dashboard_home_path
 +    end
 +

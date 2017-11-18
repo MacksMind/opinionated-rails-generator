@@ -19,16 +19,16 @@ index 2bcc21a..836c25b 100644
 +  config.static_cache_control = "public, max-age=172800"
 +  config.middleware.use Rack::Deflater
 +
-+  config.action_mailer.default_url_options = { host: config.canonical_hostname, protocol: 'https' }
++  config.action_mailer.default_url_options = { host: config.canonical_hostname, protocol: "https" }
  end
 +
 +# Heroku
 +# ActionMailer::Base.smtp_settings = {
-+#   address:              'smtp.sendgrid.net',
-+#   port:                 '587',
++#   address:              "smtp.sendgrid.net",
++#   port:                 "587",
 +#   authentication:       :plain,
-+#   user_name:            ENV['SENDGRID_USERNAME'],
-+#   password:             ENV['SENDGRID_PASSWORD'],
-+#   domain:               'heroku.com',
++#   user_name:            ENV["SENDGRID_USERNAME"],
++#   password:             ENV["SENDGRID_PASSWORD"],
++#   domain:               "heroku.com",
 +#   enable_starttls_auto: true
 +# }

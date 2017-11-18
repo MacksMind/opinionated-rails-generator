@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DashboardPolicy < Struct.new(:user, :dashboard)
   class Scope
     def initialize(user, scope)

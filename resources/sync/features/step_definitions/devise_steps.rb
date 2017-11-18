@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Database
 
 Given /^(?:I am|I have|I) signed up (?:as|with) "(.*)\/(.*)"$/ do |email, password|
