@@ -1,5 +1,5 @@
 diff --git a/Gemfile b/Gemfile
-index 13ab512..73ba6e6 100644
+index 13ab512..ff0e2c7 100644
 --- a/Gemfile
 +++ b/Gemfile
 @@ -52,3 +52,44 @@ end
@@ -11,12 +11,12 @@ index 13ab512..73ba6e6 100644
 +  gem "newrelic_rpm"
 +  gem "ruby-prof"
 +  gem "slim-rails"
-+  gem "pry"
 +  gem "rubocop-rails"
 +end
 +
 +group :development, :test do
 +  gem "rspec-rails"
++  gem "pry-byebug"
 +end
 +
 +group :test do
@@ -35,7 +35,7 @@ index 13ab512..73ba6e6 100644
 +  # gem "rails_12factor"
 +end
 +
-+gem "bootstrap-sass"
++gem "bootstrap", "~> 4.0.0.beta2.1"
 +gem "autoprefixer-rails"
 +gem "devise"
 +gem "pundit"
