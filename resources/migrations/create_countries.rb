@@ -3,8 +3,6 @@ class CreateCountries < ActiveRecord::Migration
     create_table :countries do |t|
       t.string :code, limit: 2
       t.string :name
-
-      t.timestamps null: false
     end
   end
 

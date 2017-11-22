@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 # If using RSpec 2.x (or if not using Rails), require `spec_helper` instead
-require 'rails_helper'
+require "rails_helper"
 
 # If using RSpec 2.x, remove `RSpec.`
 RSpec.describe "Factory Bot" do

@@ -2,7 +2,7 @@
 
 class User < ActiveRecord::Base
   belongs_to :country
-  belongs_to :state
+  belongs_to :state, optional: true
 
   validates_presence_of \
     :first_name,
