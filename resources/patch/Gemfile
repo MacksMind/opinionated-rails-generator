@@ -2,13 +2,12 @@ diff --git a/Gemfile b/Gemfile
 index 13ab512..ff0e2c7 100644
 --- a/Gemfile
 +++ b/Gemfile
-@@ -52,3 +52,44 @@ end
+@@ -52,3 +52,43 @@ end
  
  # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
  gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 +
 +group :development do
-+  gem "newrelic_rpm"
 +  gem "ruby-prof"
 +  gem "slim-rails"
 +  gem "rubocop-rails"
