@@ -20,7 +20,7 @@ describe "Users" do
       fill_in "Password confirmation", with: "sooooper"
       fill_in "Current password", with: "testing1"
       click_button "Update"
-      expect(current_path).to eq(dashboard_home_path)
+      expect(current_path).to eq(dashboard_index_path)
       expect(page).to have_content "Your account has been updated successfully."
       expect(page).to have_content "alicia@example.com"
       expect(@user.reload.valid_password?("sooooper")).to be true
@@ -43,7 +43,7 @@ describe "Users" do
       fill_in "Password confirmation", with: ""
       fill_in "Current password", with: "testing1"
       click_button "Update"
-      expect(current_path).to eq(dashboard_home_path)
+      expect(current_path).to eq(dashboard_index_path)
       expect(page).to have_content "Your account has been updated successfully."
       expect(@user.reload.valid_password?("testing1")).to be true
     end
@@ -63,7 +63,7 @@ describe "Users" do
 
     it "can't visit signup page" do
       visit new_user_registration_path
-      expect(current_path).to eq(dashboard_home_path)
+      expect(current_path).to eq(dashboard_index_path)
     end
   end
 
@@ -85,7 +85,7 @@ describe "Users" do
       fill_in "Postal code", with: "01923"
       select "UNITED STATES", from: "Country"
       click_button "Sign up"
-      expect(current_path).to eq(dashboard_home_path)
+      expect(current_path).to eq(dashboard_index_path)
       expect(page).to have_content "Welcome! You have signed up successfully."
     end
 
@@ -124,7 +124,7 @@ describe "Users" do
       fill_in "Email", with: @user.email
       fill_in "Password", with: @user.password
       click_button "Sign in"
-      expect(current_path).to eq(dashboard_home_path)
+      expect(current_path).to eq(dashboard_index_path)
     end
 
     it "sends a forgot password email" do

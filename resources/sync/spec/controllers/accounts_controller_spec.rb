@@ -56,7 +56,7 @@ describe AccountsController do
 
       it "redirects to root" do
         put :update, params: { user: valid_attributes }
-        expect(response).to redirect_to(dashboard_home_path)
+        expect(response).to redirect_to(dashboard_index_path)
       end
     end
 

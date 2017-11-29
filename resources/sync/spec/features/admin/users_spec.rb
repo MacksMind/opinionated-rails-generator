@@ -49,7 +49,7 @@ describe "Admin/Users" do
     user = FactoryBot.create(:user)
     visit admin_users_path
     click_link "Masq"
-    expect(current_path).to eq(dashboard_home_path)
+    expect(current_path).to eq(dashboard_index_path)
     expect(page).to have_content user.email
   end
 
