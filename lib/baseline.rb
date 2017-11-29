@@ -100,10 +100,10 @@ class Baseline
     # Configure Devise for User
     system("bundle exec rails generate devise User && bundle exec rake db:migrate && git add . && git commit -m 'Configure devise for User'")
 
+    # Run Rubocop
+    system("rubocop --auto-correct && rubocop --auto-gen-config && git add . && git commit -m 'Rubocop changes'")
+
     # Prep for use
     system('bundle exec rake db:fixtures:load db:seed')
-
-    # Run Rubocop
-    system('rubocop --auto-gen-config')
   end
 end
