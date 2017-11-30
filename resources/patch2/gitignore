@@ -15,4 +15,4 @@ index dcc5b36..b43dbdd 100644
 +*.orig
 +/rerun.txt
 +/.sass-cache
-+/.env
++/*.env

@@ -11,6 +11,7 @@ FactoryBot.define do
     last_name "Jones"
     password "testing1"
     time_zone "Eastern Time (US & Canada)"
+    confirmed_at DateTime.current
     country_code "US"
     company_name "Princeton-Plainsboro Teaching Hospital (PPTH)"
     address_line_1 { "#{rand(900) + 100} #{%w(Maple Oak Hickory Apple Ash Beech Cedar Cypress).sample} #{%w(St Ave Rd Dr).sample}" }

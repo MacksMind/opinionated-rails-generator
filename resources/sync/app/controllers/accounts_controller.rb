@@ -2,6 +2,7 @@
 
 class AccountsController < ApplicationController
   before_action :authenticate_user!
+  skip_before_action :redirect_invalid_user
 
   def edit
     @user = current_user

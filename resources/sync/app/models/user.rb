@@ -45,8 +45,8 @@ class User < ActiveRecord::Base
 
   scope :with_role, lambda { |role| { conditions: "roles_mask & #{2**ROLES.index(role.to_s)} > 0" } }
 
-  def name
-    "#{first_name} #{last_name}"
+  def full_name
+    "#{first_name} #{last_name}".strip
   end
 
   def cancel

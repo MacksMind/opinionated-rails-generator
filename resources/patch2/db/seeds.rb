@@ -1,8 +1,8 @@
 diff --git a/db/seeds.rb b/db/seeds.rb
-index 1beea2a..ba351c4 100644
+index 1beea2a..3ddd677 100644
 --- a/db/seeds.rb
 +++ b/db/seeds.rb
-@@ -5,3 +5,21 @@
+@@ -5,3 +5,22 @@
  #
  #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
  #   Character.create(name: 'Luke', movie: movies.first)
@@ -23,4 +23,5 @@ index 1beea2a..ba351c4 100644
 +)
 +
 +user.roles = User::ROLES
++user.skip_confirmation!
 +user.save!

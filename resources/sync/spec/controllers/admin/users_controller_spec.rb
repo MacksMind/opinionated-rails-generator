@@ -59,7 +59,7 @@ RSpec.describe Admin::UsersController, type: :controller do
     it "assigns all users as @users" do
       user = User.create! valid_attributes
       get :index
-      expect(assigns(:users)).to eq([@admin_user, user])
+      expect(assigns(:users)).to match_array [@admin_user, user]
     end
   end
 
@@ -102,7 +102,7 @@ RSpec.describe Admin::UsersController, type: :controller do
 
       it "redirects to the created user" do
         post :create, params: { user: valid_attributes }
-        expect(response).to redirect_to([:admin, User.last])
+        expect(response).to redirect_to([:admin, User.order(created_at: :desc).first])
       end
     end
 

@@ -10,7 +10,7 @@ describe "Users" do
 
   describe "when signed in" do
     before(:each) do
-      signin_user @user
+      sign_in @user
     end
 
     it "can update email and password" do
@@ -21,8 +21,7 @@ describe "Users" do
       fill_in "Current password", with: "testing1"
       click_button "Update"
       expect(current_path).to eq(dashboard_index_path)
-      expect(page).to have_content "Your account has been updated successfully."
-      expect(page).to have_content "alicia@example.com"
+      expect(page).to have_content " You updated your account successfully, but we need to verify your new email address."
       expect(@user.reload.valid_password?("sooooper")).to be true
     end
 
@@ -85,8 +84,8 @@ describe "Users" do
       fill_in "Postal code", with: "01923"
       select "UNITED STATES", from: "Country"
       click_button "Sign up"
-      expect(current_path).to eq(dashboard_index_path)
-      expect(page).to have_content "Welcome! You have signed up successfully."
+      expect(current_path).to eq(root_path)
+      expect(page).to have_content "A message with a confirmation link has been sent to your email address."
     end
 
     it "can't register with missing information" do

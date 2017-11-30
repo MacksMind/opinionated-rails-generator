@@ -36,6 +36,12 @@ describe AccountsController do
       get :edit
       expect(assigns(:user)).to eq(@user)
     end
+
+    it "still works with an invalid user" do
+      @user.update_attribute(:first_name, nil)
+      get :edit
+      expect(response).to be_success
+    end
   end
 
   describe "PUT update" do

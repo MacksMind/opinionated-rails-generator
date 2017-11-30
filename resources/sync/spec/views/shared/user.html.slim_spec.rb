@@ -5,8 +5,9 @@ require "rails_helper"
 describe "/shared/user" do
   before(:each) do
     assign(:user, stub_model(User,
+      id: SecureRandom.uuid,
       email: "value for email",
-      name: "value for name",
+      full_name: "value for name",
       country: stub_model(Country, name: "state of mind")
     ) { |u| u.roles = [] })
   end

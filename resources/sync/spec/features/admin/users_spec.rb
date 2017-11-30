@@ -5,7 +5,7 @@ require "rails_helper"
 describe "Admin/Users" do
   before(:each) do
     @user = FactoryBot.create(:admin_user, password: "testing1")
-    signin_user @user
+    sign_in @user
   end
 
   it "creates a new user" do
@@ -48,7 +48,9 @@ describe "Admin/Users" do
   it "allows masquerade" do
     user = FactoryBot.create(:user)
     visit admin_users_path
-    click_link "Masq"
+    within("##{dom_id(user)}") do
+      click_link "Masq"
+    end
     expect(current_path).to eq(dashboard_index_path)
     expect(page).to have_content user.email
   end

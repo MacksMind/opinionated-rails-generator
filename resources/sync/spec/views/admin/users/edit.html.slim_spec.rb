@@ -7,9 +7,10 @@ describe "/admin/users/edit" do
 
   before(:each) do
     @user = assign(:user, stub_model(User,
+      id: SecureRandom.uuid,
       new_record?: false,
       email: "value for email",
-      name: "value for name"
+      full_name: "value for name"
     ) { |u| u.roles = [] })
   end
 

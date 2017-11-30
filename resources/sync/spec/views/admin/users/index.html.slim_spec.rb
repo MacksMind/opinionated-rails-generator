@@ -8,12 +8,14 @@ describe "/admin/users/index" do
   before(:each) do
     assign(:users, [
       stub_model(User,
+        id: SecureRandom.uuid,
         email: "value for email",
-        name: "value for name"
+        full_name: "value for name"
       ) { |u| u.roles = [] },
       stub_model(User,
+        id: SecureRandom.uuid,
         email: "value for email",
-        name: "value for name"
+        full_name: "value for name"
       ) { |u| u.roles = [] }
     ])
   end

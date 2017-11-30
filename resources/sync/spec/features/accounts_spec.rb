@@ -6,7 +6,7 @@ describe "Accounts" do
   describe "when signed in" do
     before(:each) do
       @user = FactoryBot.create(:user)
-      signin_user @user
+      sign_in @user
     end
 
     it "can update miscellaneous info" do

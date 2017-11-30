@@ -1,0 +1,51 @@
+doctype html
+html[lang="en"]
+  head
+    meta[charset="utf-8"]
+    meta[http-equiv="X-UA-Compatible" content="IE=edge"]
+    meta[name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"]
+    = display_meta_tags site: Rails.application.config.app_name.gsub(/[^[:ascii:]]/,''), reverse: true
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    - if Rails.env.production? && !(user_signed_in? && current_user.has_role?(:admin))
+      - render "shared/analytics"
+  body
+    nav.navbar.navbar-expand-sm.navbar-dark.bg-dark
+      .container
+        = link_to Rails.application.config.app_name, user_signed_in? ? signed_in_root_path : root_path, class: "navbar-brand"
+        button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"]
+          span.navbar-toggler-icon
+        #navbarSupportedContent.collapse.navbar-collapse
+          ul.navbar-nav.mr-auto
+            - if user_signed_in?
+          ul.navbar-nav
+            - if user_signed_in?
+              li.nav-item.dropdown
+                a#navbarDropdownUser.nav-link.dropdown-toggle[href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
+                  = current_user.email
+                .dropdown-menu[aria-labelledby="navbarDropdownUser"]
+                  - if current_user.has_role?(:admin)
+                    = link_to "Users", admin_users_path, class: "dropdown-item"
+                    .dropdown-divider
+                  = link_to "Profile", edit_account_path, class: "dropdown-item"
+                  = link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item"
+            - else
+              li.nav-item
+                = link_to "Sign up", new_user_registration_path, class: "nav-link"
+              li.nav-item
+                = link_to "Sign in", new_user_session_path, class: "nav-link"
+    .container
+      #flash
+        - flash.each do |level, text|
+          - level = :error if level == :failure
+          = render 'shared/alert', level: level, text: text
+      #main
+        = yield
+    #footer
+      .container
+        p.text-center
+          = Rails.application.config.app_name
+          |  &copy; 2017 &mdash; Powered by&nbsp;
+          a[href="//www.agilereasoning.com", target="_blank"]
+            = image_tag 'AgileLogo_32.png', alt: 'Agile Reasoning logo', size: '32x34'

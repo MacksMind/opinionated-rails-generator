@@ -8,7 +8,7 @@ describe "/admin/users/new" do
   before(:each) do
     assign(:user, stub_model(User,
       email: "value for email",
-      name: "value for name"
+      full_name: "value for name"
     ).as_new_record { |u| u.stub(roles: []) })
   end
 

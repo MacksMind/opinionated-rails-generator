@@ -1,5 +1,5 @@
 diff --git a/Gemfile b/Gemfile
-index 13ab512..ff0e2c7 100644
+index 13ab512..2ba6bd1 100644
 --- a/Gemfile
 +++ b/Gemfile
 @@ -52,3 +52,43 @@ end
@@ -29,11 +29,11 @@ index 13ab512..ff0e2c7 100644
 +end
 +
 +group :production do
-+  gem "pg"
 +  # Heroku
-+  # gem "rails_12factor"
++  gem "rails_12factor"
 +end
 +
++gem "pg"
 +gem "bootstrap", "~> 4.0.0.beta2.1"
 +gem "autoprefixer-rails"
 +gem "devise"
@@ -45,4 +45,4 @@ index 13ab512..ff0e2c7 100644
 +gem "jquery-rails"
 +
 +# Heroku
-+# ruby "2.4.2"
++ruby "2.4.2"
