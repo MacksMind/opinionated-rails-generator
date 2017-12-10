@@ -7,7 +7,7 @@ class Admin::UsersController < ApplicationController
   respond_to :html
 
   def index
-    @users = policy_scope(User)
+    @users = policy_scope(User).active
     respond_with(@users)
   end
 
@@ -39,8 +39,8 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
-    respond_with(@user, location: [:admin, @user])
+    @user.cancel
+    redirect_to action: :index
   end
 
   def masquerade

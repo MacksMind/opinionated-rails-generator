@@ -1,4 +1,4 @@
 h2 Edit my account
 = render 'shared/user', url: account_path
-.actions
-  = link_to "Change email or password", edit_user_registration_path
+ul.nav.nav-pills
+  li.nav-item= link_to "Change email or password", edit_user_registration_path, class: "nav-link"

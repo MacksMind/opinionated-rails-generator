@@ -17,13 +17,15 @@ class User < ActiveRecord::Base
 
   validate :state_code_matches_country
 
+  scope :active, -> { where(active: true) }
+
   def state_code_matches_country
-    allowed_values = self.country.try(:state_codes)
+    allowed_values = self.country&.state_codes
 
     if allowed_values.blank?
-      errors.add(:state_id, "not permitted for #{self.country.try(:name)}") if state_id
+      errors.add(:state_id, "not permitted for #{self.country&.name}") if state_id
     else
-      errors.add(:state_id, "must be one of #{allowed_values.sort.join(" ")}") if !allowed_values.include?(self.state.try(:code))
+      errors.add(:state_id, "must be one of #{allowed_values.sort.join(" ")}") if !allowed_values.include?(self.state&.code)
     end
   end
 
@@ -49,13 +51,20 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}".strip
   end
 
+  def active_for_authentication?
+    super && self.active?
+  end
+
+  def inactive_message
+    self.active? ? super : "Sorry, this account has been canceled. Please contact support to reactivate."
+  end
+
   def cancel
-    self.active = false
-    self.save!
+    self.update_attribute(:active, false)
   end
 
   def country_code
-    self.country.try(:code)
+    self.country&.code
   end
 
   def country_code=(code)
@@ -63,7 +72,7 @@ class User < ActiveRecord::Base
   end
 
   def state_code
-    self.state.try(:code)
+    self.state&.code
   end
 
   def state_code=(code)

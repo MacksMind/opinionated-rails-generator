@@ -165,7 +165,7 @@ RSpec.describe Admin::UsersController, type: :controller do
       user = User.create! valid_attributes
       expect {
         delete :destroy, params: { id: user.to_param }
-      }.to change(User, :count).by(-1)
+      }.to change { User.active.count }.by(-1)
     end
 
     it "redirects to the users list" do

@@ -5,7 +5,13 @@ class DashboardController < ApplicationController
 
   def welcome
     authorize :dashboard, :show?
-    redirect_to :dashboard_index if current_user
+    if current_user
+      redirect_to :dashboard_index
+    elsif params[:email].present?
+      redir_params = { user: { email: params[:email] } }
+      redirect_to User.exists?(email: params[:email]) ?
+        new_user_session_path(redir_params) : new_user_registration_path(redir_params)
+    end
   end
 
   def index

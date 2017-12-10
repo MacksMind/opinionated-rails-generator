@@ -3,16 +3,10 @@ h2 Change your password
   = devise_error_messages!
   = f.hidden_field :reset_password_token
   .form-group
-    .col-sm-3
-      = f.label :password, "New password", class: 'control-label'
-    .col-sm-9
-      = f.password_field :password, autofocus: true, class: 'form-control'
+    = f.label :password, "New password"
+    = f.password_field :password, autofocus: true, class: 'form-control'
   .form-group
-    .col-sm-3
-      = f.label :password_confirmation, "Confirm new password", class: 'control-label'
-    .col-sm-9
-      = f.password_field :password_confirmation, class: 'form-control'
-  .form-group
-    .col-sm-3
-      = f.button "Change my password", class: 'btn btn-default'
+    = f.label :password_confirmation, "Confirm new password"
+    = f.password_field :password_confirmation, class: 'form-control'
+  = f.button "Change my password", class: 'btn btn-primary'
 = render 'devise/shared/links'

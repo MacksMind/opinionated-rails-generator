@@ -8,8 +8,8 @@ end
 
 When /^I delete the (\d+)(?:st|nd|rd|th) user$/ do |pos|
   visit admin_users_path
-  within("table > tr:nth-child(#{pos.to_i + 1})") do
-    click_link "Destroy"
+  within("table > tbody > tr:nth-child(#{pos.to_i})") do
+    find("i[title='Destroy']").first(:xpath, ".//..").click
   end
 end
 

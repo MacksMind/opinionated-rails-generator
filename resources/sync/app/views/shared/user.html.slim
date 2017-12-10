@@ -16,14 +16,15 @@ table.table
     th Address
     td
       = @user.address_line_1
+      - if @user.address_line_2.present?
+        br
+        = @user.address_line_2
       br
-      = @user.address_line_2
-      == "<br>" if !@user.address_line_2.blank?
       = @user.city
       =< @user.state_code
       =< @user.postal_code
       br
-      = @user.country.try(:name)
+      = @user.country&.name
   - if params[:controller] == "admin/users"
     tr
       th Roles

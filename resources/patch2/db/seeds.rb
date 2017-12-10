@@ -13,12 +13,12 @@ index 1beea2a..3ddd677 100644
 +  first_name: "Mack",
 +  last_name: "Earnhardt",
 +  time_zone: "Eastern Time (US & Canada)",
-+  company_name: "Agile Reasoning LLC",
++  company_name: "Agile Reasoning",
 +  phone_number: "888-AGILE-2.0",
-+  address_line_1: "PO Box 274",
-+  city: "Carmel",
++  address_line_1: "12175 Visionary Way Ste 610",
++  city: "Fishers",
 +  state_code: "IN",
-+  postal_code: "46082",
++  postal_code: "46038",
 +  country_code: "US"
 +)
 +

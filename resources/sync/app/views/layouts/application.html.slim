@@ -1,6 +1,8 @@
 doctype html
 html[lang="en"]
   head
+    - if Rails.env.production? && !(user_signed_in? && current_user.has_role?(:admin))
+      = render "shared/analytics"
     meta[charset="utf-8"]
     meta[http-equiv="X-UA-Compatible" content="IE=edge"]
     meta[name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"]
@@ -8,8 +10,7 @@ html[lang="en"]
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    - if Rails.env.production? && !(user_signed_in? && current_user.has_role?(:admin))
-      - render "shared/analytics"
+    = javascript_include_tag "https://use.fontawesome.com/releases/v5.0.1/js/all.js", defer: true
   body
     nav.navbar.navbar-expand-sm.navbar-dark.bg-dark
       .container
@@ -47,5 +48,5 @@ html[lang="en"]
         p.text-center
           = Rails.application.config.app_name
           |  &copy; 2017 &mdash; Powered by&nbsp;
-          a[href="//www.agilereasoning.com", target="_blank"]
+          a[href="https://www.agilereasoning.com", target="_blank"]
             = image_tag 'AgileLogo_32.png', alt: 'Agile Reasoning logo', size: '32x34'
