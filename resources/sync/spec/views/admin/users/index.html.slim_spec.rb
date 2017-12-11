@@ -6,6 +6,7 @@ describe "/admin/users/index" do
   include Admin::UsersHelper
 
   before(:each) do
+    assign(:q, User.ransack)
     assign(:users, [
       stub_model(User,
         id: SecureRandom.uuid,

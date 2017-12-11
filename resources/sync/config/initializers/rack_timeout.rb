@@ -1,3 +1,3 @@
 # frozen_string_literal: true
 
-Rack::Timeout.timeout = 20  # seconds
+Rack::Timeout::Logger.disable if Rails.env.development?

@@ -79,7 +79,7 @@ class Baseline
     # Create migrations
     FileUtils.mkdir(@opts[:migrate_dir] = File.join(@opts[:project_dir], "db", "migrate"))
     fake_timestamp = 20171129180001
-    Dir[File.join(@opts[:resource_dir],'migrations','*.rb')].each do |f|
+    Dir[File.join(@opts[:resource_dir],'migrations','*.rb')].sort.each do |f|
       system("sed -e '1s/$/[#{rails_version_minor}]/' #{f} > #{File.join(@opts[:migrate_dir],"#{fake_timestamp}_" + File.basename(f))}")
       fake_timestamp += 1
     end

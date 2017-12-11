@@ -1,10 +1,21 @@
 h2 Listing users
+= search_form_for [:admin, @q] do |f|
+  .form-row
+    .col-sm
+      = f.search_field :email_cont, class: "form-control mb-1", placeholder: "Email contains"
+    .col-sm
+      = f.search_field :first_name_cont, class: "form-control mb-1", placeholder: "First name contains"
+    .col-sm
+      = f.search_field :last_name_cont, class: "form-control mb-1", placeholder: "Last name contains"
+    = f.button "Search", class: "btn btn-secondary ml-auto"
+    = f.button "Clear", class: "btn btn-secondary ml-2 mr-auto", onclick: "clearForm(this.form);"
+br
 table.table.table-responsive
   thead
     tr
-      th Email
-      th Name
-      th Roles
+      th=sort_link(@q, :email)
+      th=sort_link(@q, :first_name, %i(first_name last_name), 'Name')
+      th=sort_link(@q, :roles_mask, "Roles")
       th
   tbody
     - @users.each do |user|

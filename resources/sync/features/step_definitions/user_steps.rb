@@ -15,7 +15,5 @@ end
 
 Then /^I should see the following users:$/ do |expected_users_table|
   actual_table = find("table").all("tr").map { |row| row.all("th,td")[0..2].map { |cell| cell.text.strip } }
-  expected_users_table.map_column!("Name") { |n| n || "" }
-  expected_users_table.map_column!("Roles") { |r| r || "" }
   expected_users_table.diff!(actual_table)
 end

@@ -7,7 +7,9 @@ class Admin::UsersController < ApplicationController
   respond_to :html
 
   def index
-    @users = policy_scope(User).active
+    @q = policy_scope(User).active.ransack(params[:q])
+    @q.sorts = %w{first_name last_name} if @q.sorts.empty?
+    @users = @q.result(distinct: true)
     respond_with(@users)
   end
 

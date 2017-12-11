@@ -2,7 +2,7 @@ diff --git a/Gemfile b/Gemfile
 index 13ab512..2ba6bd1 100644
 --- a/Gemfile
 +++ b/Gemfile
-@@ -52,3 +52,43 @@ end
+@@ -52,3 +52,46 @@ end
  
  # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
  gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
@@ -11,11 +11,13 @@ index 13ab512..2ba6bd1 100644
 +  gem "ruby-prof"
 +  gem "slim-rails"
 +  gem "rubocop-rails"
++  gem "annotate"
 +end
 +
 +group :development, :test do
 +  gem "rspec-rails"
 +  gem "pry-byebug"
++  gem "bullet"
 +end
 +
 +group :test do
@@ -43,6 +45,7 @@ index 13ab512..2ba6bd1 100644
 +gem "meta-tags", require: "meta_tags"
 +gem "rack-timeout"
 +gem "jquery-rails"
++gem "ransack"
 +
 +# Heroku
 +ruby "2.4.2"
