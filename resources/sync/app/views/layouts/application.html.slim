@@ -23,9 +23,10 @@ html[lang="en"]
           ul.navbar-nav
             - if user_signed_in?
               li.nav-item.dropdown
-                a#navbarDropdownUser.nav-link.dropdown-toggle[href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"]
-                  = current_user.email
-                .dropdown-menu[aria-labelledby="navbarDropdownUser"]
+                a#navbarDropdownUser.nav-link.dropdown-toggle[href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false", style="padding: 4px;"]
+                  span.mr-1= current_user.email
+                  = gravatar_tag(current_user.email, current_user.full_name)
+                .dropdown-menu.dropdown-menu-right[aria-labelledby="navbarDropdownUser"]
                   - if current_user.has_role?(:admin)
                     = link_to "Users", admin_users_path, class: "dropdown-item"
                     .dropdown-divider
