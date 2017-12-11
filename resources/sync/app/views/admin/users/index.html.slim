@@ -13,6 +13,7 @@ br
 table.table.table-responsive
   thead
     tr
+      th
       th=sort_link(@q, :email)
       th=sort_link(@q, :first_name, %i(first_name last_name))
       th=sort_link(@q, :last_name, %i(last_name first_name))
@@ -21,6 +22,7 @@ table.table.table-responsive
   tbody
     - @users.each do |user|
       tr id=dom_id(user)
+        td= gravatar_tag(user.email, user.full_name)
         td= user.email
         td= user.first_name
         td= user.last_name

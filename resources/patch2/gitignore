@@ -1,8 +1,8 @@
 diff --git a/.gitignore b/.gitignore
-index dcc5b36..b43dbdd 100644
+index dcc5b36..66e1db3 100644
 --- a/.gitignore
 +++ b/.gitignore
-@@ -21,3 +21,13 @@
+@@ -21,3 +21,16 @@
  /yarn-error.log
  
  .byebug_history
@@ -16,3 +16,6 @@ index dcc5b36..b43dbdd 100644
 +/rerun.txt
 +/.sass-cache
 +/*.env
++
++# Ignore cached images
++/public/system
