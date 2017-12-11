@@ -41,7 +41,7 @@ index 13ab512..2ba6bd1 100644
 +gem "devise"
 +gem "pundit"
 +gem "slim"
-+gem "will_paginate"
++gem "kaminari"
 +gem "meta-tags", require: "meta_tags"
 +gem "rack-timeout"
 +gem "jquery-rails"

@@ -32,4 +32,5 @@ table.table.table-responsive
             =<link_to [:admin,user], data: {confirm: 'Are you sure?'}, method: :delete do
               i.fas.fa-trash-alt title="Destroy"
             =<link_to 'Masq', masquerade_admin_user_path(user), method: :post
+= paginate @users
 = link_to 'New user', new_admin_user_path

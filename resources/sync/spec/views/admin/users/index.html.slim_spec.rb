@@ -7,7 +7,7 @@ describe "/admin/users/index" do
 
   before(:each) do
     assign(:q, User.ransack)
-    assign(:users, [
+    assign(:users, Kaminari.paginate_array([
       stub_model(User,
         id: SecureRandom.uuid,
         email: "value for email",
@@ -18,7 +18,7 @@ describe "/admin/users/index" do
         email: "value for email",
         full_name: "value for name"
       ) { |u| u.roles = [] }
-    ])
+    ]).page(1))
   end
 
   it "renders a list of users" do
