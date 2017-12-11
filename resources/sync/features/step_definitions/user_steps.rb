@@ -14,6 +14,8 @@ When /^I delete the (\d+)(?:st|nd|rd|th) user$/ do |pos|
 end
 
 Then /^I should see the following users:$/ do |expected_users_table|
-  actual_table = find("table").all("tr").map { |row| row.all("th,td")[0..2].map { |cell| cell.text.strip } }
+  actual_table = find("table").all("tr").map { |row| row.all("th,td")[0..3].map { |cell| cell.text.strip } }
+  # The last row displays pagination with colspan in order to scroll with the table on a mobile device
+  actual_table = actual_table[0..-2]
   expected_users_table.diff!(actual_table)
 end

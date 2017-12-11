@@ -14,14 +14,16 @@ table.table.table-responsive
   thead
     tr
       th=sort_link(@q, :email)
-      th=sort_link(@q, :first_name, %i(first_name last_name), 'Name')
+      th=sort_link(@q, :first_name, %i(first_name last_name))
+      th=sort_link(@q, :last_name, %i(last_name first_name))
       th=sort_link(@q, :roles_mask, "Roles")
       th
   tbody
     - @users.each do |user|
       tr id=dom_id(user)
         td= user.email
-        td= user.full_name
+        td= user.first_name
+        td= user.last_name
         td= user.roles.join(",")
         td
           = link_to [:admin,user] do
@@ -31,6 +33,8 @@ table.table.table-responsive
           - unless user == current_user
             =<link_to [:admin,user], data: {confirm: 'Are you sure?'}, method: :delete do
               i.fas.fa-trash-alt title="Destroy"
+          - unless user.has_role? :admin
             =<link_to 'Masq', masquerade_admin_user_path(user), method: :post
-= paginate @users
+    tr
+      td[colspan=5]= paginate @users
 = link_to 'New user', new_admin_user_path

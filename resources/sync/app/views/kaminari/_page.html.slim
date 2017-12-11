@@ -6,5 +6,5 @@
     total_pages  : total number of pages
     per_page     : number of items to fetch per page
     remote       : data-remote
-li.nav-item
-  = link_to page, url, remote: remote, rel: page.rel, class: "nav-link#{' active' if page.current?}"
+li[class="page-item#{' active' if page.current?}"]
+  = link_to page, url, remote: remote, rel: page.rel, class: "page-link"

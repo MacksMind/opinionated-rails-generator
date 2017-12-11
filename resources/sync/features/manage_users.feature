@@ -13,8 +13,8 @@ Feature: Manage users
     And I am signed in as an admin
     When I delete the 2nd user
     Then I should see the following users:
-      |Email|Name ▲|Roles|
-      |email_1@example.com|Alpha Jones||
-      |email_3@example.com|Charlie Jones||
-      |email_4@example.com|Delta Jones||
-      |insider@example.com|Insider Jones|admin|
+      |Email|First name ▲|Last name ▲|Roles|
+      |email_1@example.com|Alpha|Jones||
+      |email_3@example.com|Charlie|Jones||
+      |email_4@example.com|Delta|Jones||
+      |insider@example.com|Insider|Jones|admin|
