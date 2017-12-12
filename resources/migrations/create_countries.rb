@@ -1,7 +1,6 @@
 class CreateCountries < ActiveRecord::Migration
   def self.up
-    create_table :countries do |t|
-      t.string :code, limit: 2
+    create_table :countries, primary_key: :code, id: :string, limit: 2, force: :cascade do |t|
       t.string :name
     end
   end

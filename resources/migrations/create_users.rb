@@ -15,8 +15,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string    :address_line_2
       t.string    :city
       t.string    :postal_code
-      t.integer   :state_id
-      t.integer   :country_id
+      t.string    :state_id, limit: 4
+      t.string    :country_code, limit: 2
 
       t.timestamps null: false
     end

@@ -1,536 +1,536 @@
 ---
-states_103:
-  name: Tamaulipas
-  country_code: MX
-  code: TM
-  id: 103
-states_82:
-  name: Coahuila
-  country_code: MX
-  code: CO
-  id: 82
-states_17:
-  name: Arizona
-  country_code: US
-  code: AZ
-  id: 17
-states_40:
-  name: Michigan
-  country_code: US
-  code: MI
-  id: 40
-states_38:
-  name: Maryland
-  country_code: US
-  code: MD
-  id: 38
-states_61:
-  name: South Carolina
-  country_code: US
-  code: SC
-  id: 61
-states_59:
-  name: Puerto Rico
-  country_code: US
-  code: PR
-  id: 59
-states_7:
-  name: Nova Scotia
-  country_code: CA
-  code: NS
-  id: 7
-states_104:
-  name: Tlaxcala
-  country_code: MX
-  code: TL
-  id: 104
-states_83:
-  name: Colima
-  country_code: MX
-  code: CL
-  id: 83
-states_20:
-  name: Colorado
-  country_code: US
-  code: CO
-  id: 20
-states_18:
-  name: Arkansas
-  country_code: US
-  code: AR
-  id: 18
-states_41:
-  name: Minnesota
-  country_code: US
-  code: MN
-  id: 41
-states_39:
-  name: Massachusetts
-  country_code: US
-  code: MA
-  id: 39
-states_62:
-  name: South Dakota
-  country_code: US
-  code: SD
-  id: 62
-states_8:
-  name: Nunavut
-  country_code: CA
-  code: NU
-  id: 8
-states_105:
-  name: Veracruz
-  country_code: MX
-  code: VE
-  id: 105
-states_84:
-  name: Durango
-  country_code: MX
-  code: DG
-  id: 84
-states_21:
-  name: Connecticut
-  country_code: US
-  code: CT
-  id: 21
-states_19:
-  name: California
-  country_code: US
-  code: CA
-  id: 19
-states_42:
-  name: Mississippi
-  country_code: US
-  code: MS
-  id: 42
-states_63:
-  name: Tennessee
-  country_code: US
-  code: TN
-  id: 63
-states_9:
-  name: Ontario
-  country_code: CA
-  code: "ON"
-  id: 9
-states_106:
-  name: "Yucat\xC3\xA1n"
-  country_code: MX
-  code: YU
-  id: 106
-states_85:
-  name: Federal District
-  country_code: MX
-  code: DF
-  id: 85
-states_43:
-  name: Missouri
-  country_code: US
-  code: MO
-  id: 43
-states_64:
-  name: Texas
-  country_code: US
-  code: TX
-  id: 64
-states_22:
-  name: Delaware
-  country_code: US
-  code: DE
-  id: 22
-states_107:
-  name: Zacatecas
-  country_code: MX
-  code: ZA
-  id: 107
-states_86:
-  name: Guanajuato
-  country_code: MX
-  code: GT
-  id: 86
-states_65:
-  name: Utah
-  country_code: US
-  code: UT
-  id: 65
-states_23:
-  name: District of Columbia
-  country_code: US
-  code: DC
-  id: 23
-states_44:
-  name: Montana
-  country_code: US
-  code: MT
-  id: 44
-states_87:
-  name: Guerrero
-  country_code: MX
-  code: GR
-  id: 87
-states_24:
-  name: Federated States of Micronesia
-  country_code: US
-  code: FM
-  id: 24
-states_45:
-  name: Nebraska
-  country_code: US
-  code: NE
-  id: 45
-states_66:
-  name: Vermont
-  country_code: US
-  code: VT
-  id: 66
-states_88:
-  name: Hidalgo
-  country_code: MX
-  code: HG
-  id: 88
-states_67:
-  name: Virgin Islands
-  country_code: US
-  code: VI
-  id: 67
-states_46:
-  name: Nevada
-  country_code: US
-  code: NV
-  id: 46
-states_90:
-  name: Mexico State
-  country_code: MX
-  code: ME
-  id: 90
-states_89:
-  name: Jalisco
-  country_code: MX
-  code: JA
-  id: 89
-states_68:
-  name: Virginia
-  country_code: US
-  code: VA
-  id: 68
-states_25:
-  name: Florida
-  country_code: US
-  code: FL
-  id: 25
-states_91:
-  name: "Michoac\xC3\xA1n"
-  country_code: MX
-  code: MI
-  id: 91
-states_70:
-  name: West Virginia
-  country_code: US
-  code: WV
-  id: 70
-states_26:
-  name: Georgia
-  country_code: US
-  code: GA
-  id: 26
-states_47:
-  name: New Hampshire
-  country_code: US
-  code: NH
-  id: 47
-states_92:
-  name: Morelos
-  country_code: MX
-  code: MO
-  id: 92
-states_71:
-  name: Wisconsin
-  country_code: US
-  code: WI
-  id: 71
-states_69:
-  name: Washington
-  country_code: US
-  code: WA
-  id: 69
-states_27:
-  name: Guam
-  country_code: US
-  code: GU
-  id: 27
-states_50:
-  name: New York
-  country_code: US
-  code: NY
-  id: 50
-states_48:
-  name: New Jersey
-  country_code: US
-  code: NJ
-  id: 48
-states_93:
-  name: Nayarit
-  country_code: MX
-  code: NA
-  id: 93
-states_72:
-  name: Wyoming
-  country_code: US
-  code: WY
-  id: 72
-states_30:
-  name: Illinois
-  country_code: US
-  code: IL
-  id: 30
-states_28:
-  name: Hawaii
-  country_code: US
-  code: HI
-  id: 28
-states_51:
-  name: North Carolina
-  country_code: US
-  code: NC
-  id: 51
-states_49:
-  name: New Mexico
-  country_code: US
-  code: NM
-  id: 49
-states_94:
-  name: "Nuevo Le\xC3\xB3n"
-  country_code: MX
-  code: NL
-  id: 94
-states_73:
-  name: Armed Forces Americas
-  country_code: US
-  code: AA
-  id: 73
-states_10:
-  name: Prince Edward Island
-  country_code: CA
-  code: PE
-  id: 10
-states_31:
-  name: Indiana
-  country_code: US
-  code: IN
-  id: 31
-states_29:
-  name: Idaho
-  country_code: US
-  code: ID
-  id: 29
-states_52:
-  name: North Dakota
-  country_code: US
-  code: ND
-  id: 52
-states_95:
-  name: Oaxaca
-  country_code: MX
-  code: OA
-  id: 95
-states_74:
-  name: Armed Forces
-  country_code: US
-  code: AE
-  id: 74
-states_32:
-  name: Iowa
-  country_code: US
-  code: IA
-  id: 32
-states_53:
-  name: Northern Mariana Islands
-  country_code: US
-  code: MP
-  id: 53
-states_11:
-  name: Quebec
-  country_code: CA
-  code: QC
-  id: 11
-states_96:
-  name: Puebla
-  country_code: MX
-  code: PB
-  id: 96
-states_75:
-  name: Armed Forces Pacific
-  country_code: US
-  code: AP
-  id: 75
-states_54:
-  name: Ohio
-  country_code: US
-  code: OH
-  id: 54
-states_1:
-  name: Alberta
+states_CAAB:
+  id: CAAB
   country_code: CA
   code: AB
-  id: 1
-states_12:
-  name: Saskatchewan
+  name: Alberta
+states_CABC:
+  id: CABC
   country_code: CA
-  code: SK
-  id: 12
-states_33:
-  name: Kansas
-  country_code: US
-  code: KS
-  id: 33
-states_97:
-  name: "Quer\xC3\xA9taro"
-  country_code: MX
-  code: QE
-  id: 97
-states_76:
-  name: Aguascalientes
-  country_code: MX
-  code: AG
-  id: 76
-states_2:
+  code: BC
   name: British Columbia
-  country_code: CA
-  code: BC
-  id: 2
-states_13:
-  name: Yukon
-  country_code: CA
-  code: YT
-  id: 13
-states_34:
-  name: Kentucky
-  country_code: US
-  code: KY
-  id: 34
-states_55:
-  name: Oklahoma
-  country_code: US
-  code: OK
-  id: 55
-states_98:
-  name: Quintana Roo
-  country_code: MX
-  code: QR
-  id: 98
-states_77:
-  name: Baja California
-  country_code: MX
-  code: BC
-  id: 77
-states_35:
-  name: Louisiana
-  country_code: US
-  code: LA
-  id: 35
-states_56:
-  name: Oregon
-  country_code: US
-  code: OR
-  id: 56
-states_3:
-  name: Manitoba
+states_CAMB:
+  id: CAMB
   country_code: CA
   code: MB
-  id: 3
-states_100:
-  name: Sinaloa
-  country_code: MX
-  code: SI
-  id: 100
-states_99:
-  name: "San Luis Potos\xC3\xAD"
-  country_code: MX
-  code: SL
-  id: 99
-states_78:
-  name: Baja California Sur
-  country_code: MX
-  code: BS
-  id: 78
-states_14:
-  name: Alabama
-  country_code: US
-  code: AL
-  id: 14
-states_57:
-  name: Palau
-  country_code: US
-  code: PW
-  id: 57
-states_4:
-  name: New Brunswick
+  name: Manitoba
+states_CANB:
+  id: CANB
   country_code: CA
   code: NB
-  id: 4
-states_101:
-  name: Sonora
-  country_code: MX
-  code: SO
-  id: 101
-states_80:
-  name: Chiapas
-  country_code: MX
-  code: CS
-  id: 80
-states_79:
-  name: Campeche
-  country_code: MX
-  code: CM
-  id: 79
-states_15:
-  name: Alaska
-  country_code: US
-  code: AK
-  id: 15
-states_36:
-  name: Maine
-  country_code: US
-  code: ME
-  id: 36
-states_5:
-  name: Newfoundland and Labrador
+  name: New Brunswick
+states_CANL:
+  id: CANL
   country_code: CA
   code: NL
-  id: 5
-states_102:
-  name: Tabasco
-  country_code: MX
-  code: TB
-  id: 102
-states_81:
-  name: Chihuahua
-  country_code: MX
-  code: CH
-  id: 81
-states_16:
-  name: American Samoa
-  country_code: US
-  code: AS
-  id: 16
-states_37:
-  name: Marshall Islands
-  country_code: US
-  code: MH
-  id: 37
-states_60:
-  name: Rhode Island
-  country_code: US
-  code: RI
-  id: 60
-states_58:
-  name: Pennsylvania
-  country_code: US
-  code: PA
-  id: 58
-states_6:
-  name: Northwest Territories
+  name: Newfoundland and Labrador
+states_CANS:
+  id: CANS
+  country_code: CA
+  code: NS
+  name: Nova Scotia
+states_CANT:
+  id: CANT
   country_code: CA
   code: NT
-  id: 6
+  name: Northwest Territories
+states_CANU:
+  id: CANU
+  country_code: CA
+  code: NU
+  name: Nunavut
+states_CAON:
+  id: CAON
+  country_code: CA
+  code: 'ON'
+  name: Ontario
+states_CAPE:
+  id: CAPE
+  country_code: CA
+  code: PE
+  name: Prince Edward Island
+states_CAQC:
+  id: CAQC
+  country_code: CA
+  code: QC
+  name: Quebec
+states_CASK:
+  id: CASK
+  country_code: CA
+  code: SK
+  name: Saskatchewan
+states_CAYT:
+  id: CAYT
+  country_code: CA
+  code: YT
+  name: Yukon
+states_MXAG:
+  id: MXAG
+  country_code: MX
+  code: AG
+  name: Aguascalientes
+states_MXBC:
+  id: MXBC
+  country_code: MX
+  code: BC
+  name: Baja California
+states_MXBS:
+  id: MXBS
+  country_code: MX
+  code: BS
+  name: Baja California Sur
+states_MXCH:
+  id: MXCH
+  country_code: MX
+  code: CH
+  name: Chihuahua
+states_MXCL:
+  id: MXCL
+  country_code: MX
+  code: CL
+  name: Colima
+states_MXCM:
+  id: MXCM
+  country_code: MX
+  code: CM
+  name: Campeche
+states_MXCO:
+  id: MXCO
+  country_code: MX
+  code: CO
+  name: Coahuila
+states_MXCS:
+  id: MXCS
+  country_code: MX
+  code: CS
+  name: Chiapas
+states_MXDF:
+  id: MXDF
+  country_code: MX
+  code: DF
+  name: Federal District
+states_MXDG:
+  id: MXDG
+  country_code: MX
+  code: DG
+  name: Durango
+states_MXGR:
+  id: MXGR
+  country_code: MX
+  code: GR
+  name: Guerrero
+states_MXGT:
+  id: MXGT
+  country_code: MX
+  code: GT
+  name: Guanajuato
+states_MXHG:
+  id: MXHG
+  country_code: MX
+  code: HG
+  name: Hidalgo
+states_MXJA:
+  id: MXJA
+  country_code: MX
+  code: JA
+  name: Jalisco
+states_MXME:
+  id: MXME
+  country_code: MX
+  code: ME
+  name: Mexico State
+states_MXMI:
+  id: MXMI
+  country_code: MX
+  code: MI
+  name: MichoacÃ¡n
+states_MXMO:
+  id: MXMO
+  country_code: MX
+  code: MO
+  name: Morelos
+states_MXNA:
+  id: MXNA
+  country_code: MX
+  code: NA
+  name: Nayarit
+states_MXNL:
+  id: MXNL
+  country_code: MX
+  code: NL
+  name: Nuevo LeÃ³n
+states_MXOA:
+  id: MXOA
+  country_code: MX
+  code: OA
+  name: Oaxaca
+states_MXPB:
+  id: MXPB
+  country_code: MX
+  code: PB
+  name: Puebla
+states_MXQE:
+  id: MXQE
+  country_code: MX
+  code: QE
+  name: QuerÃ©taro
+states_MXQR:
+  id: MXQR
+  country_code: MX
+  code: QR
+  name: Quintana Roo
+states_MXSI:
+  id: MXSI
+  country_code: MX
+  code: SI
+  name: Sinaloa
+states_MXSL:
+  id: MXSL
+  country_code: MX
+  code: SL
+  name: San Luis PotosÃ­
+states_MXSO:
+  id: MXSO
+  country_code: MX
+  code: SO
+  name: Sonora
+states_MXTB:
+  id: MXTB
+  country_code: MX
+  code: TB
+  name: Tabasco
+states_MXTL:
+  id: MXTL
+  country_code: MX
+  code: TL
+  name: Tlaxcala
+states_MXTM:
+  id: MXTM
+  country_code: MX
+  code: TM
+  name: Tamaulipas
+states_MXVE:
+  id: MXVE
+  country_code: MX
+  code: VE
+  name: Veracruz
+states_MXYU:
+  id: MXYU
+  country_code: MX
+  code: YU
+  name: YucatÃ¡n
+states_MXZA:
+  id: MXZA
+  country_code: MX
+  code: ZA
+  name: Zacatecas
+states_USAA:
+  id: USAA
+  country_code: US
+  code: AA
+  name: Armed Forces Americas
+states_USAE:
+  id: USAE
+  country_code: US
+  code: AE
+  name: Armed Forces
+states_USAK:
+  id: USAK
+  country_code: US
+  code: AK
+  name: Alaska
+states_USAL:
+  id: USAL
+  country_code: US
+  code: AL
+  name: Alabama
+states_USAP:
+  id: USAP
+  country_code: US
+  code: AP
+  name: Armed Forces Pacific
+states_USAR:
+  id: USAR
+  country_code: US
+  code: AR
+  name: Arkansas
+states_USAS:
+  id: USAS
+  country_code: US
+  code: AS
+  name: American Samoa
+states_USAZ:
+  id: USAZ
+  country_code: US
+  code: AZ
+  name: Arizona
+states_USCA:
+  id: USCA
+  country_code: US
+  code: CA
+  name: California
+states_USCO:
+  id: USCO
+  country_code: US
+  code: CO
+  name: Colorado
+states_USCT:
+  id: USCT
+  country_code: US
+  code: CT
+  name: Connecticut
+states_USDC:
+  id: USDC
+  country_code: US
+  code: DC
+  name: District of Columbia
+states_USDE:
+  id: USDE
+  country_code: US
+  code: DE
+  name: Delaware
+states_USFL:
+  id: USFL
+  country_code: US
+  code: FL
+  name: Florida
+states_USFM:
+  id: USFM
+  country_code: US
+  code: FM
+  name: Federated States of Micronesia
+states_USGA:
+  id: USGA
+  country_code: US
+  code: GA
+  name: Georgia
+states_USGU:
+  id: USGU
+  country_code: US
+  code: GU
+  name: Guam
+states_USHI:
+  id: USHI
+  country_code: US
+  code: HI
+  name: Hawaii
+states_USIA:
+  id: USIA
+  country_code: US
+  code: IA
+  name: Iowa
+states_USID:
+  id: USID
+  country_code: US
+  code: ID
+  name: Idaho
+states_USIL:
+  id: USIL
+  country_code: US
+  code: IL
+  name: Illinois
+states_USIN:
+  id: USIN
+  country_code: US
+  code: IN
+  name: Indiana
+states_USKS:
+  id: USKS
+  country_code: US
+  code: KS
+  name: Kansas
+states_USKY:
+  id: USKY
+  country_code: US
+  code: KY
+  name: Kentucky
+states_USLA:
+  id: USLA
+  country_code: US
+  code: LA
+  name: Louisiana
+states_USMA:
+  id: USMA
+  country_code: US
+  code: MA
+  name: Massachusetts
+states_USMD:
+  id: USMD
+  country_code: US
+  code: MD
+  name: Maryland
+states_USME:
+  id: USME
+  country_code: US
+  code: ME
+  name: Maine
+states_USMH:
+  id: USMH
+  country_code: US
+  code: MH
+  name: Marshall Islands
+states_USMI:
+  id: USMI
+  country_code: US
+  code: MI
+  name: Michigan
+states_USMN:
+  id: USMN
+  country_code: US
+  code: MN
+  name: Minnesota
+states_USMO:
+  id: USMO
+  country_code: US
+  code: MO
+  name: Missouri
+states_USMP:
+  id: USMP
+  country_code: US
+  code: MP
+  name: Northern Mariana Islands
+states_USMS:
+  id: USMS
+  country_code: US
+  code: MS
+  name: Mississippi
+states_USMT:
+  id: USMT
+  country_code: US
+  code: MT
+  name: Montana
+states_USNC:
+  id: USNC
+  country_code: US
+  code: NC
+  name: North Carolina
+states_USND:
+  id: USND
+  country_code: US
+  code: ND
+  name: North Dakota
+states_USNE:
+  id: USNE
+  country_code: US
+  code: NE
+  name: Nebraska
+states_USNH:
+  id: USNH
+  country_code: US
+  code: NH
+  name: New Hampshire
+states_USNJ:
+  id: USNJ
+  country_code: US
+  code: NJ
+  name: New Jersey
+states_USNM:
+  id: USNM
+  country_code: US
+  code: NM
+  name: New Mexico
+states_USNV:
+  id: USNV
+  country_code: US
+  code: NV
+  name: Nevada
+states_USNY:
+  id: USNY
+  country_code: US
+  code: NY
+  name: New York
+states_USOH:
+  id: USOH
+  country_code: US
+  code: OH
+  name: Ohio
+states_USOK:
+  id: USOK
+  country_code: US
+  code: OK
+  name: Oklahoma
+states_USOR:
+  id: USOR
+  country_code: US
+  code: OR
+  name: Oregon
+states_USPA:
+  id: USPA
+  country_code: US
+  code: PA
+  name: Pennsylvania
+states_USPR:
+  id: USPR
+  country_code: US
+  code: PR
+  name: Puerto Rico
+states_USPW:
+  id: USPW
+  country_code: US
+  code: PW
+  name: Palau
+states_USRI:
+  id: USRI
+  country_code: US
+  code: RI
+  name: Rhode Island
+states_USSC:
+  id: USSC
+  country_code: US
+  code: SC
+  name: South Carolina
+states_USSD:
+  id: USSD
+  country_code: US
+  code: SD
+  name: South Dakota
+states_USTN:
+  id: USTN
+  country_code: US
+  code: TN
+  name: Tennessee
+states_USTX:
+  id: USTX
+  country_code: US
+  code: TX
+  name: Texas
+states_USUT:
+  id: USUT
+  country_code: US
+  code: UT
+  name: Utah
+states_USVA:
+  id: USVA
+  country_code: US
+  code: VA
+  name: Virginia
+states_USVI:
+  id: USVI
+  country_code: US
+  code: VI
+  name: Virgin Islands
+states_USVT:
+  id: USVT
+  country_code: US
+  code: VT
+  name: Vermont
+states_USWA:
+  id: USWA
+  country_code: US
+  code: WA
+  name: Washington
+states_USWI:
+  id: USWI
+  country_code: US
+  code: WI
+  name: Wisconsin
+states_USWV:
+  id: USWV
+  country_code: US
+  code: WV
+  name: West Virginia
+states_USWY:
+  id: USWY
+  country_code: US
+  code: WY
+  name: Wyoming

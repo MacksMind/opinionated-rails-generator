@@ -13,18 +13,20 @@ namespace :db do
     desc 'Create YAML test fixtures from data in an existing database.
     Defaults to development database.  Set RAILS_ENV to override.'
     task dump: :set_fixtures_path do
-      sql = "SELECT * FROM %s"
       skip_tables = %w{schema_migrations ar_internal_metadata}
       ActiveRecord::Base.establish_connection
-      tables = ENV["TABLES"] && ENV["TABLES"].split(",")
+      tables = ENV["TABLES"]&.split(",")
       tables ||= (ActiveRecord::Base.connection.tables - skip_tables)
 
       tables.each do |table_name|
-        i = "000"
+        counter = "00000"
         File.open("#{Rails.root}/spec/fixtures/#{table_name}.yml", "w") do |file|
-          data = ActiveRecord::Base.connection.select_all(sql % table_name)
+          pkey = ActiveRecord::Base.connection.primary_key(table_name)
+          sql = "SELECT * FROM #{table_name}"
+          sql += " ORDER BY #{pkey}" if pkey
+          data = ActiveRecord::Base.connection.select_all(sql)
           file.write data.inject({}) { |hash, record|
-            hash_key = "#{table_name}_#{record["id"] || record["uuid"] || i = i.succ}"
+            hash_key = "#{table_name}_#{record[pkey] || counter = counter.succ}"
             hash[hash_key] = record
             hash
           }.to_yaml

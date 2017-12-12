@@ -79,14 +79,14 @@
           = f.collection_select :state_id, State.order(:name), :id, :name, {include_blank: true}, class: 'form-control'
       .form-group.row
         .col-sm-4
-          = f.label :postal_code, class: 'col-form-label'
+          = f.label :postal_code, "Zip/Postal code", class: 'col-form-label'
         .col-sm-8
           = f.text_field :postal_code, class: 'form-control'
       .form-group.row
         .col-sm-4
-          = f.label :country_id, class: 'col-form-label'
+          = f.label :country_code, "Country", class: 'col-form-label'
         .col-sm-8
-          = f.collection_select :country_id, Country.order(:name), :id, :name, {include_blank: true}, class: 'form-control'
+          = f.collection_select :country_code, Country.order(:name), :code, :name, {include_blank: true}, class: 'form-control'
     - if params[:controller] == 'admin/users'
       .form-group.row
         .col-sm-4
@@ -103,3 +103,8 @@
   - else
     = f.button class: 'btn btn-primary'
   =<link_to "Cancel", :back
+javascript:
+  $( "#user_state_id" ).change(function() {
+    var country_code = $(this).val().substring(0,2);
+    $( "#user_country_code" ).val(country_code);
+  });

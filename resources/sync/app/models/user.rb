@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class User < ActiveRecord::Base
-  belongs_to :country, optional: true
+  belongs_to :country, optional: true, primary_key: :code, foreign_key: :country_code
   belongs_to :state, optional: true
 
   validates_presence_of \
@@ -20,12 +20,15 @@ class User < ActiveRecord::Base
   end
 
   def state_code_matches_country
+    return if country_code.blank? && state_id.blank?
+    return if country_code.present? && country_code == state_id&.[](0 ,2)
+
     allowed_values = self.country&.state_codes
 
     if allowed_values.blank?
-      errors.add(:state_id, "not permitted for #{self.country&.name}") if state_id
+      errors.add(:state_id, "not permitted for #{self.country&.name}") if state_id.present?
     else
-      errors.add(:state_id, "must be one of #{allowed_values.sort.join(" ")}") if !allowed_values.include?(self.state&.code)
+      errors.add(:state_id, "must be one of #{allowed_values.sort.join(" ")}") if !allowed_values.include?(self.state_code)
     end
   end
 
@@ -63,16 +66,8 @@ class User < ActiveRecord::Base
     self.update_attribute(:active, false)
   end
 
-  def country_code
-    self.country&.code
-  end
-
-  def country_code=(code)
-    self.country = Country.find_by_code(code)
-  end
-
   def state_code
-    self.state&.code
+    self.state_id&.[](2 ,2)
   end
 
   def state_code=(code)
