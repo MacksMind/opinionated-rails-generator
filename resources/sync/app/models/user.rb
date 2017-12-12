@@ -1,23 +1,23 @@
 # frozen_string_literal: true
 
 class User < ActiveRecord::Base
-  belongs_to :country
+  belongs_to :country, optional: true
   belongs_to :state, optional: true
 
   validates_presence_of \
     :first_name,
     :last_name,
-    :time_zone,
-    :phone_number,
-    :company_name,
-    :address_line_1,
-    :city,
-    :postal_code,
-    :country_id
+    :time_zone
 
   validate :state_code_matches_country
 
+  before_validation :set_time_zone, on: :create
+
   scope :active, -> { where(active: true) }
+
+  def set_time_zone
+    self.time_zone ||= "Eastern Time (US & Canada)"
+  end
 
   def state_code_matches_country
     allowed_values = self.country&.state_codes
