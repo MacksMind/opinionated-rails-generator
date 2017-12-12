@@ -2,8 +2,9 @@
   - cache_unless @user.changed?, [params[:controller], @user] do
     - if @user.errors.any?
       #error_explanation
-        => pluralize(@user.errors.count, "error")
-        | prohibited this account from being saved:
+        p
+          = pluralize(@user.errors.count, "error")
+          |  prohibited this account from being saved:
         ul
           - @user.errors.full_messages.each do |msg|
             li= msg
@@ -106,5 +107,7 @@
 javascript:
   $( "#user_state_id" ).change(function() {
     var country_code = $(this).val().substring(0,2);
-    $( "#user_country_code" ).val(country_code);
+    if (country_code) {
+      $( "#user_country_code" ).val(country_code);
+    }
   });

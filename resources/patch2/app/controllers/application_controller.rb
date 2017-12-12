@@ -46,7 +46,7 @@ index 1c07694..51ad7b8 100644
 +        :city,
 +        :state_id,
 +        :postal_code,
-+        :country_id
++        :country_code
 +      ])
 +    end
  end

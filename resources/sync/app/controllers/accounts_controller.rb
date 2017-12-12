@@ -34,6 +34,6 @@ class AccountsController < ApplicationController
                                    :city,
                                    :state_id,
                                    :postal_code,
-                                   :country_id)
+                                   :country_code)
     end
 end

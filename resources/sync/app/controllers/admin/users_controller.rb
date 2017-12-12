@@ -73,7 +73,6 @@ class Admin::UsersController < ApplicationController
                                    :state_id,
                                    :state_code,
                                    :postal_code,
-                                   :country_id,
                                    :country_code,
                                    roles: [])
     end
