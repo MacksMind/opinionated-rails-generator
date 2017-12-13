@@ -55,8 +55,9 @@ class Baseline
     system("git add . && git commit -m 'Default rails install'")
 
     # Configure Gemfile
-    system('sed -e "s/^gem \'sqlite3\'$/# gem \'sqlite3\'/" Gemfile > Gemfile.new && mv Gemfile.new Gemfile')
     system("find #{@opts[:resource_dir]}/patch1 -type f | xargs cat | patch --forward -p1")
+    # The Gemfile patch is a fuzzy match due to the Rails version
+    FileUtils.rm(File.join(@opts[:project_dir],'Gemfile.orig'))
     system("bundle install --without production && bundle update && git add . && git commit -m 'Apply initial patches'")
 
     # Install Devise
@@ -68,6 +69,8 @@ class Baseline
 
     # Patch files
     system("find #{@opts[:resource_dir]}/patch2 -type f | xargs cat | patch --forward -p1")
+    # The devise patch is a fuzzy match due to the pepper line
+    FileUtils.rm(File.join(@opts[:project_dir],'config/initializers/devise.rb.orig'))
     system("git add . && git commit -m 'Apply main patches'")
 
     # Sync resources

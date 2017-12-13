@@ -75,8 +75,8 @@ describe "Users" do
       fill_in "user_password", with: "humpty dumpty"
       fill_in "Password confirmation", with: "humpty dumpty"
       click_button "Sign up"
-      expect(current_path).to eq(root_path)
-      expect(page).to have_content "A message with a confirmation link has been sent to your email address."
+      expect(current_path).to eq(dashboard_index_path)
+      expect(page).to have_content "Welcome! You have signed up successfully."
     end
 
     it "can't register with missing information" do

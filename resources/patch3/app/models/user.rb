@@ -8,7 +8,7 @@ index c51aace..1a12d4f 100644
    devise :database_authenticatable, :registerable,
 -         :recoverable, :rememberable, :trackable, :validatable
 +         :recoverable, :rememberable, :trackable, :validatable,
-+         :confirmable
++         :confirmable, :lockable
 +
    belongs_to :country, optional: true, primary_key: :code, foreign_key: :country_code
    belongs_to :state, optional: true

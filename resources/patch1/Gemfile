@@ -1,7 +1,14 @@
 diff --git a/Gemfile b/Gemfile
-index 13ab512..2ba6bd1 100644
+index 13ab512..2963145 100644
 --- a/Gemfile
 +++ b/Gemfile
+@@ -11,5 +11,5 @@ end
+ # Use sqlite3 as the database for Active Record
+-gem 'sqlite3'
++# gem 'sqlite3'
+ # Use Puma as the app server
+ gem 'puma', '~> 3.7'
+ # Use SCSS for stylesheets
 @@ -52,3 +52,46 @@ end
  
  # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
 
   def state_code_matches_country
     return if country_code.blank? && state_id.blank?
-    return if country_code.present? && country_code == state_id&.[](0 ,2)
+    return if country_code.present? && country_code == state_id&.[](0, 2)
 
     allowed_values = self.country&.state_codes
 
@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
   end
 
   def state_code
-    self.state_id&.[](2 ,2)
+    self.state_id&.[](2, 2)
   end
 
   def state_code=(code)
