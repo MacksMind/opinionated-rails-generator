@@ -127,7 +127,7 @@ describe "Users" do
       expect(ActionMailer::Base.deliveries.last.to).to include(@user.email)
       token = ActionMailer::Base.deliveries.last.body.raw_source.match(/reset_password_token=([^"]+)/)[1]
 
-      #follow email line
+      # follow email line
       visit edit_user_password_path(reset_password_token: token)
       fill_in "New password", with: ""
       fill_in "Confirm new password", with: ""

@@ -1,23 +1,27 @@
 diff --git a/config/database.yml b/config/database.yml
-index 0d02f24..b8de93f 100644
+index 0d02f24..7b16a40 100644
 --- a/config/database.yml
 +++ b/config/database.yml
-@@ -5,21 +5,19 @@
+@@ -4,22 +4,23 @@
+ #   Ensure the SQLite 3 gem is defined in your Gemfile
  #   gem 'sqlite3'
  #
++
++<% db_root = Rails.application.config.app_name.underscore %>
++
  default: &default
 -  adapter: sqlite3
 +  adapter: postgresql
 +  encoding: unicode
    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 -  timeout: 5000
-+  username: shiny
-+  password: shiny
++  username: <%= db_root %>
++  password: <%= db_root %>
  
  development:
    <<: *default
 -  database: db/development.sqlite3
-+  database: shiny_development
++  database: <%= db_root %>_development
  
  # Warning: The database defined as "test" will be erased and
  # re-generated from your development database when you run "rake".
@@ -29,4 +33,4 @@ index 0d02f24..b8de93f 100644
 -production:
 -  <<: *default
 -  database: db/production.sqlite3
-+  database: shiny_test
++  database: <%= db_root %>_test
