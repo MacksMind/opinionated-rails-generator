@@ -2,7 +2,7 @@ diff --git a/db/migrate/20171129180004_add_devise_to_users.rb b/db/migrate/20171
 index a668078..36345dd 100644
 --- a/db/migrate/20171129180004_add_devise_to_users.rb
 +++ b/db/migrate/20171129180004_add_devise_to_users.rb
-@@ -20,15 +20,15 @@ class AddDeviseToUsers < ActiveRecord::Migration[5.1]
+@@ -22,15 +22,15 @@ class AddDeviseToUsers < ActiveRecord::Migration[5.1]
        t.inet     :last_sign_in_ip
  
        ## Confirmable
@@ -25,7 +25,7 @@ index a668078..36345dd 100644
  
  
        # Uncomment below if timestamps were not included in your original model.
-@@ -37,8 +37,8 @@ class AddDeviseToUsers < ActiveRecord::Migration[5.1]
+@@ -39,8 +39,8 @@ class AddDeviseToUsers < ActiveRecord::Migration[5.1]
  
      add_index :users, :email,                unique: true
      add_index :users, :reset_password_token, unique: true

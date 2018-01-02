@@ -55,4 +55,4 @@ index 13ab512..2963145 100644
 +gem "letter_avatar"
 +
 +# Heroku
-+ruby "2.4.2"
++ruby "2.5.0"
