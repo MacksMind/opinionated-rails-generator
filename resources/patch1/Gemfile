@@ -42,7 +42,7 @@ index 13ab512..2963145 100644
 +  gem "rails_12factor"
 +end
 +
-+gem "pg"
++gem "pg", "~> 0.21"
 +gem "bootstrap", "~> 4.0.0.beta2.1"
 +gem "autoprefixer-rails"
 +gem "devise"
