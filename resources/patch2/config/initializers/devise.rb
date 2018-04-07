@@ -1,14 +1,8 @@
-commit 3580a5f639740c91b666e8989f2c59689d3a4a1b
-Author: Mack Earnhardt <mack@agilereasoning.com>
-Date:   Tue Jan 2 09:57:50 2018 -0500
-
-    Apply main patches
-
 diff --git a/config/initializers/devise.rb b/config/initializers/devise.rb
-index 9921459..e05269d 100644
+index 75142de..a1754c0 100644
 --- a/config/initializers/devise.rb
 +++ b/config/initializers/devise.rb
-@@ -14,7 +14,7 @@ Devise.setup do |config|
+@@ -18,7 +18,7 @@ Devise.setup do |config|
    # Configure the e-mail address which will be shown in Devise::Mailer,
    # note that it will be overwritten if you use your own mailer class
    # with default "from" parameter.
@@ -17,7 +11,7 @@ index 9921459..e05269d 100644
  
    # Configure the class responsible to send e-mails.
    # config.mailer = 'Devise::Mailer'
-@@ -114,9 +114,9 @@ Devise.setup do |config|
+@@ -118,9 +118,9 @@ Devise.setup do |config|
  
    # Send a notification to the original email when the user's email is changed.
 -  # config.send_email_changed_notification = false
@@ -29,7 +23,7 @@ index 9921459..e05269d 100644
  
    # ==> Configuration for :confirmable
    # A period that the user is allowed to access the website even without
-@@ -124,7 +124,7 @@ Devise.setup do |config|
+@@ -128,7 +128,7 @@ Devise.setup do |config|
    # able to access the website for two days without confirming their account,
    # access will be blocked just in the third day. Default is 0.days, meaning
    # the user cannot access the website without confirming their account.
@@ -38,7 +32,7 @@ index 9921459..e05269d 100644
  
    # A period that the user is allowed to confirm their account before their
    # token becomes invalid. For example, if set to 3.days, the user can confirm
-@@ -132,7 +132,7 @@ Devise.setup do |config|
+@@ -136,7 +136,7 @@ Devise.setup do |config|
    # their account can't be confirmed with the token any more.
    # Default is nil, meaning there is no restriction on how long a user can take
    # before confirming their account.
