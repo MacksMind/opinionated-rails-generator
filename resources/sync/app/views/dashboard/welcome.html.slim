@@ -1,9 +1,9 @@
-.jumbotron
+.bg-light.p-5.rounded
   h1
     = Rails.application.config.app_name
     small  &mdash; Disrupting Disruptions
   p Thanks for checking out #{Rails.application.config.app_name}! We hope you like it here.
-form.form-inline
+form.row.row-cols-md-auto.g-3.p-2
   label.sr-only[for="email"] Email
   input#email.form-control.mb-2.mr-sm-2.mb-sm-0[type="email" name="email" placeholder="Email address"]
   button.btn.btn-primary[type="submit"] Get Started

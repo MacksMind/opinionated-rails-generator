@@ -1,8 +1,61 @@
-inherit_gem:
-  rubocop-rails:
-    - config/rails.yml
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
 
 AllCops:
-  TargetRubyVersion: 2.4
+  EnabledByDefault: true
+  TargetRubyVersion: 2.7
+
+Layout/AccessModifierIndentation:
+  EnforcedStyle: outdent
+
+Lint/ConstantResolution:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 26
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Max: 11
+
+Metrics/PerceivedComplexity:
+  Max: 9
+
+Metrics/MethodLength:
+  Enabled: false
+
+RSpec/DescribeClass:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+Style/Copyright:
+  Enabled: false
+
+Style/DisableCopsWithinSourceCodeDirective:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/DocumentationMethod:
+  Enabled: false
+
+Style/MethodCallWithArgsParentheses:
+  Enabled: false
+
+Style/MissingElse:
+  EnforcedStyle: case
 
 inherit_from: .rubocop_todo.yml

@@ -1,9 +1,9 @@
 h2 Sign in
 = form_for(resource, as: resource_name, url: session_path(resource_name), html: {role: :form, class: 'form-horizontal'}) do |f|
-  .form-group
+  .mb-3
     = f.label :email
     = f.email_field :email, autofocus: true, class: 'form-control'
-  .form-group
+  .mb-3
     = f.label :password
     = f.password_field :password, class: 'form-control'
   - if devise_mapping.rememberable?

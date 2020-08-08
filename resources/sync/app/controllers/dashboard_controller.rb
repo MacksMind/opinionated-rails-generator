@@ -9,8 +9,13 @@ class DashboardController < ApplicationController
       redirect_to :dashboard_index
     elsif params[:email].present?
       redir_params = { user: { email: params[:email] } }
-      redirect_to User.exists?(email: params[:email]) ?
-        new_user_session_path(redir_params) : new_user_registration_path(redir_params)
+      redirect_to(
+        if User.exists?(email: params[:email])
+          new_user_session_path(redir_params)
+        else
+          new_user_registration_path(redir_params)
+        end
+      )
     end
   end
 

@@ -1,15 +1,15 @@
 diff --git a/config/application.rb b/config/application.rb
-index 796b144..4ea755c 100644
+index 2124c3a..1fd046c 100644
 --- a/config/application.rb
 +++ b/config/application.rb
-@@ -14,5 +14,10 @@ module Shiny
-     # Settings in config/environments/* take precedence over those specified here.
-     # Application configuration should go into files in config/initializers
-     # -- all .rb files in that directory are automatically loaded.
+@@ -15,5 +15,10 @@ module OpinionatedRails
+     # Application configuration can go into files in config/initializers
+     # -- all .rb files in that directory are automatically loaded after loading
+     # the framework and any gems in your application.
 +
 +    config.app_name = Module.nesting.last.name
-+    config.domain_name = "#{config.app_name.underscore.dasherize}.herokuapp.com"
-+    config.email_sender = "noreply@#{config.domain_name}"
-+    config.canonical_hostname = config.domain_name
++    config.hostname = "#{ENV['HEROKU_APP_NAME']}.herokuapp.com" || ENV['HOST_NAME'] || 'app.example.com'
++    config.email_domain = config.hostname
++    config.email_sender = "noreply@#{config.email_domain}"
    end
  end

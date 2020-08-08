@@ -31,7 +31,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     current_user.cancel
     sign_out current_user
 
-    flash[:info] = "Bye! Your account has been successfully cancelled. We hope to see you again soon."
+    flash[:info] = 'Bye! Your account has been successfully cancelled. We hope to see you again soon.'
 
     respond_to do |format|
       format.html { redirect_to root_path }

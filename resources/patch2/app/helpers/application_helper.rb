@@ -1,12 +1,14 @@
 diff --git a/app/helpers/application_helper.rb b/app/helpers/application_helper.rb
-index de6be79..f777bf1 100644
+index de6be79..36f2cff 100644
 --- a/app/helpers/application_helper.rb
 +++ b/app/helpers/application_helper.rb
-@@ -1,2 +1,15 @@
+@@ -1,2 +1,17 @@
++# frozen_string_literal: true
++
  module ApplicationHelper
 +  include LetterAvatar::AvatarHelper
 +
-+  def gravatar_tag(email, full_name, size: 32, css_class: "rounded")
++  def gravatar_tag(email, full_name, size: 32, css_class: 'rounded')
 +    email_address = email.downcase
 +    hash = Digest::MD5.hexdigest(email_address)
 +    image_tag(

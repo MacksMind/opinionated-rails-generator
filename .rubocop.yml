@@ -1,0 +1,23 @@
+require:
+  - rubocop-performance
+
+AllCops:
+  EnabledByDefault: true
+  TargetRubyVersion: 2.7
+  Exclude:
+    - 'resources/**/*'
+
+Metrics/ClassLength:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+Style/Copyright:
+  AutocorrectNotice: '# Copyright 2020 Mack Earnhardt'
+  Notice: 'Copyright (\(c\) )?2[0-9]{3} .+'
+
+Style/MethodCallWithArgsParentheses:
+  Enabled: false
+
+inherit_from: .rubocop_todo.yml

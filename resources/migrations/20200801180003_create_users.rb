@@ -1,11 +1,11 @@
 class CreateUsers < ActiveRecord::Migration
   def self.up
-    enable_extension "uuid-ossp"
+    enable_extension 'uuid-ossp'
 
-    create_table :users, id: :uuid, default: "uuid_generate_v4()" do |t|
+    create_table :users, id: :uuid, default: 'uuid_generate_v4()' do |t|
       t.string    :first_name
       t.string    :last_name
-      t.boolean   :active,              default: true
+      t.boolean   :active, default: true
       t.integer   :roles_mask
       t.string    :time_zone
       t.string    :phone_number

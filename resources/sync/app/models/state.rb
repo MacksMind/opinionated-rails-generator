@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class State < ActiveRecord::Base
-  validates_uniqueness_of :code, :name, within: :country_code, case_sensitive: false
-  validates_presence_of :code, :name
-  validates_inclusion_of :country_code, in: %w{CA US MX}
+class State < ApplicationRecord
+  validates :code, :name, uniqueness: { within: :country_code, case_sensitive: false }
+  validates :code, :name, presence: true
+  validates :country_code, inclusion: { in: %w[CA US MX] }
 end

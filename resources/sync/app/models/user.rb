@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
-class User < ActiveRecord::Base
-  belongs_to :country, optional: true, primary_key: :code, foreign_key: :country_code
+class User < ApplicationRecord
+  belongs_to :country, optional: true, primary_key: :code, foreign_key: :country_code, inverse_of: false
   belongs_to :state, optional: true
 
-  validates_presence_of \
+  validates \
     :first_name,
     :last_name,
-    :time_zone
+    :time_zone,
+    presence: true
 
   validate :state_code_matches_country
 
@@ -15,24 +16,27 @@ class User < ActiveRecord::Base
 
   scope :active, -> { where(active: true) }
 
+  ROLES = %w[admin].freeze
+  public_constant :ROLES
+
   def set_time_zone
-    self.time_zone ||= "Eastern Time (US & Canada)"
+    self.time_zone ||= 'Eastern Time (US & Canada)'
   end
 
   def state_code_matches_country
     return if country_code.blank? && state_id.blank?
     return if country_code.present? && country_code == state_id&.[](0, 2)
 
-    allowed_values = self.country&.state_codes
+    allowed_values = country&.state_codes
 
     if allowed_values.blank?
-      errors.add(:state_id, "not permitted for #{self.country&.name}") if state_id.present?
+      errors.add(:state_id, "not permitted for #{country&.name}") if state_id.present?
     else
-      errors.add(:state_id, "must be one of #{allowed_values.sort.join(" ")}") if !allowed_values.include?(self.state_code)
+      unless allowed_values.include?(state_code)
+        errors.add(:state_id, "must be one of #{allowed_values.sort.join(' ')}")
+      end
     end
   end
-
-  ROLES = %w{admin}
 
   def roles=(roles)
     self.roles_mask = ((roles || []) & ROLES).map { |r| 2**ROLES.index(r) }.sum
@@ -44,33 +48,36 @@ class User < ActiveRecord::Base
     end
   end
 
-  def has_role?(role)
-    self.roles.include?(role.to_s)
+  def role?(role)
+    roles.include?(role.to_s)
   end
 
-  scope :with_role, lambda { |role| { conditions: "roles_mask & #{2**ROLES.index(role.to_s)} > 0" } }
+  scope :with_role, ->(role) { { conditions: "roles_mask & #{2**ROLES.index(role.to_s)} > 0" } }
 
   def full_name
     "#{first_name} #{last_name}".strip
   end
 
   def active_for_authentication?
-    super && self.active?
+    super && active?
   end
 
   def inactive_message
-    self.active? ? super : "Sorry, this account has been canceled. Please contact support to reactivate."
+    active? ? super : 'Sorry, this account has been canceled. Please contact support to reactivate.'
   end
 
   def cancel
-    self.update_attribute(:active, false)
+    # rubocop:disable Rails/SkipsModelValidations
+    # Not concerned about valiations on inactives
+    update_attribute(:active, false)
+    # rubocop:enable Rails/SkipsModelValidations
   end
 
   def state_code
-    self.state_id&.[](2, 2)
+    state_id&.[](2, 2)
   end
 
   def state_code=(code)
-    self.state = State.find_by_code(code)
+    self.state = State.find_by(code: code)
   end
 end

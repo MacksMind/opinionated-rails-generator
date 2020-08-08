@@ -143,7 +143,7 @@ states_MXMI:
   id: MXMI
   country_code: MX
   code: MI
-  name: MichoacÃ¡n
+  name: Michoacán
 states_MXMO:
   id: MXMO
   country_code: MX
@@ -158,7 +158,7 @@ states_MXNL:
   id: MXNL
   country_code: MX
   code: NL
-  name: Nuevo LeÃ³n
+  name: Nuevo León
 states_MXOA:
   id: MXOA
   country_code: MX
@@ -173,7 +173,7 @@ states_MXQE:
   id: MXQE
   country_code: MX
   code: QE
-  name: QuerÃ©taro
+  name: Querétaro
 states_MXQR:
   id: MXQR
   country_code: MX
@@ -188,7 +188,7 @@ states_MXSL:
   id: MXSL
   country_code: MX
   code: SL
-  name: San Luis PotosÃ­
+  name: San Luis Potosí
 states_MXSO:
   id: MXSO
   country_code: MX
@@ -218,7 +218,7 @@ states_MXYU:
   id: MXYU
   country_code: MX
   code: YU
-  name: YucatÃ¡n
+  name: Yucatán
 states_MXZA:
   id: MXZA
   country_code: MX

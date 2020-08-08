@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-class Country < ActiveRecord::Base
-  validates_uniqueness_of :code, :name, case_sensitive: false
-  validates_presence_of :code, :name
+class Country < ApplicationRecord
+  validates :code, :name, uniqueness: { case_sensitive: false }
+  validates :code, :name, presence: true
 
   def state_codes
-    State.where(country_code: self.code).collect { |s| s.code }
+    State.where(country_code: code).map(&:code)
   end
 end
