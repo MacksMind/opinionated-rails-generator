@@ -1,8 +1,8 @@
 diff --git a/Gemfile b/Gemfile
-index b99c4ce..da3876e 100644
+index b99c4ce..b537148 100644
 --- a/Gemfile
 +++ b/Gemfile
-@@ -49,3 +49,65 @@ end
+@@ -49,3 +49,60 @@ end
  
  # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
  gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
@@ -44,11 +44,6 @@ index b99c4ce..da3876e 100644
 +  gem 'rspec-activemodel-mocks'
 +  # Code coverage
 +  gem 'simplecov', require: false
-+end
-+
-+group :production do
-+  # Heroku
-+  gem 'rails_12factor'
 +end
 +
 +# Authentication
