@@ -30,7 +30,7 @@ class ::Opinionated
   # Grab rails major/minor for migrations
   def rails_major_minor
     @rails_major_minor ||=
-      ::Bundler.with_clean_env do
+      ::Bundler.with_unbundled_env do
         `rails --version`.match(/Rails (\d+\.\d+)/)[1].to_s
       end
   end

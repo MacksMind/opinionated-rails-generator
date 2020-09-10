@@ -2,7 +2,7 @@ diff --git a/Gemfile b/Gemfile
 index b99c4ce..b537148 100644
 --- a/Gemfile
 +++ b/Gemfile
-@@ -49,3 +49,60 @@ end
+@@ -49,3 +49,57 @@ end
  
  # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
  gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
@@ -60,6 +60,3 @@ index b99c4ce..b537148 100644
 +gem 'ransack'
 +# Add slim. Note the generator is in the dev group. Might save a touch on bundle size by not using slim-rails here.
 +gem 'slim'
-+
-+# Heroku
-+ruby '2.7.1'
