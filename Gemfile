@@ -4,7 +4,7 @@
 
 source 'https://rubygems.org'
 
-ruby '2.7.1'
+ruby '2.7.2'
 
 # Specify supported rails version, but a newer one may execute if installed
 gem 'railties', '~> 6.0.3', '>= 6.0.3.3'
