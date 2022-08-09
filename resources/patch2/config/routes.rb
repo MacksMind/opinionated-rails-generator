@@ -1,11 +1,11 @@
 diff --git a/config/routes.rb b/config/routes.rb
-index c06383a..a4996d2 100644
+index 262ffd5..2b6c10f 100644
 --- a/config/routes.rb
 +++ b/config/routes.rb
-@@ -1,3 +1,19 @@
+@@ -1,6 +1,20 @@
  Rails.application.routes.draw do
-   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-+
+   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+ 
 +  resource :account, only: %i[edit update]
 +
 +  namespace :admin do
@@ -20,5 +20,7 @@ index c06383a..a4996d2 100644
 +
 +  get 'avatar/name/:full_name', to: 'avatar#name', as: :avatar_name
 +
-+  root to: 'dashboard#welcome'
+   # Defines the root path route ("/")
+-  # root "articles#index"
++  root 'dashboard#welcome'
  end

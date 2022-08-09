@@ -1,5 +1,5 @@
 diff --git a/spec/rails_helper.rb b/spec/rails_helper.rb
-index 00345af..446cd80 100644
+index b6317b5..bb48e2b 100644
 --- a/spec/rails_helper.rb
 +++ b/spec/rails_helper.rb
 @@ -1,9 +1,13 @@
@@ -10,14 +10,14 @@ index 00345af..446cd80 100644
  # This file is copied to spec/ when you run 'rails generate rspec:install'
  require 'spec_helper'
  ENV['RAILS_ENV'] ||= 'test'
- require File.expand_path('../config/environment', __dir__)
+ require_relative '../config/environment'
  # Prevent database truncation if the environment is production
 -abort("The Rails environment is running in production mode!") if Rails.env.production?
 +abort('The Rails environment is running in production mode!') if Rails.env.production?
  require 'rspec/rails'
  # Add additional requires below this line. Rails is not loaded until this point!
  
-@@ -33,6 +37,7 @@ end
+@@ -33,6 +37,7 @@
  RSpec.configure do |config|
    # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
    config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -25,7 +25,7 @@ index 00345af..446cd80 100644
  
    # If you're not using ActiveRecord, or you'd prefer not to run each of your
    # examples within a transaction, remove the following line or assign false
-@@ -62,3 +67,6 @@ RSpec.configure do |config|
+@@ -62,3 +67,6 @@
    # arbitrary gems may also be filtered via:
    # config.filter_gems_from_backtrace("gem name")
  end

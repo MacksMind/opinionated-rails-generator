@@ -1,11 +1,11 @@
 diff --git a/.gitignore b/.gitignore
-index f22dd34..583695b 100644
+index e16dc71..82b89a5 100644
 --- a/.gitignore
 +++ b/.gitignore
-@@ -34,3 +34,16 @@
- /yarn-error.log
- yarn-debug.log*
- .yarn-integrity
+@@ -29,3 +29,16 @@
+ 
+ # Ignore master key for decrypting credentials and more.
+ /config/master.key
 +
 +# Ignore cached images
 +/public/system

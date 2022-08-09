@@ -72,7 +72,7 @@ class ::Opinionated
 
   # Exec `rails new`
   def rails_new
-    syscmd("rails new #{@project_dir} --database postgresql --skip-spring")
+    syscmd("rails new #{@project_dir} --database postgresql")
     ::Dir.chdir(@project_dir)
 
     # Remove credentials right out of the gate, because we don't want them in the example repo
@@ -81,9 +81,7 @@ class ::Opinionated
     ::FileUtils.rm_f(::File.join(@project_dir, 'config/credentials.yml.enc'))
 
     commit(<<~MSG)
-      `rails new` with PostgreSQL and not spring
-
-      spring can make debugging very frustrating and we hates it forever
+      `rails new` with PostgreSQL
     MSG
   end
 

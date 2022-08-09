@@ -1,8 +1,8 @@
 diff --git a/config/puma.rb b/config/puma.rb
-index 5ed4437..284035f 100644
+index daaf036..e381397 100644
 --- a/config/puma.rb
 +++ b/config/puma.rb
-@@ -25,14 +25,19 @@ pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
+@@ -30,14 +30,19 @@
  # Workers do not work on JRuby or Windows (both of which do not support
  # processes).
  #
@@ -22,5 +22,5 @@ index 5ed4437..284035f 100644
 +  ::ActiveRecord::Base.establish_connection if defined?(::ActiveRecord)
 +end
  
- # Allow puma to be restarted by `rails restart` command.
+ # Allow puma to be restarted by `bin/rails restart` command.
  plugin :tmp_restart

@@ -1,11 +1,11 @@
 diff --git a/config/application.rb b/config/application.rb
-index 2124c3a..1fd046c 100644
+index 6b45684..67d529d 100644
 --- a/config/application.rb
 +++ b/config/application.rb
-@@ -15,5 +15,10 @@ module OpinionatedRails
-     # Application configuration can go into files in config/initializers
-     # -- all .rb files in that directory are automatically loaded after loading
-     # the framework and any gems in your application.
+@@ -18,5 +18,10 @@ class Application < Rails::Application
+     #
+     # config.time_zone = "Central Time (US & Canada)"
+     # config.eager_load_paths << Rails.root.join("extras")
 +
 +    config.app_name = Module.nesting.last.name
 +    config.hostname = "#{ENV['HEROKU_APP_NAME']}.herokuapp.com" || ENV['HOST_NAME'] || 'app.example.com'

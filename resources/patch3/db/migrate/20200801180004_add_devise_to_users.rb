@@ -1,21 +1,21 @@
 diff --git a/db/migrate/20200801180004_add_devise_to_users.rb b/db/migrate/20200801180004_add_devise_to_users.rb
-index 18cb268..1472c78 100644
+index 98ed9dc..0c22326 100644
 --- a/db/migrate/20200801180004_add_devise_to_users.rb
 +++ b/db/migrate/20200801180004_add_devise_to_users.rb
-@@ -15,22 +15,22 @@ class AddDeviseToUsers < ActiveRecord::Migration[6.0]
+@@ -15,22 +15,22 @@ def self.up
        t.datetime :remember_created_at
  
        ## Trackable
 -      # t.integer  :sign_in_count, default: 0, null: false
 -      # t.datetime :current_sign_in_at
 -      # t.datetime :last_sign_in_at
--      # t.inet     :current_sign_in_ip
--      # t.inet     :last_sign_in_ip
+-      # t.string   :current_sign_in_ip
+-      # t.string   :last_sign_in_ip
 +      t.integer  :sign_in_count, default: 0, null: false
 +      t.datetime :current_sign_in_at
 +      t.datetime :last_sign_in_at
-+      t.inet     :current_sign_in_ip
-+      t.inet     :last_sign_in_ip
++      t.string   :current_sign_in_ip
++      t.string   :last_sign_in_ip
  
        ## Confirmable
 -      # t.string   :confirmation_token
@@ -37,7 +37,7 @@ index 18cb268..1472c78 100644
  
  
        # Uncomment below if timestamps were not included in your original model.
-@@ -39,8 +39,8 @@ class AddDeviseToUsers < ActiveRecord::Migration[6.0]
+@@ -39,8 +39,8 @@ def self.up
  
      add_index :users, :email,                unique: true
      add_index :users, :reset_password_token, unique: true

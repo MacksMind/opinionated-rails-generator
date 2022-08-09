@@ -1,11 +1,11 @@
 diff --git a/Gemfile b/Gemfile
-index b99c4ce..b537148 100644
+index e9accda..f9a5982 100644
 --- a/Gemfile
 +++ b/Gemfile
-@@ -49,3 +49,57 @@ end
- 
- # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
- gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+@@ -70,3 +70,57 @@ group :test do
+   gem "selenium-webdriver"
+   gem "webdrivers"
+ end
 +
 +group :development do
 +  # Annotate models, factories, and spec with table layout
