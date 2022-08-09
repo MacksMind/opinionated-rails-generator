@@ -3,8 +3,8 @@
 require 'rails_helper'
 
 describe 'Admin/Users' do
-  let(:admin_user) { FactoryBot.create(:admin_user, password: 'testing1') }
-  let(:user)       { FactoryBot.create(:user)                             }
+  let(:admin_user) { create(:admin_user, password: 'testing1') }
+  let(:user)       { create(:user)                             }
 
   before do
     sign_in(admin_user)

@@ -5,27 +5,56 @@ require:
 
 AllCops:
   EnabledByDefault: true
-  TargetRubyVersion: 2.7
+  NewCops: enable
+  TargetRubyVersion: 3.1
+
+Bundler/GemVersion:
+  Enabled: false
 
 Layout/AccessModifierIndentation:
   EnforcedStyle: outdent
 
+Layout/EndAlignment:
+  EnforcedStyleAlignWith: variable
+
+Layout/MultilineAssignmentLayout:
+  EnforcedStyle: same_line
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/SingleLineBlockChain:
+  Enabled: false
+
 Lint/ConstantResolution:
   Enabled: false
 
+Lint/NumberConversion:
+  AutoCorrect: false
+  Enabled: false
+
 Metrics/AbcSize:
-  Max: 26
+  Enabled: false
 
 Metrics/BlockLength:
   Enabled: false
 
-Metrics/CyclomaticComplexity:
-  Max: 11
+Metrics/BlockNesting:
+  Enabled: false
 
-Metrics/PerceivedComplexity:
-  Max: 9
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
 
 Metrics/MethodLength:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
   Enabled: false
 
 RSpec/DescribeClass:
@@ -34,11 +63,29 @@ RSpec/DescribeClass:
 RSpec/ExampleLength:
   Enabled: false
 
+RSpec/ImplicitBlockExpectation:
+  Enabled: false
+
 RSpec/MultipleExpectations:
   Enabled: false
 
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+Style/ConstantVisibility:
+  Enabled: false
+
+Style/ClassMethodsDefinitions:
+  EnforcedStyle: self_class
+
 Style/ClassAndModuleChildren:
-  EnforcedStyle: compact
+  EnforcedStyle: nested
 
 Style/Copyright:
   Enabled: false
@@ -52,10 +99,37 @@ Style/Documentation:
 Style/DocumentationMethod:
   Enabled: false
 
+Style/DoubleNegation:
+  Enabled: false
+
+Style/GlobalVars:
+  Enabled: false
+
+Style/InlineComment:
+  Enabled: false
+
 Style/MethodCallWithArgsParentheses:
+  Enabled: false
+
+Style/MethodCalledOnDoEndBlock:
   Enabled: false
 
 Style/MissingElse:
   EnforcedStyle: case
+
+Style/RescueModifier:
+  Enabled: false
+
+Style/StringHashKeys:
+  Enabled: false
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
 
 inherit_from: .rubocop_todo.yml

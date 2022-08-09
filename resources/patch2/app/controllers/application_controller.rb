@@ -44,8 +44,8 @@ index 09705d1..12c699c 100644
 +        phone_number
 +        company_name
 +        title
-+        address_line_1
-+        address_line_2
++        address_line1
++        address_line2
 +        city
 +        state_id
 +        postal_code

@@ -11,8 +11,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string    :phone_number
       t.string    :company_name
       t.string    :title
-      t.string    :address_line_1
-      t.string    :address_line_2
+      t.string    :address_line1
+      t.string    :address_line2
       t.string    :city
       t.string    :postal_code
       t.string    :state_id, limit: 4

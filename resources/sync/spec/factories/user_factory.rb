@@ -14,7 +14,7 @@ FactoryBot.define do
     confirmed_at { ::Time.current }
     country_code { 'US' }
     company_name { 'Princeton-Plainsboro Teaching Hospital (PPTH)' }
-    address_line_1 do
+    address_line1 do
       num = rand(100..999)
       name = %w[Maple Oak Hickory Apple Ash Beech Cedar Cypress].sample
       suffix = %w[St Ave Rd Dr].sample

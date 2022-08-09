@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Admin::UsersController do
-  let(:admin_user) { FactoryBot.create(:admin_user) }
+  let(:admin_user) { create(:admin_user) }
 
   let(:valid_attributes) do
     {
@@ -14,7 +14,7 @@ RSpec.describe Admin::UsersController do
       time_zone: 'Eastern Time (US & Canada)',
       company_name: 'ACME',
       phone_number: '123-456-7890',
-      address_line_1: '123 E Main St',
+      address_line1: '123 E Main St',
       city: 'Anytown',
       state_code: 'NY',
       postal_code: '12345',

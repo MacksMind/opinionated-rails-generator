@@ -15,10 +15,10 @@ table.table
   tr
     th Address
     td
-      = @user.address_line_1
-      - if @user.address_line_2.present?
+      = @user.address_line1
+      - if @user.address_line2.present?
         br
-        = @user.address_line_2
+        = @user.address_line2
       br
       = @user.city
       =< @user.state_code

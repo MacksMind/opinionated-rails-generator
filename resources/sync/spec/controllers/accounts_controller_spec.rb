@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe AccountsController do
-  let(:user) { FactoryBot.create(:user) }
+  let(:user) { create(:user) }
 
   before do
     sign_in(user)

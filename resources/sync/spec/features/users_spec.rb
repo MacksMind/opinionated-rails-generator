@@ -3,7 +3,7 @@
 require('rails_helper')
 
 describe 'Users' do
-  let(:user) { FactoryBot.create(:user, password: 'testing1') }
+  let(:user) { create(:user, password: 'testing1') }
 
   before do
     ActionMailer::Base.deliveries = []

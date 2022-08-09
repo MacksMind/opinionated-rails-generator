@@ -2,7 +2,7 @@
 
 Given(/^the following users:$/) do |users|
   users.hashes.each do |user|
-    FactoryBot.create(:user, user)
+    create(:user, user)
   end
 end
 

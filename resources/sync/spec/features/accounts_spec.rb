@@ -4,7 +4,7 @@ require 'rails_helper'
 
 describe 'Accounts' do
   describe 'when signed in' do
-    let(:user) { FactoryBot.create(:user) }
+    let(:user) { create(:user) }
 
     before do
       sign_in(user)

@@ -9,7 +9,7 @@ RSpec.describe 'Factory Bot' do
     describe "#{factory_name} factory" do
       # Test each factory
       it 'is valid' do
-        factory = FactoryBot.build(factory_name)
+        factory = build(factory_name)
         expect(factory).to be_valid, -> { factory.errors.full_messages.join("\n") } if factory.respond_to?(:valid?)
       end
 
@@ -17,7 +17,7 @@ RSpec.describe 'Factory Bot' do
       FactoryBot.factories[factory_name].definition.defined_traits.map(&:name).each do |trait_name|
         context "with trait #{trait_name}" do
           it 'is valid' do
-            factory = FactoryBot.build(factory_name, trait_name)
+            factory = build(factory_name, trait_name)
             expect(factory).to be_valid, -> { factory.errors.full_messages.join("\n") } if factory.respond_to?(:valid?)
           end
         end

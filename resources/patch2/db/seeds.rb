@@ -15,7 +15,7 @@ index bc25fce..61aea48 100644
 +  time_zone: 'Eastern Time (US & Canada)',
 +  company_name: 'Agile Reasoning',
 +  phone_number: '+1 317.286.6610',
-+  address_line_1: '12175 Visionary Way Ste 610',
++  address_line1: '12175 Visionary Way Ste 610',
 +  city: 'Fishers',
 +  state_code: 'IN',
 +  postal_code: '46038',
