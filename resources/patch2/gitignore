@@ -1,11 +1,11 @@
 diff --git a/.gitignore b/.gitignore
-index e16dc71..82b89a5 100644
+index 1dd0a39..12525a3 100644
 --- a/.gitignore
 +++ b/.gitignore
-@@ -29,3 +29,16 @@
+@@ -34,3 +34,16 @@
+ !/app/assets/builds/.keep
  
- # Ignore master key for decrypting credentials and more.
- /config/master.key
+ /node_modules
 +
 +# Ignore cached images
 +/public/system

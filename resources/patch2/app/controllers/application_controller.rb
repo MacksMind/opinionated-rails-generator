@@ -1,12 +1,12 @@
 diff --git a/app/controllers/application_controller.rb b/app/controllers/application_controller.rb
-index 09705d1..12c699c 100644
+index 09705d1..117a941 100644
 --- a/app/controllers/application_controller.rb
 +++ b/app/controllers/application_controller.rb
 @@ -1,2 +1,51 @@
 +# frozen_string_literal: true
 +
  class ApplicationController < ActionController::Base
-+  include Pundit
++  include Pundit::Authorization
 +
 +  before_action :set_time_zone
 +  before_action :redirect_invalid_user

@@ -1,8 +1,8 @@
 diff --git a/Gemfile b/Gemfile
-index 2c54c88..821f981 100644
+index 6b34535..1a984ec 100644
 --- a/Gemfile
 +++ b/Gemfile
-@@ -43,7 +43,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+@@ -46,7 +46,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
  gem "bootsnap", require: false
  
  # Use Sass to process CSS
@@ -11,7 +11,7 @@ index 2c54c88..821f981 100644
  
  # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
  # gem "image_processing", "~> 1.2"
-@@ -70,3 +70,57 @@ group :test do
+@@ -73,3 +73,57 @@ group :test do
    gem "selenium-webdriver"
    gem "webdrivers"
  end

@@ -61,7 +61,7 @@ class ::Opinionated
     sync_mvc_and_specs
     create_migrations
     configure_devise
-    install_bootstrap
+    # install_bootstrap
     install_fontawesome
     install_annotate
     eslint_prettier
@@ -72,7 +72,7 @@ class ::Opinionated
 
   # Exec `rails new`
   def rails_new
-    syscmd("rails new #{@project_dir} --database postgresql")
+    syscmd("rails new #{@project_dir} --database postgresql --css=bootstrap")
     ::Dir.chdir(@project_dir)
 
     # Remove credentials right out of the gate, because we don't want them in the example repo
@@ -129,10 +129,7 @@ class ::Opinionated
   def create_migrations
     ::FileUtils.mkdir(@migrate_dir)
     ::Dir[::File.join(@resource_dir, 'migrations', '*.rb')].sort.each do |f|
-      syscmd(
-        "sed -e '1s/$/[#{rails_major_minor}]/' #{f} > " \
-        "#{::File.join(@migrate_dir, ::File.basename(f))}"
-      )
+      syscmd("sed -e '1s/$/[#{rails_major_minor}]/' #{f} > #{::File.join(@migrate_dir, ::File.basename(f))}")
     end
     syscmd('bundle exec rails db:drop db:create db:migrate')
     commit('Initial migrations')
@@ -140,8 +137,7 @@ class ::Opinionated
 
   # Configure devise
   def configure_devise
-    # TODO: THOR_SILENCE_DEPRECATION should come out once https://github.com/heartcombo/devise/pull/5258 is released
-    syscmd('THOR_SILENCE_DEPRECATION=1 bundle exec rails generate devise User')
+    syscmd('bundle exec rails generate devise User')
     ::Dir[::File.join(@migrate_dir, '*_add_devise_to_users.rb')].each do |f|
       ::FileUtils.mv(f, ::File.join(@migrate_dir, '20200801180004_add_devise_to_users.rb'))
     end
@@ -152,10 +148,10 @@ class ::Opinionated
   end
 
   # Install bootstrap 5
-  def install_bootstrap
-    syscmd('yarn add bootstrap@next popper.js')
-    commit('Bootstrap 5')
-  end
+  # def install_bootstrap
+  #   syscmd('yarn add bootstrap@5 @popperjs/core')
+  #   commit('Bootstrap 5')
+  # end
 
   # Install fontawesome
   def install_fontawesome
@@ -172,16 +168,25 @@ class ::Opinionated
 
   # Install eslint and prettier
   def eslint_prettier
-    syscmd('yarn add -D eslint prettier eslint-plugin-prettier eslint-config-prettier eslint-config-airbnb ' \
-           'eslint-plugin-jsx-a11y eslint-plugin-react eslint-plugin-import')
+    syscmd(<<~CMD)
+      yarn add -D \
+      eslint \
+      eslint-config-airbnb \
+      eslint-config-prettier \
+      eslint-plugin-import \
+      eslint-plugin-jsx-a11y \
+      eslint-plugin-prettier \
+      eslint-plugin-react \
+      prettier
+    CMD
     commit('Eslint / Prettier')
   end
 
   # Rubocop cleanup
   def rubocop_cleanup
-    syscmd('bundle exec rubocop --auto-correct', ignore_warnings: true)
-    syscmd('bundle exec rubocop --auto-gen-config')
-    commit('Rubocop cleanup')
+    # syscmd('bundle exec rubocop --autocorrect-all', ignore_warnings: true)
+    # syscmd('bundle exec rubocop --auto-gen-config')
+    # commit('Rubocop cleanup')
   end
 
   # Load fixtures and db:seed
